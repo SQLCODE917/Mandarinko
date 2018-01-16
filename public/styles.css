@@ -1,0 +1,64 @@
+#react-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.row.main {
+  align-items: center;
+}
+
+.word {
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.siblings {
+  padding-bottom: 1rem;
+}
+
+.spelling-form {
+  padding-right: .25rem;
+  font-size: 2rem;
+}
+
+.zh-Hant {
+  border-left: 1px solid black;
+  color: #808080;
+  padding-left: .25rem;
+}
+
+.zh-Hans {
+
+}
+
+.ja {
+
+}
+
+.pronounciation {
+  padding-left: .5rem;
+}
+
+.definition {
+  padding-left: 1rem;
+}
+
+.derivation {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  color: #808080;
+}
+
+.children {
+  display: flex;
+  justify-content: space-between;
+
+  padding-top: 1rem;
+}

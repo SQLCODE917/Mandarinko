@@ -1,22 +1,5 @@
 const { render } = ReactDOM
 
-const getJSON = (url) => {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
-    xhr.onload = function() {
-      const status = xhr.status;
-      if (status === 200) {
-        resolve(xhr.response);
-      } else {
-        reject(status, xhr.response);
-      }
-    };
-    xhr.send();
-  })
-}
-
 const Word = ({ 
   spelling,
   pronounciation,
@@ -30,17 +13,19 @@ const Word = ({
         <Word key={i} {...sibling}/>
       )}
     </section>
-    <section className="spelling">
-      {spelling.map((spellingObject, i) =>
-        <div key={i}>
-          {spellingObject.text}
-        </div>
-      )}
-    </section>
-    <section className="pronounciation">
-      {pronounciation}
-    </section>
-    <section className="derivation">
+    <article className="row main">
+      <section className="spelling">
+        {spelling.map((spellingObject, i) =>
+          <span className={`spelling-form ${spellingObject.language}`} key={i}>
+            {spellingObject.text}
+          </span>
+        )}
+      </section>
+      <section className="pronounciation">
+        {pronounciation}
+      </section>
+    </article>
+    <section className="derivation row">
       {derivation}
     </section>
     <section className="definition">
@@ -57,6 +42,31 @@ const Word = ({
     </section>
   </article>
 
+getJSON('/v0/top2k').then((top2kWords) => {
+  const wordIDs = top2kWords.words
+  const id = wordIDs.pop()
+  return getJSON(`/v0/word/${id}`)
+}).then((word) => {
+  return Promise.all([
+    deepResolveIDs (word, 'siblings'),
+    deepResolveIDs (word, 'children')
+  ]).then((properties) => {
+    return properties.reduce((word, property) => {
+      return {
+        ...word,
+        ...property
+      }
+    }, word)
+  })
+}).then((word) => {
+  return render(
+    <Word {...word} />,
+    document.getElementById("react-container")
+  )
+}).catch((status, errorResponse) => {
+  console.log("ERROR ", status, errorResponse);
+})
+
 function deepResolveIDs (word, propertyName) {
   const ids = word[propertyName]? [...word[propertyName]] : []
   return Promise.all(ids.map((id) => {
@@ -64,10 +74,10 @@ function deepResolveIDs (word, propertyName) {
       .then((innerWord) => {
         if (innerWord[propertyName]) {
           return deepResolveIDs (innerWord, propertyName)
-            .then((deepWords) => {
+            .then((innerProperties) => {
               return {
                 ...innerWord,
-                ...deepWords
+                ...innerProperties
               }
             })
         } else {
@@ -81,31 +91,19 @@ function deepResolveIDs (word, propertyName) {
   })
 }
 
-getJSON('/v0/top2k').then((top2kWords) => {
-  console.log("TOP 2k WORDS", top2kWords)
-  const wordIDs = top2kWords.words
-  const id = wordIDs.pop()
-  return getJSON(`/v0/word/${id}`)
-}).then((word) => {
-  console.log("WORD", word)
-  return Promise.all([
-    deepResolveIDs (word, 'siblings'),
-    deepResolveIDs (word, 'children')
-  ]).then((properties) => {
-    console.log("PROPERTIES", properties)
-    return properties.reduce((word, property) => {
-      return {
-        ...word,
-        ...property
+function getJSON (url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      const status = xhr.status;
+      if (status === 200) {
+        resolve(xhr.response);
+      } else {
+        reject(status, xhr.response);
       }
-    }, word)
+    };
+    xhr.send();
   })
-}).then((word) => {
-  console.log("WORD RESOLVED", word)
-  return render(
-    <Word {...word} />,
-    document.getElementById("react-container")
-  )
-}).catch((status, errorResponse) => {
-  console.log("ERROR ", status, errorResponse);
-})
+}
