@@ -1,0 +1,31 @@
+.survey {
+  display: flex;
+  justify-content: center;
+}
+
+.survey .button {
+  flex-grow: 1;
+  
+  text-align: center;
+
+  border: none;
+  padding: .5rem;
+}
+
+.red.button {
+  font-weight: bold;
+  color: white;
+  background-color: #ff8080;
+}
+
+.green.button {
+  font-weight: bold;
+  color: white;
+  background-color: #80ff80;
+}
+
+.blue.button {
+  font-weight: bold;
+  color: white;
+  background-color: #8080ff;
+}

@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 
 import './static/css/app.css'
 import Word from './components/Word'
+import SpacedRepetitionSurvey from './components/SpacedRepetitionSurvey'
 
 window.React = React
 
@@ -23,13 +24,23 @@ getJSON('/v0/top2k').then((top2kWords) => {
     }, word)
   })
 }).then((word) => {
+  const onSurveySubmit = spacedRepeatWord(word)
   return render(
-    <Word {...word} />,
+    <article>
+      <Word {...word} />
+      <SpacedRepetitionSurvey onSubmit={onSurveySubmit}/>
+    </article>,
     document.getElementById("react-container")
   )
 }).catch((status, errorResponse) => {
   console.log("ERROR ", status, errorResponse);
 })
+
+function spacedRepeatWord(word) {
+  return (repetitionBucket) => {
+    console.log(`Putting ${word.pronounciation} in the ${repetitionBucket} bucket`)
+  }
+}
 
 function deepResolveIDs (word, propertyName) {
   const ids = word[propertyName]? [...word[propertyName]] : []

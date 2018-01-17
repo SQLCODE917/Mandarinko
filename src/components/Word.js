@@ -9,7 +9,7 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 
 export default class Word extends Component {
-  render() {
+  render () {
     const {
       spelling,
       pronounciation,
