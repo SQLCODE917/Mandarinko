@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import './stylesheets/index.css'
+import './static/css/app.css'
 import Word from './components/Word'
 
 window.React = React

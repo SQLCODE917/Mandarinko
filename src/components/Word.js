@@ -3,7 +3,7 @@ import Spelling from './Spelling'
 import Definition from './Definition'
 import Children from './Children'
 
-import '../stylesheets/Word.css'
+import '../static/css/Word.css'
 
 const Word = ({ 
   spelling,
