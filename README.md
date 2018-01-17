@@ -4,5 +4,11 @@ _2000 most common Kanji, Traditional and Simplified Chinese characters, their de
 ## Install & Run
 
 - Use Node v9.3.0
-- `npm instal`  
+- `npm install`  
+- `npm start`
+
+## Contribute
+
+- `npm install -g webpack`
+- `webpack`
 - `npm start`

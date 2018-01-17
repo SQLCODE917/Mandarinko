@@ -1,4 +1,4 @@
-const {deepPick} = require('./public/util')
+const {deepPick} = require('./src/util')
 
 const fs = require('fs')
 const express = require('express')
@@ -6,7 +6,7 @@ const express = require('express')
 const app = express()
 app.set('port', (process.env.PORT || 3000))
 
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 const data = JSON.parse(fs.readFileSync('vocabulary.json'))
 

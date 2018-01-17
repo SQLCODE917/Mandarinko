@@ -1,46 +1,10 @@
-const { render } = ReactDOM
+import React from 'react'
+import { render } from 'react-dom'
 
-const Word = ({ 
-  spelling,
-  pronounciation,
-  definition,
-  derivation=void(0),
-  children=[],
-  siblings=[]}) =>
-  <article className="word">
-    <section className="siblings">
-      {siblings.map((sibling, i) =>
-        <Word key={i} {...sibling}/>
-      )}
-    </section>
-    <article className="row main">
-      <section className="spelling">
-        {spelling.map((spellingObject, i) =>
-          <span className={`spelling-form ${spellingObject.language}`} key={i}>
-            {spellingObject.text}
-          </span>
-        )}
-      </section>
-      <section className="pronounciation">
-        {pronounciation}
-      </section>
-    </article>
-    <section className="derivation row">
-      {derivation}
-    </section>
-    <section className="definition">
-      {definition.map((definitionItem, i) =>
-        <div key={i}>
-          {definitionItem}
-        </div>
-      )}
-    </section>
-    <section className="children">
-      {children.map((child, i) =>
-        <Word key={i} {...child}/>
-      )}
-    </section>
-  </article>
+import './stylesheets/index.css'
+import Word from './components/Word'
+
+window.React = React
 
 getJSON('/v0/top2k').then((top2kWords) => {
   const wordIDs = top2kWords.words
