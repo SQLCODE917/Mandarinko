@@ -10,28 +10,25 @@ import Word from './Word'
 export default class SpacedRepetition extends Component {
   constructor (props) {
     super (props)
-    this.spacedRepeatWord = this.spacedRepeatWord.bind(this)
-  }
-
-  spacedRepeatWord(word) {
-    return (repetitionBucket) => {
-      console.log(`Putting ${word.pronounciation} in the ${repetitionBucket} bucket`)
-    }
   }
 
   render () {
-    const { word } = this.props
-    return render(
+    const { word, onSurveySubmit } = this.props
+    return (
       <article>
         <Word {...word} />
         <SpacedRepetitionSurvey 
-          onSubmit={this.spacedRepeatWord(word)}/>
-      </article>,
-      document.getElementById("react-container")
+          onSubmit={onSurveySubmit}/>
+      </article>
     )
   }
 }
 
 SpacedRepetition.propTypes = {
-  word: PropTypes.object.isRequired
+  word: PropTypes.object.isRequired,
+  onSurveySubmit: PropTypes.func
+}
+
+SpacedRepetition.defaultProps = {
+  onSurveySubmit: () => {}
 }
