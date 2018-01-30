@@ -15,6 +15,7 @@ export default class Top2k extends Component {
       currentWord: void(0)
     }
   }
+
   componentDidMount () {
     top2k()
       .then(({ words }) => wordById(words[0]))
