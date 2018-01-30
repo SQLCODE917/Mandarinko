@@ -8,16 +8,17 @@ export const SpacedRepetition = ({ word, onSurveySubmit }) => {
     <article>
       <Word {...word} />
       <SpacedRepetitionSurvey 
-        onSubmit={onSurveySubmit}/>
+        onSubmit={spacedRepeatWord}/>
     </article>
   )
 }
 
 SpacedRepetition.propTypes = {
-  word: PropTypes.object.isRequired,
-  onSurveySubmit: PropTypes.func
+  word: PropTypes.object.isRequired
 }
 
-SpacedRepetition.defaultProps = {
-  onSurveySubmit: () => {}
+function spacedRepeatWord (word) {
+  return (repetitionBucket) => {
+    console.log(`Putting ${word.pronounciation} in the ${repetitionBucket} bucket`)
+  }
 }
