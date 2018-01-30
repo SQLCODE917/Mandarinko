@@ -5,37 +5,33 @@ import Children from './Children'
 
 import '../static/css/Word.css'
 
-import { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export default class Word extends Component {
-  render () {
-    const {
-      spelling,
-      pronounciation,
-      definition,
-      derivation,
-      children,
-      siblings
-    } = this.props
+export const Word = ({
+    spelling,
+    pronounciation,
+    definition,
+    derivation,
+    children,
+    siblings
+  }) => {
 
-    return (
-      <article className="word">
-        <Siblings siblings={siblings}/>
-        <article className="row main">
-          <Spelling spelling={spelling}/>
-          <section className="pronounciation">
-            {pronounciation}
-          </section>
-        </article>
-        <section className="derivation row">
-          {derivation}
+  return (
+    <article className="word">
+      <Siblings siblings={siblings}/>
+      <article className="row main">
+        <Spelling spelling={spelling}/>
+        <section className="pronounciation">
+          {pronounciation}
         </section>
-        <Definition definition={definition}/>
-        <Children children={children}/>
       </article>
-    )
-  }
+      <section className="derivation row">
+        {derivation}
+      </section>
+      <Definition definition={definition}/>
+      <Children children={children}/>
+    </article>
+  )
 }
 
 Word.propTypes = {
