@@ -7,14 +7,14 @@ import '../static/css/Word.css'
 
 import PropTypes from 'prop-types'
 
-export const Word = ({
+export default function Word ({
     spelling,
     pronounciation,
     definition,
     derivation,
     children,
     siblings
-  }) => {
+  }) {
 
   return (
     <article className="word">

@@ -34,7 +34,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       warnings: false,
-      mangle: true
+      mangle: false
     })
   ]
 }

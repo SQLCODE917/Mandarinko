@@ -6,8 +6,8 @@ import {
   wordById,
   explodeWord } from '../modules/words/api'
 
-export default const Top2K = (TranscludedComponent) =>
-  class Top2k extends Component {
+export default function Top2k (TranscludedComponent) {
+  return class Top2k extends Component {
 
     constructor (props) {
       super (props)
@@ -36,3 +36,4 @@ export default const Top2K = (TranscludedComponent) =>
         <section>loading</section>
     }
   }
+}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import SpacedRepetitionSurvey from './SpacedRepetitionSurvey'
 import Word from './Word'
 
-export const SpacedRepetition = ({ word, onSurveySubmit }) => {
+export default function SpacedRepetition ({ word, onSurveySubmit }) {
   return (
     <article>
       <Word {...word} />

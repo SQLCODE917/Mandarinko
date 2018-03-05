@@ -2,7 +2,7 @@ import '../static/css/SpacedRepetitionSurvey.css'
 
 import PropTypes from 'prop-types'
 
-export const SpacedRepetitionSurvey = ({onSubmit}) => { 
+export default function SpacedRepetitionSurvey ({onSubmit}) { 
   return (
     <section className="survey" >
       <span className="red button"
