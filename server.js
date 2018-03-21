@@ -23,9 +23,9 @@ app.get('/v0/top2k', (req, res) => {
 })
 
 app.listen(app.get('port'), (err) => {
-    if (err) {
-          console.log(err)
-          return
-        }
-    console.log('Running app at localhost:' + app.get('port'))
+  if (err) {
+    console.log(err)
+    return
+  }
+  console.log('Running app at localhost:' + app.get('port'))
 })

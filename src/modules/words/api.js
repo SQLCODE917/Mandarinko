@@ -53,17 +53,17 @@ function deepResolveIDs (word, propertyName) {
 
 function getJSON (url) {
   return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', url, true)
+    xhr.responseType = 'json'
     xhr.onload = function() {
-      const status = xhr.status;
+      const status = xhr.status
       if (status === 200) {
-        resolve(xhr.response);
+        resolve(xhr.response)
       } else {
-        reject(status, xhr.response);
+        reject(status, xhr.response)
       }
     };
-    xhr.send();
+    xhr.send()
   })
 }

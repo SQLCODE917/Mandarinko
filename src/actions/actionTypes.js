@@ -1,0 +1,6 @@
+export const GET_TOP_2K = 'GET_TOP_2K'
+export const SET_TOP_2K = 'SET_TOP_2K'
+export const GET_WORD = 'GET_WORD'
+export const ADD_WORD = 'ADD_WORD'
+export const LOADING = 'LOADING'
+export const SET_CURRENT_WORD_ID = 'SET_CURRENT_WORD_ID'
