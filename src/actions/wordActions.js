@@ -12,7 +12,7 @@ export function setTop2k(wordIds) {
 export function getTop2K() {
   return dispatch => {
     dispatch(loading(true))
-    top2k()
+    return top2k()
       .then(({ words }) => {
         dispatch(setTop2k(words))
         dispatch(loading(false))
@@ -27,7 +27,7 @@ export function addWord(id, word) {
 export function getWord(id) {
   return dispatch => {
     dispatch(loading(true))
-    wordById(id)
+    return wordById(id)
       .then((word) => explodeWord(word))
       .then((word) => {
         dispatch(addWord(id, word))

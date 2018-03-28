@@ -1,0 +1,103 @@
+{
+  "spelling": [
+    {
+      "language": "zh-Hans",
+      "text": "主张"
+    },
+    {
+      "language": "zh-Hant",
+      "text": "-張"
+    }
+  ],
+  "pronounciation": "zhu(3)zhang(1)",
+  "definition": [
+    "(n) view, position, proposition",
+    "(v) advocate, stand for, maintain, hold"
+  ],
+  "derivation": "",
+  "siblings": [
+    {
+      "spelling": [
+        {
+          "language": "ja",
+          "text": "主張"
+        }
+      ],
+      "pronounciation": "しゅちょう",
+      "definition": [
+        "(n) insistence, assertion"
+      ]
+    }
+  ],
+  "children": [
+    {
+      "spelling": [
+        {
+          "language": "zh-Hans",
+          "text": "主"
+        }
+      ],
+      "pronounciation": "zhu(3)",
+      "definition": [
+        "(n) master, owner",
+        "(adj) primary, main",
+        "(v) advocate"
+      ],
+      "derivation": "pictograph of a lamp and flame"
+    },
+    {
+      "spelling": [
+        {
+          "language": "zh-Hans",
+          "text": "张"
+        },
+        {
+          "language": "zh-Hant",
+          "text": "張"
+        }
+      ],
+      "pronounciation": "zhang(1)",
+      "definition": [
+        "(n) sheet",
+        "(v) stretch, spread",
+        "measure word for flat objects"
+      ],
+      "derivation": "bow 弓 that grows 長 (phonetic)",
+      "children": [
+        {
+          "spelling": [
+            {
+              "language": "zh-Hans",
+              "text": "弓"
+            }
+          ],
+          "pronounciation": "gong(1)",
+          "definition": [
+            "(n) bow",
+            "(v) arch"
+          ],
+          "derivation": "pictograph of a bow"
+        },
+        {
+          "spelling": [
+            {
+              "language": "zh-Hans",
+              "text": "长"
+            },
+            {
+              "language": "zh-Hant",
+              "text": "長"
+            }
+          ],
+          "pronounciation": "chang(2), zhang(3)",
+          "definition": [
+            "(n) duration, length, strength",
+            "(adj) long, senior",
+            "(v) grow"
+          ],
+          "derivation": "early form shows high table 丌, changed person 匕 and death 亡"
+        }
+      ]
+    }
+  ]
+}
