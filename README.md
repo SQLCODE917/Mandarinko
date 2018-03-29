@@ -12,3 +12,7 @@ _2000 most common Kanji, Traditional and Simplified Chinese characters, their de
 - `npm install -g webpack`
 - `webpack`
 - `npm start`
+
+## Render
+
+![Screenshot](Mandarinko.png)
