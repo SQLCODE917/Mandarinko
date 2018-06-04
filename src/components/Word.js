@@ -1,37 +1,62 @@
-import Siblings from './Siblings'
-import Spelling from './Spelling'
-import Definition from './Definition'
-import Children from './Children'
-
-import '../static/css/Word.css'
+import React from 'react'
+import styles from './Word.css'
 
 import PropTypes from 'prop-types'
 
-export default function Word ({
+export function languageStyle(language) {
+  switch(language) {
+    case 'zh-Hant': return styles.zhHant;
+    case 'zh-Hans': return styles.zhHans;
+    case 'ja': return styles.ja;
+  }
+}
+
+export function Word({
     spelling,
     pronounciation,
     definition,
     derivation,
     children,
     siblings
-  }) {
+	}){ 
 
-  return (
-    <article className="word">
-      <Siblings siblings={siblings}/>
-      <article className="row main">
-        <Spelling spelling={spelling}/>
+	return (
+		<article className={styles.word}>
+			<section className={styles.siblings}>
+				{siblings.map((sibling, i) => 
+					<Word key={i} {...sibling} />
+				)}
+			</section>
+			<article className={styles.wordBody}>
+				<section className={styles.spelling}>
+					{spelling.map((spellingObject, i) =>
+						<span 
+              className={`${styles.spellingForm} ${languageStyle(spellingObject.language)}`} key={i}>
+							{spellingObject.text}
+						</span>
+					)}
+				</section>
         <section className="pronounciation">
           {pronounciation}
         </section>
-      </article>
-      <section className="derivation row">
-        {derivation}
-      </section>
-      <Definition definition={definition}/>
-      <Children children={children}/>
-    </article>
-  )
+			</article>
+			<section className={styles.derivation}>
+				{derivation}
+			</section>
+			<section className={styles.definition}>
+				{definition.map((definitionItem, i) =>
+					<div key={i}>
+						{definitionItem}
+					</div>
+				)}
+			</section> 
+			<section className={styles.children}>
+				{children.map((child, i) => 
+					<Word key={i} {...child}/>
+				)}
+			</section>
+		</article>
+	)
 }
 
 Word.propTypes = {
@@ -48,3 +73,5 @@ Word.defaultProps = {
   children: [],
   siblings: []
 }
+
+export default Word;

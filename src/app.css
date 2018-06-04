@@ -1,0 +1,45 @@
+:global(#react-container) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainNav {
+  display: flex;
+  justify-content: space-between;
+  padding: .5em;
+}
+
+.lcdText {
+  background-color: #FF0092;
+  color: #fff;
+  text-shadow: 2px 0 rgba(255, 0, 0, 0.9), -2px 0 rgba(0, 0, 255, 0.9);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.logo {
+  composes: lcdText;
+  padding: .5em;
+}
+
+.cartouche {
+  padding: .5em;
+  margin: .25rem;
+  border: 1px solid #fff;
+}
+
+.mainNav ul {
+  display: flex; 
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mainNav ul li {
+  margin-right: 1em;
+}
+.mainNav ul li:last-child {
+  margin-right: 0;
+}

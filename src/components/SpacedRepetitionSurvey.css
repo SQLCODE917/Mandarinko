@@ -3,29 +3,42 @@
   justify-content: center;
 }
 
-.survey .button {
+.button:hover {
+  cursor: pointer;
+}
+
+.button {
   flex-grow: 1;
   
   text-align: center;
+
+  font-weight: bold;
+  color: white;
 
   border: none;
   padding: .5rem;
 }
 
-.red.button {
-  font-weight: bold;
-  color: white;
+.red {
   background-color: #ff8080;
 }
 
-.green.button {
-  font-weight: bold;
-  color: white;
+.green {
   background-color: #80ff80;
 }
 
-.blue.button {
-  font-weight: bold;
-  color: white;
+.blue {
   background-color: #8080ff;
+}
+
+.again {
+  composes: red button;
+}
+
+.good {
+  composes: green button;
+}
+
+.easy {
+  composes: blue button;
 }

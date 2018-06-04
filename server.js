@@ -1,6 +1,7 @@
 const {deepPick} = require('./src/util')
 
 const fs = require('fs')
+const path = require('path')
 const express = require('express')
 
 const app = express()
@@ -20,6 +21,14 @@ app.get('/v0/top2k', (req, res) => {
   const data = JSON.parse(fs.readFileSync('top2k.json'))
   res.header("Content-Type",'application/json')
   res.send(data)
+})
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
 })
 
 app.listen(app.get('port'), (err) => {

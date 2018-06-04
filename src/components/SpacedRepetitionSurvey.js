@@ -1,19 +1,19 @@
-import '../static/css/SpacedRepetitionSurvey.css'
+import styles from './SpacedRepetitionSurvey.css'
 
 import PropTypes from 'prop-types'
 
-export default function SpacedRepetitionSurvey ({onSubmit}) { 
+export function SpacedRepetitionSurvey ({onSubmit}) { 
   return (
-    <section className="survey" >
-      <span className="red button"
+    <section className={styles.survey} >
+      <span className={styles.again}
         onClick={() => {onSubmit("AGAIN")}}>
         Again (&lt;1 m)
       </span>
-      <span className="green button"
+      <span className={styles.good}
         onClick={() => {onSubmit("GOOD")}}>
         Good (1 d)
       </span>
-      <span className="blue button"
+      <span className={styles.easy}
         onClick={() => {onSubmit("EASY")}}>
         Easy (4 d)
       </span>
@@ -28,3 +28,5 @@ SpacedRepetitionSurvey.propTypes = {
 SpacedRepetitionSurvey.defaultProps = {
   onSubmit: () => {}
 }
+
+export default SpacedRepetitionSurvey
