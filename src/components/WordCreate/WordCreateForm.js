@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, FieldArray, reduxForm } from 'redux-form'
+import { Field, FieldArray, FormSection, reduxForm } from 'redux-form'
 import * as c from '../../constants.js'
 import styles from './WordCreateForm.css'
 import submit from './WordSubmit'
@@ -8,7 +8,10 @@ export function WordTemplate() {
   return (
     <article className={styles.word}>
       <section className={styles.siblings}>
-        <div className={styles.addSibling}/>
+        <FieldArray
+          name="siblings"
+          component={renderSibling}
+        />
       </section>
       <article className={styles.main}>
         <FieldArray
@@ -38,7 +41,10 @@ export function WordTemplate() {
         />
       </section>
       <section className={styles.children}>
-        <div className={styles.addChild}/>
+        <FieldArray
+          name="children"
+          component={renderChild}
+        />
       </section>
     </article>
   );
@@ -80,6 +86,55 @@ const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
     ))}
   </section>
 );
+
+const renderSibling = ({ fields, meta: { error, submitFailed } }) => (
+  <section className={styles.siblingsContainer}>
+    <button type="button"
+      title="Add Sibling"
+      onClick={() => fields.push({})}>
+      {c.plusSign} Sibling
+    </button>
+    {submitFailed && error && <span>{error}</span>}
+    {fields.map((wordObject, index) => (
+      <article className={styles.siblingForm}
+        key={index}>
+
+        <button type="button"
+          title="Remove Sibling"
+          onClick={() => fields.remove(index)}
+        >{c.minusSign}</button>
+        <FormSection name={`${wordObject}`}>
+          <WordTemplate />
+        </FormSection>
+      </article>
+    ))}
+  </section>
+);
+
+const renderChild = ({ fields, meta: { error, submitFailed } }) => (
+  <section className={styles.childrenContainer}>
+    <button type="button"
+      title="Add Child"
+      onClick={() => fields.push({})}>
+      {c.plusSign} Child
+    </button>
+    {submitFailed && error && <span>{error}</span>}
+    {fields.map((wordObject, index) => (
+      <article className={styles.childForm}
+        key={index}>
+
+        <button type="button"
+          title="Remove Child"
+          onClick={() => fields.remove(index)}
+        >{c.minusSign}</button>
+        <FormSection name={`${wordObject}`}>
+          <WordTemplate />
+        </FormSection>
+      </article>
+    ))}
+  </section>
+);
+
 const renderSpelling = ({ fields, meta: { error, submitFailed } }) => (
   <section className={styles.spellingContainer}>
     <button type="button" onClick={() => fields.push({
@@ -118,7 +173,7 @@ export const WordCreateForm = (props) => {
   return (
     <form onSubmit={onSubmit}
       className={styles.wordCreateForm}>
-      {WordTemplate()}
+      <WordTemplate />
       {error && <strong>{error}</strong>}
     </form>
   )

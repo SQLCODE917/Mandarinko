@@ -56,3 +56,19 @@
 .inputFieldError {
   padding: var(--eighth-note);
 }
+
+.siblingsContainer {
+  composes: fieldArray;
+}
+
+.siblingForm {
+  composes: fieldArrayField;
+}
+
+.childrenContainer {
+  composes: fieldArray;
+}
+
+.childForm {
+  composes: fieldArrayField;
+}
