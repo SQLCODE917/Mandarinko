@@ -1,0 +1,17 @@
+:root {
+  --quarter-note: .25rem;
+  --eighth-note: .125rem;
+}
+
+.fieldArray {
+  border: 1px solid black;
+  padding: var(--quarter-note);
+  margin: var(--eighth-note) var(--quarter-note);
+}
+
+.fieldArrayField {
+  display: flex;
+  border: 1px solid black;
+  padding: var(--eighth-note);
+  margin-top: var(--quarter-note);
+}

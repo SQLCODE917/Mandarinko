@@ -1,0 +1,10 @@
+@import './WordCreateCommon.css'; 
+
+.spellingContainer {
+  composes: fieldArray;
+}
+
+.spellingForm {
+  composes: fieldArrayField;
+}
+

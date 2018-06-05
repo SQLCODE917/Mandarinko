@@ -1,0 +1,10 @@
+@import './WordCreateCommon.css';
+
+.siblingsContainer {
+  composes: fieldArray;
+}
+
+.siblingForm {
+  composes: fieldArrayField;
+}
+

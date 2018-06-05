@@ -1,0 +1,9 @@
+@import './WordCreateCommon.css';
+
+.childrenContainer {
+  composes: fieldArray;
+}
+
+.childForm {
+  composes: fieldArrayField;
+}

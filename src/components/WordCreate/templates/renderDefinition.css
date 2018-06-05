@@ -1,0 +1,9 @@
+@import './WordCreateCommon.css';
+
+.definitionsContainer {
+  composes: fieldArray;
+}
+
+.definitionForm {
+  composes: fieldArrayField;
+}

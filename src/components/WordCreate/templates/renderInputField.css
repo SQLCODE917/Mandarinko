@@ -1,0 +1,21 @@
+@import './WordCreateCommon.css';
+
+.inputField {
+  display: flex;
+  align-items: center;
+  padding: var(--quarter-note);
+}
+
+.inputField label {
+  margin-right: var(--quarter-note);
+}
+
+.inputFieldBody {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputFieldError {
+  padding: var(--eighth-note);
+}

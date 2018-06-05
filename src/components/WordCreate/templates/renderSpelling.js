@@ -1,0 +1,38 @@
+import { Field } from 'redux-form'
+import * as c  from '../../../constants'
+import renderInputField from './renderInputField'
+import styles from './renderSpelling.css'
+
+const renderSpelling = ({ fields, meta: { error, submitFailed } }) => (
+  <section className={styles.spellingContainer}>
+    <button type="button" onClick={() => fields.push({
+        language: "zh-Hant"
+      })}>
+      {c.plusSign} Spelling
+    </button>
+    {submitFailed && error && <span>{error}</span>}
+    {fields.map((spellingObject, index) => (
+      <article className={styles.spellingForm} key={index}>
+        <button
+          type="button"
+          title="Remove Spelling"
+          onClick={() => fields.remove(index)}
+        >{c.minusSign}</button>
+        <Field
+          name={`${spellingObject}.text`}
+          type="text"
+          component={renderInputField}
+          label="Spelling"
+        />
+        <Field
+          name={`${spellingObject}.language`}
+          component="select">
+          <option value="zh-Hant">Traditional Chinese</option>
+          <option value="zh-Hans">Simplified Chinese</option>
+          <option value="ja">Japanese</option>
+        </Field>
+      </article>
+    ))}
+  </section>
+)
+ export default renderSpelling
