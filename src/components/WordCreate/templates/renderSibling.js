@@ -5,7 +5,8 @@ import styles from './renderSibling.css'
 
 const renderSibling = ({ fields, meta: { error, submitFailed } }) => (
   <section className={styles.siblingsContainer}>
-    <button type="button"
+    <button className={styles.button}
+      type="button"
       title="Add Sibling"
       onClick={() => fields.push({})}>
       {c.plusSign} Sibling
@@ -15,7 +16,8 @@ const renderSibling = ({ fields, meta: { error, submitFailed } }) => (
       <article className={styles.siblingForm}
         key={index}>
 
-        <button type="button"
+        <button className={styles.button}
+          type="button"
           title="Remove Sibling"
           onClick={() => fields.remove(index)}
         >{c.minusSign}</button>

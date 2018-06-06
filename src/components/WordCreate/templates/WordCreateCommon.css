@@ -1,4 +1,5 @@
 :root {
+  --whole-note: 1rem;
   --quarter-note: .25rem;
   --eighth-note: .125rem;
 }
@@ -14,4 +15,9 @@
   border: 1px solid black;
   padding: var(--eighth-note);
   margin-top: var(--quarter-note);
+}
+
+.fingersize {
+  min-width: 48px;
+  min-height: 48px;
 }

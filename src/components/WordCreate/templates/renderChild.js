@@ -5,7 +5,8 @@ import styles from './renderChild.css'
 
 const renderChild = ({ fields, meta: { error, submitFailed } }) => (
   <section className={styles.childrenContainer}>
-    <button type="button"
+    <button className={styles.button}
+      type="button"
       title="Add Child"
       onClick={() => fields.push({})}>
       {c.plusSign} Child
@@ -15,7 +16,8 @@ const renderChild = ({ fields, meta: { error, submitFailed } }) => (
       <article className={styles.childForm}
         key={index}>
 
-        <button type="button"
+        <button className={styles.button}
+          type="button"
           title="Remove Child"
           onClick={() => fields.remove(index)}
         >{c.minusSign}</button>

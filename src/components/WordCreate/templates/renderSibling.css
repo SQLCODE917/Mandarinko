@@ -2,9 +2,15 @@
 
 .siblingsContainer {
   composes: fieldArray;
+  display: flex;
+  margin-bottom: var(--whole-note);
 }
 
 .siblingForm {
   composes: fieldArrayField;
+  margin-left: var(--quarter-note);
 }
 
+.button {
+  composes: fingersize;
+}

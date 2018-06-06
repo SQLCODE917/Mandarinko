@@ -10,6 +10,10 @@
   margin-right: var(--quarter-note);
 }
 
+.input {
+  composes: fingersize;
+}
+
 .inputFieldBody {
   display: flex;
   flex-direction: column;

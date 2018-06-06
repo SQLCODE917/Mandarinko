@@ -5,7 +5,9 @@ import styles from './renderSpelling.css'
 
 const renderSpelling = ({ fields, meta: { error, submitFailed } }) => (
   <section className={styles.spellingContainer}>
-    <button type="button" onClick={() => fields.push({
+    <button className={styles.button}
+      type="button"
+      onClick={() => fields.push({
         language: "zh-Hant"
       })}>
       {c.plusSign} Spelling
@@ -13,11 +15,13 @@ const renderSpelling = ({ fields, meta: { error, submitFailed } }) => (
     {submitFailed && error && <span>{error}</span>}
     {fields.map((spellingObject, index) => (
       <article className={styles.spellingForm} key={index}>
-        <button
+        <button className={styles.button}
           type="button"
           title="Remove Spelling"
           onClick={() => fields.remove(index)}
-        >{c.minusSign}</button>
+        >
+          {c.minusSign}
+        </button>
         <Field
           name={`${spellingObject}.text`}
           type="text"

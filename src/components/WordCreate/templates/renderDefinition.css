@@ -7,3 +7,7 @@
 .definitionForm {
   composes: fieldArrayField;
 }
+
+.button {
+  composes: fingersize;
+}

@@ -1,10 +1,12 @@
 import { Field } from 'redux-form'
 import * as c from '../../../constants.js'
+import renderInputField from './renderInputField.js'
 import styles from './renderDefinition.css'
 
 const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
   <section className={styles.definitionsContainer}>
-    <button type="button"
+    <button className={styles.button}
+      type="button"
       title="Add Definition"
       onClick={() => fields.push({})}>
       {c.plusSign} Definition
@@ -14,7 +16,8 @@ const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
       <article className={styles.definitionForm}
         key={index}>
 
-        <button type="button"
+        <button className={styles.button}
+          type="button"
           title="Remove Definition"
           onClick={() => fields.remove(index)}
         >{c.minusSign}</button>

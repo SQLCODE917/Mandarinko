@@ -2,8 +2,15 @@
 
 .childrenContainer {
   composes: fieldArray;
+  display: flex;
+  margin-top: var(--whole-note);
 }
 
 .childForm {
   composes: fieldArrayField;
+  margin-left: var(--quarter-note);
+}
+
+.button {
+  composes: fingersize;
 }
