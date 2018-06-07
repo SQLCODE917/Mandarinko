@@ -1,3 +1,4 @@
+import React from 'react'
 import { FormSection } from 'redux-form'
 import * as c from '../../../constants'
 import WordTemplate from './WordTemplate'

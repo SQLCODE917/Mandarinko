@@ -1,3 +1,4 @@
+import React from 'react'
 import { FormSection } from 'redux-form'
 import WordTemplate from './WordTemplate'
 import ErrorLine from './errorLine.js'

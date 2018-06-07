@@ -4,10 +4,22 @@
   "description": "Chinese and Japanese Vocabulary Building",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "test:watch": "npm test -- --watch"
   },
-  "author": "dserbarinov",
+  "jest": {
+    "roots": [
+      "src"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.js",
+    "moduleNameMapper": {
+      "\\.(css)$": "identity-obj-proxy"
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "author": "SQLCODE917",
   "license": "GPL-3.0",
   "engines": {
     "node": "9.3.0"
@@ -29,11 +41,16 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.9",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
     "extract-text-webpack-plugin": "^3.0.2",
     "fetch-mock": "^6.3.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.3",
     "postcss-cssnext": "^3.1.0",
     "postcss-extend": "^1.0.5",

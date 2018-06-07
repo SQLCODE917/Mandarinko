@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './renderInputField.css'
 import ErrorLine from './errorLine.js'
 

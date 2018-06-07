@@ -1,3 +1,4 @@
+import React from 'react'
 import { Field } from 'redux-form'
 import * as c from '../../../constants.js'
 import renderInputField from './renderInputField.js'

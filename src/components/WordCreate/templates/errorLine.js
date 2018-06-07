@@ -1,3 +1,4 @@
+import React from 'react'
 import LCDText from '../../LCDText.js'
 import styles from './errorLine.css'
 

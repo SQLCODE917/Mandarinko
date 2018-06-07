@@ -2,5 +2,10 @@
   "plugins": [
     "transform-es2015-modules-commonjs"
   ],
-  "presets": ["babel-preset-env"]
+  "presets": [
+    "babel-preset-env",
+    "react",
+    "es2015",
+    "stage-0"
+  ]
 }
