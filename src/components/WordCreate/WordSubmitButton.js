@@ -4,6 +4,7 @@ import { submit } from 'redux-form'
 
 const WordSubmit = ({ dispatch }) => (
   <button
+    id="WordSubmitButton"
     type="button"
     onClick={() => dispatch(submit('wordCreate'))}
   >

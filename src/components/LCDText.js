@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './LCDText.css'
 
 export default function LCDText({ children, className}) {
