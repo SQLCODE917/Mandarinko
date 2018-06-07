@@ -1,6 +1,7 @@
 import { Field } from 'redux-form'
 import * as c from '../../../constants.js'
 import renderInputField from './renderInputField.js'
+import ErrorLine from './errorLine.js'
 import styles from './renderDefinition.css'
 
 const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
@@ -11,7 +12,7 @@ const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
       onClick={() => fields.push({})}>
       {c.plusSign} Definition
     </button>
-    {submitFailed && error && <span>{error}</span>}
+    {submitFailed && error && <ErrorLine>{error}</ErrorLine>}
     {fields.map((definitionObject, index) => (
       <article className={styles.definitionForm}
         key={index}>

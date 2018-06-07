@@ -1,0 +1,7 @@
+@import './WordCreateCommon.css';
+
+.errorLine {
+  display: flex;
+  background-color: var(--lcd-rose);
+  padding: var(--eighth-note);
+}

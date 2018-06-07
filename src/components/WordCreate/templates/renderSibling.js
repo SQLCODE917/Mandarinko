@@ -1,5 +1,6 @@
 import { FormSection } from 'redux-form'
 import WordTemplate from './WordTemplate'
+import ErrorLine from './errorLine.js'
 import * as c from '../../../constants'
 import styles from './renderSibling.css'
 
@@ -11,7 +12,7 @@ const renderSibling = ({ fields, meta: { error, submitFailed } }) => (
       onClick={() => fields.push({})}>
       {c.plusSign} Sibling
     </button>
-    {submitFailed && error && <span>{error}</span>}
+    {submitFailed && error && <ErrorLine>{error}</ErrorLine>}
     {fields.map((wordObject, index) => (
       <article className={styles.siblingForm}
         key={index}>

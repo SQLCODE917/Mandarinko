@@ -1,6 +1,7 @@
 import { Field } from 'redux-form'
-import * as c  from '../../../constants'
-import renderInputField from './renderInputField'
+import * as c  from '../../../constants.js'
+import renderInputField from './renderInputField.js'
+import ErrorLine from './errorLine.js'
 import styles from './renderSpelling.css'
 
 const renderSpelling = ({ fields, meta: { error, submitFailed } }) => (
@@ -12,7 +13,7 @@ const renderSpelling = ({ fields, meta: { error, submitFailed } }) => (
       })}>
       {c.plusSign} Spelling
     </button>
-    {submitFailed && error && <span>{error}</span>}
+    {submitFailed && error && <ErrorLine>{error}</ErrorLine>}
     {fields.map((spellingObject, index) => (
       <article className={styles.spellingForm} key={index}>
         <button className={styles.button}

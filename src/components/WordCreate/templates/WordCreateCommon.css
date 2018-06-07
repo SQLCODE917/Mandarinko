@@ -1,3 +1,5 @@
+@import '../../CommonColors.css';
+
 :root {
   --whole-note: 1rem;
   --quarter-note: .25rem;

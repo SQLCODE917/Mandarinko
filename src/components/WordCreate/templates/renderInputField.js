@@ -1,4 +1,5 @@
 import styles from './renderInputField.css'
+import ErrorLine from './errorLine.js'
 
 const renderInputField = ({ input, label, type, meta: { touched, error } }) => (
   <div className={styles.inputField}>
@@ -9,7 +10,7 @@ const renderInputField = ({ input, label, type, meta: { touched, error } }) => (
         type={type}
         placeholder={label}
       />
-      {touched && error && <span className={styles.inputFieldError}>{error}</span>}
+      {touched && error && <ErrorLine>{error}</ErrorLine>}
     </div>
   </div>
 )

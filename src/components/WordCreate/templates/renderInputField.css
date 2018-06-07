@@ -19,7 +19,3 @@
   flex-direction: column;
   width: 100%;
 }
-
-.inputFieldError {
-  padding: var(--eighth-note);
-}
