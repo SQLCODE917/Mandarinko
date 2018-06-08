@@ -29,7 +29,6 @@ describe('WordCreateForm', () => {
   })
 
   it('should render a word object', () => {
-    console.log(wrapper.debug())
     expect(wrapper).toMatchSnapshot()
   })
 })
