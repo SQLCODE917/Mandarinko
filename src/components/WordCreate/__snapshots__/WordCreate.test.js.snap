@@ -14,16 +14,13 @@ exports[`WordCreate on a clean slate mounts 1`] = `
 >
   <WordCreate>
     <section>
-      <ReduxForm
-        id="WordCreateForm"
-      >
+      <ReduxForm>
         <Connect(Form(WordCreateForm))
           destroyOnUnmount={true}
           enableReinitialize={false}
           forceUnregisterOnUnmount={false}
           form="wordCreate"
           getFormState={[Function]}
-          id="WordCreateForm"
           keepDirtyOnReinitialize={false}
           onSubmit={[Function]}
           persistentSubmitErrors={false}
@@ -79,7 +76,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
             forceUnregisterOnUnmount={false}
             form="wordCreate"
             getFormState={[Function]}
-            id="WordCreateForm"
             initialize={[Function]}
             initialized={false}
             invalid={false}
@@ -183,7 +179,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
               dispatch={[Function]}
               form="wordCreate"
               handleSubmit={[Function]}
-              id="WordCreateForm"
               initialize={[Function]}
               initialized={false}
               invalid={false}
@@ -262,7 +257,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -361,7 +355,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -535,7 +528,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -634,7 +626,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -805,7 +796,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -907,7 +897,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -1082,7 +1071,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -1181,7 +1169,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                   "form": "wordCreate",
                                   "getFormState": [Function],
                                   "getValues": [Function],
-                                  "id": "WordCreateForm",
                                   "initialValues": undefined,
                                   "initialize": [Function],
                                   "initialized": false,
@@ -1358,7 +1345,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -1460,7 +1446,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -1636,7 +1621,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -1735,7 +1719,6 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -1894,16 +1877,13 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
 >
   <WordCreate>
     <section>
-      <ReduxForm
-        id="WordCreateForm"
-      >
+      <ReduxForm>
         <Connect(Form(WordCreateForm))
           destroyOnUnmount={true}
           enableReinitialize={false}
           forceUnregisterOnUnmount={false}
           form="wordCreate"
           getFormState={[Function]}
-          id="WordCreateForm"
           keepDirtyOnReinitialize={false}
           onSubmit={[Function]}
           persistentSubmitErrors={false}
@@ -1960,7 +1940,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
             forceUnregisterOnUnmount={false}
             form="wordCreate"
             getFormState={[Function]}
-            id="WordCreateForm"
             initialize={[Function]}
             initialized={false}
             invalid={true}
@@ -2065,7 +2044,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
               error="Nothing Submitted!"
               form="wordCreate"
               handleSubmit={[Function]}
-              id="WordCreateForm"
               initialize={[Function]}
               initialized={false}
               invalid={true}
@@ -2144,7 +2122,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -2274,7 +2251,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -2480,7 +2456,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -2610,7 +2585,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -2813,7 +2787,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -2915,7 +2888,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -3096,7 +3068,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -3226,7 +3197,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                   "form": "wordCreate",
                                   "getFormState": [Function],
                                   "getValues": [Function],
-                                  "id": "WordCreateForm",
                                   "initialValues": undefined,
                                   "initialize": [Function],
                                   "initialized": false,
@@ -3435,7 +3405,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -3537,7 +3506,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -3719,7 +3687,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
-                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -3849,7 +3816,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
-                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,

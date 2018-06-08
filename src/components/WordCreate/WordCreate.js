@@ -8,7 +8,7 @@ export default class WordCreate extends Component {
   render () {
     return (
       <section>
-        <WordCreateForm id="WordCreateForm" />
+        <WordCreateForm />
         <WordSubmitButton />
       </section>
     )
