@@ -4,7 +4,8 @@
   "description": "Chinese and Japanese Vocabulary Building",
   "main": "server.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest",
+    "test:verbose": "jest --verbose",
     "test:watch": "npm test -- --watch"
   },
   "jest": {
@@ -52,6 +53,7 @@
     "fetch-mock": "^6.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.3",
+    "jsdom": "^11.11.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-extend": "^1.0.5",
     "postcss-import": "^11.1.0",

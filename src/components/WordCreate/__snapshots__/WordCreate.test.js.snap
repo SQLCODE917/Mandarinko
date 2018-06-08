@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WordCreate mounts 1`] = `
+exports[`WordCreate on a clean slate mounts 1`] = `
 <Provider
   store={
     Object {
@@ -14,13 +14,16 @@ exports[`WordCreate mounts 1`] = `
 >
   <WordCreate>
     <section>
-      <ReduxForm>
+      <ReduxForm
+        id="WordCreateForm"
+      >
         <Connect(Form(WordCreateForm))
           destroyOnUnmount={true}
           enableReinitialize={false}
           forceUnregisterOnUnmount={false}
           form="wordCreate"
           getFormState={[Function]}
+          id="WordCreateForm"
           keepDirtyOnReinitialize={false}
           onSubmit={[Function]}
           persistentSubmitErrors={false}
@@ -76,6 +79,7 @@ exports[`WordCreate mounts 1`] = `
             forceUnregisterOnUnmount={false}
             form="wordCreate"
             getFormState={[Function]}
+            id="WordCreateForm"
             initialize={[Function]}
             initialized={false}
             invalid={false}
@@ -179,6 +183,7 @@ exports[`WordCreate mounts 1`] = `
               dispatch={[Function]}
               form="wordCreate"
               handleSubmit={[Function]}
+              id="WordCreateForm"
               initialize={[Function]}
               initialized={false}
               invalid={false}
@@ -257,6 +262,7 @@ exports[`WordCreate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -355,6 +361,7 @@ exports[`WordCreate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -528,6 +535,7 @@ exports[`WordCreate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -626,6 +634,7 @@ exports[`WordCreate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -796,6 +805,7 @@ exports[`WordCreate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -897,6 +907,7 @@ exports[`WordCreate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -1071,6 +1082,7 @@ exports[`WordCreate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -1169,6 +1181,7 @@ exports[`WordCreate mounts 1`] = `
                                   "form": "wordCreate",
                                   "getFormState": [Function],
                                   "getValues": [Function],
+                                  "id": "WordCreateForm",
                                   "initialValues": undefined,
                                   "initialize": [Function],
                                   "initialized": false,
@@ -1345,6 +1358,7 @@ exports[`WordCreate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -1446,6 +1460,7 @@ exports[`WordCreate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -1621,6 +1636,7 @@ exports[`WordCreate mounts 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -1719,6 +1735,7 @@ exports[`WordCreate mounts 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -1863,7 +1880,7 @@ exports[`WordCreate mounts 1`] = `
 </Provider>
 `;
 
-exports[`WordCreate triggers the error state on empty form submit 1`] = `
+exports[`WordCreate on a clean slate triggers the error state on empty form submit 1`] = `
 <Provider
   store={
     Object {
@@ -1877,13 +1894,16 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
 >
   <WordCreate>
     <section>
-      <ReduxForm>
+      <ReduxForm
+        id="WordCreateForm"
+      >
         <Connect(Form(WordCreateForm))
           destroyOnUnmount={true}
           enableReinitialize={false}
           forceUnregisterOnUnmount={false}
           form="wordCreate"
           getFormState={[Function]}
+          id="WordCreateForm"
           keepDirtyOnReinitialize={false}
           onSubmit={[Function]}
           persistentSubmitErrors={false}
@@ -1940,6 +1960,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
             forceUnregisterOnUnmount={false}
             form="wordCreate"
             getFormState={[Function]}
+            id="WordCreateForm"
             initialize={[Function]}
             initialized={false}
             invalid={true}
@@ -2044,6 +2065,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
               error="Nothing Submitted!"
               form="wordCreate"
               handleSubmit={[Function]}
+              id="WordCreateForm"
               initialize={[Function]}
               initialized={false}
               invalid={true}
@@ -2122,6 +2144,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -2251,6 +2274,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -2456,6 +2480,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -2585,6 +2610,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -2787,6 +2813,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -2888,6 +2915,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -3068,6 +3096,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -3197,6 +3226,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                                   "form": "wordCreate",
                                   "getFormState": [Function],
                                   "getValues": [Function],
+                                  "id": "WordCreateForm",
                                   "initialValues": undefined,
                                   "initialize": [Function],
                                   "initialized": false,
@@ -3405,6 +3435,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -3506,6 +3537,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
@@ -3687,6 +3719,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                               "form": "wordCreate",
                               "getFormState": [Function],
                               "getValues": [Function],
+                              "id": "WordCreateForm",
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
@@ -3816,6 +3849,7 @@ exports[`WordCreate triggers the error state on empty form submit 1`] = `
                                 "form": "wordCreate",
                                 "getFormState": [Function],
                                 "getValues": [Function],
+                                "id": "WordCreateForm",
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
