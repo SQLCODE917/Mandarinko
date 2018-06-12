@@ -8,8 +8,14 @@ describe('Words Reducer', () => {
   })
 
   it('should handle ADD_WORD', () => {
-    const addWord = wordActions.addWord('id', 'word')
-    const expectedState = { 'id': 'word' }
+    const addWord = wordActions.addWord('0', 'word')
+    const expectedState = { '0': 'word' }
     expect(reducer({}, addWord)).toEqual(expectedState)
+  })
+
+  it('should handle ADD_WORDS', () => {
+    const addWords = wordActions.addWords('words')
+    const expectedState = { 'allWords': 'words' }
+    expect(reducer({}, addWords)).toEqual(expectedState)
   })
 })

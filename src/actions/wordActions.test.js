@@ -75,4 +75,21 @@ describe('Async Word Actions', () => {
         expect(store.getActions()).toEqual(expectedActions)
       })
   })
+
+  it('gets the entire vocabulary', () => {
+    fetchMock.once('/v0/words', vocabulary)
+
+    const store = mockStore({})
+
+    const expectedActions = [
+      loadingActions.loading(true),
+      actions.addWords(vocabulary),
+      loadingActions.loading(false)
+    ]
+
+    return store.dispatch(actions.getWords())
+      .then(() => {
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+  })
 })

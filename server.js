@@ -23,6 +23,11 @@ app.get('/v0/top2k', (req, res) => {
   res.send(data)
 })
 
+app.get('/v0/words', (req, res) => {
+  res.header("Content-Type", 'application/json')
+  res.send(data)
+})
+
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'), (err) => {
     if (err) {

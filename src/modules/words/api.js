@@ -1,7 +1,12 @@
 export {
+  words,
   top2k,
   wordById,
   explodeWord
+}
+
+function words () {
+  return getJSON('/v0/words')
 }
 
 function top2k () {

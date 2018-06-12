@@ -15,20 +15,32 @@ import {
 } from 'redux-form'
 import { mount } from 'enzyme'
 
-import WordCreate from './WordCreate'
+import { WordCreate } from './WordCreate'
 
 describe('WordCreate', () => {
-  let wrapper, store
+  let wrapper, store, subscriptionSpy, actions
 
   describe('on a clean slate', () => {
     beforeEach(() => {
       const initialState = {}
-      store = reduxStore(initialState) 
-      wrapper = enzymeWrapper(store) 
+      actions = {
+        getWords: jest.fn() 
+      }
+      const props = {
+        actions
+      }
+      store = reduxStore(initialState)
+      subscriptionSpy = jest.fn()
+      store.subscribe(subscriptionSpy)
+      wrapper = enzymeWrapper(store, props) 
     })
 
     it('mounts', () => {
       expect(wrapper).toMatchSnapshot()
+    })
+
+    it('requests all the words', () => {
+      expect(actions.getWords.mock.calls.length).toBe(1)
     })
 
     it('triggers the error state on empty form submit', () => {
@@ -60,10 +72,10 @@ function reduxStore(initialState) {
   )
 }
 
-function enzymeWrapper(store) {
+function enzymeWrapper(store, props) {
   return mount(
     <Provider store={store}>
-      <WordCreate />
+      <WordCreate {...props}/>
     </Provider>
   )
 }

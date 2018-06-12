@@ -12,7 +12,17 @@ exports[`WordCreate on a clean slate mounts 1`] = `
     }
   }
 >
-  <WordCreate>
+  <WordCreate
+    actions={
+      Object {
+        "getWords": [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+        },
+      }
+    }
+  >
     <section>
       <ReduxForm>
         <Connect(Form(WordCreateForm))
@@ -1875,7 +1885,17 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
     }
   }
 >
-  <WordCreate>
+  <WordCreate
+    actions={
+      Object {
+        "getWords": [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+        },
+      }
+    }
+  >
     <section>
       <ReduxForm>
         <Connect(Form(WordCreateForm))

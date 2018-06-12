@@ -7,7 +7,16 @@ export default function wordsReducer(state=initialState.words, action) {
       const {id, word} = action
       const newWord = {}
       newWord[id] = word
-      return Object.assign({}, state, newWord);
+      return {
+        ...state,
+        ... newWord
+      };
+    case types.ADD_WORDS:
+      const { words } = action;
+      return {
+        ...state,
+        allWords: words
+      }
     default:
       return state
   }
