@@ -7,7 +7,8 @@ import renderDefinition from './renderDefinition'
 import renderChild from './renderChild'
 import styles from './WordTemplate.css'
 
-const WordTemplate = () => (
+export default function WordTemplate () {
+  return (
   <article className={styles.word}>
     <section className={styles.siblings}>
       <FieldArray
@@ -48,6 +49,5 @@ const WordTemplate = () => (
       />
     </section>
   </article>
-)
-
-export default WordTemplate
+  )
+}

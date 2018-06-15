@@ -29,6 +29,7 @@
     "express": "^4.16.2",
     "hanzi": "^2.1.0",
     "react": "^16.2.0",
+    "react-autosuggest": "^9.3.4",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",

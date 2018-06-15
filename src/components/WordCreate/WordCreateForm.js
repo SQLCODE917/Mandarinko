@@ -16,5 +16,6 @@ export const WordCreateForm = ({ error, onSubmit }) => {
 
 export default reduxForm({
   form: 'wordCreate',
+  keepDirtyOnReinitialize: true,
   onSubmit: submit
 })(WordCreateForm)
