@@ -19,7 +19,7 @@ const renderSibling = ({ fields, meta: { error, submitFailed } }) => (
       type="button"
       title="Look Up a Sibling"
       onClick={() => fields.push({ "lookup": true })}>
-      {c.rightPointingMagnigyingGlass} Sibling
+      {c.rightPointingMagnifyingGlass} Sibling
     </button>
     {submitFailed && error && <ErrorLine>{error}</ErrorLine>}
     {fields.map((wordObject, index) => {
