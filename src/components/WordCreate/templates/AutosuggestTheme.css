@@ -1,0 +1,30 @@
+@import '../../CommonColors.css';
+
+.container {
+  position: relative;
+}
+
+.input {
+  min-height: 36px;
+}
+
+.suggestionsContainer {
+  position: absolute;
+  background-color: var(--lcd-rose);
+}
+
+.suggestionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestion {
+  border: 1px solid white;
+  padding: .25rem;
+  margin: .25rem;
+}
+
+.suggestionHighlighted {
+  border-style: inset;
+}

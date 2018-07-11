@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Autosuggest from 'react-autosuggest'
 import ErrorLine from './errorLine.js'
 import styles from './renderAutosuggestField.css'
+import theme from './AutosuggestTheme.css'
 
 export default class renderAutosuggestField extends Component {
   constructor(props) {
@@ -62,6 +63,7 @@ export default class renderAutosuggestField extends Component {
       input,
       label,
       type,
+      placeholder,
       meta: {
         touched,
         error
@@ -76,7 +78,7 @@ export default class renderAutosuggestField extends Component {
     } = this.state
 
     const inputProps = {
-      placeholder: label,
+      placeholder,
       value,
       onChange: this.onChange,
       type
@@ -87,6 +89,7 @@ export default class renderAutosuggestField extends Component {
         <label>{label}</label>
         <div className={styles.autosuggestFieldBody}>
           <Autosuggest
+            theme={theme}
             suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
             onSuggestionsClearRequested={this.onSuggestionsClearRequested}

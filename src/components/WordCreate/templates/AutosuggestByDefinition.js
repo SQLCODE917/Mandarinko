@@ -11,6 +11,7 @@ export class AutosuggestByDefinition extends Component {
     const fieldProps = {
       name: 'id',
       type: 'text',
+      placeholder: 'Search by definition',
       component: renderAutosuggestField,
       getSuggestions: this.getSuggestions(allWords),
       renderSuggestion: this.renderSuggestion,
@@ -47,13 +48,13 @@ export class AutosuggestByDefinition extends Component {
   renderSuggestion(suggestion) {
     return (
     <article>
-      <section>
+      <section className={styles.suggestionSpelling}>
         {suggestion.spelling.map((entry) => `${[entry.text]}`)}
       </section>
       <section>
-        <ul>
+        <ul className={styles.suggestionDefinitionList}>
         {suggestion.definition.map(
-          (entry, index) => <li key={index}>{entry}</li>
+          (entry, index) => <li className={styles.suggestionDefinition} key={index}>{entry}</li>
         )}
         </ul>
       </section>
