@@ -31,7 +31,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
           forceUnregisterOnUnmount={false}
           form="wordCreate"
           getFormState={[Function]}
-          keepDirtyOnReinitialize={false}
+          keepDirtyOnReinitialize={true}
           onSubmit={[Function]}
           persistentSubmitErrors={false}
           pure={true}
@@ -89,7 +89,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
             initialize={[Function]}
             initialized={false}
             invalid={false}
-            keepDirtyOnReinitialize={false}
+            keepDirtyOnReinitialize={true}
             onSubmit={[Function]}
             persistentSubmitErrors={false}
             pristine={true}
@@ -271,7 +271,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -369,7 +369,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": false,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -478,6 +478,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                   +
                                    Sibling
                                 </button>
+                                <button
+                                  className="button"
+                                  onClick={[Function]}
+                                  title="Look Up a Sibling"
+                                  type="button"
+                                >
+                                  🔎
+                                   Sibling
+                                </button>
                               </section>
                             </renderSibling>
                           </ConnectedFieldArray>
@@ -542,7 +551,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -640,7 +649,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": false,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -810,7 +819,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -911,7 +920,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": false,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -1085,7 +1094,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": false,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -1183,7 +1192,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                   "initialize": [Function],
                                   "initialized": false,
                                   "invalid": false,
-                                  "keepDirtyOnReinitialize": false,
+                                  "keepDirtyOnReinitialize": true,
                                   "onSubmit": [Function],
                                   "persistentSubmitErrors": false,
                                   "pristine": true,
@@ -1359,7 +1368,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -1460,7 +1469,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": false,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -1635,7 +1644,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -1733,7 +1742,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": false,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -1904,7 +1913,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
           forceUnregisterOnUnmount={false}
           form="wordCreate"
           getFormState={[Function]}
-          keepDirtyOnReinitialize={false}
+          keepDirtyOnReinitialize={true}
           onSubmit={[Function]}
           persistentSubmitErrors={false}
           pure={true}
@@ -1963,7 +1972,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
             initialize={[Function]}
             initialized={false}
             invalid={true}
-            keepDirtyOnReinitialize={false}
+            keepDirtyOnReinitialize={true}
             onSubmit={[Function]}
             persistentSubmitErrors={false}
             pristine={true}
@@ -2146,7 +2155,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": true,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -2275,7 +2284,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": true,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -2416,6 +2425,15 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                   +
                                    Sibling
                                 </button>
+                                <button
+                                  className="button"
+                                  onClick={[Function]}
+                                  title="Look Up a Sibling"
+                                  type="button"
+                                >
+                                  🔎
+                                   Sibling
+                                </button>
                               </section>
                             </renderSibling>
                           </ConnectedFieldArray>
@@ -2480,7 +2498,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": true,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -2609,7 +2627,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": true,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -2811,7 +2829,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -2912,7 +2930,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": false,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -3092,7 +3110,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": true,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -3221,7 +3239,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                   "initialize": [Function],
                                   "initialized": false,
                                   "invalid": true,
-                                  "keepDirtyOnReinitialize": false,
+                                  "keepDirtyOnReinitialize": true,
                                   "onSubmit": [Function],
                                   "persistentSubmitErrors": false,
                                   "pristine": true,
@@ -3429,7 +3447,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -3530,7 +3548,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": false,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
@@ -3711,7 +3729,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": true,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
@@ -3840,7 +3858,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": true,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": true,
