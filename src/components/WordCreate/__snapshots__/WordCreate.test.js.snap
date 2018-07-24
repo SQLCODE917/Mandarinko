@@ -1851,6 +1851,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                   +
                                    Child
                                 </button>
+                                <button
+                                  className="button"
+                                  onClick={[Function]}
+                                  title="Look Up a Child"
+                                  type="button"
+                                >
+                                  🔎
+                                   Child
+                                </button>
                               </section>
                             </renderChild>
                           </ConnectedFieldArray>
@@ -3997,6 +4006,15 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                   type="button"
                                 >
                                   +
+                                   Child
+                                </button>
+                                <button
+                                  className="button"
+                                  onClick={[Function]}
+                                  title="Look Up a Child"
+                                  type="button"
+                                >
+                                  🔎
                                    Child
                                 </button>
                               </section>

@@ -44,6 +44,11 @@ export function renderSuggestion(suggestion) {
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
-export function getSuggestionValue(suggestion) {
-  return suggestion.id
+export function getSuggestionValue({spelling}) {
+  return spelling.reduce(
+    (accumulator, { text }) => {
+      return `${accumulator}[${text}]`
+    },
+    ''
+  )
 }

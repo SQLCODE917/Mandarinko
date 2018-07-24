@@ -42,9 +42,9 @@ export default class renderAutosuggestField extends Component {
   }
 
   onSuggestionSelected = (event, { suggestion }) => {
-    this.setState({
+    /*this.setState({
       value: suggestion.id
-    })
+    })*/
     const { input } = this.props
     input.onChange(suggestion.id)
   }
