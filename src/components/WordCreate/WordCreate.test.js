@@ -52,7 +52,12 @@ describe('WordCreate', () => {
       // seems that official tests just reach into the state
       // and pull our the error messages:
       // https://github.com/davidkpiano/react-redux-form/blob/master/test/form-component-spec.js
-      expect(state.form.wordCreate.error).toEqual('Nothing Submitted!')
+      const expectedErrors = {
+        spelling: { _error: 'Required' },
+        pronounciation: 'Required',
+        definition: { _error: 'Required' }
+      }
+      expect(state.form.wordCreate.syncErrors).toEqual(expectedErrors)
    
       /*
       const selector = formValueSelector('wordCreate')

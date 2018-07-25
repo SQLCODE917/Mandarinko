@@ -11,7 +11,8 @@ import {
 import thunk from 'redux-thunk'
 import {
   reducer as formReducer,
-  reduxForm
+  reduxForm,
+  formValues
 } from 'redux-form'
 import { mount } from 'enzyme'
 
@@ -26,7 +27,8 @@ describe('WordCreateForm', () => {
   beforeEach(() => {
     store = reduxStore()
     submitSpy = jest.fn()
-    wrapper = enzymeWrapper(store, testWord, submitSpy)
+    wrapper = enzymeWrapper(store, submitSpy)
+    enterRequired(wrapper, 'spelling', 'pronounciation', 'definition')
   })
 
   it('should render a word object', () => {
@@ -38,7 +40,17 @@ describe('WordCreateForm', () => {
     expect(submitButton).toHaveLength(1)
     submitButton.simulate('click')
     expect(submitSpy.mock.calls.length).toBe(1)
-    expect(submitSpy.mock.calls[0][0]).toEqual(testWord)
+    const expectedWord = {
+      spelling: [
+        { language: 'zh-Hant', text: 'spelling' }
+      ],
+      pronounciation: 'pronounciation',
+      definition: [
+        { text: 'definition' }
+      ]
+    };
+
+    expect(submitSpy.mock.calls[0][0]).toEqual(expectedWord)
   })
 })
 
@@ -52,11 +64,11 @@ function reduxStore(initialState = {}) {
   )
 }
 
-function enzymeWrapper(store, initialValues, onSubmit) {
+function enzymeWrapper(store, onSubmit) {
   const Form = reduxForm({
     form: 'wordCreate',
     onSubmit,
-    initialValues
+    onSubmitFail: (errors) => { console.log("ERRORS submitting: ", errors) }
   })(WordCreateForm)
 
   return mount(
@@ -67,4 +79,21 @@ function enzymeWrapper(store, initialValues, onSubmit) {
       </section>
     </Provider>
   )
+}
+
+function enterRequired(wrapper, spelling, pronounciation, definition) {
+  const addSpelling = wrapper.find({title: 'Add Spelling'})
+  addSpelling.simulate('click')
+  const spellingContainer = wrapper.find({className: 'spellingContainer'})
+  const spellingInput = spellingContainer.find('input')
+  spellingInput.simulate('change', {target: {value: spelling}})
+
+  const pronounciationInput = wrapper.find({placeholder: 'Pronounciation'})
+  pronounciationInput.simulate('change', {target: {value: pronounciation}})
+
+  const addDefinitionButton = wrapper.find({title: 'Add Definition'})
+  addDefinitionButton.simulate('click')
+  const definitionsContainer = wrapper.find({className: 'definitionsContainer' })
+  const definitionInput = definitionsContainer.find('input')
+  definitionInput.simulate('change', {target: {value: definition}})
 }

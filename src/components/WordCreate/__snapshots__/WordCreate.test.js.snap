@@ -88,7 +88,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
             getFormState={[Function]}
             initialize={[Function]}
             initialized={false}
-            invalid={false}
+            invalid={true}
             keepDirtyOnReinitialize={true}
             onSubmit={[Function]}
             persistentSubmitErrors={false}
@@ -145,7 +145,17 @@ exports[`WordCreate on a clean slate mounts 1`] = `
             submitFailed={false}
             submitSucceeded={false}
             submitting={false}
-            syncErrors={Object {}}
+            syncErrors={
+              Object {
+                "definition": Object {
+                  "_error": "Required",
+                },
+                "pronounciation": "Required",
+                "spelling": Object {
+                  "_error": "Required",
+                },
+              }
+            }
             syncWarnings={Object {}}
             touch={[Function]}
             touchOnBlur={true}
@@ -155,8 +165,8 @@ exports[`WordCreate on a clean slate mounts 1`] = `
             updateSyncErrors={[Function]}
             updateSyncWarnings={[Function]}
             updateUnregisteredFields={false}
-            valid={true}
-            validExceptSubmit={true}
+            valid={false}
+            validExceptSubmit={false}
             values={Object {}}
           >
             <WordCreateForm
@@ -191,7 +201,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
               handleSubmit={[Function]}
               initialize={[Function]}
               initialized={false}
-              invalid={false}
+              invalid={true}
               onSubmit={[Function]}
               pristine={true}
               pure={true}
@@ -203,7 +213,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
               submitting={false}
               touch={[Function]}
               untouch={[Function]}
-              valid={true}
+              valid={false}
             >
               <form
                 className="wordCreateForm"
@@ -270,7 +280,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
-                              "invalid": false,
+                              "invalid": true,
                               "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
@@ -279,7 +289,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "register": [Function],
                               "registerField": [Function],
                               "registerInnerOnSubmit": [Function],
-                              "registeredFields": undefined,
+                              "registeredFields": Object {
+                                "children": Object {
+                                  "count": 1,
+                                  "name": "children",
+                                  "type": "FieldArray",
+                                },
+                                "definition": Object {
+                                  "count": 1,
+                                  "name": "definition",
+                                  "type": "FieldArray",
+                                },
+                                "derivation": Object {
+                                  "count": 1,
+                                  "name": "derivation",
+                                  "type": "Field",
+                                },
+                                "pronounciation": Object {
+                                  "count": 1,
+                                  "name": "pronounciation",
+                                  "type": "Field",
+                                },
+                                "siblings": Object {
+                                  "count": 1,
+                                  "name": "siblings",
+                                  "type": "FieldArray",
+                                },
+                                "spelling": Object {
+                                  "count": 1,
+                                  "name": "spelling",
+                                  "type": "FieldArray",
+                                },
+                              },
                               "reset": [Function],
                               "resetSection": [Function],
                               "sectionPrefix": undefined,
@@ -297,7 +338,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "submitFailed": false,
                               "submitSucceeded": false,
                               "submitting": false,
-                              "syncErrors": Object {},
+                              "syncErrors": Object {
+                                "definition": Object {
+                                  "_error": "Required",
+                                },
+                                "pronounciation": "Required",
+                                "spelling": Object {
+                                  "_error": "Required",
+                                },
+                              },
                               "syncWarnings": Object {},
                               "touch": [Function],
                               "touchOnBlur": true,
@@ -309,8 +358,8 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "updateSyncErrors": [Function],
                               "updateSyncWarnings": [Function],
                               "updateUnregisteredFields": false,
-                              "valid": true,
-                              "validExceptSubmit": true,
+                              "valid": false,
+                              "validExceptSubmit": false,
                               "values": Object {},
                               "warning": undefined,
                             }
@@ -368,7 +417,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
-                                "invalid": false,
+                                "invalid": true,
                                 "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
@@ -377,7 +426,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "register": [Function],
                                 "registerField": [Function],
                                 "registerInnerOnSubmit": [Function],
-                                "registeredFields": undefined,
+                                "registeredFields": Object {
+                                  "children": Object {
+                                    "count": 1,
+                                    "name": "children",
+                                    "type": "FieldArray",
+                                  },
+                                  "definition": Object {
+                                    "count": 1,
+                                    "name": "definition",
+                                    "type": "FieldArray",
+                                  },
+                                  "derivation": Object {
+                                    "count": 1,
+                                    "name": "derivation",
+                                    "type": "Field",
+                                  },
+                                  "pronounciation": Object {
+                                    "count": 1,
+                                    "name": "pronounciation",
+                                    "type": "Field",
+                                  },
+                                  "siblings": Object {
+                                    "count": 1,
+                                    "name": "siblings",
+                                    "type": "FieldArray",
+                                  },
+                                  "spelling": Object {
+                                    "count": 1,
+                                    "name": "spelling",
+                                    "type": "FieldArray",
+                                  },
+                                },
                                 "reset": [Function],
                                 "resetSection": [Function],
                                 "sectionPrefix": undefined,
@@ -395,7 +475,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "submitFailed": false,
                                 "submitSucceeded": false,
                                 "submitting": false,
-                                "syncErrors": Object {},
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
                                 "syncWarnings": Object {},
                                 "touch": [Function],
                                 "touchOnBlur": true,
@@ -407,8 +495,8 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "updateSyncErrors": [Function],
                                 "updateSyncWarnings": [Function],
                                 "updateUnregisteredFields": false,
-                                "valid": true,
-                                "validExceptSubmit": true,
+                                "valid": false,
+                                "validExceptSubmit": false,
                                 "values": Object {},
                                 "warning": undefined,
                               }
@@ -499,6 +587,12 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                       <FieldArray
                         component={[Function]}
                         name="spelling"
+                        validate={
+                          Array [
+                            [Function],
+                            [Function],
+                          ]
+                        }
                       >
                         <Connect(ConnectedFieldArray)
                           _reduxForm={
@@ -550,7 +644,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
-                              "invalid": false,
+                              "invalid": true,
                               "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
@@ -559,7 +653,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "register": [Function],
                               "registerField": [Function],
                               "registerInnerOnSubmit": [Function],
-                              "registeredFields": undefined,
+                              "registeredFields": Object {
+                                "children": Object {
+                                  "count": 1,
+                                  "name": "children",
+                                  "type": "FieldArray",
+                                },
+                                "definition": Object {
+                                  "count": 1,
+                                  "name": "definition",
+                                  "type": "FieldArray",
+                                },
+                                "derivation": Object {
+                                  "count": 1,
+                                  "name": "derivation",
+                                  "type": "Field",
+                                },
+                                "pronounciation": Object {
+                                  "count": 1,
+                                  "name": "pronounciation",
+                                  "type": "Field",
+                                },
+                                "siblings": Object {
+                                  "count": 1,
+                                  "name": "siblings",
+                                  "type": "FieldArray",
+                                },
+                                "spelling": Object {
+                                  "count": 1,
+                                  "name": "spelling",
+                                  "type": "FieldArray",
+                                },
+                              },
                               "reset": [Function],
                               "resetSection": [Function],
                               "sectionPrefix": undefined,
@@ -577,7 +702,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "submitFailed": false,
                               "submitSucceeded": false,
                               "submitting": false,
-                              "syncErrors": Object {},
+                              "syncErrors": Object {
+                                "definition": Object {
+                                  "_error": "Required",
+                                },
+                                "pronounciation": "Required",
+                                "spelling": Object {
+                                  "_error": "Required",
+                                },
+                              },
                               "syncWarnings": Object {},
                               "touch": [Function],
                               "touchOnBlur": true,
@@ -589,14 +722,20 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "updateSyncErrors": [Function],
                               "updateSyncWarnings": [Function],
                               "updateUnregisteredFields": false,
-                              "valid": true,
-                              "validExceptSubmit": true,
+                              "valid": false,
+                              "validExceptSubmit": false,
                               "values": Object {},
                               "warning": undefined,
                             }
                           }
                           component={[Function]}
                           name="spelling"
+                          validate={
+                            Array [
+                              [Function],
+                              [Function],
+                            ]
+                          }
                         >
                           <ConnectedFieldArray
                             _reduxForm={
@@ -648,7 +787,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
-                                "invalid": false,
+                                "invalid": true,
                                 "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
@@ -657,7 +796,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "register": [Function],
                                 "registerField": [Function],
                                 "registerInnerOnSubmit": [Function],
-                                "registeredFields": undefined,
+                                "registeredFields": Object {
+                                  "children": Object {
+                                    "count": 1,
+                                    "name": "children",
+                                    "type": "FieldArray",
+                                  },
+                                  "definition": Object {
+                                    "count": 1,
+                                    "name": "definition",
+                                    "type": "FieldArray",
+                                  },
+                                  "derivation": Object {
+                                    "count": 1,
+                                    "name": "derivation",
+                                    "type": "Field",
+                                  },
+                                  "pronounciation": Object {
+                                    "count": 1,
+                                    "name": "pronounciation",
+                                    "type": "Field",
+                                  },
+                                  "siblings": Object {
+                                    "count": 1,
+                                    "name": "siblings",
+                                    "type": "FieldArray",
+                                  },
+                                  "spelling": Object {
+                                    "count": 1,
+                                    "name": "spelling",
+                                    "type": "FieldArray",
+                                  },
+                                },
                                 "reset": [Function],
                                 "resetSection": [Function],
                                 "sectionPrefix": undefined,
@@ -675,7 +845,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "submitFailed": false,
                                 "submitSucceeded": false,
                                 "submitting": false,
-                                "syncErrors": Object {},
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
                                 "syncWarnings": Object {},
                                 "touch": [Function],
                                 "touchOnBlur": true,
@@ -687,8 +865,8 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "updateSyncErrors": [Function],
                                 "updateSyncWarnings": [Function],
                                 "updateUnregisteredFields": false,
-                                "valid": true,
-                                "validExceptSubmit": true,
+                                "valid": false,
+                                "validExceptSubmit": false,
                                 "values": Object {},
                                 "warning": undefined,
                               }
@@ -709,6 +887,13 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                             name="spelling"
                             pristine={true}
                             rerenderOnEveryChange={false}
+                            syncError="Required"
+                            validate={
+                              Array [
+                                [Function],
+                                [Function],
+                              ]
+                            }
                           >
                             <renderSpelling
                               fields={
@@ -735,13 +920,13 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               meta={
                                 Object {
                                   "dirty": false,
-                                  "error": undefined,
+                                  "error": "Required",
                                   "form": "wordCreate",
-                                  "invalid": false,
+                                  "invalid": true,
                                   "pristine": true,
                                   "submitFailed": undefined,
                                   "submitting": undefined,
-                                  "valid": true,
+                                  "valid": false,
                                   "warning": undefined,
                                 }
                               }
@@ -752,6 +937,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 <button
                                   className="button"
                                   onClick={[Function]}
+                                  title="Add Spelling"
                                   type="button"
                                 >
                                   +
@@ -767,6 +953,11 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                         label="Pronounciation"
                         name="pronounciation"
                         type="text"
+                        validate={
+                          Array [
+                            [Function],
+                          ]
+                        }
                       >
                         <Connect(ConnectedField)
                           _reduxForm={
@@ -818,7 +1009,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
-                              "invalid": false,
+                              "invalid": true,
                               "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
@@ -827,7 +1018,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "register": [Function],
                               "registerField": [Function],
                               "registerInnerOnSubmit": [Function],
-                              "registeredFields": undefined,
+                              "registeredFields": Object {
+                                "children": Object {
+                                  "count": 1,
+                                  "name": "children",
+                                  "type": "FieldArray",
+                                },
+                                "definition": Object {
+                                  "count": 1,
+                                  "name": "definition",
+                                  "type": "FieldArray",
+                                },
+                                "derivation": Object {
+                                  "count": 1,
+                                  "name": "derivation",
+                                  "type": "Field",
+                                },
+                                "pronounciation": Object {
+                                  "count": 1,
+                                  "name": "pronounciation",
+                                  "type": "Field",
+                                },
+                                "siblings": Object {
+                                  "count": 1,
+                                  "name": "siblings",
+                                  "type": "FieldArray",
+                                },
+                                "spelling": Object {
+                                  "count": 1,
+                                  "name": "spelling",
+                                  "type": "FieldArray",
+                                },
+                              },
                               "reset": [Function],
                               "resetSection": [Function],
                               "sectionPrefix": undefined,
@@ -845,7 +1067,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "submitFailed": false,
                               "submitSucceeded": false,
                               "submitting": false,
-                              "syncErrors": Object {},
+                              "syncErrors": Object {
+                                "definition": Object {
+                                  "_error": "Required",
+                                },
+                                "pronounciation": "Required",
+                                "spelling": Object {
+                                  "_error": "Required",
+                                },
+                              },
                               "syncWarnings": Object {},
                               "touch": [Function],
                               "touchOnBlur": true,
@@ -857,8 +1087,8 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "updateSyncErrors": [Function],
                               "updateSyncWarnings": [Function],
                               "updateUnregisteredFields": false,
-                              "valid": true,
-                              "validExceptSubmit": true,
+                              "valid": false,
+                              "validExceptSubmit": false,
                               "values": Object {},
                               "warning": undefined,
                             }
@@ -868,6 +1098,11 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                           name="pronounciation"
                           normalize={[Function]}
                           type="text"
+                          validate={
+                            Array [
+                              [Function],
+                            ]
+                          }
                         >
                           <ConnectedField
                             _reduxForm={
@@ -919,7 +1154,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
-                                "invalid": false,
+                                "invalid": true,
                                 "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
@@ -928,7 +1163,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "register": [Function],
                                 "registerField": [Function],
                                 "registerInnerOnSubmit": [Function],
-                                "registeredFields": undefined,
+                                "registeredFields": Object {
+                                  "children": Object {
+                                    "count": 1,
+                                    "name": "children",
+                                    "type": "FieldArray",
+                                  },
+                                  "definition": Object {
+                                    "count": 1,
+                                    "name": "definition",
+                                    "type": "FieldArray",
+                                  },
+                                  "derivation": Object {
+                                    "count": 1,
+                                    "name": "derivation",
+                                    "type": "Field",
+                                  },
+                                  "pronounciation": Object {
+                                    "count": 1,
+                                    "name": "pronounciation",
+                                    "type": "Field",
+                                  },
+                                  "siblings": Object {
+                                    "count": 1,
+                                    "name": "siblings",
+                                    "type": "FieldArray",
+                                  },
+                                  "spelling": Object {
+                                    "count": 1,
+                                    "name": "spelling",
+                                    "type": "FieldArray",
+                                  },
+                                },
                                 "reset": [Function],
                                 "resetSection": [Function],
                                 "sectionPrefix": undefined,
@@ -946,7 +1212,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "submitFailed": false,
                                 "submitSucceeded": false,
                                 "submitting": false,
-                                "syncErrors": Object {},
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
                                 "syncWarnings": Object {},
                                 "touch": [Function],
                                 "touchOnBlur": true,
@@ -958,8 +1232,8 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "updateSyncErrors": [Function],
                                 "updateSyncWarnings": [Function],
                                 "updateUnregisteredFields": false,
-                                "valid": true,
-                                "validExceptSubmit": true,
+                                "valid": false,
+                                "validExceptSubmit": false,
                                 "values": Object {},
                                 "warning": undefined,
                               }
@@ -972,7 +1246,13 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                             name="pronounciation"
                             normalize={[Function]}
                             pristine={true}
+                            syncError="Required"
                             type="text"
+                            validate={
+                              Array [
+                                [Function],
+                              ]
+                            }
                           >
                             <renderInputField
                               input={
@@ -994,15 +1274,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                   "autofilled": false,
                                   "dirty": false,
                                   "dispatch": [Function],
-                                  "error": undefined,
+                                  "error": "Required",
                                   "form": "wordCreate",
                                   "initial": undefined,
-                                  "invalid": false,
+                                  "invalid": true,
                                   "pristine": true,
                                   "submitFailed": false,
                                   "submitting": false,
                                   "touched": false,
-                                  "valid": true,
+                                  "valid": false,
                                   "visited": false,
                                   "warning": undefined,
                                 }
@@ -1042,6 +1322,12 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                         <FieldArray
                           component={[Function]}
                           name="definition"
+                          validate={
+                            Array [
+                              [Function],
+                              [Function],
+                            ]
+                          }
                         >
                           <Connect(ConnectedFieldArray)
                             _reduxForm={
@@ -1093,7 +1379,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
-                                "invalid": false,
+                                "invalid": true,
                                 "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
@@ -1102,7 +1388,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "register": [Function],
                                 "registerField": [Function],
                                 "registerInnerOnSubmit": [Function],
-                                "registeredFields": undefined,
+                                "registeredFields": Object {
+                                  "children": Object {
+                                    "count": 1,
+                                    "name": "children",
+                                    "type": "FieldArray",
+                                  },
+                                  "definition": Object {
+                                    "count": 1,
+                                    "name": "definition",
+                                    "type": "FieldArray",
+                                  },
+                                  "derivation": Object {
+                                    "count": 1,
+                                    "name": "derivation",
+                                    "type": "Field",
+                                  },
+                                  "pronounciation": Object {
+                                    "count": 1,
+                                    "name": "pronounciation",
+                                    "type": "Field",
+                                  },
+                                  "siblings": Object {
+                                    "count": 1,
+                                    "name": "siblings",
+                                    "type": "FieldArray",
+                                  },
+                                  "spelling": Object {
+                                    "count": 1,
+                                    "name": "spelling",
+                                    "type": "FieldArray",
+                                  },
+                                },
                                 "reset": [Function],
                                 "resetSection": [Function],
                                 "sectionPrefix": undefined,
@@ -1120,7 +1437,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "submitFailed": false,
                                 "submitSucceeded": false,
                                 "submitting": false,
-                                "syncErrors": Object {},
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
                                 "syncWarnings": Object {},
                                 "touch": [Function],
                                 "touchOnBlur": true,
@@ -1132,14 +1457,20 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "updateSyncErrors": [Function],
                                 "updateSyncWarnings": [Function],
                                 "updateUnregisteredFields": false,
-                                "valid": true,
-                                "validExceptSubmit": true,
+                                "valid": false,
+                                "validExceptSubmit": false,
                                 "values": Object {},
                                 "warning": undefined,
                               }
                             }
                             component={[Function]}
                             name="definition"
+                            validate={
+                              Array [
+                                [Function],
+                                [Function],
+                              ]
+                            }
                           >
                             <ConnectedFieldArray
                               _reduxForm={
@@ -1191,7 +1522,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                   "initialValues": undefined,
                                   "initialize": [Function],
                                   "initialized": false,
-                                  "invalid": false,
+                                  "invalid": true,
                                   "keepDirtyOnReinitialize": true,
                                   "onSubmit": [Function],
                                   "persistentSubmitErrors": false,
@@ -1200,7 +1531,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                   "register": [Function],
                                   "registerField": [Function],
                                   "registerInnerOnSubmit": [Function],
-                                  "registeredFields": undefined,
+                                  "registeredFields": Object {
+                                    "children": Object {
+                                      "count": 1,
+                                      "name": "children",
+                                      "type": "FieldArray",
+                                    },
+                                    "definition": Object {
+                                      "count": 1,
+                                      "name": "definition",
+                                      "type": "FieldArray",
+                                    },
+                                    "derivation": Object {
+                                      "count": 1,
+                                      "name": "derivation",
+                                      "type": "Field",
+                                    },
+                                    "pronounciation": Object {
+                                      "count": 1,
+                                      "name": "pronounciation",
+                                      "type": "Field",
+                                    },
+                                    "siblings": Object {
+                                      "count": 1,
+                                      "name": "siblings",
+                                      "type": "FieldArray",
+                                    },
+                                    "spelling": Object {
+                                      "count": 1,
+                                      "name": "spelling",
+                                      "type": "FieldArray",
+                                    },
+                                  },
                                   "reset": [Function],
                                   "resetSection": [Function],
                                   "sectionPrefix": undefined,
@@ -1218,7 +1580,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                   "submitFailed": false,
                                   "submitSucceeded": false,
                                   "submitting": false,
-                                  "syncErrors": Object {},
+                                  "syncErrors": Object {
+                                    "definition": Object {
+                                      "_error": "Required",
+                                    },
+                                    "pronounciation": "Required",
+                                    "spelling": Object {
+                                      "_error": "Required",
+                                    },
+                                  },
                                   "syncWarnings": Object {},
                                   "touch": [Function],
                                   "touchOnBlur": true,
@@ -1230,8 +1600,8 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                   "updateSyncErrors": [Function],
                                   "updateSyncWarnings": [Function],
                                   "updateUnregisteredFields": false,
-                                  "valid": true,
-                                  "validExceptSubmit": true,
+                                  "valid": false,
+                                  "validExceptSubmit": false,
                                   "values": Object {},
                                   "warning": undefined,
                                 }
@@ -1252,6 +1622,13 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               name="definition"
                               pristine={true}
                               rerenderOnEveryChange={false}
+                              syncError="Required"
+                              validate={
+                                Array [
+                                  [Function],
+                                  [Function],
+                                ]
+                              }
                             >
                               <renderDefinition
                                 fields={
@@ -1278,13 +1655,13 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 meta={
                                   Object {
                                     "dirty": false,
-                                    "error": undefined,
+                                    "error": "Required",
                                     "form": "wordCreate",
-                                    "invalid": false,
+                                    "invalid": true,
                                     "pristine": true,
                                     "submitFailed": undefined,
                                     "submitting": undefined,
-                                    "valid": true,
+                                    "valid": false,
                                     "warning": undefined,
                                   }
                                 }
@@ -1643,7 +2020,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "initialValues": undefined,
                               "initialize": [Function],
                               "initialized": false,
-                              "invalid": false,
+                              "invalid": true,
                               "keepDirtyOnReinitialize": true,
                               "onSubmit": [Function],
                               "persistentSubmitErrors": false,
@@ -1652,7 +2029,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "register": [Function],
                               "registerField": [Function],
                               "registerInnerOnSubmit": [Function],
-                              "registeredFields": undefined,
+                              "registeredFields": Object {
+                                "children": Object {
+                                  "count": 1,
+                                  "name": "children",
+                                  "type": "FieldArray",
+                                },
+                                "definition": Object {
+                                  "count": 1,
+                                  "name": "definition",
+                                  "type": "FieldArray",
+                                },
+                                "derivation": Object {
+                                  "count": 1,
+                                  "name": "derivation",
+                                  "type": "Field",
+                                },
+                                "pronounciation": Object {
+                                  "count": 1,
+                                  "name": "pronounciation",
+                                  "type": "Field",
+                                },
+                                "siblings": Object {
+                                  "count": 1,
+                                  "name": "siblings",
+                                  "type": "FieldArray",
+                                },
+                                "spelling": Object {
+                                  "count": 1,
+                                  "name": "spelling",
+                                  "type": "FieldArray",
+                                },
+                              },
                               "reset": [Function],
                               "resetSection": [Function],
                               "sectionPrefix": undefined,
@@ -1670,7 +2078,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "submitFailed": false,
                               "submitSucceeded": false,
                               "submitting": false,
-                              "syncErrors": Object {},
+                              "syncErrors": Object {
+                                "definition": Object {
+                                  "_error": "Required",
+                                },
+                                "pronounciation": "Required",
+                                "spelling": Object {
+                                  "_error": "Required",
+                                },
+                              },
                               "syncWarnings": Object {},
                               "touch": [Function],
                               "touchOnBlur": true,
@@ -1682,8 +2098,8 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                               "updateSyncErrors": [Function],
                               "updateSyncWarnings": [Function],
                               "updateUnregisteredFields": false,
-                              "valid": true,
-                              "validExceptSubmit": true,
+                              "valid": false,
+                              "validExceptSubmit": false,
                               "values": Object {},
                               "warning": undefined,
                             }
@@ -1741,7 +2157,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
-                                "invalid": false,
+                                "invalid": true,
                                 "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
@@ -1750,7 +2166,38 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "register": [Function],
                                 "registerField": [Function],
                                 "registerInnerOnSubmit": [Function],
-                                "registeredFields": undefined,
+                                "registeredFields": Object {
+                                  "children": Object {
+                                    "count": 1,
+                                    "name": "children",
+                                    "type": "FieldArray",
+                                  },
+                                  "definition": Object {
+                                    "count": 1,
+                                    "name": "definition",
+                                    "type": "FieldArray",
+                                  },
+                                  "derivation": Object {
+                                    "count": 1,
+                                    "name": "derivation",
+                                    "type": "Field",
+                                  },
+                                  "pronounciation": Object {
+                                    "count": 1,
+                                    "name": "pronounciation",
+                                    "type": "Field",
+                                  },
+                                  "siblings": Object {
+                                    "count": 1,
+                                    "name": "siblings",
+                                    "type": "FieldArray",
+                                  },
+                                  "spelling": Object {
+                                    "count": 1,
+                                    "name": "spelling",
+                                    "type": "FieldArray",
+                                  },
+                                },
                                 "reset": [Function],
                                 "resetSection": [Function],
                                 "sectionPrefix": undefined,
@@ -1768,7 +2215,15 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "submitFailed": false,
                                 "submitSucceeded": false,
                                 "submitting": false,
-                                "syncErrors": Object {},
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
                                 "syncWarnings": Object {},
                                 "touch": [Function],
                                 "touchOnBlur": true,
@@ -1780,8 +2235,8 @@ exports[`WordCreate on a clean slate mounts 1`] = `
                                 "updateSyncErrors": [Function],
                                 "updateSyncWarnings": [Function],
                                 "updateUnregisteredFields": false,
-                                "valid": true,
-                                "validExceptSubmit": true,
+                                "valid": false,
+                                "validExceptSubmit": false,
                                 "values": Object {},
                                 "warning": undefined,
                               }
@@ -1973,7 +2428,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
             dirty={false}
             dispatch={[Function]}
             enableReinitialize={false}
-            error="Nothing Submitted!"
             focus={[Function]}
             forceUnregisterOnUnmount={false}
             form="wordCreate"
@@ -2037,7 +2491,17 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
             submitFailed={true}
             submitSucceeded={false}
             submitting={false}
-            syncErrors={Object {}}
+            syncErrors={
+              Object {
+                "definition": Object {
+                  "_error": "Required",
+                },
+                "pronounciation": "Required",
+                "spelling": Object {
+                  "_error": "Required",
+                },
+              }
+            }
             syncWarnings={Object {}}
             touch={[Function]}
             touchOnBlur={true}
@@ -2048,7 +2512,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
             updateSyncWarnings={[Function]}
             updateUnregisteredFields={false}
             valid={false}
-            validExceptSubmit={true}
+            validExceptSubmit={false}
             values={Object {}}
           >
             <WordCreateForm
@@ -2079,7 +2543,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
               destroy={[Function]}
               dirty={false}
               dispatch={[Function]}
-              error="Nothing Submitted!"
               form="wordCreate"
               handleSubmit={[Function]}
               initialize={[Function]}
@@ -2154,7 +2617,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "dirty": false,
                               "dispatch": [Function],
                               "enableReinitialize": false,
-                              "error": "Nothing Submitted!",
+                              "error": undefined,
                               "focus": [Function],
                               "forceUnregisterOnUnmount": false,
                               "form": "wordCreate",
@@ -2221,7 +2684,15 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "submitFailed": true,
                               "submitSucceeded": false,
                               "submitting": false,
-                              "syncErrors": Object {},
+                              "syncErrors": Object {
+                                "definition": Object {
+                                  "_error": "Required",
+                                },
+                                "pronounciation": "Required",
+                                "spelling": Object {
+                                  "_error": "Required",
+                                },
+                              },
                               "syncWarnings": Object {},
                               "touch": [Function],
                               "touchOnBlur": true,
@@ -2234,7 +2705,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "updateSyncWarnings": [Function],
                               "updateUnregisteredFields": false,
                               "valid": false,
-                              "validExceptSubmit": true,
+                              "validExceptSubmit": false,
                               "values": Object {},
                               "warning": undefined,
                             }
@@ -2283,7 +2754,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "dirty": false,
                                 "dispatch": [Function],
                                 "enableReinitialize": false,
-                                "error": "Nothing Submitted!",
+                                "error": undefined,
                                 "focus": [Function],
                                 "forceUnregisterOnUnmount": false,
                                 "form": "wordCreate",
@@ -2350,7 +2821,15 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "submitFailed": true,
                                 "submitSucceeded": false,
                                 "submitting": false,
-                                "syncErrors": Object {},
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
                                 "syncWarnings": Object {},
                                 "touch": [Function],
                                 "touchOnBlur": true,
@@ -2363,7 +2842,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "updateSyncWarnings": [Function],
                                 "updateUnregisteredFields": false,
                                 "valid": false,
-                                "validExceptSubmit": true,
+                                "validExceptSubmit": false,
                                 "values": Object {},
                                 "warning": undefined,
                               }
@@ -2455,6 +2934,12 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                       <FieldArray
                         component={[Function]}
                         name="spelling"
+                        validate={
+                          Array [
+                            [Function],
+                            [Function],
+                          ]
+                        }
                       >
                         <Connect(ConnectedFieldArray)
                           _reduxForm={
@@ -2497,7 +2982,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "dirty": false,
                               "dispatch": [Function],
                               "enableReinitialize": false,
-                              "error": "Nothing Submitted!",
+                              "error": undefined,
                               "focus": [Function],
                               "forceUnregisterOnUnmount": false,
                               "form": "wordCreate",
@@ -2564,7 +3049,15 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "submitFailed": true,
                               "submitSucceeded": false,
                               "submitting": false,
-                              "syncErrors": Object {},
+                              "syncErrors": Object {
+                                "definition": Object {
+                                  "_error": "Required",
+                                },
+                                "pronounciation": "Required",
+                                "spelling": Object {
+                                  "_error": "Required",
+                                },
+                              },
                               "syncWarnings": Object {},
                               "touch": [Function],
                               "touchOnBlur": true,
@@ -2577,321 +3070,24 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "updateSyncWarnings": [Function],
                               "updateUnregisteredFields": false,
                               "valid": false,
-                              "validExceptSubmit": true,
+                              "validExceptSubmit": false,
                               "values": Object {},
                               "warning": undefined,
                             }
                           }
                           component={[Function]}
                           name="spelling"
+                          validate={
+                            Array [
+                              [Function],
+                              [Function],
+                            ]
+                          }
                         >
                           <ConnectedFieldArray
                             _reduxForm={
                               Object {
                                 "anyTouched": true,
-                                "array": Object {
-                                  "insert": [Function],
-                                  "move": [Function],
-                                  "pop": [Function],
-                                  "push": [Function],
-                                  "remove": [Function],
-                                  "removeAll": [Function],
-                                  "shift": [Function],
-                                  "splice": [Function],
-                                  "swap": [Function],
-                                  "unshift": [Function],
-                                },
-                                "arrayInsert": [Function],
-                                "arrayMove": [Function],
-                                "arrayPop": [Function],
-                                "arrayPush": [Function],
-                                "arrayRemove": [Function],
-                                "arrayRemoveAll": [Function],
-                                "arrayShift": [Function],
-                                "arraySplice": [Function],
-                                "arraySwap": [Function],
-                                "arrayUnshift": [Function],
-                                "asyncErrors": undefined,
-                                "asyncValidate": [Function],
-                                "asyncValidating": false,
-                                "autofill": [Function],
-                                "blur": [Function],
-                                "change": [Function],
-                                "clearAsyncError": [Function],
-                                "clearFields": [Function],
-                                "clearSubmit": [Function],
-                                "clearSubmitErrors": [Function],
-                                "destroy": [Function],
-                                "destroyOnUnmount": true,
-                                "dirty": false,
-                                "dispatch": [Function],
-                                "enableReinitialize": false,
-                                "error": "Nothing Submitted!",
-                                "focus": [Function],
-                                "forceUnregisterOnUnmount": false,
-                                "form": "wordCreate",
-                                "getFormState": [Function],
-                                "getValues": [Function],
-                                "initialValues": undefined,
-                                "initialize": [Function],
-                                "initialized": false,
-                                "invalid": true,
-                                "keepDirtyOnReinitialize": true,
-                                "onSubmit": [Function],
-                                "persistentSubmitErrors": false,
-                                "pristine": true,
-                                "pure": true,
-                                "register": [Function],
-                                "registerField": [Function],
-                                "registerInnerOnSubmit": [Function],
-                                "registeredFields": Object {
-                                  "children": Object {
-                                    "count": 1,
-                                    "name": "children",
-                                    "type": "FieldArray",
-                                  },
-                                  "definition": Object {
-                                    "count": 1,
-                                    "name": "definition",
-                                    "type": "FieldArray",
-                                  },
-                                  "derivation": Object {
-                                    "count": 1,
-                                    "name": "derivation",
-                                    "type": "Field",
-                                  },
-                                  "pronounciation": Object {
-                                    "count": 1,
-                                    "name": "pronounciation",
-                                    "type": "Field",
-                                  },
-                                  "siblings": Object {
-                                    "count": 1,
-                                    "name": "siblings",
-                                    "type": "FieldArray",
-                                  },
-                                  "spelling": Object {
-                                    "count": 1,
-                                    "name": "spelling",
-                                    "type": "FieldArray",
-                                  },
-                                },
-                                "reset": [Function],
-                                "resetSection": [Function],
-                                "sectionPrefix": undefined,
-                                "setSubmitFailed": [Function],
-                                "setSubmitSucceeded": [Function],
-                                "shouldAsyncValidate": [Function],
-                                "shouldError": [Function],
-                                "shouldValidate": [Function],
-                                "shouldWarn": [Function],
-                                "startAsyncValidation": [Function],
-                                "startSubmit": [Function],
-                                "stopAsyncValidation": [Function],
-                                "stopSubmit": [Function],
-                                "submit": [Function],
-                                "submitFailed": true,
-                                "submitSucceeded": false,
-                                "submitting": false,
-                                "syncErrors": Object {},
-                                "syncWarnings": Object {},
-                                "touch": [Function],
-                                "touchOnBlur": true,
-                                "touchOnChange": false,
-                                "triggerSubmit": undefined,
-                                "unregister": [Function],
-                                "unregisterField": [Function],
-                                "untouch": [Function],
-                                "updateSyncErrors": [Function],
-                                "updateSyncWarnings": [Function],
-                                "updateUnregisteredFields": false,
-                                "valid": false,
-                                "validExceptSubmit": true,
-                                "values": Object {},
-                                "warning": undefined,
-                              }
-                            }
-                            arrayInsert={[Function]}
-                            arrayMove={[Function]}
-                            arrayPop={[Function]}
-                            arrayPush={[Function]}
-                            arrayRemove={[Function]}
-                            arrayRemoveAll={[Function]}
-                            arrayShift={[Function]}
-                            arraySplice={[Function]}
-                            arraySwap={[Function]}
-                            arrayUnshift={[Function]}
-                            component={[Function]}
-                            dirty={false}
-                            length={0}
-                            name="spelling"
-                            pristine={true}
-                            rerenderOnEveryChange={false}
-                            submitFailed={true}
-                          >
-                            <renderSpelling
-                              fields={
-                                Object {
-                                  "_isFieldArray": true,
-                                  "forEach": [Function],
-                                  "get": [Function],
-                                  "getAll": [Function],
-                                  "insert": [Function],
-                                  "length": 0,
-                                  "map": [Function],
-                                  "move": [Function],
-                                  "name": "spelling",
-                                  "pop": [Function],
-                                  "push": [Function],
-                                  "reduce": [Function],
-                                  "remove": [Function],
-                                  "removeAll": [Function],
-                                  "shift": [Function],
-                                  "swap": [Function],
-                                  "unshift": [Function],
-                                }
-                              }
-                              meta={
-                                Object {
-                                  "dirty": false,
-                                  "error": undefined,
-                                  "form": "wordCreate",
-                                  "invalid": false,
-                                  "pristine": true,
-                                  "submitFailed": true,
-                                  "submitting": undefined,
-                                  "valid": true,
-                                  "warning": undefined,
-                                }
-                              }
-                            >
-                              <section
-                                className="spellingContainer"
-                              >
-                                <button
-                                  className="button"
-                                  onClick={[Function]}
-                                  type="button"
-                                >
-                                  +
-                                   Spelling
-                                </button>
-                              </section>
-                            </renderSpelling>
-                          </ConnectedFieldArray>
-                        </Connect(ConnectedFieldArray)>
-                      </FieldArray>
-                      <Field
-                        component={[Function]}
-                        label="Pronounciation"
-                        name="pronounciation"
-                        type="text"
-                      >
-                        <Connect(ConnectedField)
-                          _reduxForm={
-                            Object {
-                              "anyTouched": false,
-                              "array": Object {
-                                "insert": [Function],
-                                "move": [Function],
-                                "pop": [Function],
-                                "push": [Function],
-                                "remove": [Function],
-                                "removeAll": [Function],
-                                "shift": [Function],
-                                "splice": [Function],
-                                "swap": [Function],
-                                "unshift": [Function],
-                              },
-                              "arrayInsert": [Function],
-                              "arrayMove": [Function],
-                              "arrayPop": [Function],
-                              "arrayPush": [Function],
-                              "arrayRemove": [Function],
-                              "arrayRemoveAll": [Function],
-                              "arrayShift": [Function],
-                              "arraySplice": [Function],
-                              "arraySwap": [Function],
-                              "arrayUnshift": [Function],
-                              "asyncErrors": undefined,
-                              "asyncValidate": [Function],
-                              "asyncValidating": false,
-                              "autofill": [Function],
-                              "blur": [Function],
-                              "change": [Function],
-                              "clearAsyncError": [Function],
-                              "clearFields": [Function],
-                              "clearSubmit": [Function],
-                              "clearSubmitErrors": [Function],
-                              "destroy": [Function],
-                              "destroyOnUnmount": true,
-                              "dirty": false,
-                              "dispatch": [Function],
-                              "enableReinitialize": false,
-                              "error": undefined,
-                              "focus": [Function],
-                              "forceUnregisterOnUnmount": false,
-                              "form": "wordCreate",
-                              "getFormState": [Function],
-                              "getValues": [Function],
-                              "initialValues": undefined,
-                              "initialize": [Function],
-                              "initialized": false,
-                              "invalid": false,
-                              "keepDirtyOnReinitialize": true,
-                              "onSubmit": [Function],
-                              "persistentSubmitErrors": false,
-                              "pristine": true,
-                              "pure": true,
-                              "register": [Function],
-                              "registerField": [Function],
-                              "registerInnerOnSubmit": [Function],
-                              "registeredFields": undefined,
-                              "reset": [Function],
-                              "resetSection": [Function],
-                              "sectionPrefix": undefined,
-                              "setSubmitFailed": [Function],
-                              "setSubmitSucceeded": [Function],
-                              "shouldAsyncValidate": [Function],
-                              "shouldError": [Function],
-                              "shouldValidate": [Function],
-                              "shouldWarn": [Function],
-                              "startAsyncValidation": [Function],
-                              "startSubmit": [Function],
-                              "stopAsyncValidation": [Function],
-                              "stopSubmit": [Function],
-                              "submit": [Function],
-                              "submitFailed": false,
-                              "submitSucceeded": false,
-                              "submitting": false,
-                              "syncErrors": Object {},
-                              "syncWarnings": Object {},
-                              "touch": [Function],
-                              "touchOnBlur": true,
-                              "touchOnChange": false,
-                              "triggerSubmit": undefined,
-                              "unregister": [Function],
-                              "unregisterField": [Function],
-                              "untouch": [Function],
-                              "updateSyncErrors": [Function],
-                              "updateSyncWarnings": [Function],
-                              "updateUnregisteredFields": false,
-                              "valid": true,
-                              "validExceptSubmit": true,
-                              "values": Object {},
-                              "warning": undefined,
-                            }
-                          }
-                          component={[Function]}
-                          label="Pronounciation"
-                          name="pronounciation"
-                          normalize={[Function]}
-                          type="text"
-                        >
-                          <ConnectedField
-                            _reduxForm={
-                              Object {
-                                "anyTouched": false,
                                 "array": Object {
                                   "insert": [Function],
                                   "move": [Function],
@@ -2938,7 +3134,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "initialValues": undefined,
                                 "initialize": [Function],
                                 "initialized": false,
-                                "invalid": false,
+                                "invalid": true,
                                 "keepDirtyOnReinitialize": true,
                                 "onSubmit": [Function],
                                 "persistentSubmitErrors": false,
@@ -2947,7 +3143,38 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "register": [Function],
                                 "registerField": [Function],
                                 "registerInnerOnSubmit": [Function],
-                                "registeredFields": undefined,
+                                "registeredFields": Object {
+                                  "children": Object {
+                                    "count": 1,
+                                    "name": "children",
+                                    "type": "FieldArray",
+                                  },
+                                  "definition": Object {
+                                    "count": 1,
+                                    "name": "definition",
+                                    "type": "FieldArray",
+                                  },
+                                  "derivation": Object {
+                                    "count": 1,
+                                    "name": "derivation",
+                                    "type": "Field",
+                                  },
+                                  "pronounciation": Object {
+                                    "count": 1,
+                                    "name": "pronounciation",
+                                    "type": "Field",
+                                  },
+                                  "siblings": Object {
+                                    "count": 1,
+                                    "name": "siblings",
+                                    "type": "FieldArray",
+                                  },
+                                  "spelling": Object {
+                                    "count": 1,
+                                    "name": "spelling",
+                                    "type": "FieldArray",
+                                  },
+                                },
                                 "reset": [Function],
                                 "resetSection": [Function],
                                 "sectionPrefix": undefined,
@@ -2962,10 +3189,18 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "stopAsyncValidation": [Function],
                                 "stopSubmit": [Function],
                                 "submit": [Function],
-                                "submitFailed": false,
+                                "submitFailed": true,
                                 "submitSucceeded": false,
                                 "submitting": false,
-                                "syncErrors": Object {},
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
                                 "syncWarnings": Object {},
                                 "touch": [Function],
                                 "touchOnBlur": true,
@@ -2977,98 +3212,265 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "updateSyncErrors": [Function],
                                 "updateSyncWarnings": [Function],
                                 "updateUnregisteredFields": false,
-                                "valid": true,
-                                "validExceptSubmit": true,
+                                "valid": false,
+                                "validExceptSubmit": false,
                                 "values": Object {},
                                 "warning": undefined,
                               }
                             }
-                            asyncValidating={false}
+                            arrayInsert={[Function]}
+                            arrayMove={[Function]}
+                            arrayPop={[Function]}
+                            arrayPush={[Function]}
+                            arrayRemove={[Function]}
+                            arrayRemoveAll={[Function]}
+                            arrayShift={[Function]}
+                            arraySplice={[Function]}
+                            arraySwap={[Function]}
+                            arrayUnshift={[Function]}
                             component={[Function]}
                             dirty={false}
-                            dispatch={[Function]}
-                            label="Pronounciation"
-                            name="pronounciation"
-                            normalize={[Function]}
+                            length={0}
+                            name="spelling"
                             pristine={true}
-                            state={
-                              Object {
-                                "touched": true,
-                              }
-                            }
+                            rerenderOnEveryChange={false}
                             submitFailed={true}
-                            type="text"
+                            syncError="Required"
+                            validate={
+                              Array [
+                                [Function],
+                                [Function],
+                              ]
+                            }
                           >
-                            <renderInputField
-                              input={
+                            <renderSpelling
+                              fields={
                                 Object {
-                                  "name": "pronounciation",
-                                  "onBlur": [Function],
-                                  "onChange": [Function],
-                                  "onDragStart": [Function],
-                                  "onDrop": [Function],
-                                  "onFocus": [Function],
-                                  "value": "",
+                                  "_isFieldArray": true,
+                                  "forEach": [Function],
+                                  "get": [Function],
+                                  "getAll": [Function],
+                                  "insert": [Function],
+                                  "length": 0,
+                                  "map": [Function],
+                                  "move": [Function],
+                                  "name": "spelling",
+                                  "pop": [Function],
+                                  "push": [Function],
+                                  "reduce": [Function],
+                                  "remove": [Function],
+                                  "removeAll": [Function],
+                                  "shift": [Function],
+                                  "swap": [Function],
+                                  "unshift": [Function],
                                 }
                               }
-                              label="Pronounciation"
                               meta={
                                 Object {
-                                  "active": false,
-                                  "asyncValidating": false,
-                                  "autofilled": false,
                                   "dirty": false,
-                                  "dispatch": [Function],
-                                  "error": undefined,
+                                  "error": "Required",
                                   "form": "wordCreate",
-                                  "initial": undefined,
-                                  "invalid": false,
+                                  "invalid": true,
                                   "pristine": true,
                                   "submitFailed": true,
-                                  "submitting": false,
-                                  "touched": true,
-                                  "valid": true,
-                                  "visited": false,
+                                  "submitting": undefined,
+                                  "valid": false,
                                   "warning": undefined,
                                 }
                               }
-                              type="text"
                             >
-                              <div
-                                className="inputField"
+                              <section
+                                className="spellingContainer"
                               >
-                                <label>
-                                  Pronounciation
-                                </label>
-                                <div
-                                  className="inputFieldBody"
+                                <button
+                                  className="button"
+                                  onClick={[Function]}
+                                  title="Add Spelling"
+                                  type="button"
                                 >
-                                  <input
-                                    className="input"
-                                    name="pronounciation"
-                                    onBlur={[Function]}
-                                    onChange={[Function]}
-                                    onDragStart={[Function]}
-                                    onDrop={[Function]}
-                                    onFocus={[Function]}
-                                    placeholder="Pronounciation"
-                                    type="text"
-                                    value=""
-                                  />
-                                </div>
-                              </div>
-                            </renderInputField>
-                          </ConnectedField>
-                        </Connect(ConnectedField)>
-                      </Field>
-                      <section
-                        className="definition"
+                                  +
+                                   Spelling
+                                </button>
+                                <ErrorLine>
+                                  <section
+                                    className="errorLine undefined"
+                                  >
+                                    <LCDText>
+                                      <span
+                                        className="lcdText undefined"
+                                      >
+                                        Required
+                                        <span
+                                          className="cursor"
+                                        >
+                                           
+                                        </span>
+                                      </span>
+                                    </LCDText>
+                                  </section>
+                                </ErrorLine>
+                              </section>
+                            </renderSpelling>
+                          </ConnectedFieldArray>
+                        </Connect(ConnectedFieldArray)>
+                      </FieldArray>
+                      <Field
+                        component={[Function]}
+                        label="Pronounciation"
+                        name="pronounciation"
+                        type="text"
+                        validate={
+                          Array [
+                            [Function],
+                          ]
+                        }
                       >
-                        <FieldArray
+                        <Connect(ConnectedField)
+                          _reduxForm={
+                            Object {
+                              "anyTouched": true,
+                              "array": Object {
+                                "insert": [Function],
+                                "move": [Function],
+                                "pop": [Function],
+                                "push": [Function],
+                                "remove": [Function],
+                                "removeAll": [Function],
+                                "shift": [Function],
+                                "splice": [Function],
+                                "swap": [Function],
+                                "unshift": [Function],
+                              },
+                              "arrayInsert": [Function],
+                              "arrayMove": [Function],
+                              "arrayPop": [Function],
+                              "arrayPush": [Function],
+                              "arrayRemove": [Function],
+                              "arrayRemoveAll": [Function],
+                              "arrayShift": [Function],
+                              "arraySplice": [Function],
+                              "arraySwap": [Function],
+                              "arrayUnshift": [Function],
+                              "asyncErrors": undefined,
+                              "asyncValidate": [Function],
+                              "asyncValidating": false,
+                              "autofill": [Function],
+                              "blur": [Function],
+                              "change": [Function],
+                              "clearAsyncError": [Function],
+                              "clearFields": [Function],
+                              "clearSubmit": [Function],
+                              "clearSubmitErrors": [Function],
+                              "destroy": [Function],
+                              "destroyOnUnmount": true,
+                              "dirty": false,
+                              "dispatch": [Function],
+                              "enableReinitialize": false,
+                              "error": undefined,
+                              "focus": [Function],
+                              "forceUnregisterOnUnmount": false,
+                              "form": "wordCreate",
+                              "getFormState": [Function],
+                              "getValues": [Function],
+                              "initialValues": undefined,
+                              "initialize": [Function],
+                              "initialized": false,
+                              "invalid": true,
+                              "keepDirtyOnReinitialize": true,
+                              "onSubmit": [Function],
+                              "persistentSubmitErrors": false,
+                              "pristine": true,
+                              "pure": true,
+                              "register": [Function],
+                              "registerField": [Function],
+                              "registerInnerOnSubmit": [Function],
+                              "registeredFields": Object {
+                                "children": Object {
+                                  "count": 1,
+                                  "name": "children",
+                                  "type": "FieldArray",
+                                },
+                                "definition": Object {
+                                  "count": 1,
+                                  "name": "definition",
+                                  "type": "FieldArray",
+                                },
+                                "derivation": Object {
+                                  "count": 1,
+                                  "name": "derivation",
+                                  "type": "Field",
+                                },
+                                "pronounciation": Object {
+                                  "count": 1,
+                                  "name": "pronounciation",
+                                  "type": "Field",
+                                },
+                                "siblings": Object {
+                                  "count": 1,
+                                  "name": "siblings",
+                                  "type": "FieldArray",
+                                },
+                                "spelling": Object {
+                                  "count": 1,
+                                  "name": "spelling",
+                                  "type": "FieldArray",
+                                },
+                              },
+                              "reset": [Function],
+                              "resetSection": [Function],
+                              "sectionPrefix": undefined,
+                              "setSubmitFailed": [Function],
+                              "setSubmitSucceeded": [Function],
+                              "shouldAsyncValidate": [Function],
+                              "shouldError": [Function],
+                              "shouldValidate": [Function],
+                              "shouldWarn": [Function],
+                              "startAsyncValidation": [Function],
+                              "startSubmit": [Function],
+                              "stopAsyncValidation": [Function],
+                              "stopSubmit": [Function],
+                              "submit": [Function],
+                              "submitFailed": true,
+                              "submitSucceeded": false,
+                              "submitting": false,
+                              "syncErrors": Object {
+                                "definition": Object {
+                                  "_error": "Required",
+                                },
+                                "pronounciation": "Required",
+                                "spelling": Object {
+                                  "_error": "Required",
+                                },
+                              },
+                              "syncWarnings": Object {},
+                              "touch": [Function],
+                              "touchOnBlur": true,
+                              "touchOnChange": false,
+                              "triggerSubmit": undefined,
+                              "unregister": [Function],
+                              "unregisterField": [Function],
+                              "untouch": [Function],
+                              "updateSyncErrors": [Function],
+                              "updateSyncWarnings": [Function],
+                              "updateUnregisteredFields": false,
+                              "valid": false,
+                              "validExceptSubmit": false,
+                              "values": Object {},
+                              "warning": undefined,
+                            }
+                          }
                           component={[Function]}
-                          name="definition"
+                          label="Pronounciation"
+                          name="pronounciation"
+                          normalize={[Function]}
+                          type="text"
+                          validate={
+                            Array [
+                              [Function],
+                            ]
+                          }
                         >
-                          <Connect(ConnectedFieldArray)
+                          <ConnectedField
                             _reduxForm={
                               Object {
                                 "anyTouched": true,
@@ -3109,7 +3511,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "dirty": false,
                                 "dispatch": [Function],
                                 "enableReinitialize": false,
-                                "error": "Nothing Submitted!",
+                                "error": undefined,
                                 "focus": [Function],
                                 "forceUnregisterOnUnmount": false,
                                 "form": "wordCreate",
@@ -3176,7 +3578,15 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "submitFailed": true,
                                 "submitSucceeded": false,
                                 "submitting": false,
-                                "syncErrors": Object {},
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
                                 "syncWarnings": Object {},
                                 "touch": [Function],
                                 "touchOnBlur": true,
@@ -3189,13 +3599,268 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "updateSyncWarnings": [Function],
                                 "updateUnregisteredFields": false,
                                 "valid": false,
-                                "validExceptSubmit": true,
+                                "validExceptSubmit": false,
+                                "values": Object {},
+                                "warning": undefined,
+                              }
+                            }
+                            asyncValidating={false}
+                            component={[Function]}
+                            dirty={false}
+                            dispatch={[Function]}
+                            label="Pronounciation"
+                            name="pronounciation"
+                            normalize={[Function]}
+                            pristine={true}
+                            state={
+                              Object {
+                                "touched": true,
+                              }
+                            }
+                            submitFailed={true}
+                            syncError="Required"
+                            type="text"
+                            validate={
+                              Array [
+                                [Function],
+                              ]
+                            }
+                          >
+                            <renderInputField
+                              input={
+                                Object {
+                                  "name": "pronounciation",
+                                  "onBlur": [Function],
+                                  "onChange": [Function],
+                                  "onDragStart": [Function],
+                                  "onDrop": [Function],
+                                  "onFocus": [Function],
+                                  "value": "",
+                                }
+                              }
+                              label="Pronounciation"
+                              meta={
+                                Object {
+                                  "active": false,
+                                  "asyncValidating": false,
+                                  "autofilled": false,
+                                  "dirty": false,
+                                  "dispatch": [Function],
+                                  "error": "Required",
+                                  "form": "wordCreate",
+                                  "initial": undefined,
+                                  "invalid": true,
+                                  "pristine": true,
+                                  "submitFailed": true,
+                                  "submitting": false,
+                                  "touched": true,
+                                  "valid": false,
+                                  "visited": false,
+                                  "warning": undefined,
+                                }
+                              }
+                              type="text"
+                            >
+                              <div
+                                className="inputField"
+                              >
+                                <label>
+                                  Pronounciation
+                                </label>
+                                <div
+                                  className="inputFieldBody"
+                                >
+                                  <input
+                                    className="input"
+                                    name="pronounciation"
+                                    onBlur={[Function]}
+                                    onChange={[Function]}
+                                    onDragStart={[Function]}
+                                    onDrop={[Function]}
+                                    onFocus={[Function]}
+                                    placeholder="Pronounciation"
+                                    type="text"
+                                    value=""
+                                  />
+                                  <ErrorLine>
+                                    <section
+                                      className="errorLine undefined"
+                                    >
+                                      <LCDText>
+                                        <span
+                                          className="lcdText undefined"
+                                        >
+                                          Required
+                                          <span
+                                            className="cursor"
+                                          >
+                                             
+                                          </span>
+                                        </span>
+                                      </LCDText>
+                                    </section>
+                                  </ErrorLine>
+                                </div>
+                              </div>
+                            </renderInputField>
+                          </ConnectedField>
+                        </Connect(ConnectedField)>
+                      </Field>
+                      <section
+                        className="definition"
+                      >
+                        <FieldArray
+                          component={[Function]}
+                          name="definition"
+                          validate={
+                            Array [
+                              [Function],
+                              [Function],
+                            ]
+                          }
+                        >
+                          <Connect(ConnectedFieldArray)
+                            _reduxForm={
+                              Object {
+                                "anyTouched": true,
+                                "array": Object {
+                                  "insert": [Function],
+                                  "move": [Function],
+                                  "pop": [Function],
+                                  "push": [Function],
+                                  "remove": [Function],
+                                  "removeAll": [Function],
+                                  "shift": [Function],
+                                  "splice": [Function],
+                                  "swap": [Function],
+                                  "unshift": [Function],
+                                },
+                                "arrayInsert": [Function],
+                                "arrayMove": [Function],
+                                "arrayPop": [Function],
+                                "arrayPush": [Function],
+                                "arrayRemove": [Function],
+                                "arrayRemoveAll": [Function],
+                                "arrayShift": [Function],
+                                "arraySplice": [Function],
+                                "arraySwap": [Function],
+                                "arrayUnshift": [Function],
+                                "asyncErrors": undefined,
+                                "asyncValidate": [Function],
+                                "asyncValidating": false,
+                                "autofill": [Function],
+                                "blur": [Function],
+                                "change": [Function],
+                                "clearAsyncError": [Function],
+                                "clearFields": [Function],
+                                "clearSubmit": [Function],
+                                "clearSubmitErrors": [Function],
+                                "destroy": [Function],
+                                "destroyOnUnmount": true,
+                                "dirty": false,
+                                "dispatch": [Function],
+                                "enableReinitialize": false,
+                                "error": undefined,
+                                "focus": [Function],
+                                "forceUnregisterOnUnmount": false,
+                                "form": "wordCreate",
+                                "getFormState": [Function],
+                                "getValues": [Function],
+                                "initialValues": undefined,
+                                "initialize": [Function],
+                                "initialized": false,
+                                "invalid": true,
+                                "keepDirtyOnReinitialize": true,
+                                "onSubmit": [Function],
+                                "persistentSubmitErrors": false,
+                                "pristine": true,
+                                "pure": true,
+                                "register": [Function],
+                                "registerField": [Function],
+                                "registerInnerOnSubmit": [Function],
+                                "registeredFields": Object {
+                                  "children": Object {
+                                    "count": 1,
+                                    "name": "children",
+                                    "type": "FieldArray",
+                                  },
+                                  "definition": Object {
+                                    "count": 1,
+                                    "name": "definition",
+                                    "type": "FieldArray",
+                                  },
+                                  "derivation": Object {
+                                    "count": 1,
+                                    "name": "derivation",
+                                    "type": "Field",
+                                  },
+                                  "pronounciation": Object {
+                                    "count": 1,
+                                    "name": "pronounciation",
+                                    "type": "Field",
+                                  },
+                                  "siblings": Object {
+                                    "count": 1,
+                                    "name": "siblings",
+                                    "type": "FieldArray",
+                                  },
+                                  "spelling": Object {
+                                    "count": 1,
+                                    "name": "spelling",
+                                    "type": "FieldArray",
+                                  },
+                                },
+                                "reset": [Function],
+                                "resetSection": [Function],
+                                "sectionPrefix": undefined,
+                                "setSubmitFailed": [Function],
+                                "setSubmitSucceeded": [Function],
+                                "shouldAsyncValidate": [Function],
+                                "shouldError": [Function],
+                                "shouldValidate": [Function],
+                                "shouldWarn": [Function],
+                                "startAsyncValidation": [Function],
+                                "startSubmit": [Function],
+                                "stopAsyncValidation": [Function],
+                                "stopSubmit": [Function],
+                                "submit": [Function],
+                                "submitFailed": true,
+                                "submitSucceeded": false,
+                                "submitting": false,
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
+                                "syncWarnings": Object {},
+                                "touch": [Function],
+                                "touchOnBlur": true,
+                                "touchOnChange": false,
+                                "triggerSubmit": undefined,
+                                "unregister": [Function],
+                                "unregisterField": [Function],
+                                "untouch": [Function],
+                                "updateSyncErrors": [Function],
+                                "updateSyncWarnings": [Function],
+                                "updateUnregisteredFields": false,
+                                "valid": false,
+                                "validExceptSubmit": false,
                                 "values": Object {},
                                 "warning": undefined,
                               }
                             }
                             component={[Function]}
                             name="definition"
+                            validate={
+                              Array [
+                                [Function],
+                                [Function],
+                              ]
+                            }
                           >
                             <ConnectedFieldArray
                               _reduxForm={
@@ -3238,7 +3903,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                   "dirty": false,
                                   "dispatch": [Function],
                                   "enableReinitialize": false,
-                                  "error": "Nothing Submitted!",
+                                  "error": undefined,
                                   "focus": [Function],
                                   "forceUnregisterOnUnmount": false,
                                   "form": "wordCreate",
@@ -3305,7 +3970,15 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                   "submitFailed": true,
                                   "submitSucceeded": false,
                                   "submitting": false,
-                                  "syncErrors": Object {},
+                                  "syncErrors": Object {
+                                    "definition": Object {
+                                      "_error": "Required",
+                                    },
+                                    "pronounciation": "Required",
+                                    "spelling": Object {
+                                      "_error": "Required",
+                                    },
+                                  },
                                   "syncWarnings": Object {},
                                   "touch": [Function],
                                   "touchOnBlur": true,
@@ -3318,7 +3991,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                   "updateSyncWarnings": [Function],
                                   "updateUnregisteredFields": false,
                                   "valid": false,
-                                  "validExceptSubmit": true,
+                                  "validExceptSubmit": false,
                                   "values": Object {},
                                   "warning": undefined,
                                 }
@@ -3340,6 +4013,13 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               pristine={true}
                               rerenderOnEveryChange={false}
                               submitFailed={true}
+                              syncError="Required"
+                              validate={
+                                Array [
+                                  [Function],
+                                  [Function],
+                                ]
+                              }
                             >
                               <renderDefinition
                                 fields={
@@ -3366,13 +4046,13 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 meta={
                                   Object {
                                     "dirty": false,
-                                    "error": undefined,
+                                    "error": "Required",
                                     "form": "wordCreate",
-                                    "invalid": false,
+                                    "invalid": true,
                                     "pristine": true,
                                     "submitFailed": true,
                                     "submitting": undefined,
-                                    "valid": true,
+                                    "valid": false,
                                     "warning": undefined,
                                   }
                                 }
@@ -3389,6 +4069,24 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                     +
                                      Definition
                                   </button>
+                                  <ErrorLine>
+                                    <section
+                                      className="errorLine undefined"
+                                    >
+                                      <LCDText>
+                                        <span
+                                          className="lcdText undefined"
+                                        >
+                                          Required
+                                          <span
+                                            className="cursor"
+                                          >
+                                             
+                                          </span>
+                                        </span>
+                                      </LCDText>
+                                    </section>
+                                  </ErrorLine>
                                 </section>
                               </renderDefinition>
                             </ConnectedFieldArray>
@@ -3728,7 +4426,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "dirty": false,
                               "dispatch": [Function],
                               "enableReinitialize": false,
-                              "error": "Nothing Submitted!",
+                              "error": undefined,
                               "focus": [Function],
                               "forceUnregisterOnUnmount": false,
                               "form": "wordCreate",
@@ -3795,7 +4493,15 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "submitFailed": true,
                               "submitSucceeded": false,
                               "submitting": false,
-                              "syncErrors": Object {},
+                              "syncErrors": Object {
+                                "definition": Object {
+                                  "_error": "Required",
+                                },
+                                "pronounciation": "Required",
+                                "spelling": Object {
+                                  "_error": "Required",
+                                },
+                              },
                               "syncWarnings": Object {},
                               "touch": [Function],
                               "touchOnBlur": true,
@@ -3808,7 +4514,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                               "updateSyncWarnings": [Function],
                               "updateUnregisteredFields": false,
                               "valid": false,
-                              "validExceptSubmit": true,
+                              "validExceptSubmit": false,
                               "values": Object {},
                               "warning": undefined,
                             }
@@ -3857,7 +4563,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "dirty": false,
                                 "dispatch": [Function],
                                 "enableReinitialize": false,
-                                "error": "Nothing Submitted!",
+                                "error": undefined,
                                 "focus": [Function],
                                 "forceUnregisterOnUnmount": false,
                                 "form": "wordCreate",
@@ -3924,7 +4630,15 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "submitFailed": true,
                                 "submitSucceeded": false,
                                 "submitting": false,
-                                "syncErrors": Object {},
+                                "syncErrors": Object {
+                                  "definition": Object {
+                                    "_error": "Required",
+                                  },
+                                  "pronounciation": "Required",
+                                  "spelling": Object {
+                                    "_error": "Required",
+                                  },
+                                },
                                 "syncWarnings": Object {},
                                 "touch": [Function],
                                 "touchOnBlur": true,
@@ -3937,7 +4651,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                                 "updateSyncWarnings": [Function],
                                 "updateUnregisteredFields": false,
                                 "valid": false,
-                                "validExceptSubmit": true,
+                                "validExceptSubmit": false,
                                 "values": Object {},
                                 "warning": undefined,
                               }
@@ -4025,24 +4739,6 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
                     </section>
                   </article>
                 </WordTemplate>
-                <ErrorLine>
-                  <section
-                    className="errorLine undefined"
-                  >
-                    <LCDText>
-                      <span
-                        className="lcdText undefined"
-                      >
-                        Nothing Submitted!
-                        <span
-                          className="cursor"
-                        >
-                           
-                        </span>
-                      </span>
-                    </LCDText>
-                  </section>
-                </ErrorLine>
               </form>
             </WordCreateForm>
           </Form(WordCreateForm)>

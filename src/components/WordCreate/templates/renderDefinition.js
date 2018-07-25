@@ -4,6 +4,9 @@ import * as c from '../../../constants.js'
 import renderInputField from './renderInputField.js'
 import ErrorLine from './errorLine.js'
 import styles from './renderDefinition.css'
+import {
+  required
+} from './WordFieldLevelValidation.js'
 
 const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
   <section className={styles.definitionsContainer}>
@@ -27,7 +30,8 @@ const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
         <Field name={`${definitionObject}.text`}
           type="text"
           component={renderInputField}
-          label="Definition">
+          label="Definition"
+          validate={[required]}>
         </Field>
       </article>
     ))}

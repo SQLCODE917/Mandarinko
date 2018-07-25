@@ -5,8 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
+    "test:nocache": "jest --no-cache",
     "test:verbose": "jest --verbose",
-    "test:watch": "npm test -- --watch"
+    "test:debug": "jest --debug",
+    "test:watch": "npm test -- --watch",
+    "test:forceExit": "jest --forceExit"
   },
   "jest": {
     "roots": [

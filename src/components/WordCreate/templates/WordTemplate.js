@@ -7,6 +7,11 @@ import renderDefinition from './renderDefinition'
 import renderChild from './renderChild'
 import styles from './WordTemplate.css'
 
+import {
+  required,
+  atLeastOne
+} from './WordFieldLevelValidation.js'
+
 export default function WordTemplate () {
   return (
   <article className={styles.word}>
@@ -20,17 +25,20 @@ export default function WordTemplate () {
       <FieldArray
         name="spelling"
         component={renderSpelling}
+        validate={[required, atLeastOne]}
       />
       <Field
         name="pronounciation"
         component={renderInputField}
         type="text"
         label="Pronounciation"
+        validate={[required]}
       />
       <section className={styles.definition}>
         <FieldArray
           name="definition"
           component={renderDefinition}
+          validate={[required, atLeastOne]}
         />
       </section>
     </article>

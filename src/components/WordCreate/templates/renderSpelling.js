@@ -4,11 +4,15 @@ import * as c  from '../../../constants.js'
 import renderInputField from './renderInputField.js'
 import ErrorLine from './errorLine.js'
 import styles from './renderSpelling.css'
+import {
+  required
+} from './WordFieldLevelValidation.js'
 
 const renderSpelling = ({ fields, meta: { error, submitFailed } }) => (
   <section className={styles.spellingContainer}>
     <button className={styles.button}
       type="button"
+      title="Add Spelling"
       onClick={() => fields.push({
         language: "zh-Hant"
       })}>
@@ -29,6 +33,7 @@ const renderSpelling = ({ fields, meta: { error, submitFailed } }) => (
           type="text"
           component={renderInputField}
           label="Spelling"
+          validate={[required]}
         />
         <Field
           name={`${spellingObject}.language`}
