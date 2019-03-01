@@ -1,3 +1,4 @@
+import uuid from 'uuid'
 const vocabulary = require('../../../vocabulary.json')
 const top2kWords = require('../../../top2k.json')
 
@@ -5,7 +6,8 @@ export {
   words,
   top2k,
   wordById,
-  explodeWord
+  explodeWord,
+  save
 }
 
 function words () {
@@ -45,5 +47,7 @@ function deepResolveIDs (word, propertyName) {
 }
 
 function save (word) {
-  //assign new ID to this word object 
+  const id = uuid.v4()
+  console.debug("SAVING WORD", word, "as", id)
+  return id
 }

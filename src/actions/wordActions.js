@@ -43,24 +43,15 @@ export function getWords() {
 export function submitNewWord(word) {
   return dispatch => {
     dispatch(loading(true))
-    const siblings = word.siblings || [];
-    const children = word.children || [];
+    const siblings = word.siblings || []
+    const children = word.children || []
 
     const siblingIDs = siblings.map(save)
     const childrenIDs = children.map(save)
-    return Promise.all([
-      ...siblingIDs,
-      ...childrenIDs
-    ]).then(() => {
-      dispatch(loading(false))
-      return {
-        ...word,
-        sibllings: siblingIDs,
-        children: childrenIDs
-      }
-    }, firstError => {
-      dispatch(loading(false))
-      console.debug(firstError);
+    return save({
+      ...word,
+      sibllings: siblingIDs,
+      children: childrenIDs
     })
   }
 }

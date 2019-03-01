@@ -20,7 +20,13 @@ export class WordCreate extends Component {
   }
   
   submitWord (data) {
+    const {
+      actions: {
+        submitNewWord      
+      }
+    } = this.props;
     console.debug("SUBMITTED", data) 
+    submitNewWord(data)
   }
 
   render () {
