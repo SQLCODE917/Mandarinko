@@ -8,15 +8,26 @@ import * as actions from '../../actions/wordActions'
 
 export class WordCreate extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.submitWord = this.submitWord.bind(this);
+  }
+  
   componentDidMount() {
     const { actions } = this.props
     actions.getWords()
   }
   
+  submitWord (data) {
+    console.debug("SUBMITTED", data) 
+  }
+
   render () {
+    const Form = WordCreateForm({ onSubmit: this.submitWord });
     return (
       <section>
-        <WordCreateForm />
+        <Form />
         <WordSubmitButton />
       </section>
     )

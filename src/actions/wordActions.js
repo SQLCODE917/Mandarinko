@@ -4,7 +4,9 @@ import {
   words,
   top2k,
   wordById,
-  explodeWord } from '../modules/words/api'
+  explodeWord,
+  save
+} from '../modules/words/api'
 
 export function setTop2k(wordIds) {
   return { type: types.SET_TOP_2K, wordIds }
@@ -12,12 +14,8 @@ export function setTop2k(wordIds) {
 
 export function getTop2K() {
   return dispatch => {
-    dispatch(loading(true))
-    return top2k()
-      .then(({ words }) => {
-        dispatch(setTop2k(words))
-        dispatch(loading(false))
-      })
+    const { words } = top2k()
+    dispatch(setTop2k(words))
   }
 }
 
@@ -27,13 +25,8 @@ export function addWord(id, word) {
 
 export function getWord(id) {
   return dispatch => {
-    dispatch(loading(true))
-    return wordById(id)
-      .then((word) => explodeWord(word))
-      .then((word) => {
-        dispatch(addWord(id, word))
-        dispatch(loading(false))
-      })
+    const word = explodeWord(wordById(id))
+    dispatch(addWord(id, word))
   }
 }
 
@@ -43,11 +36,31 @@ export function addWords(words) {
 
 export function getWords() {
   return dispatch => {
+    dispatch(addWords(words()))
+  }
+}
+
+export function submitNewWord(word) {
+  return dispatch => {
     dispatch(loading(true))
-    return words()
-      .then((words) => {
-        dispatch(addWords(words))
-        dispatch(loading(false))
-      })
+    const siblings = word.siblings || [];
+    const children = word.children || [];
+
+    const siblingIDs = siblings.map(save)
+    const childrenIDs = children.map(save)
+    return Promise.all([
+      ...siblingIDs,
+      ...childrenIDs
+    ]).then(() => {
+      dispatch(loading(false))
+      return {
+        ...word,
+        sibllings: siblingIDs,
+        children: childrenIDs
+      }
+    }, firstError => {
+      dispatch(loading(false))
+      console.debug(firstError);
+    })
   }
 }

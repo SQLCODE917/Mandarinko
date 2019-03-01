@@ -1,19 +1,41 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import SpacedRepetition from './SpacedRepetition'
 
-export default function Top2k (TranscludedComponent) {
-  return class Top2k extends Component {
+import * as wordActions from '../actions/wordActions'
 
-    componentDidMount () {
-      this.props.actions.getTop2K()
-    }
+export class Top2k extends Component {
 
-    render () {
-      const finishedLoading = !this.props.loading &&
-        !!this.props.top2kWordIds
+  componentDidMount () {
+    this.props.actions.getTop2K()
+  }
 
-      return (finishedLoading)?
-        <TranscludedComponent {...this.props} /> :
-        <section>loading top 2k</section>
-    }
+  render () {
+    const {
+      loading,
+      top2kWordIds
+    } = this.props
+
+    const finishedLoading = !loading && !!top2kWordIds.length
+
+    return (finishedLoading)?
+      <SpacedRepetition/> :
+      <section>loading top 2k</section>
   }
 }
+
+function mapStateToProps({ top2kWordIds, words, loading}) {
+  return {
+    top2kWordIds,
+    loading
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(wordActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Top2k)

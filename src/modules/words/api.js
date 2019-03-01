@@ -1,3 +1,6 @@
+const vocabulary = require('../../../vocabulary.json')
+const top2kWords = require('../../../top2k.json')
+
 export {
   words,
   top2k,
@@ -6,65 +9,41 @@ export {
 }
 
 function words () {
-  return getJSON('/v0/words')
+  return vocabulary
 }
 
 function top2k () {
-  return getJSON('/v0/top2k')
+  return top2kWords 
 }
 
 function wordById (id) {
-  return getJSON(`/v0/word/${id}`)
+  return vocabulary[id]
 }
 
 // `explode` word Ids into full word objects, recursively
 function explodeWord (word) {
-  return Promise.all([
-      deepResolveIDs (word, 'siblings'),
-      deepResolveIDs (word, 'children')
-    ]).then((properties) => {
-      return properties.reduce((word, property) => {
-        return {
-          ...word,
-          ...property
-        }
-      }, word)
-    })
+  const siblings = deepResolveIDs (word, 'siblings')
+  const children = deepResolveIDs (word, 'children')
+  return {
+    ...word,
+    siblings,
+    children
+  }
 }
 
 function deepResolveIDs (word, propertyName) {
   const ids = word[propertyName]? [...word[propertyName]] : []
-  return Promise.all(ids.map((id) => {
-    return wordById(id)
-      .then((innerWord) => {
-        if (innerWord[propertyName]) {
-          return deepResolveIDs (innerWord, propertyName)
-            .then((innerProperties) => {
-              return {
-                ...innerWord,
-                ...innerProperties
-              }
-            })
-        } else {
-          return innerWord
-        }
-      })
-  })).then((propertyValue) => {
-    const wordFragment = {}
-    wordFragment[propertyName] = propertyValue
-    return wordFragment
+
+  return ids.map(id => {
+    const innerWord = wordById(id)
+    if (innerWord[propertyName]) {
+      const innerProperties = deepResolveIDs (innerWord, propertyName)
+      innerWord[propertyName] = innerProperties
+    }
+    return innerWord
   })
 }
 
-function getJSON (url) {
-  return fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw Error(response.statusText)
-      }
-      return response.json()
-    }).catch(e => {
-      console.log(`Error fetching ${url}`)
-      throw e
-    })
+function save (word) {
+  //assign new ID to this word object 
 }

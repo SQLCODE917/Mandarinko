@@ -2,8 +2,8 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Redirect, NavLink } from 'react-router-dom'
 
 import styles from './app.css'
-import SpacedRepetitionTop2k from './components/SpacedRepetitionTop2k'
 import { WordCreate } from './components/WordCreate'
+import Top2k from './components/Top2k'
 
 window.React = React
 
@@ -33,7 +33,7 @@ export const App = () => {
         </nav>
         <section>
           <Route path="/" exact render={() => <Redirect to="/top2k"/>}/>
-          <Route path="/top2k" component={SpacedRepetitionTop2k}/>
+          <Route path="/top2k" component={Top2k}/>
           <Route path="/word/new" component={WordCreate}/>
         </section>
       </article>

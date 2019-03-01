@@ -14,25 +14,40 @@ import Word from './Word'
 class SpacedRepetition extends Component {
 
   componentWillReceiveProps(nextProps) {
-    const { wordActions, words } = this.props
-    const { currentWordId } = nextProps
-    if (currentWordId !== void(0) && words && !words[currentWordId]) {
+    const {
+      wordActions,
+      words,
+      currentWordId
+    } = nextProps
+    // at first, we would only have a word ID, but no word
+    if (currentWordId !== void(0) && !words[currentWordId]) {
       wordActions.getWord(currentWordId)
     }
   }
 
   componentDidMount() {
-    const { top2kWordIds, currentWordId } = this.props
-    const { spacedRepetitionActions } = this.props
-    if(currentWordId === void(0) && top2kWordIds && top2kWordIds.length) {
-      spacedRepetitionActions.setCurrentWordId(top2kWordIds[0])
+    const {
+      top2kWordIds,
+      currentWordId,
+      spacedRepetitionActions: {
+        setCurrentWordId
+      }
+    } = this.props
+
+    if(currentWordId === void(0)) {
+      setCurrentWordId(top2kWordIds[0])
     }
   }
 
   render () {
-    const { currentWordId, words, loading } = this.props
-    const finishedLoading = (currentWordId !== void(0) && words && words[currentWordId])
-    debugger;
+    const {
+      words,
+      loading,
+      currentWordId
+    } = this.props
+    const finishedLoading =
+      (currentWordId !== void(0)) && words[currentWordId];
+
     if (!finishedLoading) {
       return <section>loading spaced repetition</section>
     } else {
@@ -48,15 +63,21 @@ class SpacedRepetition extends Component {
   }
 }
 
-function mapStateToProps({ words, loading }) {
-  return {
-    words,
-    loading
-  }
+SpacedRepetition.propTypes = {
+  top2kWordIds: PropTypes.array.isRequired,
+  words: PropTypes.object.isRequired
 }
 
-function mapStateToProps({spacedRepetition}) {
+function mapStateToProps({
+  top2kWordIds,
+  words,
+  loading,
+  spacedRepetition }) {
+
   return {
+    top2kWordIds,
+    words,
+    loading,
     ...spacedRepetition
   }
 }
