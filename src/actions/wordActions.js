@@ -41,17 +41,53 @@ export function getWords() {
 }
 
 export function submitNewWord(word) {
+  //minimize round trips to server, submit the whole thing
+  save(word)
+  /*
   return dispatch => {
     dispatch(loading(true))
+    const errorModel = {
+      siblings: [],
+      children: []
+    }
     const siblings = word.siblings || []
     const children = word.children || []
 
-    const siblingIDs = siblings.map(save)
-    const childrenIDs = children.map(save)
-    return save({
-      ...word,
-      sibllings: siblingIDs,
-      children: childrenIDs
+    const siblingIDs = []
+    try {
+      siblings.forEach((sibling, index) => {
+        try {
+          const siblingID = save(sibling)
+          siblingIDs[index] = siblingID
+        } catch (e) {
+          errorModel.siblings[index] = e
+          throw e
+        }
+      })
+    } catch (e) {
+      throw errorModel
+    }
+
+    const childrenIDs = []
+    children.forEach((child, index) => {
+      try {
+        const childID = save(child)
+        childrenIDs[index] = childID
+      } catch (e) {
+        errorModel.children[index] = e
+        throw errorModel
+      }
     })
-  }
+
+    try {
+      return save({
+        ...word,
+        sibllings: siblingIDs,
+        children: childrenIDs
+      })
+    } catch (e) {
+      errorModel.error = e
+      throw errorModel
+    }
+  }*/
 }

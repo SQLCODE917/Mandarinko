@@ -11,6 +11,7 @@
     "test:watch": "npm test -- --watch",
     "test:forceExit": "jest --forceExit"
   },
+  "proxy": "http://localhost:3000",
   "jest": {
     "roots": [
       "src"

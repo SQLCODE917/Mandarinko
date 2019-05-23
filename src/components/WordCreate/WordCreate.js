@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { SubmissionError } from 'redux-form'
 
 import WordCreateForm from './WordCreateForm'
 import WordSubmitButton from './WordSubmitButton'
@@ -25,8 +26,13 @@ export class WordCreate extends Component {
         submitNewWord      
       }
     } = this.props;
-    console.debug("SUBMITTED", data) 
-    submitNewWord(data)
+    console.debug("SUBMITTED", data)
+    try {
+      const newWordId = submitNewWord(data)
+      console.debug("SAVED", newWordId)
+    } catch (errorModel) {
+      console.debug("ERROR MODEL", errorModel) 
+    }
   }
 
   render () {

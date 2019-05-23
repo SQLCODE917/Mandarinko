@@ -1,7 +1,3 @@
-import uuid from 'uuid'
-const vocabulary = require('../../../vocabulary.json')
-const top2kWords = require('../../../top2k.json')
-
 export {
   words,
   top2k,
@@ -11,14 +7,15 @@ export {
 }
 
 function words () {
-  return vocabulary
+  return require('../../../vocabulary.json')
 }
 
 function top2k () {
-  return top2kWords 
+  return require('../../../top2k.json')
 }
 
 function wordById (id) {
+  const vocabulary = words()
   return vocabulary[id]
 }
 
@@ -47,7 +44,17 @@ function deepResolveIDs (word, propertyName) {
 }
 
 function save (word) {
-  const id = uuid.v4()
-  console.debug("SAVING WORD", word, "as", id)
-  return id
+  console.debug("SAVING WORD", word)
+  fetch( '/api/v0/word/new', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify( word )
+  }).then( id => {
+    console.log('WORD SAVED, ID', id)
+  }).catch( e => {
+    console.log('ERROR', e)
+  })
 }
