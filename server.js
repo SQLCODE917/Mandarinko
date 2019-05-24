@@ -1,7 +1,7 @@
 const Path = require( 'path' )
 
 const express = require( 'express' )
-const wordRouter = require( './wordRouter.js' )
+const wordRouter = require( './src/server/wordRouter.js' )
 const app = express()
 
 app.set( 'port', ( process.env.PORT || 3000 ))

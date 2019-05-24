@@ -5,7 +5,6 @@ import {
   top2k,
   wordById,
   explodeWord,
-  save
 } from '../modules/words/api'
 
 export function setTop2k(wordIds) {
@@ -36,58 +35,34 @@ export function addWords(words) {
 
 export function getWords() {
   return dispatch => {
-    dispatch(addWords(words()))
+    fetch( '/api/v0/words' ).then( vocabulary => {
+      dispatch(addWords(vocabulary))
+    })
   }
 }
 
 export function submitNewWord(word) {
   //minimize round trips to server, submit the whole thing
-  save(word)
-  /*
   return dispatch => {
-    dispatch(loading(true))
-    const errorModel = {
-      siblings: [],
-      children: []
-    }
-    const siblings = word.siblings || []
-    const children = word.children || []
-
-    const siblingIDs = []
-    try {
-      siblings.forEach((sibling, index) => {
-        try {
-          const siblingID = save(sibling)
-          siblingIDs[index] = siblingID
-        } catch (e) {
-          errorModel.siblings[index] = e
-          throw e
-        }
-      })
-    } catch (e) {
-      throw errorModel
-    }
-
-    const childrenIDs = []
-    children.forEach((child, index) => {
-      try {
-        const childID = save(child)
-        childrenIDs[index] = childID
-      } catch (e) {
-        errorModel.children[index] = e
-        throw errorModel
+    fetch( '/api/v0/word/new', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify( word )
+    }).then( response => {
+      const { ok, status } = response
+      if( ok && status === 201 ) {
+        response.json().then( id => {
+          console.debug('WORD SAVED', id)
+          dispatch( getWords() )
+        })
+      } else {
+        throw new Error( status )
       }
+    }).catch( e => {
+      console.debug('ERROR', e)
     })
-
-    try {
-      return save({
-        ...word,
-        sibllings: siblingIDs,
-        children: childrenIDs
-      })
-    } catch (e) {
-      errorModel.error = e
-      throw errorModel
-    }
-  }*/
+  }
 }

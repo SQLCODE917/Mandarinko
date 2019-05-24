@@ -3,7 +3,6 @@ export {
   top2k,
   wordById,
   explodeWord,
-  save
 }
 
 function words () {
@@ -40,21 +39,5 @@ function deepResolveIDs (word, propertyName) {
       innerWord[propertyName] = innerProperties
     }
     return innerWord
-  })
-}
-
-function save (word) {
-  console.debug("SAVING WORD", word)
-  fetch( '/api/v0/word/new', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify( word )
-  }).then( id => {
-    console.log('WORD SAVED, ID', id)
-  }).catch( e => {
-    console.log('ERROR', e)
   })
 }

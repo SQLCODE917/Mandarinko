@@ -30,8 +30,8 @@ export class WordCreate extends Component {
     try {
       const newWordId = submitNewWord(data)
       console.debug("SAVED", newWordId)
-    } catch (errorModel) {
-      console.debug("ERROR MODEL", errorModel) 
+    } catch (error) {
+      console.debug("ERROR", error) 
     }
   }
 

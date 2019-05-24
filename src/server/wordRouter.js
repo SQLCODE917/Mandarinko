@@ -1,10 +1,10 @@
 const FS = require( 'fs' )
 const Path = require( 'path' )
 const express = require( 'express' )
-const utils = require( './src/server/wordRouterUtils.js' )
+const utils = require( './wordRouterUtils.js' )
 
-const VOCABULARY_PATH = Path.join( __dirname, 'vocabulary.json' )
-const TOP2K_PATH = Path.join( __dirname, 'top2k.json' )
+const VOCABULARY_PATH = Path.join( __dirname, '..', '..', 'vocabulary.json' )
+const TOP2K_PATH = Path.join( __dirname, '..', '..', 'top2k.json' )
 
 const wordRouter = express.Router();
 wordRouter.use(express.json())
@@ -35,11 +35,12 @@ wordRouter.get( '/words/top2k', ( req, res ) => {
 // save a new word,
 // including siblings and children, recursively
 wordRouter.post( '/word/new', ( req, res ) => {
- utils.saveWord( req.body )
+ const save = utils.saveWord( req.body )
   .then( id => {
-    res.status( 201 ).send( id )
+    res.status( 201 ).send( { id } )
   })
-  .catch( err => {
+
+  save.catch( err => {
     res.status( 500 ).send( err.code )
   })
 })
