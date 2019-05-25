@@ -1,42 +1,61 @@
 import * as types from './actionTypes'
 import { loading } from './loadingActions'
-import {
-  words,
-  top2k,
-  wordById,
-  explodeWord,
-} from '../modules/words/api'
 
+export function addWords(words) {
+  return { type: types.ADD_WORDS, words }
+}
 export function setTop2k(wordIds) {
   return { type: types.SET_TOP_2K, wordIds }
-}
-
-export function getTop2K() {
-  return dispatch => {
-    const { words } = top2k()
-    dispatch(setTop2k(words))
-  }
 }
 
 export function addWord(id, word) {
   return { type: types.ADD_WORD, ...{id, word}}
 }
 
-export function getWord(id) {
+export function getTop2K() {
   return dispatch => {
-    const word = explodeWord(wordById(id))
-    dispatch(addWord(id, word))
+    fetch( '/api/v0/words/top2k' ).then( response => {
+      if( response.ok ) {
+        response.json().then( ({ words }) => {
+          dispatch( setTop2k( words ))
+        })
+      } else {
+        throw new Error( response.status )
+      }
+    }).catch( e => {
+      console.debug( 'ERROR', e )
+    })
   }
 }
 
-export function addWords(words) {
-  return { type: types.ADD_WORDS, words }
+export function getWord(id) {
+  return dispatch => {
+    fetch( `/api/v0/word/${id}` ).then( response => {
+      if( response.ok ) {
+        response.json().then( word => {
+          dispatch( addWord( id, word ))
+        })
+      } else {
+        throw new Error( response.status )
+      }
+    }).catch( e => {
+      console.debug( 'ERROR', e )
+    })
+  }
 }
 
 export function getWords() {
   return dispatch => {
-    fetch( '/api/v0/words' ).then( vocabulary => {
-      dispatch(addWords(vocabulary))
+    fetch( '/api/v0/words' ).then( response => {
+      if( response.ok ) {
+        response.json().then( vocabulary => {
+          dispatch(addWords(vocabulary))
+        })
+      } else {
+        throw new Error (response.status)
+      }
+    }).catch( e => {
+      console.debug( 'ERROR', e )
     })
   }
 }

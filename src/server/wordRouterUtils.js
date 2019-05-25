@@ -60,9 +60,40 @@ function writeFile( path, data, encoding='utf8' ) {
   })
 }
 
+function wordById( id, vocabulary ) {
+  const word = vocabulary[id]
+  return explodeWord( word, vocabulary )
+}
+
+// `explode` word Ids into full word objects, recursively
+function explodeWord( word, vocabulary ) {
+  const siblings = deepResolveIDs( word, 'siblings', vocabulary )
+  const children = deepResolveIDs( word, 'children', vocabulary )
+  return {
+    ...word,
+    siblings,
+    children
+  }
+}
+
+function deepResolveIDs( word, propertyName, vocabulary ) {
+  const ids = word[propertyName]? [...word[propertyName]] : []
+
+  return ids.map(id => {
+    const innerWord = vocabulary[id]
+    if (innerWord[propertyName]) {
+      const innerProperties = deepResolveIDs (innerWord, propertyName, vocabulary)
+      innerWord[propertyName] = innerProperties
+    }
+    return innerWord
+  })
+}
 module.exports = {
   saveWord,
   saveWordComponents,
   readFile,
-  writeFile
+  writeFile,
+  wordById,
+  explodeWord,
+  deepResolveIDs
 }

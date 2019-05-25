@@ -16,6 +16,7 @@ wordRouter.get( '/words', ( req, res ) => {
       res.status( 200 ).send( jsonString )
     })
     .catch( err => {
+      console.log( err )
       res.status( 500 ).send( err.code )
     })
 })
@@ -27,6 +28,7 @@ wordRouter.get( '/words/top2k', ( req, res ) => {
       res.status( 200 ).send( jsonString )
     })
     .catch( err => {
+      console.log( err )
       res.status( 500 ).send( err.code )
     })
 })
@@ -35,12 +37,28 @@ wordRouter.get( '/words/top2k', ( req, res ) => {
 // save a new word,
 // including siblings and children, recursively
 wordRouter.post( '/word/new', ( req, res ) => {
- const save = utils.saveWord( req.body )
-  .then( id => {
-    res.status( 201 ).send( { id } )
-  })
+  const save = utils.saveWord( req.body )
+    .then( id => {
+      res.status( 201 ).send( { id } )
+    })
 
   save.catch( err => {
+    console.log( err )
+    res.status( 500 ).send( err.code )
+  })
+})
+
+wordRouter.get( '/word/:id', ( req, res ) => {
+  const { id } = req.params
+  const read = utils.readFile( VOCABULARY_PATH )
+    .then( jsonString => {
+      const vocabulary = JSON.parse( jsonString )
+      const word = utils.wordById( id, vocabulary )
+      res.status( 200 ).send( word )
+    })
+
+  read.catch( err => {
+    console.log( err )
     res.status( 500 ).send( err.code )
   })
 })
