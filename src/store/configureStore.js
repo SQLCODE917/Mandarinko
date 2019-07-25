@@ -1,20 +1,19 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
 
 import reducers from '../reducers'
-import initialState from './initialState'
 
 const configureStore = () => {
-  const notProd = process.env.NODE_ENV !== 'production' && window.devToolsExtension
+  const middlewares = [thunk];
+  if( process.env.NODE_ENV !== 'production' ) {
+    middlewares.push( createLogger () )
+  }
 
   return createStore(
     reducers,
-    initialState,
-    // Apply thunk middleware and add support for Redux dev tools in Google Chrome
-    notProd ?
-      compose(applyMiddleware(thunk), window.devToolsExtension()) :
-      applyMiddleware(thunk)
-
+    { },
+    applyMiddleware( ...middlewares )
   )
 }
 

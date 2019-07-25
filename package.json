@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "hanzi": "^2.1.0",
     "react": "^16.2.0",
     "react-autosuggest": "^9.3.4",
     "react-dom": "^16.2.0",
@@ -66,6 +65,7 @@
     "postcss-loader": "^2.1.5",
     "postcss-url": "^7.3.2",
     "redux-devtools": "^3.4.1",
+    "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.1",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0"

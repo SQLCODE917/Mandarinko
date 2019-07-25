@@ -1,15 +1,15 @@
 import reducer from './wordsReducer'
-import initialState from '../store/initialState'
+import { INITIAL_STATE } from '../reducers/wordsReducer'
 import * as wordActions from '../actions/wordActions'
 
 describe('Words Reducer', () => {
   it('should return the initial state', () => {
-    expect(reducer(void(0), {})).toEqual(initialState.words)
+    expect(reducer(void(0), {})).toEqual(INITIAL_STATE)
   })
 
   it('should handle ADD_WORD', () => {
     const addWord = wordActions.addWord('0', 'word')
-    const expectedState = { '0': 'word' }
+    const expectedState = { words: { '0': 'word' } }
     expect(reducer({}, addWord)).toEqual(expectedState)
   })
 

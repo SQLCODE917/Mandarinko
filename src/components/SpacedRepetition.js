@@ -5,8 +5,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import * as wordActions from '../actions/wordActions'
-import * as spacedRepetitionActions from '../actions/spacedRepetitionActions'
-import * as loadingActions from '../actions/loadingActions'
 
 import SpacedRepetitionSurvey from './SpacedRepetitionSurvey'
 import Word from './Word'
@@ -29,7 +27,7 @@ class SpacedRepetition extends Component {
     const {
       top2kWordIds,
       currentWordId,
-      spacedRepetitionActions: {
+      wordActions: {
         setCurrentWordId
       }
     } = this.props
@@ -42,7 +40,6 @@ class SpacedRepetition extends Component {
   render () {
     const {
       words,
-      loading,
       currentWordId
     } = this.props
     const finishedLoading =
@@ -65,28 +62,22 @@ class SpacedRepetition extends Component {
 
 SpacedRepetition.propTypes = {
   top2kWordIds: PropTypes.array.isRequired,
-  words: PropTypes.object.isRequired
+  currentWordId: PropTypes.string,
+  words: PropTypes.object
 }
 
-function mapStateToProps({
-  top2kWordIds,
-  words,
-  loading,
-  spacedRepetition }) {
+function mapStateToProps({ words }) {
 
   return {
-    top2kWordIds,
-    words,
-    loading,
-    ...spacedRepetition
+    words: words.words,
+    top2kWordIds: words.spacedRepetition.top2kWordIds,
+    currentWordId: words.spacedRepetition.currentWordId
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadingActions: bindActionCreators(loadingActions, dispatch),
-    wordActions: bindActionCreators(wordActions, dispatch),
-    spacedRepetitionActions: bindActionCreators(spacedRepetitionActions, dispatch)
+    wordActions: bindActionCreators(wordActions, dispatch)
   }
 }
 

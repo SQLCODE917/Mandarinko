@@ -1,5 +1,4 @@
 import * as types from './actionTypes'
-import { loading } from './loadingActions'
 
 export function addWords(words) {
   return { type: types.ADD_WORDS, words }
@@ -12,51 +11,60 @@ export function addWord(id, word) {
   return { type: types.ADD_WORD, ...{id, word}}
 }
 
-export function getTop2K() {
-  return dispatch => {
-    fetch( '/api/v0/words/top2k' ).then( response => {
-      if( response.ok ) {
-        response.json().then( ({ words }) => {
-          dispatch( setTop2k( words ))
-        })
-      } else {
-        throw new Error( response.status )
-      }
-    }).catch( e => {
-      console.debug( 'ERROR', e )
-    })
+export function setCurrentWordId(id) {
+  return { type: types.SET_CURRENT_WORD_ID, id }
+}
+
+export function setLoading( status ) {
+  return { type: types.LOADING, status }
+}
+
+export function setError( error ) {
+  return { type: types.ERROR, error }
+}
+
+export const getTop2K = () => async dispatch => {
+  try {
+    const resp = await fetch( '/api/v0/words/top2k' )
+
+    if( !resp.ok ) {
+      throw new Error( resp.statusText )
+    }
+
+    const words = await resp.json()
+    dispatch( setTop2k( words ))
+  } catch( error ) {
+    dispatch( setError( error ))
   }
 }
 
-export function getWord(id) {
-  return dispatch => {
-    fetch( `/api/v0/word/${id}` ).then( response => {
-      if( response.ok ) {
-        response.json().then( word => {
-          dispatch( addWord( id, word ))
-        })
-      } else {
-        throw new Error( response.status )
-      }
-    }).catch( e => {
-      console.debug( 'ERROR', e )
-    })
+export const getWord = ( id ) => async dispatch => {
+  try {
+    const resp = await fetch( `/api/v0/word/${id}` )
+    
+    if( !resp.ok ) {
+      throw new Error( resp.statusText )
+    }
+    
+    const word = await resp.json()
+    dispatch( addWord( id, word ))
+  } catch( error ) {
+    dispatch( setError( error ))
   }
 }
 
-export function getWords() {
-  return dispatch => {
-    fetch( '/api/v0/words' ).then( response => {
-      if( response.ok ) {
-        response.json().then( vocabulary => {
-          dispatch(addWords(vocabulary))
-        })
-      } else {
-        throw new Error (response.status)
-      }
-    }).catch( e => {
-      console.debug( 'ERROR', e )
-    })
+export const getWords = () => async dispatch => {
+  try {
+    const resp = await fetch( '/api/v0/words' )
+
+    if( !resp.ok ) {
+      throw new Error( resp.statusText )
+    }
+
+    const vocabulary = await resp.json()
+    dispatch( addWords( vocabulary ))
+  } catch( error ) {
+    dispatch( setError( error ))
   }
 }
 

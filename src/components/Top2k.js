@@ -13,22 +13,25 @@ export class Top2k extends Component {
 
   render () {
     const {
-      loading,
       top2kWordIds
     } = this.props
 
-    const finishedLoading = !loading && !!top2kWordIds.length
+    const finishedLoading = top2kWordIds && !!top2kWordIds.length
 
+    console.log("top2K finished loading?", finishedLoading, top2kWordIds);
     return (finishedLoading)?
       <SpacedRepetition/> :
       <section>loading top 2k</section>
   }
 }
 
-function mapStateToProps({ top2kWordIds, words, loading}) {
+function mapStateToProps({
+  words: {
+    top2kWordIds
+  }
+}) {
   return {
-    top2kWordIds,
-    loading
+    top2kWordIds
   }
 }
 

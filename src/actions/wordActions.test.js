@@ -3,14 +3,12 @@ import thunk from 'redux-thunk'
 import fetchMock from 'fetch-mock'
 
 import * as actions from './wordActions'
-import * as loadingActions from './loadingActions'
 import * as types from './actionTypes' 
 
 const vocabulary = require('../../vocabulary.json')
 const top2k = require('../../top2k.json')
 
-const middlewares = [thunk]
-const mockStore = configureMockStore(middlewares)
+const mockStore = configureMockStore([thunk])
 
 describe('Word Actions', () => {
   it('should create an action to set Top2k ids', () => {
@@ -34,62 +32,51 @@ describe('Word Actions', () => {
 })
 
 describe('Async Word Actions', () => {
+  let store;
+
   beforeEach(() => {
-    fetchMock.reset()
+    store = mockStore( {} )
+  });
+
+  afterEach(() => {
     fetchMock.restore()
+    store.clearActions()
   })
 
-  it('gets a word by ID', () => {
-    [0,1,2,3,4,5].forEach((id) => {
-      fetchMock.once(`/v0/word/${id}`, vocabulary[id])
-    })
-
-    const store = mockStore({})
-
+  it('gets a word by ID', async () => {
     const testWord = require('../../testdata/testWord.json')
+    fetchMock.once('/api/v0/word/0', testWord)
+
     const expectedActions = [
-      loadingActions.loading(true),
-      actions.addWord(0, testWord),
-      loadingActions.loading(false)
+      actions.addWord( 0, testWord ),
     ]
 
-    return store.dispatch(actions.getWord(0))
-      .then(() => {
-        expect(store.getActions()).toEqual(expectedActions)
-      })
+    await store.dispatch( actions.getWord( 0 ))
+    const actual = store.getActions()
+    expect( actual ).toEqual( expectedActions )
   })
 
-  it('gets a list of top 2k word ids', () => {
-    fetchMock.once('/v0/top2k', top2k)
-
-    const store = mockStore({})
+  it('gets a list of top 2k word ids', async () => {
+    fetchMock.once( '/api/v0/words/top2k', top2k )
 
     const expectedActions = [
-      loadingActions.loading(true),
-      actions.setTop2k([0]),
-      loadingActions.loading(false)
+      actions.setTop2k( top2k ),
     ]
 
-    return store.dispatch(actions.getTop2K())
-      .then(() => {
-        expect(store.getActions()).toEqual(expectedActions)
-      })
+    await store.dispatch( actions.getTop2K() )
+    const actual = store.getActions()
+    expect( actual ).toEqual( expectedActions )
   })
 
-  it('gets the entire vocabulary', () => {
-    fetchMock.once('/v0/words', vocabulary)
-
-    const store = mockStore({})
+  it('gets the entire vocabulary', async () => {
+    fetchMock.once( '/api/v0/words', vocabulary )
 
     const expectedActions = [
-      loadingActions.loading(true),
-      actions.addWords(vocabulary),
-      loadingActions.loading(false)
+      actions.addWords( vocabulary )
     ]
 
-    return store.dispatch(actions.getWords())
-      .then(() => {
-        expect(store.getActions()).toEqual(expectedActions)
-      })
+    await  store.dispatch(actions.getWords())
+    const actual = store.getActions()
+    expect( actual ).toEqual( expectedActions )
   })
 })

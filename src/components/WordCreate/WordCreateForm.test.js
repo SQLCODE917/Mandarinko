@@ -16,7 +16,7 @@ import {
 } from 'redux-form'
 import { mount } from 'enzyme'
 
-import { WordCreateForm } from './WordCreateForm.js'
+import WordCreateForm from './WordCreateForm.js'
 import WordSubmitButton from './WordSubmitButton.js'
 
 const testWord = require('../../../testdata/testWord.json')
@@ -65,11 +65,7 @@ function reduxStore(initialState = {}) {
 }
 
 function enzymeWrapper(store, onSubmit) {
-  const Form = reduxForm({
-    form: 'wordCreate',
-    onSubmit,
-    onSubmitFail: (errors) => { console.log("ERRORS submitting: ", errors) }
-  })(WordCreateForm)
+  const Form = WordCreateForm({onSubmit});
 
   return mount(
     <Provider store={store}>

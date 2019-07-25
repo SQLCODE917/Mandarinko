@@ -20,9 +20,8 @@ exports[`WordCreateForm should render a word object 1`] = `
         forceUnregisterOnUnmount={false}
         form="wordCreate"
         getFormState={[Function]}
-        keepDirtyOnReinitialize={false}
+        keepDirtyOnReinitialize={true}
         onSubmit={[MockFunction]}
-        onSubmitFail={[Function]}
         persistentSubmitErrors={false}
         pure={true}
         shouldAsyncValidate={[Function]}
@@ -79,9 +78,8 @@ exports[`WordCreateForm should render a word object 1`] = `
           initialize={[Function]}
           initialized={false}
           invalid={false}
-          keepDirtyOnReinitialize={false}
+          keepDirtyOnReinitialize={true}
           onSubmit={[MockFunction]}
-          onSubmitFail={[Function]}
           persistentSubmitErrors={false}
           pristine={false}
           pure={true}
@@ -214,7 +212,6 @@ exports[`WordCreateForm should render a word object 1`] = `
             initialized={false}
             invalid={false}
             onSubmit={[MockFunction]}
-            onSubmitFail={[Function]}
             pristine={false}
             pure={true}
             reset={[Function]}
@@ -293,9 +290,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                             "initialize": [Function],
                             "initialized": false,
                             "invalid": false,
-                            "keepDirtyOnReinitialize": false,
+                            "keepDirtyOnReinitialize": true,
                             "onSubmit": [MockFunction],
-                            "onSubmitFail": [Function],
                             "persistentSubmitErrors": false,
                             "pristine": false,
                             "pure": true,
@@ -451,9 +447,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [MockFunction],
-                              "onSubmitFail": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": false,
                               "pure": true,
@@ -699,9 +694,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                             "initialize": [Function],
                             "initialized": false,
                             "invalid": false,
-                            "keepDirtyOnReinitialize": false,
+                            "keepDirtyOnReinitialize": true,
                             "onSubmit": [MockFunction],
-                            "onSubmitFail": [Function],
                             "persistentSubmitErrors": false,
                             "pristine": false,
                             "pure": true,
@@ -863,9 +857,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [MockFunction],
-                              "onSubmitFail": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": false,
                               "pure": true,
@@ -1120,9 +1113,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                                         "initialize": [Function],
                                         "initialized": false,
                                         "invalid": false,
-                                        "keepDirtyOnReinitialize": false,
+                                        "keepDirtyOnReinitialize": true,
                                         "onSubmit": [MockFunction],
-                                        "onSubmitFail": [Function],
                                         "persistentSubmitErrors": false,
                                         "pristine": false,
                                         "pure": true,
@@ -1286,9 +1278,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                                           "initialize": [Function],
                                           "initialized": false,
                                           "invalid": false,
-                                          "keepDirtyOnReinitialize": false,
+                                          "keepDirtyOnReinitialize": true,
                                           "onSubmit": [MockFunction],
-                                          "onSubmitFail": [Function],
                                           "persistentSubmitErrors": false,
                                           "pristine": false,
                                           "pure": true,
@@ -1523,9 +1514,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                                         "initialize": [Function],
                                         "initialized": false,
                                         "invalid": false,
-                                        "keepDirtyOnReinitialize": false,
+                                        "keepDirtyOnReinitialize": true,
                                         "onSubmit": [MockFunction],
-                                        "onSubmitFail": [Function],
                                         "persistentSubmitErrors": false,
                                         "pristine": false,
                                         "pure": true,
@@ -1682,9 +1672,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                                           "initialize": [Function],
                                           "initialized": false,
                                           "invalid": false,
-                                          "keepDirtyOnReinitialize": false,
+                                          "keepDirtyOnReinitialize": true,
                                           "onSubmit": [MockFunction],
-                                          "onSubmitFail": [Function],
                                           "persistentSubmitErrors": false,
                                           "pristine": false,
                                           "pure": true,
@@ -1891,9 +1880,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                             "initialize": [Function],
                             "initialized": false,
                             "invalid": false,
-                            "keepDirtyOnReinitialize": false,
+                            "keepDirtyOnReinitialize": true,
                             "onSubmit": [MockFunction],
-                            "onSubmitFail": [Function],
                             "persistentSubmitErrors": false,
                             "pristine": false,
                             "pure": true,
@@ -2057,9 +2045,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [MockFunction],
-                              "onSubmitFail": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": false,
                               "pure": true,
@@ -2303,9 +2290,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [MockFunction],
-                              "onSubmitFail": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": false,
                               "pure": true,
@@ -2467,9 +2453,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                                 "initialize": [Function],
                                 "initialized": false,
                                 "invalid": false,
-                                "keepDirtyOnReinitialize": false,
+                                "keepDirtyOnReinitialize": true,
                                 "onSubmit": [MockFunction],
-                                "onSubmitFail": [Function],
                                 "persistentSubmitErrors": false,
                                 "pristine": false,
                                 "pure": true,
@@ -2723,9 +2708,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                                           "initialize": [Function],
                                           "initialized": false,
                                           "invalid": false,
-                                          "keepDirtyOnReinitialize": false,
+                                          "keepDirtyOnReinitialize": true,
                                           "onSubmit": [MockFunction],
-                                          "onSubmitFail": [Function],
                                           "persistentSubmitErrors": false,
                                           "pristine": false,
                                           "pure": true,
@@ -2889,9 +2873,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                                             "initialize": [Function],
                                             "initialized": false,
                                             "invalid": false,
-                                            "keepDirtyOnReinitialize": false,
+                                            "keepDirtyOnReinitialize": true,
                                             "onSubmit": [MockFunction],
-                                            "onSubmitFail": [Function],
                                             "persistentSubmitErrors": false,
                                             "pristine": false,
                                             "pure": true,
@@ -3139,9 +3122,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                             "initialize": [Function],
                             "initialized": false,
                             "invalid": false,
-                            "keepDirtyOnReinitialize": false,
+                            "keepDirtyOnReinitialize": true,
                             "onSubmit": [MockFunction],
-                            "onSubmitFail": [Function],
                             "persistentSubmitErrors": false,
                             "pristine": true,
                             "pure": true,
@@ -3241,9 +3223,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [MockFunction],
-                              "onSubmitFail": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": true,
                               "pure": true,
@@ -3417,9 +3398,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                             "initialize": [Function],
                             "initialized": false,
                             "invalid": false,
-                            "keepDirtyOnReinitialize": false,
+                            "keepDirtyOnReinitialize": true,
                             "onSubmit": [MockFunction],
-                            "onSubmitFail": [Function],
                             "persistentSubmitErrors": false,
                             "pristine": false,
                             "pure": true,
@@ -3575,9 +3555,8 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "initialize": [Function],
                               "initialized": false,
                               "invalid": false,
-                              "keepDirtyOnReinitialize": false,
+                              "keepDirtyOnReinitialize": true,
                               "onSubmit": [MockFunction],
-                              "onSubmitFail": [Function],
                               "persistentSubmitErrors": false,
                               "pristine": false,
                               "pure": true,

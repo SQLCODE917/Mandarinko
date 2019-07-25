@@ -11,13 +11,13 @@ import {
 
 export class AutosuggestByDefinition extends Component {
   render() {
-    const { allWords } = this.props
+    const { words } = this.props
     const fieldProps = {
       name: 'id',
       type: 'text',
       placeholder: 'Search by definition',
       component: renderAutosuggestField,
-      getSuggestions: getSuggestions(allWords),
+      getSuggestions: getSuggestions(words),
       renderSuggestion: renderSuggestion,
       getSuggestionValue: getSuggestionValue
     }
@@ -28,13 +28,12 @@ export class AutosuggestByDefinition extends Component {
 }
 
 AutosuggestByDefinition.propTypes = {
-  allWords: PropTypes.object
+  words: PropTypes.object
 }
 
 function mapStateToProps({ words }) {
-  const { allWords } = words
   return {
-    allWords
+    words: words.words
   }
 }
 

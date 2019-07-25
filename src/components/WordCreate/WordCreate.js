@@ -47,9 +47,8 @@ export class WordCreate extends Component {
 }
 
 function mapStateToProps({ words }) {
-  const { allWords } = words
   return {
-    allWords
+    words: words.words
   }
 }
 
