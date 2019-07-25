@@ -8,7 +8,6 @@ import WordSubmitButton from './WordSubmitButton'
 import * as actions from '../../actions/wordActions'
 
 export class WordCreate extends Component {
-
   constructor(props) {
     super(props);
 
@@ -27,12 +26,8 @@ export class WordCreate extends Component {
       }
     } = this.props;
     console.debug("SUBMITTED", data)
-    try {
-      const newWordId = submitNewWord(data)
-      console.debug("SAVED", newWordId)
-    } catch (error) {
-      console.debug("ERROR", error) 
-    }
+    const newWordId = submitNewWord(data)
+    console.debug("SAVED", newWordId)
   }
 
   render () {
@@ -46,12 +41,14 @@ export class WordCreate extends Component {
   }
 }
 
+/* istanbul ignore next */
 function mapStateToProps({ words }) {
   return {
     words: words.words
   }
 }
 
+/* istanbul ignore next */
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(actions, dispatch)

@@ -22,25 +22,39 @@ describe('WordCreate', () => {
 
   describe('on a clean slate', () => {
     beforeEach(() => {
-      const initialState = {}
       actions = {
-        getWords: jest.fn() 
+        getWords: jest.fn(),
+        submitNewWord: jest.fn()
       }
       const props = {
         actions
       }
-      store = reduxStore(initialState)
+      store = reduxStore( {} )
       subscriptionSpy = jest.fn()
-      store.subscribe(subscriptionSpy)
-      wrapper = enzymeWrapper(store, props) 
+      store.subscribe( subscriptionSpy )
+      wrapper = enzymeWrapper( store, props ) 
+    })
+
+    afterEach(() => {
+      actions.getWords.mockClear()
+      actions.submitNewWord.mockClear()
+      subscriptionSpy.mockClear()
     })
 
     it('mounts', () => {
-      expect(wrapper).toMatchSnapshot()
+      expect( wrapper ).toMatchSnapshot()
     })
 
     it('requests all the words', () => {
-      expect(actions.getWords.mock.calls.length).toBe(1)
+      expect( actions.getWords ).toHaveBeenCalledTimes( 1 )
+    })
+
+    it('submits a new word to the dictionary', () => {
+      const form = wrapper.find( WordCreate )
+      const instance = form.instance()
+      const data = { hello: 'word' }
+      instance.submitWord( data )
+      expect( actions.submitNewWord ).toHaveBeenCalledWith( data )
     })
 
     it('triggers the error state on empty form submit', () => {

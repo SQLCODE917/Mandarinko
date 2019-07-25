@@ -68,28 +68,28 @@ export const getWords = () => async dispatch => {
   }
 }
 
-export function submitNewWord(word) {
+export const submitNewWord = word => async dispatch => {
   //minimize round trips to server, submit the whole thing
-  return dispatch => {
-    fetch( '/api/v0/word/new', {
+  try {
+    const resp = await fetch( '/api/v0/word/new', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify( word )
-    }).then( response => {
-      const { ok, status } = response
-      if( ok && status === 201 ) {
-        response.json().then( id => {
-          console.debug('WORD SAVED', id)
-          dispatch( getWords() )
-        })
-      } else {
-        throw new Error( status )
-      }
-    }).catch( e => {
-      console.debug('ERROR', e)
     })
+
+    const { ok, status } = resp
+    if( ok && status === 201 ) {
+      const { id } = await resp.json()
+      console.debug('WORD SAVED', id)
+      dispatch( getWords() )
+      return id
+    } else {
+      throw new Error( resp.statusText )
+    }
+  } catch( error ) {
+    dispatch( setError( error ))
   }
 }

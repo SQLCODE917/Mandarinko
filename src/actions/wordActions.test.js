@@ -7,6 +7,7 @@ import * as types from './actionTypes'
 
 const vocabulary = require('../../vocabulary.json')
 const top2k = require('../../top2k.json')
+const testWord = require('../../testdata/testWord.json')
 
 const mockStore = configureMockStore([thunk])
 
@@ -29,6 +30,24 @@ describe('Word Actions', () => {
     }
     expect(actions.addWord(id, word)).toEqual(expectedAction)
   })
+
+  it( 'should create an error carrying action', () => {
+    const error = 'error';
+    const expected = { type: types.ERROR, error }
+    expect( actions.setError( error ) ).toEqual( expected )
+  })
+
+  it( 'should set the current word ID', () => {
+    const id = 'id'
+    const expected = { type: types.SET_CURRENT_WORD_ID, id }
+    expect( actions.setCurrentWordId( id ) ).toEqual( expected )
+  })
+
+  it( 'should set the loading status', () => {
+    const status = true
+    const expected = { type: types.LOADING, status }
+    expect( actions.setLoading( status ) ).toEqual( expected )
+  })
 })
 
 describe('Async Word Actions', () => {
@@ -43,40 +62,102 @@ describe('Async Word Actions', () => {
     store.clearActions()
   })
 
-  it('gets a word by ID', async () => {
-    const testWord = require('../../testdata/testWord.json')
-    fetchMock.once('/api/v0/word/0', testWord)
+  describe( '/word/:id', () => {
+    it('gets a word by ID', async () => {
+      fetchMock.once('/api/v0/word/0', testWord)
 
-    const expectedActions = [
-      actions.addWord( 0, testWord ),
-    ]
+      const expectedActions = [
+        actions.addWord( 0, testWord ),
+      ]
 
-    await store.dispatch( actions.getWord( 0 ))
-    const actual = store.getActions()
-    expect( actual ).toEqual( expectedActions )
+      await store.dispatch( actions.getWord( 0 ) )
+      const actual = store.getActions()
+      expect( actual ).toEqual( expectedActions )
+    })
+
+    it( 'handles non-ok responses', async () => {
+      fetchMock.once( '/api/v0/word/0', 404 )
+
+      await store.dispatch( actions.getWord( 0 ) )
+      const expected = [
+        actions.setError( new Error( 'Not Found' ) )
+      ]
+      const actual = store.getActions()
+      expect( actual ).toEqual( expected )
+    })
   })
 
-  it('gets a list of top 2k word ids', async () => {
-    fetchMock.once( '/api/v0/words/top2k', top2k )
+  describe( '/words/top2k', () => {
+    it( 'gets a list of top 2k word ids', async () => {
+      fetchMock.once( '/api/v0/words/top2k', top2k )
 
-    const expectedActions = [
-      actions.setTop2k( top2k ),
-    ]
+      const expectedActions = [
+        actions.setTop2k( top2k ),
+      ]
 
-    await store.dispatch( actions.getTop2K() )
-    const actual = store.getActions()
-    expect( actual ).toEqual( expectedActions )
+      await store.dispatch( actions.getTop2K() )
+      const actual = store.getActions()
+      expect( actual ).toEqual( expectedActions )
+    })
+
+    it( 'handles non-ok responses', async () => {
+      fetchMock.once( '/api/v0/words/top2k', 404 )
+
+      await store.dispatch( actions.getTop2K() )
+      const expected = [
+        actions.setError( new Error( 'Not Found' ) )
+      ]
+      const actual = store.getActions()
+      expect( actual ).toEqual( expected )
+    })
   })
 
-  it('gets the entire vocabulary', async () => {
-    fetchMock.once( '/api/v0/words', vocabulary )
+  describe( '/words', () => {
+    it( 'gets the entire vocabulary', async () => {
+      fetchMock.once( '/api/v0/words', vocabulary )
 
-    const expectedActions = [
-      actions.addWords( vocabulary )
-    ]
+      const expectedActions = [
+        actions.addWords( vocabulary )
+      ]
 
-    await  store.dispatch(actions.getWords())
-    const actual = store.getActions()
-    expect( actual ).toEqual( expectedActions )
+      await  store.dispatch( actions.getWords() )
+      const actual = store.getActions()
+      expect( actual ).toEqual( expectedActions )
+    })
+
+    it( 'handles non-ok responses', async () => {
+      fetchMock.once( '/api/v0/words', 404 )
+
+      await store.dispatch( actions.getWords() )
+      const expected = [
+        actions.setError( new Error( 'Not Found' ) )
+      ]
+      const actual = store.getActions()
+      expect( actual ).toEqual( expected )
+    })
+  })
+
+  describe( '/word/new', () => {
+    it( 'creates a new word', async () => {
+      fetchMock.post( '/api/v0/word/new', {
+        body: { id: 'uuid.v4' },
+        status: 201
+      })
+      fetchMock.once( '/api/v0/words', vocabulary )
+
+      const id = await store.dispatch( actions.submitNewWord( { hello: 'world' } ))
+      expect( id ).toEqual( 'uuid.v4' )
+    })
+
+    it( 'handles non-ok responses', async () => {
+      fetchMock.once( '/api/v0/word/new', 404 )
+
+      await store.dispatch( actions.submitNewWord( { hello: 'world' }))
+      const expected = [
+        actions.setError( new Error( 'Not Found' ))
+      ]
+      const actual = store.getActions()
+      expect( actual ).toEqual( expected )
+    })
   })
 })

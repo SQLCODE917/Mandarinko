@@ -20,6 +20,7 @@ exports[`WordCreate on a clean slate mounts 1`] = `
             Array [],
           ],
         },
+        "submitNewWord": [MockFunction],
       }
     }
   >
@@ -2366,6 +2367,7 @@ exports[`WordCreate on a clean slate triggers the error state on empty form subm
             Array [],
           ],
         },
+        "submitNewWord": [MockFunction],
       }
     }
   >
