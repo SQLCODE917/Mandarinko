@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`By Definition renderSuggestion should render 1`] = `
+<div>
+  <article>
+    <section
+      className="suggestionSpelling"
+    >
+      主张
+      -張
+    </section>
+    <section>
+      <ul
+        className="suggestionDefinitionList"
+      >
+        <li
+          className="suggestionDefinition"
+          key="0"
+        >
+          (n) view, position, proposition
+        </li>
+        <li
+          className="suggestionDefinition"
+          key="1"
+        >
+          (v) advocate, stand for, maintain, hold
+        </li>
+      </ul>
+    </section>
+  </article>
+</div>
+`;

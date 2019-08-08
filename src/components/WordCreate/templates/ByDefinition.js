@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './AutosuggestByDefinition.css'
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -10,7 +11,7 @@ export function getSuggestions(allWords) {
     if (inputLength === 0) {
       return []
     } else {
-      const suggestions = Object.entries(allWords)
+      return Object.entries(allWords)
         .filter(([id, word]) => {
             return word.definition.some((entry) => {
               return (entry.toLowerCase().indexOf(inputValue) !== -1)
@@ -19,7 +20,6 @@ export function getSuggestions(allWords) {
         ).map(([id, word]) => {
           return { ...word, id }
         })
-      return (suggestions) ? suggestions : []
     }
   }
 }

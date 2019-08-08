@@ -3,7 +3,12 @@
 exports[`Autosuggest Word By Definition should render 1`] = `
 <renderAutosuggestField
   getSuggestionValue={[Function]}
-  getSuggestions={[Function]}
+  getSuggestions={[MockFunction]}
+  input={
+    Object {
+      "onChange": [MockFunction],
+    }
+  }
   meta={Object {}}
   renderSuggestion={[Function]}
   type="text"

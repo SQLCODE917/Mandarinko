@@ -1,80 +1,68 @@
 import React from 'react'
-import renderAutosuggestField from './renderAutosuggestField.js'
+import AutosuggestByDefinition,
+  { AutosuggestByDefinition as Disconnected } from './AutosuggestByDefinition'
+import { shallow, mount } from 'enzyme'
 import {
-  getSuggestions,
-  renderSuggestion,
-  getSuggestionValue
-} from './ByDefinition.js'
+  combineReducers,
+  createStore,
+  applyMiddleware
+} from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import {
+  Field,
+  Form,
+  reducer as formReducer,
+  reduxForm
+} from 'redux-form'
+import wordsReducer from '../../../reducers/wordsReducer'
 
-import { mount } from 'enzyme'
-
-const allWords = require('../../../../vocabulary.json')
-const Autosuggest = renderAutosuggestField
-
-describe('Autosuggest Word By Definition', () => {
-
-  it('should render', () => {
-    const props = {
-      getSuggestions: getSuggestions(allWords),
-      renderSuggestion: renderSuggestion,
-      getSuggestionValue: getSuggestionValue,
-      meta: {},
-      type: 'text'
-    }
-    const wrapper = mount(<Autosuggest {...props}/>)
-    expect(wrapper).toMatchSnapshot()
-  })
-
-  it('should trigger autosuggest on input', () => {
-    const searchString = 'a'
-    const getSuggestionsSpy = jest.fn()
-    getSuggestionsSpy.mockImplementation(getSuggestions(allWords))
-    const props = {
-      getSuggestions: getSuggestionsSpy,
-      renderSuggestion: renderSuggestion,
-      getSuggestionValue: getSuggestionValue,
-      meta: {},
-      type: 'text'
-    }
-    const wrapper = mount(<Autosuggest {...props}/>)
-    const input = wrapper.find('input')
-    input.value = searchString
-    input.simulate('change', {
-      target: {
-        value: searchString
+describe('Autosuggest By Definition Field', () => {
+  describe('shallow', () => {
+    it('renders', () => {
+      const props = {
+        words: {}
       }
+      const wrapper = shallow(<Disconnected {...props} />)
+      const component = wrapper.find(Field)
+      expect(component).toHaveLength(1)
     })
+  });
 
-    expect(getSuggestionsSpy.mock.calls).toEqual([[searchString]])
-  })
+  describe('mount', () => {
+    let wrapper, store, submitSpy
+    beforeEach(() => {
+      submitSpy = jest.fn()
+      store = createStore(
+        combineReducers({
+          form: formReducer,
+          words: wordsReducer
+        }),
+        {
+          words: { words: {} },
+          form: {}
+        },
+        applyMiddleware(thunk)
+      )
 
-  it('should offer the right autosuggest options', () => {
-    const suggestions = getSuggestions(allWords)
-    const expected = [
-      {
-        "definition": ["(n) insistence, assertion"],
-        "id": "5",
-        "pronounciation": "しゅちょう",
-        "spelling": [
-          {
-            "language": "ja",
-            "text": "主張"
-          }
-        ]
-      }
-    ]
-    expect(suggestions('assertion')).toEqual(expected)
-  })
+      const form = ({ onSubmit }) => 
+        <Form onSubmit={onSubmit}>
+          <AutosuggestByDefinition/>
+        </Form>
+      const WrappedForm = reduxForm({
+        form: 'testForm',
+        onSubmit: submitSpy
+      })(form)
 
-  it('should offer an empty list for no matches', () => {
-    const suggestions = getSuggestions(allWords)
-    const expected = []
-    expect(suggestions('notaword')).toEqual(expected)
-  })
-
-  it('should offer an empty list for whitespace input', () => {
-    const suggestions = getSuggestions(allWords)
-    const expected = []
-    expect(suggestions('     ')).toEqual(expected)
-  })
+      wrapper = mount(
+        <Provider store={store}>
+          <WrappedForm />
+        </Provider>
+      )
+    })
+    it('renders really well', () => {
+      const component = wrapper.find(AutosuggestByDefinition)
+      expect(component).toHaveLength(1)
+    });
+  });
 })

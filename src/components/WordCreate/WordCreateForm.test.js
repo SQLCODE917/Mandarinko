@@ -12,12 +12,14 @@ import thunk from 'redux-thunk'
 import {
   reducer as formReducer,
   reduxForm,
-  formValues
+  formValues,
+  SubmissionError
 } from 'redux-form'
 import { mount } from 'enzyme'
 
-import WordCreateForm from './WordCreateForm.js'
-import WordSubmitButton from './WordSubmitButton.js'
+import WordCreateForm from './WordCreateForm'
+import WordSubmitButton from './WordSubmitButton'
+import { ErrorLine } from './templates'
 
 const testWord = require('../../../testdata/testWord.json')
 
@@ -52,6 +54,18 @@ describe('WordCreateForm', () => {
 
     expect(submitSpy.mock.calls[0][0]).toEqual(expectedWord)
   })
+
+  it('should react to errors', () => {
+    submitSpy.mockImplementationOnce(
+      () => { throw new SubmissionError({ _error: 'ouch!'}) }
+    )
+    const submitButton = wrapper.find('#WordSubmitButton')
+    expect(submitButton).toHaveLength(1)
+    submitButton.simulate('click')
+    wrapper.update()
+    const errorLine = wrapper.find(ErrorLine)
+    expect(errorLine).toHaveLength(1);
+  });
 })
 
 function reduxStore(initialState = {}) {

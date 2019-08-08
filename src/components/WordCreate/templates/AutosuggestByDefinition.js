@@ -31,10 +31,7 @@ AutosuggestByDefinition.propTypes = {
   words: PropTypes.object
 }
 
-function mapStateToProps({ words }) {
-  return {
-    words: words.words
-  }
-}
+/* istanbul ignore next */
+const mapStateToProps = ({ words }) => ( { words: words.words } )
 
 export default connect(mapStateToProps)(AutosuggestByDefinition)

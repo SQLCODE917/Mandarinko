@@ -4,7 +4,7 @@
   "description": "Chinese and Japanese Vocabulary Building",
   "main": "server.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --verbose",
     "test:nocache": "jest --no-cache",
     "test:verbose": "jest --verbose",
     "test:debug": "jest --debug",

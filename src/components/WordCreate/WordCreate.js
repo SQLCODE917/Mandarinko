@@ -25,9 +25,7 @@ export class WordCreate extends Component {
         submitNewWord      
       }
     } = this.props;
-    console.debug("SUBMITTED", data)
     const newWordId = submitNewWord(data)
-    console.debug("SAVED", newWordId)
   }
 
   render () {

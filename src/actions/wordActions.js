@@ -83,7 +83,6 @@ export const submitNewWord = word => async dispatch => {
     const { ok, status } = resp
     if( ok && status === 201 ) {
       const { id } = await resp.json()
-      console.debug('WORD SAVED', id)
       dispatch( getWords() )
       return id
     } else {
