@@ -62,7 +62,10 @@ class SpacedRepetition extends Component {
 
 SpacedRepetition.propTypes = {
   top2kWordIds: PropTypes.array.isRequired,
-  currentWordId: PropTypes.string,
+  currentWordId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   words: PropTypes.object
 }
 
@@ -70,7 +73,7 @@ function mapStateToProps({ words }) {
 
   return {
     words: words.words,
-    top2kWordIds: words.spacedRepetition.top2kWordIds,
+    top2kWordIds: words.top2kWordIds,
     currentWordId: words.spacedRepetition.currentWordId
   }
 }

@@ -90,9 +90,10 @@ describe('Async Word Actions', () => {
   describe( '/words/top2k', () => {
     it( 'gets a list of top 2k word ids', async () => {
       fetchMock.once( '/api/v0/words/top2k', top2k )
+      const { words } = top2k
 
       const expectedActions = [
-        actions.setTop2k( top2k ),
+        actions.setTop2k( words ),
       ]
 
       await store.dispatch( actions.getTop2K() )

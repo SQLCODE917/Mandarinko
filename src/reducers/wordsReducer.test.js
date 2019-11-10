@@ -18,4 +18,31 @@ describe('Words Reducer', () => {
     const expectedState = { 'allWords': 'words' }
     expect(reducer({}, addWords)).toEqual(expectedState)
   })
+
+  it('should handle SET_CURRENT_WORD_ID', () => {
+    const action = wordActions.setCurrentWordId('uuid.v4')
+    const expectedState = {
+      spacedRepetition: { currentWordId: 'uuid.v4' }
+    }
+    const baseState = { spacedRepetition: {} }
+    expect(reducer(baseState, action)).toEqual(expectedState)
+  })
+
+  it('should handle LOADING', () => {
+    const action = wordActions.setLoading('status')
+    const expectedState = { loading: 'status' }
+    expect(reducer({}, action)).toEqual(expectedState)
+  })
+
+  it('should handle SET_TOP_2K', () => {
+    const action = wordActions.setTop2k('wordIds')
+    const expectedState = { top2kWordIds: 'wordIds' }
+    expect(reducer({}, action)).toEqual(expectedState)
+  })
+
+  it('should handle ERROR', () => {
+    const action = wordActions.setError('error')
+    const expectedState = { error: 'error' }
+    expect(reducer({}, action)).toEqual(expectedState)
+  })
 })

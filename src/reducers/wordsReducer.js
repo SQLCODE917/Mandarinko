@@ -48,7 +48,6 @@ export default function wordsReducer(state=INITIAL_STATE, action) {
         ...state,
         top2kWordIds: action.wordIds
       }
-      return action.wordIds
     case types.ERROR: {
       return {
         ...state,

@@ -31,7 +31,7 @@ export const getTop2K = () => async dispatch => {
       throw new Error( resp.statusText )
     }
 
-    const words = await resp.json()
+    const { words } = await resp.json()
     dispatch( setTop2k( words ))
   } catch( error ) {
     dispatch( setError( error ))
