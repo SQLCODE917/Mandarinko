@@ -18,7 +18,7 @@ const renderSibling = ({ fields, meta: { error, submitFailed } }) => (
     <button className={styles.button}
       type="button"
       title="Look Up a Sibling"
-      onClick={() => fields.push({ "lookup": true })}>
+      onClick={() => fields.push({ lookup: true })}>
       {c.rightPointingMagnifyingGlass} Sibling
     </button>
     {submitFailed && error && <ErrorLine>{error}</ErrorLine>}
