@@ -13,11 +13,10 @@ export function getSuggestions(allWords) {
     } else {
       return Object.entries(allWords)
         .filter(([id, word]) => {
-            return word.definition.some((entry) => {
-              return (entry.toLowerCase().indexOf(inputValue) !== -1)
-            })
-          }
-        ).map(([id, word]) => {
+          return word.definition.some((entry) => {
+            return (entry.toLowerCase().indexOf(inputValue) !== -1)
+          })
+        }).map(([id, word]) => {
           return { ...word, id }
         })
     }

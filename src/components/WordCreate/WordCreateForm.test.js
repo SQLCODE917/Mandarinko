@@ -47,9 +47,7 @@ describe('WordCreateForm', () => {
         { language: 'zh-Hant', text: 'spelling' }
       ],
       pronounciation: 'pronounciation',
-      definition: [
-        { text: 'definition' }
-      ]
+      definition: [ 'definition' ]
     };
 
     expect(submitSpy.mock.calls[0][0]).toEqual(expectedWord)

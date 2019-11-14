@@ -13,7 +13,7 @@ const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
     <button className={styles.button}
       type="button"
       title="Add Definition"
-      onClick={() => fields.push({})}>
+      onClick={() => fields.push("")}>
       {c.plusSign} Definition
     </button>
     {submitFailed && error && <ErrorLine>{error}</ErrorLine>}
@@ -27,7 +27,7 @@ const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
           onClick={() => fields.remove(index)}
         >{c.minusSign}</button>
 
-        <Field name={`${definitionObject}.text`}
+        <Field name={`${definitionObject}`}
           type="text"
           component={renderInputField}
           label="Definition"

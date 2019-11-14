@@ -96,9 +96,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                 "name": "definition",
                 "type": "FieldArray",
               },
-              "definition[0].text": Object {
+              "definition[0]": Object {
                 "count": 1,
-                "name": "definition[0].text",
+                "name": "definition[0]",
                 "type": "Field",
               },
               "derivation": Object {
@@ -164,9 +164,7 @@ exports[`WordCreateForm should render a word object 1`] = `
           values={
             Object {
               "definition": Array [
-                Object {
-                  "text": "definition",
-                },
+                "definition",
               ],
               "pronounciation": "pronounciation",
               "spelling": Array [
@@ -309,9 +307,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                 "name": "definition",
                                 "type": "FieldArray",
                               },
-                              "definition[0].text": Object {
+                              "definition[0]": Object {
                                 "count": 1,
-                                "name": "definition[0].text",
+                                "name": "definition[0]",
                                 "type": "Field",
                               },
                               "derivation": Object {
@@ -378,9 +376,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                             "validExceptSubmit": true,
                             "values": Object {
                               "definition": Array [
-                                Object {
-                                  "text": "definition",
-                                },
+                                "definition",
                               ],
                               "pronounciation": "pronounciation",
                               "spelling": Array [
@@ -466,9 +462,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                   "name": "definition",
                                   "type": "FieldArray",
                                 },
-                                "definition[0].text": Object {
+                                "definition[0]": Object {
                                   "count": 1,
-                                  "name": "definition[0].text",
+                                  "name": "definition[0]",
                                   "type": "Field",
                                 },
                                 "derivation": Object {
@@ -535,9 +531,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "validExceptSubmit": true,
                               "values": Object {
                                 "definition": Array [
-                                  Object {
-                                    "text": "definition",
-                                  },
+                                  "definition",
                                 ],
                                 "pronounciation": "pronounciation",
                                 "spelling": Array [
@@ -713,9 +707,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                 "name": "definition",
                                 "type": "FieldArray",
                               },
-                              "definition[0].text": Object {
+                              "definition[0]": Object {
                                 "count": 1,
-                                "name": "definition[0].text",
+                                "name": "definition[0]",
                                 "type": "Field",
                               },
                               "derivation": Object {
@@ -782,9 +776,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                             "validExceptSubmit": true,
                             "values": Object {
                               "definition": Array [
-                                Object {
-                                  "text": "definition",
-                                },
+                                "definition",
                               ],
                               "pronounciation": "pronounciation",
                               "spelling": Array [
@@ -876,9 +868,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                   "name": "definition",
                                   "type": "FieldArray",
                                 },
-                                "definition[0].text": Object {
+                                "definition[0]": Object {
                                   "count": 1,
-                                  "name": "definition[0].text",
+                                  "name": "definition[0]",
                                   "type": "Field",
                                 },
                                 "derivation": Object {
@@ -945,9 +937,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "validExceptSubmit": true,
                               "values": Object {
                                 "definition": Array [
-                                  Object {
-                                    "text": "definition",
-                                  },
+                                  "definition",
                                 ],
                                 "pronounciation": "pronounciation",
                                 "spelling": Array [
@@ -1132,9 +1122,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                             "name": "definition",
                                             "type": "FieldArray",
                                           },
-                                          "definition[0].text": Object {
+                                          "definition[0]": Object {
                                             "count": 1,
-                                            "name": "definition[0].text",
+                                            "name": "definition[0]",
                                             "type": "Field",
                                           },
                                           "derivation": Object {
@@ -1201,9 +1191,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                         "validExceptSubmit": true,
                                         "values": Object {
                                           "definition": Array [
-                                            Object {
-                                              "text": "definition",
-                                            },
+                                            "definition",
                                           ],
                                           "pronounciation": "pronounciation",
                                           "spelling": Array [
@@ -1297,9 +1285,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                               "name": "definition",
                                               "type": "FieldArray",
                                             },
-                                            "definition[0].text": Object {
+                                            "definition[0]": Object {
                                               "count": 1,
-                                              "name": "definition[0].text",
+                                              "name": "definition[0]",
                                               "type": "Field",
                                             },
                                             "derivation": Object {
@@ -1366,9 +1354,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                           "validExceptSubmit": true,
                                           "values": Object {
                                             "definition": Array [
-                                              Object {
-                                                "text": "definition",
-                                              },
+                                              "definition",
                                             ],
                                             "pronounciation": "pronounciation",
                                             "spelling": Array [
@@ -1533,9 +1519,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                             "name": "definition",
                                             "type": "FieldArray",
                                           },
-                                          "definition[0].text": Object {
+                                          "definition[0]": Object {
                                             "count": 1,
-                                            "name": "definition[0].text",
+                                            "name": "definition[0]",
                                             "type": "Field",
                                           },
                                           "derivation": Object {
@@ -1602,9 +1588,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                         "validExceptSubmit": true,
                                         "values": Object {
                                           "definition": Array [
-                                            Object {
-                                              "text": "definition",
-                                            },
+                                            "definition",
                                           ],
                                           "pronounciation": "pronounciation",
                                           "spelling": Array [
@@ -1691,9 +1675,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                               "name": "definition",
                                               "type": "FieldArray",
                                             },
-                                            "definition[0].text": Object {
+                                            "definition[0]": Object {
                                               "count": 1,
-                                              "name": "definition[0].text",
+                                              "name": "definition[0]",
                                               "type": "Field",
                                             },
                                             "derivation": Object {
@@ -1760,9 +1744,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                           "validExceptSubmit": true,
                                           "values": Object {
                                             "definition": Array [
-                                              Object {
-                                                "text": "definition",
-                                              },
+                                              "definition",
                                             ],
                                             "pronounciation": "pronounciation",
                                             "spelling": Array [
@@ -1899,9 +1881,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                 "name": "definition",
                                 "type": "FieldArray",
                               },
-                              "definition[0].text": Object {
+                              "definition[0]": Object {
                                 "count": 1,
-                                "name": "definition[0].text",
+                                "name": "definition[0]",
                                 "type": "Field",
                               },
                               "derivation": Object {
@@ -1968,9 +1950,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                             "validExceptSubmit": true,
                             "values": Object {
                               "definition": Array [
-                                Object {
-                                  "text": "definition",
-                                },
+                                "definition",
                               ],
                               "pronounciation": "pronounciation",
                               "spelling": Array [
@@ -2064,9 +2044,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                   "name": "definition",
                                   "type": "FieldArray",
                                 },
-                                "definition[0].text": Object {
+                                "definition[0]": Object {
                                   "count": 1,
-                                  "name": "definition[0].text",
+                                  "name": "definition[0]",
                                   "type": "Field",
                                 },
                                 "derivation": Object {
@@ -2133,9 +2113,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "validExceptSubmit": true,
                               "values": Object {
                                 "definition": Array [
-                                  Object {
-                                    "text": "definition",
-                                  },
+                                  "definition",
                                 ],
                                 "pronounciation": "pronounciation",
                                 "spelling": Array [
@@ -2309,9 +2287,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                   "name": "definition",
                                   "type": "FieldArray",
                                 },
-                                "definition[0].text": Object {
+                                "definition[0]": Object {
                                   "count": 1,
-                                  "name": "definition[0].text",
+                                  "name": "definition[0]",
                                   "type": "Field",
                                 },
                                 "derivation": Object {
@@ -2378,9 +2356,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "validExceptSubmit": true,
                               "values": Object {
                                 "definition": Array [
-                                  Object {
-                                    "text": "definition",
-                                  },
+                                  "definition",
                                 ],
                                 "pronounciation": "pronounciation",
                                 "spelling": Array [
@@ -2472,9 +2448,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                     "name": "definition",
                                     "type": "FieldArray",
                                   },
-                                  "definition[0].text": Object {
+                                  "definition[0]": Object {
                                     "count": 1,
-                                    "name": "definition[0].text",
+                                    "name": "definition[0]",
                                     "type": "Field",
                                   },
                                   "derivation": Object {
@@ -2541,9 +2517,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                 "validExceptSubmit": true,
                                 "values": Object {
                                   "definition": Array [
-                                    Object {
-                                      "text": "definition",
-                                    },
+                                    "definition",
                                   ],
                                   "pronounciation": "pronounciation",
                                   "spelling": Array [
@@ -2580,9 +2554,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                             }
                             value={
                               Array [
-                                Object {
-                                  "text": "definition",
-                                },
+                                "definition",
                               ]
                             }
                           >
@@ -2649,7 +2621,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                   <Field
                                     component={[Function]}
                                     label="Definition"
-                                    name="definition[0].text"
+                                    name="definition[0]"
                                     type="text"
                                     validate={
                                       Array [
@@ -2727,9 +2699,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                               "name": "definition",
                                               "type": "FieldArray",
                                             },
-                                            "definition[0].text": Object {
+                                            "definition[0]": Object {
                                               "count": 1,
-                                              "name": "definition[0].text",
+                                              "name": "definition[0]",
                                               "type": "Field",
                                             },
                                             "derivation": Object {
@@ -2796,9 +2768,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                           "validExceptSubmit": true,
                                           "values": Object {
                                             "definition": Array [
-                                              Object {
-                                                "text": "definition",
-                                              },
+                                              "definition",
                                             ],
                                             "pronounciation": "pronounciation",
                                             "spelling": Array [
@@ -2813,7 +2783,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                       }
                                       component={[Function]}
                                       label="Definition"
-                                      name="definition[0].text"
+                                      name="definition[0]"
                                       normalize={[Function]}
                                       type="text"
                                       validate={
@@ -2892,9 +2862,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                                 "name": "definition",
                                                 "type": "FieldArray",
                                               },
-                                              "definition[0].text": Object {
+                                              "definition[0]": Object {
                                                 "count": 1,
-                                                "name": "definition[0].text",
+                                                "name": "definition[0]",
                                                 "type": "Field",
                                               },
                                               "derivation": Object {
@@ -2961,9 +2931,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                             "validExceptSubmit": true,
                                             "values": Object {
                                               "definition": Array [
-                                                Object {
-                                                  "text": "definition",
-                                                },
+                                                "definition",
                                               ],
                                               "pronounciation": "pronounciation",
                                               "spelling": Array [
@@ -2981,7 +2949,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                         dirty={true}
                                         dispatch={[Function]}
                                         label="Definition"
-                                        name="definition[0].text"
+                                        name="definition[0]"
                                         normalize={[Function]}
                                         pristine={false}
                                         type="text"
@@ -2995,7 +2963,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                         <renderInputField
                                           input={
                                             Object {
-                                              "name": "definition[0].text",
+                                              "name": "definition[0]",
                                               "onBlur": [Function],
                                               "onChange": [Function],
                                               "onDragStart": [Function],
@@ -3038,7 +3006,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                             >
                                               <input
                                                 className="input"
-                                                name="definition[0].text"
+                                                name="definition[0]"
                                                 onBlur={[Function]}
                                                 onChange={[Function]}
                                                 onDragStart={[Function]}
@@ -3417,9 +3385,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                 "name": "definition",
                                 "type": "FieldArray",
                               },
-                              "definition[0].text": Object {
+                              "definition[0]": Object {
                                 "count": 1,
-                                "name": "definition[0].text",
+                                "name": "definition[0]",
                                 "type": "Field",
                               },
                               "derivation": Object {
@@ -3486,9 +3454,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                             "validExceptSubmit": true,
                             "values": Object {
                               "definition": Array [
-                                Object {
-                                  "text": "definition",
-                                },
+                                "definition",
                               ],
                               "pronounciation": "pronounciation",
                               "spelling": Array [
@@ -3574,9 +3540,9 @@ exports[`WordCreateForm should render a word object 1`] = `
                                   "name": "definition",
                                   "type": "FieldArray",
                                 },
-                                "definition[0].text": Object {
+                                "definition[0]": Object {
                                   "count": 1,
-                                  "name": "definition[0].text",
+                                  "name": "definition[0]",
                                   "type": "Field",
                                 },
                                 "derivation": Object {
@@ -3643,9 +3609,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                               "validExceptSubmit": true,
                               "values": Object {
                                 "definition": Array [
-                                  Object {
-                                    "text": "definition",
-                                  },
+                                  "definition",
                                 ],
                                 "pronounciation": "pronounciation",
                                 "spelling": Array [

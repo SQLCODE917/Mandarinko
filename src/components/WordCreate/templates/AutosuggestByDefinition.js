@@ -32,6 +32,6 @@ AutosuggestByDefinition.propTypes = {
 }
 
 /* istanbul ignore next */
-const mapStateToProps = ({ words }) => ( { words: words.words } )
+const mapStateToProps = ({ words }) => ( { words: words.allWords } )
 
 export default connect(mapStateToProps)(AutosuggestByDefinition)
