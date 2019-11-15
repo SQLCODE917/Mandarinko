@@ -19,7 +19,7 @@ import { mount } from 'enzyme'
 
 import WordCreateForm from './WordCreateForm'
 import WordSubmitButton from './WordSubmitButton'
-import { ErrorLine } from './templates'
+import ErrorLine from '../errorLine'
 
 const testWord = require('../../../testdata/testWord.json')
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import RenderSibling from './renderSibling'
-import ErrorLine from './errorLine.js'
-import WordTemplate from './WordTemplate.js'
-import AutosuggestByDefinition from './AutosuggestByDefinition.js'
+import ErrorLine from '../../errorLine'
+import WordTemplate from './WordTemplate'
+import AutosuggestByDefinition from './AutosuggestByDefinition'
 import { shallow } from 'enzyme'
 
 describe('renderSibling', () => {

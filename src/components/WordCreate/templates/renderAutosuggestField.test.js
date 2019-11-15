@@ -5,7 +5,7 @@ import {
   renderSuggestion,
   getSuggestionValue
 } from './ByDefinition.js'
-import ErrorLine from './errorLine.js'
+import ErrorLine from '../../errorLine.js'
 
 import { mount } from 'enzyme'
 

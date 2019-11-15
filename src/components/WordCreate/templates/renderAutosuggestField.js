@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Autosuggest from 'react-autosuggest'
-import ErrorLine from './errorLine.js'
+import ErrorLine from '../../errorLine.js'
 import styles from './renderAutosuggestField.css'
 import theme from './AutosuggestTheme.css'
 

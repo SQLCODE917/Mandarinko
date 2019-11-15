@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './renderInputField.css'
-import ErrorLine from './errorLine.js'
+import ErrorLine from '../../errorLine.js'
 
 const renderInputField = ({ input, label, type, meta: { touched, error } }) => (
   <div className={styles.inputField}>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, NavLink } from 'react-router-
 
 import styles from './app.css'
 import { WordCreate } from './components/WordCreate'
+import WordById from './components/WordById'
 import Top2k from './components/Top2k'
 
 window.React = React
@@ -27,14 +28,15 @@ export const App = () => {
             </li>
             <li>
               <NavLink activeClassName={styles.selected}
-                to="/word/new">Add word</NavLink>
+                to="/words/new">Add word</NavLink>
             </li>
           </ul>
         </nav>
         <section>
           <Route path="/" exact render={() => <Redirect to="/top2k"/>}/>
           <Route path="/top2k" component={Top2k}/>
-          <Route path="/word/new" component={WordCreate}/>
+          <Route path="/word/:id" component={WordById}/>
+          <Route path="/words/new" component={WordCreate}/>
         </section>
       </article>
     </Router>

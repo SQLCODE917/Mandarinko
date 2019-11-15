@@ -1,4 +1,4 @@
-@import './WordCreateCommon.css';
+@import './WordCreate/templates/WordCreateCommon.css';
 
 .errorLine {
   display: flex;

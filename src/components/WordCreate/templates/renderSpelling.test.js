@@ -1,7 +1,7 @@
 import React from 'react'
 import RenderSpelling from './renderSpelling'
 import { shallow } from 'enzyme'
-import ErrorLine from './errorLine.js'
+import ErrorLine from '../../errorLine.js'
 
 describe('renderSpelling', () => {
   // minimal viable props

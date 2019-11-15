@@ -18,7 +18,7 @@ import wordsReducer from '../../../reducers/wordsReducer'
 import renderChild from './renderChild'
 import AutosuggestByDefinition from './AutosuggestByDefinition'
 import WordTemplate from './WordTemplate'
-import ErrorLine from './errorLine'
+import ErrorLine from '../../errorLine'
 
 describe('renderChild', () => {
   let store, submitSpy, wrapper

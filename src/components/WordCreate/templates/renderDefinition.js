@@ -2,7 +2,7 @@ import React from 'react'
 import { Field } from 'redux-form'
 import * as c from '../../../constants.js'
 import renderInputField from './renderInputField.js'
-import ErrorLine from './errorLine.js'
+import ErrorLine from '../../errorLine.js'
 import styles from './renderDefinition.css'
 import {
   required

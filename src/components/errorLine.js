@@ -1,5 +1,5 @@
 import React from 'react'
-import LCDText from '../../LCDText.js'
+import LCDText from './LCDText.js'
 import styles from './errorLine.css'
 
 export default function ErrorLine({ className, children }) {

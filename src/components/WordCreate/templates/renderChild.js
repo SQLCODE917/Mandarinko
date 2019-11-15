@@ -2,7 +2,7 @@ import React from 'react'
 import { FormSection } from 'redux-form'
 import WordTemplate from './WordTemplate'
 import AutosuggestByDefinition from './AutosuggestByDefinition'
-import ErrorLine from './errorLine'
+import ErrorLine from '../../errorLine'
 import * as c from '../../../constants'
 import styles from './renderChild.css'
 

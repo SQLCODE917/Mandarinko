@@ -22,34 +22,38 @@ export function Word({
 
 	return (
 		<article className={styles.word}>
-			<section className={styles.siblings}>
-				{siblings.map((sibling, i) => 
-					<Word key={i} {...sibling} />
-				)}
-			</section>
-			<article className={styles.wordBody}>
-				<section className={styles.spelling}>
-					{spelling.map((spellingObject, i) =>
-						<span 
-              className={`${styles.spellingForm} ${languageStyle(spellingObject.language)}`} key={i}>
-							{spellingObject.text}
-						</span>
-					)}
-				</section>
-        <section className="pronounciation">
-          {pronounciation}
+      <div className={styles.mainRow}>
+        <article className={styles.wordBody}>
+          <div className={styles.spellingRow}>
+            <section className={styles.spelling}>
+              {spelling.map((spellingObject, i) =>
+                <span 
+                  className={`${styles.spellingForm} ${languageStyle(spellingObject.language)}`} key={i}>
+                  {spellingObject.text}
+                </span>
+              )}
+            </section>
+            <section className="pronounciation">
+              {pronounciation}
+            </section>
+          </div>
+          <section className={styles.derivation}>
+            {derivation}
+          </section>
+          <section className={styles.definition}>
+            {definition.map((definitionItem, i) =>
+              <div key={i}>
+                {definitionItem}
+              </div>
+            )}
+          </section>
+        </article>
+        <section className={styles.siblings}>
+          {siblings.map((sibling, i) => 
+            <Word key={i} {...sibling} />
+          )}
         </section>
-			</article>
-			<section className={styles.derivation}>
-				{derivation}
-			</section>
-			<section className={styles.definition}>
-				{definition.map((definitionItem, i) =>
-					<div key={i}>
-						{definitionItem}
-					</div>
-				)}
-			</section> 
+      </div>
 			<section className={styles.children}>
 				{children.map((child, i) => 
 					<Word key={i} {...child}/>

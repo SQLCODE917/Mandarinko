@@ -2,17 +2,31 @@
   display: flex;
   flex-direction: row;
 }
+.column {
+  display: flex;
+  flex-direction: column;
+}
 
 .word {
   padding: 1rem;
   border: 1px solid black;
 }
 
+.mainRow {
+  composes: row;
+  justify-content: space-between;
+}
+
 .siblings {
   padding-bottom: 1rem;
+  align-self: flex-end;
 }
 
 .wordBody {
+  composes: column;
+}
+
+.spellingRow {
   composes: row;
   align-items: center;
 }
