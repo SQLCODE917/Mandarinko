@@ -1043,7 +1043,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                 </button>
                                 <Field
                                   component={[Function]}
-                                  label="Spelling"
                                   name="spelling[0].text"
                                   type="text"
                                   validate={
@@ -1205,7 +1204,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                       }
                                     }
                                     component={[Function]}
-                                    label="Spelling"
                                     name="spelling[0].text"
                                     normalize={[Function]}
                                     type="text"
@@ -1371,7 +1369,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                       component={[Function]}
                                       dirty={true}
                                       dispatch={[Function]}
-                                      label="Spelling"
                                       name="spelling[0].text"
                                       normalize={[Function]}
                                       pristine={false}
@@ -1395,7 +1392,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                             "value": "spelling",
                                           }
                                         }
-                                        label="Spelling"
                                         meta={
                                           Object {
                                             "active": false,
@@ -1421,9 +1417,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                         <div
                                           className="inputField"
                                         >
-                                          <label>
-                                            Spelling
-                                          </label>
+                                          <label />
                                           <div
                                             className="inputFieldBody"
                                           >
@@ -1435,7 +1429,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                               onDragStart={[Function]}
                                               onDrop={[Function]}
                                               onFocus={[Function]}
-                                              placeholder="Spelling"
                                               type="text"
                                               value="spelling"
                                             />
@@ -2620,7 +2613,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                   </button>
                                   <Field
                                     component={[Function]}
-                                    label="Definition"
                                     name="definition[0]"
                                     type="text"
                                     validate={
@@ -2782,7 +2774,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                         }
                                       }
                                       component={[Function]}
-                                      label="Definition"
                                       name="definition[0]"
                                       normalize={[Function]}
                                       type="text"
@@ -2948,7 +2939,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                         component={[Function]}
                                         dirty={true}
                                         dispatch={[Function]}
-                                        label="Definition"
                                         name="definition[0]"
                                         normalize={[Function]}
                                         pristine={false}
@@ -2972,7 +2962,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                               "value": "definition",
                                             }
                                           }
-                                          label="Definition"
                                           meta={
                                             Object {
                                               "active": false,
@@ -2998,9 +2987,7 @@ exports[`WordCreateForm should render a word object 1`] = `
                                           <div
                                             className="inputField"
                                           >
-                                            <label>
-                                              Definition
-                                            </label>
+                                            <label />
                                             <div
                                               className="inputFieldBody"
                                             >
@@ -3012,7 +2999,6 @@ exports[`WordCreateForm should render a word object 1`] = `
                                                 onDragStart={[Function]}
                                                 onDrop={[Function]}
                                                 onFocus={[Function]}
-                                                placeholder="Definition"
                                                 type="text"
                                                 value="definition"
                                               />

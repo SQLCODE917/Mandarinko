@@ -49,7 +49,6 @@ describe('renderSpelling', () => {
       expect(props.fields[0]).toEqual({ language: "zh-Hant"})
       const spellingWrapper = shallow(<RenderSpelling {...props}/>)
       expect(spellingWrapper.find('[title="Remove Spelling"]')).toHaveLength(1)
-      expect(spellingWrapper.find('[label="Spelling"]')).toHaveLength(1)
     })
 
     it('removes it', () => {
