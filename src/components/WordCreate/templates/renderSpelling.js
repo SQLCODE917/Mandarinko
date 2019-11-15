@@ -32,7 +32,6 @@ const renderSpelling = ({ fields, meta: { error, submitFailed } }) => (
           name={`${spellingObject}.text`}
           type="text"
           component={renderInputField}
-          label="Spelling"
           validate={[required]}
         />
         <Field

@@ -30,7 +30,6 @@ const renderDefinition = ({ fields, meta: { error, submitFailed } }) => (
         <Field name={`${definitionObject}`}
           type="text"
           component={renderInputField}
-          label="Definition"
           validate={[required]}>
         </Field>
       </article>

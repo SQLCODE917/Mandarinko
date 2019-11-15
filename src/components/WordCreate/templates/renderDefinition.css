@@ -2,10 +2,14 @@
 
 .definitionsContainer {
   composes: fieldArray;
+  display: flex;
 }
 
 .definitionForm {
   composes: fieldArrayField;
+  margin-top: 0;
+  margin-left: .25rem;
+  padding-right: 0;
 }
 
 .button {

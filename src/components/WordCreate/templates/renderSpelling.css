@@ -2,10 +2,18 @@
 
 .spellingContainer {
   composes: fieldArray;
+  display: flex;
 }
 
 .spellingForm {
   composes: fieldArrayField;
+  margin-top: 0;
+  margin-left: .25rem;
+  padding-right: 0;
+}
+
+.spellingForm input {
+  max-width: 100px;
 }
 
 .button {
