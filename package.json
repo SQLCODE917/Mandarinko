@@ -61,7 +61,7 @@
     "fetch-mock": "^6.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.3",
-    "jsdom": "^11.11.0",
+    "jsdom": "^16.5.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-extend": "^1.0.5",
     "postcss-import": "^11.1.0",
