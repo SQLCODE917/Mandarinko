@@ -1,4 +1,38 @@
 **/*.swp
-dist
-node_modules
-coverage
+**/*.swo
+*~
+
+# Dependencies
+node_modules/
+.pnpm-store/
+.pnp.*
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+.cache/
+.vite/
+.next/
+
+# Testing
+coverage/
+.nyc_output/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Development
+*.log
+*.debug
+.DS_Store
