@@ -1,0 +1,40 @@
+{
+  "0": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "主张"
+      },
+      {
+        "language": "zh-Hant",
+        "text": "-張"
+      }
+    ],
+    "pronounciation": "zhu(3)zhang(1)",
+    "definition": [
+      "(n) view, position, proposition",
+      "(v) advocate, stand for, maintain, hold"
+    ],
+    "derivation": "",
+    "siblings": [
+      5
+    ],
+    "children": [
+      1,
+      2
+    ]
+  },
+  "ad5a65d4-c72f-4675-a60c-d587745d1c01": {
+    "id": "ad5a65d4-c72f-4675-a60c-d587745d1c01",
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "TODO"
+      }
+    ],
+    "pronunciation": "X",
+    "definition": [
+      "TODO"
+    ]
+  }
+}

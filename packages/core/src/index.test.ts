@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import VocabularyManager from './index.js';
-import { Word, VocabularyData } from './types.js';
+import type { Word, VocabularyData } from './types.js';
 
 const testVocabulary: VocabularyData = {
   '0': {
@@ -225,9 +225,7 @@ describe('VocabularyManager', () => {
     });
 
     it('should throw error for non-existent word', () => {
-      expect(() =>
-        manager.updateWord('999', { definition: ['test'] })
-      ).toThrow('not found');
+      expect(() => manager.updateWord('999', { definition: ['test'] })).toThrow('not found');
     });
   });
 

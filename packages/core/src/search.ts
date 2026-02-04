@@ -1,4 +1,4 @@
-import { Word, LanguageCode } from './types.js';
+import type { Word, LanguageCode } from './types.js';
 
 export class VocabularySearch {
   /**
@@ -6,10 +6,7 @@ export class VocabularySearch {
    */
   static bySpelling(text: string, language?: LanguageCode): (word: Word) => boolean {
     return (word: Word) => {
-      return word.spelling.some(
-        (s) =>
-          s.text === text && (!language || s.language === language)
-      );
+      return word.spelling.some((s) => s.text === text && (!language || s.language === language));
     };
   }
 
@@ -20,9 +17,7 @@ export class VocabularySearch {
     const lowerText = text.toLowerCase();
     return (word: Word) => {
       return word.spelling.some(
-        (s) =>
-          s.text.toLowerCase().includes(lowerText) &&
-          (!language || s.language === language)
+        (s) => s.text.toLowerCase().includes(lowerText) && (!language || s.language === language)
       );
     };
   }

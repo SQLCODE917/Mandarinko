@@ -11,10 +11,7 @@
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash"
       },
-      "extensions": [
-        "ms-vscode-remote.remote-containers",
-        "Continue.continue"
-      ]
+      "extensions": ["ms-vscode-remote.remote-containers", "Continue.continue"]
     }
   },
   "postCreateCommand": "mkdir -p ~/.continue && cp -f .continue/config.yaml ~/.continue/config.yaml && corepack prepare pnpm@9.15.0 --activate && pnpm install"

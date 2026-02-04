@@ -1,4 +1,4 @@
-import { Word, ValidationError, Spelling } from './types.js';
+import type { Word, ValidationError, Spelling } from './types.js';
 
 export class ValidationService {
   /**

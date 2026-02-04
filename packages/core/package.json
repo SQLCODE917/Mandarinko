@@ -7,13 +7,14 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/src/index.js",
+      "default": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
     }
   },
   "scripts": {
     "build": "tsc",
-    "test": "vitest",
+    "test": "vitest --run",
     "test:watch": "vitest --watch",
     "dev": "tsc --watch"
   },

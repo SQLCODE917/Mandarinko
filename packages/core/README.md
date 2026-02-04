@@ -23,7 +23,9 @@ pnpm add @mandarinko/core
 import { VocabularyManager } from '@mandarinko/core';
 
 // Load from JSON object
-const vocabularyData = { /* ... */ };
+const vocabularyData = {
+  /* ... */
+};
 const manager = VocabularyManager.fromJSON(vocabularyData);
 
 // Lookup by ID

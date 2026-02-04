@@ -1,6 +1,9 @@
 import { Word, VocabularyData, LanguageCode } from './types.js';
+export type { Word, VocabularyData, LanguageCode, Spelling, WordMetadata } from './types.js';
 import { ValidationService } from './validation.js';
 import { VocabularySearch } from './search.js';
+
+export { ValidationService, VocabularySearch };
 
 export class VocabularyManager {
   private vocabulary: Map<string, Word>;
