@@ -1,0 +1,93 @@
+.word-list {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.word-list-loading,
+.word-list-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.word-item {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.word-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #0066cc;
+}
+
+.word-id {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+.word-spellings {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.spelling {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.lang {
+  font-size: 0.75rem;
+  color: #666;
+  margin-left: 0.25rem;
+}
+
+.word-pronunciation {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+.word-definitions {
+  margin-bottom: 0.75rem;
+}
+
+.definition {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 0.25rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.definition::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+}
+
+.word-metadata {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #333;
+}

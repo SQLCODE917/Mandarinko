@@ -1,0 +1,69 @@
+.home-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.home-page .page-header {
+  background-color: #ff0092;
+  padding: 2rem;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.logo {
+  padding: 0.5em;
+}
+
+.cartouche {
+  padding: 0.5em;
+  margin: 0.5rem;
+  border: 1px solid #fff;
+}
+
+.home-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.search-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.words-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.btn-create {
+  padding: 0.75rem 1.5rem;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-create:hover {
+  background-color: #0052a3;
+}

@@ -1,6 +1,0 @@
-@import './templates/WordCreateCommon.css';
-
-.wordCreateForm {
-  border: 1px solid black;
-  padding: var(--quarter-note);
-}

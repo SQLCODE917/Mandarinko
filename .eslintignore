@@ -1,0 +1,10 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.next/
+out/
+build/
+src/
+webpack.config.js
+server.js
