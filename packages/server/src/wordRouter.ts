@@ -6,6 +6,18 @@ import type { Word } from '@mandarinko/core';
 export function createWordRouter(store: DataStore): Router {
   const router = express.Router();
 
+  const withIds = (words: Word[]) => {
+    const dict = store.getManager().toJSON();
+    const idMap = new Map<Word, string>();
+    for (const [id, word] of Object.entries(dict)) {
+      idMap.set(word, id);
+    }
+    return words.map((word) => ({
+      ...word,
+      id: idMap.get(word) ?? word.id,
+    }));
+  };
+
   // Ensure store loaded lazily
   router.use(async (_req, _res, next) => {
     const mgr = store.getManager();
@@ -27,14 +39,16 @@ export function createWordRouter(store: DataStore): Router {
 
   router.get('/search/definition', (req: Request, res: Response) => {
     const q = String(req.query.q ?? '');
-    res.json(store.getManager().searchByDefinition(q));
+    res.json(withIds(store.getManager().searchByDefinition(q)));
   });
 
   router.get('/search/spelling', (req: Request, res: Response) => {
     const q = String(req.query.q ?? '');
     const exact = req.query.exact === '1' || req.query.exact === 'true';
     res.json(
-      exact ? store.getManager().searchBySpelling(q) : store.getManager().searchByPartialSpelling(q)
+      withIds(
+        exact ? store.getManager().searchBySpelling(q) : store.getManager().searchByPartialSpelling(q)
+      )
     );
   });
 
