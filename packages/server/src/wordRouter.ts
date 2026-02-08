@@ -25,12 +25,6 @@ export function createWordRouter(store: DataStore): Router {
     res.json(results);
   });
 
-  router.get('/:id', (req: Request, res: Response) => {
-    const word = store.getManager().getById(req.params.id);
-    if (!word) return res.status(404).json({ error: 'not found' });
-    res.json({ ...word, id: req.params.id });
-  });
-
   router.get('/search/definition', (req: Request, res: Response) => {
     const q = String(req.query.q ?? '');
     res.json(store.getManager().searchByDefinition(q));
@@ -42,6 +36,12 @@ export function createWordRouter(store: DataStore): Router {
     res.json(
       exact ? store.getManager().searchBySpelling(q) : store.getManager().searchByPartialSpelling(q)
     );
+  });
+
+  router.get('/:id', (req: Request, res: Response) => {
+    const word = store.getManager().getById(req.params.id);
+    if (!word) return res.status(404).json({ error: 'not found' });
+    res.json({ ...word, id: req.params.id });
   });
 
   router.patch('/:id', async (req: Request, res: Response) => {
@@ -60,19 +60,27 @@ export function createWordRouter(store: DataStore): Router {
     }
   });
 
-  router.post('/', async (_req: Request, res: Response) => {
-    const id = randomUUID();
-    const minimal: Word = {
+  router.post('/', async (req: Request, res: Response) => {
+    const payload = (req.body ?? {}) as Partial<Word>;
+    const id = typeof payload.id === 'string' && payload.id.trim().length > 0 ? payload.id : randomUUID();
+    const word: Word = {
       id,
-      spelling: [{ language: 'zh-Hans', text: 'TODO' }],
-      pronunciation: 'TODO',
-      definition: ['TODO'],
+      spelling: Array.isArray(payload.spelling)
+        ? payload.spelling
+        : [{ language: 'zh-Hans', text: 'TODO' }],
+      pronunciation: typeof payload.pronunciation === 'string' ? payload.pronunciation : 'TODO',
+      definition: Array.isArray(payload.definition) ? payload.definition : ['TODO'],
+      derivation: payload.derivation,
+      parentIds: payload.parentIds,
+      childrenIds: payload.childrenIds,
+      siblingIds: payload.siblingIds,
+      metadata: payload.metadata,
     };
 
     try {
-      store.getManager().addWord(minimal);
+      store.getManager().addWord(word);
       await store.save();
-      res.status(201).json(minimal);
+      res.status(201).json(word);
     } catch (err: unknown) {
       let message = String(err);
       if (err instanceof Error) {
