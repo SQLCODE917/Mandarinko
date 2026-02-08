@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import fs from 'fs/promises';
 import type { Request, Response, Router } from 'express';
 import path from 'path';
@@ -9,16 +9,25 @@ import { createWordRouter } from './wordRouter';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const SRC_TESTDATA = path.join(__dirname, '..', 'testdata', 'testVocabulary.json');
-const TARGET = path.join(__dirname, '..', 'vocabulary.json');
 
 let router: Router;
 let store: DataStore;
+let tempDir: string;
+let tempFile: string;
 
 beforeEach(async () => {
-  await fs.copyFile(SRC_TESTDATA, TARGET);
-  store = new DataStore(TARGET);
+  tempDir = await fs.mkdtemp(path.join(__dirname, '..', 'testdata', 'tmp-'));
+  tempFile = path.join(tempDir, 'vocabulary.json');
+  await fs.copyFile(SRC_TESTDATA, tempFile);
+  store = new DataStore(tempFile);
   await store.load();
   router = createWordRouter(store);
+});
+
+afterEach(async () => {
+  if (tempDir) {
+    await fs.rm(tempDir, { recursive: true, force: true });
+  }
 });
 
 function getRouteHandler(method: 'get' | 'post' | 'patch', routePath: string) {
@@ -75,7 +84,17 @@ describe('server package word API', () => {
   it('creates and patches word', async () => {
     const createHandler = getRouteHandler('post', '/');
     const createRes = createMockResponse();
-    await createHandler({} as Request, createRes);
+    await createHandler(
+      {
+        body: {
+          id: 'test-word',
+          spelling: [{ language: 'ja', text: '会う' }],
+          pronunciation: 'あう',
+          definition: ['to see (a person)', 'to meet'],
+        },
+      } as Request,
+      createRes
+    );
     expect(createRes.statusCode).toBe(201);
     expect((createRes.body as { id?: string }).id).toBeTruthy();
 

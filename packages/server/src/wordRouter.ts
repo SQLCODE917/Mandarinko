@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import { DataStore } from './dataStore.js';
-import { randomUUID } from 'crypto';
+import { ValidationService } from '@mandarinko/core';
 import type { Word } from '@mandarinko/core';
 
 export function createWordRouter(store: DataStore): Router {
@@ -61,21 +61,11 @@ export function createWordRouter(store: DataStore): Router {
   });
 
   router.post('/', async (req: Request, res: Response) => {
-    const payload = (req.body ?? {}) as Partial<Word>;
-    const id = typeof payload.id === 'string' && payload.id.trim().length > 0 ? payload.id : randomUUID();
-    const word: Word = {
-      id,
-      spelling: Array.isArray(payload.spelling)
-        ? payload.spelling
-        : [{ language: 'zh-Hans', text: 'TODO' }],
-      pronunciation: typeof payload.pronunciation === 'string' ? payload.pronunciation : 'TODO',
-      definition: Array.isArray(payload.definition) ? payload.definition : ['TODO'],
-      derivation: payload.derivation,
-      parentIds: payload.parentIds,
-      childrenIds: payload.childrenIds,
-      siblingIds: payload.siblingIds,
-      metadata: payload.metadata,
-    };
+    const word = req.body as Word;
+    const errors = ValidationService.validateWord(word);
+    if (errors.length > 0) {
+      return res.status(400).json({ error: 'Invalid word', details: errors });
+    }
 
     try {
       store.getManager().addWord(word);
