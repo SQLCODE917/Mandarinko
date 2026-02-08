@@ -3,80 +3,122 @@
     "spelling": [
       {
         "language": "zh-Hans",
-        "text": "\u4E3B\u5F20"
+        "text": "主张"
       },
       {
         "language": "zh-Hant",
-        "text": "-\u5F35"
+        "text": "-張"
       }
     ],
     "pronunciation": "zhu(3)zhang(1)",
-    "definition": ["(n) view, position, proposition", "(v) advocate, stand for, maintain, hold"],
+    "definition": [
+      "(n) view, position, proposition",
+      "(v) advocate, stand for, maintain, hold"
+    ],
     "derivation": "",
-    "siblings": [5],
-    "children": [1, 2]
+    "siblings": [
+      5
+    ],
+    "children": [
+      1,
+      2
+    ]
   },
   "1": {
     "spelling": [
       {
         "language": "zh-Hans",
-        "text": "\u4E3B"
+        "text": "主"
       }
     ],
     "pronunciation": "zhu(3)",
-    "definition": ["(n) master, owner", "(adj) primary, main", "(v) advocate"],
+    "definition": [
+      "(n) master, owner",
+      "(adj) primary, main",
+      "(v) advocate"
+    ],
     "derivation": "pictograph of a lamp and flame"
   },
   "2": {
     "spelling": [
       {
         "language": "zh-Hans",
-        "text": "\u5F20"
+        "text": "张"
       },
       {
         "language": "zh-Hant",
-        "text": "\u5F35"
+        "text": "張"
       }
     ],
     "pronunciation": "zhang(1)",
-    "definition": ["(n) sheet", "(v) stretch, spread", "measure word for flat objects"],
-    "derivation": "bow \u5F13 that grows \u9577 (phonetic)",
-    "children": [3, 4]
+    "definition": [
+      "(n) sheet",
+      "(v) stretch, spread",
+      "measure word for flat objects"
+    ],
+    "derivation": "bow 弓 that grows 長 (phonetic)",
+    "children": [
+      3,
+      4
+    ]
   },
   "3": {
     "spelling": [
       {
         "language": "zh-Hans",
-        "text": "\u5F13"
+        "text": "弓"
       }
     ],
     "pronunciation": "gong(1)",
-    "definition": ["(n) bow", "(v) arch"],
+    "definition": [
+      "(n) bow",
+      "(v) arch"
+    ],
     "derivation": "pictograph of a bow"
   },
   "4": {
     "spelling": [
       {
         "language": "zh-Hans",
-        "text": "\u957F"
+        "text": "长"
       },
       {
         "language": "zh-Hant",
-        "text": "\u9577"
+        "text": "長"
       }
     ],
     "pronunciation": "chang(2), zhang(3)",
-    "definition": ["(n) duration, length, strength", "(adj) long, senior", "(v) grow"],
-    "derivation": "early form shows high table \u4E0C, changed person \u5315 and death \u4EA1"
+    "definition": [
+      "(n) duration, length, strength",
+      "(adj) long, senior",
+      "(v) grow"
+    ],
+    "derivation": "early form shows high table 丌, changed person 匕 and death 亡"
   },
   "5": {
     "spelling": [
       {
         "language": "ja",
-        "text": "\u4E3B\u5F35"
+        "text": "主張"
       }
     ],
-    "pronunciation": "\u3057\u3085\u3061\u3087\u3046",
-    "definition": ["(n) insistence, assertion"]
+    "pronunciation": "しゅちょう",
+    "definition": [
+      "(n) insistence, assertion"
+    ]
+  },
+  "2f98a58e-4ba0-4f55-96c3-f5b1d9d65b6b": {
+    "id": "2f98a58e-4ba0-4f55-96c3-f5b1d9d65b6b",
+    "spelling": [
+      {
+        "language": "ja",
+        "text": "会う"
+      }
+    ],
+    "pronunciation": "あう",
+    "definition": [
+      "to see (a person)",
+      "to meet"
+    ]
   }
 }

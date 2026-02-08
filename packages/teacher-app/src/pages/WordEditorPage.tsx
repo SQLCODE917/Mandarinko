@@ -34,7 +34,6 @@ export function WordEditorPage({ onSaved, onCancel, initialWord }: WordEditorPag
     <div className="word-editor-page">
       <header className="page-header">
         <h1>{initialWord ? 'Edit Word' : 'Create New Word'}</h1>
-        <p>Define all properties of the word</p>
       </header>
 
       {error && <div className="page-error">{error}</div>}

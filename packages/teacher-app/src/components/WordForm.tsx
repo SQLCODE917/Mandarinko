@@ -19,16 +19,11 @@ type FieldType =
   | 'parentIds'
   | 'childrenIds'
   | 'siblingIds'
-  | 'derivation'
   | 'hskLevel'
   | 'jlptLevel'
   | 'frequency';
 
 const OPTIONAL_FIELDS: readonly FieldType[] = [
-  'parentIds',
-  'childrenIds',
-  'siblingIds',
-  'derivation',
   'hskLevel',
   'jlptLevel',
   'frequency',
@@ -53,6 +48,14 @@ export function WordForm({ initialWord, onSubmit, onCancel }: WordFormProps) {
   const [loading, setLoading] = useState(false);
   const [searchMode, setSearchMode] = useState<'parentIds' | 'childrenIds' | 'siblingIds' | null>(
     null
+  );
+
+  const activateRelationshipField = useCallback(
+    (field: 'parentIds' | 'childrenIds' | 'siblingIds') => {
+      setActiveOptionalFields((prev) => (prev.includes(field) ? prev : [...prev, field]));
+      setSearchMode(field);
+    },
+    []
   );
 
   const toggleOptionalField = useCallback((field: FieldType) => {
@@ -240,28 +243,45 @@ export function WordForm({ initialWord, onSubmit, onCancel }: WordFormProps) {
         </button>
       </div>
 
+      {/* Derivation */}
+      <div className="form-group">
+        <label>Derivation</label>
+        <input
+          type="text"
+          value={derivation}
+          onChange={(e) => setDerivation(e.target.value)}
+          placeholder="Explain word derivation"
+        />
+      </div>
+
+      {/* Relationship Fields */}
+      <div className="relationship-buttons" role="group" aria-label="Add relationship fields">
+        <button
+          type="button"
+          className="btn-secondary"
+          onClick={() => activateRelationshipField('parentIds')}
+        >
+          Add Parent
+        </button>
+        <button
+          type="button"
+          className="btn-secondary"
+          onClick={() => activateRelationshipField('siblingIds')}
+        >
+          Add Sibling
+        </button>
+        <button
+          type="button"
+          className="btn-secondary"
+          onClick={() => activateRelationshipField('childrenIds')}
+        >
+          Add Child
+        </button>
+      </div>
+
       {/* Optional Fields */}
       <div className="optional-fields-section">
         <h3>Optional Fields</h3>
-        {activeOptionalFields.includes('derivation') && (
-          <div className="form-group">
-            <label>Derivation</label>
-            <input
-              type="text"
-              value={derivation}
-              onChange={(e) => setDerivation(e.target.value)}
-              placeholder="Explain word derivation"
-            />
-            <button
-              type="button"
-              onClick={() => toggleOptionalField('derivation')}
-              className="btn-remove-field"
-            >
-              Remove Field
-            </button>
-          </div>
-        )}
-
         {activeOptionalFields.includes('parentIds') && (
           <div className="form-group">
             <label>Parent Words</label>

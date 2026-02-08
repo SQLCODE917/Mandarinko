@@ -18,6 +18,8 @@ export function createWordRouter(store: DataStore): Router {
     }));
   };
 
+  const getWordMap = () => new Map(Object.entries(store.getManager().toJSON()));
+
   // Ensure store loaded lazily
   router.use(async (_req, _res, next) => {
     const mgr = store.getManager();
@@ -61,10 +63,23 @@ export function createWordRouter(store: DataStore): Router {
   router.patch('/:id', async (req: Request, res: Response) => {
     const id = req.params.id;
     try {
+      const existing = store.getManager().getById(id);
+      if (!existing) {
+        return res.status(404).json({ error: 'not found' });
+      }
+      const nextWord = { ...existing, ...(req.body as Partial<Word>), id };
+      const errors = ValidationService.validateWord(nextWord);
+      const refErrors = ValidationService.validateReferences(
+        nextWord,
+        new Map([...getWordMap(), [id, nextWord]])
+      );
+      if (errors.length > 0 || refErrors.length > 0) {
+        return res.status(400).json({ error: 'Invalid word', details: [...errors, ...refErrors] });
+      }
       store.getManager().updateWord(id, req.body as Partial<Word>);
       await store.save();
-      const updated = store.getManager().getById(id);
-      res.json(updated);
+      const saved = store.getManager().getById(id);
+      res.json(saved);
     } catch (err: unknown) {
       let message = String(err);
       if (err instanceof Error) {
@@ -77,8 +92,9 @@ export function createWordRouter(store: DataStore): Router {
   router.post('/', async (req: Request, res: Response) => {
     const word = req.body as Word;
     const errors = ValidationService.validateWord(word);
-    if (errors.length > 0) {
-      return res.status(400).json({ error: 'Invalid word', details: errors });
+    const refErrors = ValidationService.validateReferences(word, getWordMap());
+    if (errors.length > 0 || refErrors.length > 0) {
+      return res.status(400).json({ error: 'Invalid word', details: [...errors, ...refErrors] });
     }
 
     try {

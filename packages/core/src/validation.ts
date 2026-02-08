@@ -17,7 +17,14 @@ export class ValidationService {
       errors.push({ field: 'spelling', message: 'At least one spelling is required' });
     } else {
       word.spelling.forEach((spelling, index) => {
-        if (!spelling.language || !spelling.text) {
+        if (
+          !spelling.language ||
+          typeof spelling.language !== 'string' ||
+          spelling.language.trim().length === 0 ||
+          !spelling.text ||
+          typeof spelling.text !== 'string' ||
+          spelling.text.trim().length === 0
+        ) {
           errors.push({
             field: `spelling[${index}]`,
             message: 'Each spelling must have language and text',
@@ -27,7 +34,11 @@ export class ValidationService {
     }
 
     // Validate pronunciation
-    if (!word.pronunciation || typeof word.pronunciation !== 'string') {
+    if (
+      !word.pronunciation ||
+      typeof word.pronunciation !== 'string' ||
+      word.pronunciation.trim().length === 0
+    ) {
       errors.push({ field: 'pronunciation', message: 'Pronunciation is required' });
     }
 
@@ -36,7 +47,7 @@ export class ValidationService {
       errors.push({ field: 'definition', message: 'At least one definition is required' });
     } else {
       word.definition.forEach((def, index) => {
-        if (typeof def !== 'string') {
+        if (typeof def !== 'string' || def.trim().length === 0) {
           errors.push({
             field: `definition[${index}]`,
             message: 'Each definition must be a string',
@@ -48,12 +59,36 @@ export class ValidationService {
     // Validate relationships are arrays of strings
     if (word.parentIds && !Array.isArray(word.parentIds)) {
       errors.push({ field: 'parentIds', message: 'parentIds must be an array' });
+    } else if (word.parentIds) {
+      word.parentIds.forEach((id, index) => {
+        if (typeof id !== 'string' || id.trim().length === 0) {
+          errors.push({ field: `parentIds[${index}]`, message: 'parentIds must contain strings' });
+        }
+      });
     }
     if (word.childrenIds && !Array.isArray(word.childrenIds)) {
       errors.push({ field: 'childrenIds', message: 'childrenIds must be an array' });
+    } else if (word.childrenIds) {
+      word.childrenIds.forEach((id, index) => {
+        if (typeof id !== 'string' || id.trim().length === 0) {
+          errors.push({ field: `childrenIds[${index}]`, message: 'childrenIds must contain strings' });
+        }
+      });
     }
     if (word.siblingIds && !Array.isArray(word.siblingIds)) {
       errors.push({ field: 'siblingIds', message: 'siblingIds must be an array' });
+    } else if (word.siblingIds) {
+      word.siblingIds.forEach((id, index) => {
+        if (typeof id !== 'string' || id.trim().length === 0) {
+          errors.push({ field: `siblingIds[${index}]`, message: 'siblingIds must contain strings' });
+        }
+      });
+    }
+
+    if (word.derivation !== undefined) {
+      if (typeof word.derivation !== 'string') {
+        errors.push({ field: 'derivation', message: 'derivation must be a string' });
+      }
     }
 
     return errors;
@@ -65,11 +100,15 @@ export class ValidationService {
   static validateSpelling(spelling: Spelling): ValidationError[] {
     const errors: ValidationError[] = [];
 
-    if (!spelling.language || typeof spelling.language !== 'string') {
+    if (
+      !spelling.language ||
+      typeof spelling.language !== 'string' ||
+      spelling.language.trim().length === 0
+    ) {
       errors.push({ field: 'language', message: 'Language is required and must be a string' });
     }
 
-    if (!spelling.text || typeof spelling.text !== 'string') {
+    if (!spelling.text || typeof spelling.text !== 'string' || spelling.text.trim().length === 0) {
       errors.push({ field: 'text', message: 'Text is required and must be a string' });
     }
 
