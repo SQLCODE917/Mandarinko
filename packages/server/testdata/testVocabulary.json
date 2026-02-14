@@ -3,17 +3,25 @@
     "spelling": [
       {
         "language": "zh-Hans",
-        "text": "\u4E3B\u5F20"
+        "text": "主张"
       },
       {
         "language": "zh-Hant",
-        "text": "-\u5F35"
+        "text": "-張"
       }
     ],
-    "pronounciation": "zhu(3)zhang(1)",
-    "definition": ["(n) view, position, proposition", "(v) advocate, stand for, maintain, hold"],
+    "definition": [
+      "(n) view, position, proposition",
+      "(v) advocate, stand for, maintain, hold"
+    ],
     "derivation": "",
-    "siblings": [5],
-    "children": [1, 2]
+    "pronunciation": "zhu(3)zhang(1)",
+    "siblingIds": [
+      5
+    ],
+    "childrenIds": [
+      1,
+      2
+    ]
   }
 }
