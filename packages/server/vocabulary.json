@@ -16,10 +16,10 @@
       "(v) advocate, stand for, maintain, hold"
     ],
     "derivation": "",
-    "siblings": [
+    "siblingIds": [
       5
     ],
-    "children": [
+    "childrenIds": [
       1,
       2
     ]
@@ -57,7 +57,7 @@
       "measure word for flat objects"
     ],
     "derivation": "bow 弓 that grows 長 (phonetic)",
-    "children": [
+    "childrenIds": [
       3,
       4
     ]
@@ -120,5 +120,23 @@
       "to see (a person)",
       "to meet"
     ]
+  },
+  "8045b1c8-a48b-4b31-87fd-179d3c5c7c6c": {
+    "id": "8045b1c8-a48b-4b31-87fd-179d3c5c7c6c",
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "我"
+      }
+    ],
+    "pronunciation": "wo(3)",
+    "definition": [
+      "I",
+      "me"
+    ],
+    "derivation": "Hand 手 holding a halberd 戈",
+    "metadata": {
+      "hskLevel": 1
+    }
   }
 }

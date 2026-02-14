@@ -10,6 +10,7 @@ interface WordFormProps {
   initialWord?: Word & { id: string };
   onSubmit: (word: Word) => Promise<void>;
   onCancel: () => void;
+  resolveWordLabel?: (id: string) => string;
 }
 
 type FieldType =
@@ -29,21 +30,33 @@ const OPTIONAL_FIELDS: readonly FieldType[] = [
   'frequency',
 ];
 
-export function WordForm({ initialWord, onSubmit, onCancel }: WordFormProps) {
+export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: WordFormProps) {
   const [spellings, setSpellings] = useState<Spelling[]>(
     initialWord?.spelling || [{ language: 'zh-Hans', text: '' }]
   );
   const [pronunciation, setPronunciation] = useState(initialWord?.pronunciation || '');
   const [definitions, setDefinitions] = useState<string[]>(initialWord?.definition || ['']);
-  const [parentIds, setParentIds] = useState<string[]>(initialWord?.parentIds || []);
-  const [childrenIds, setChildrenIds] = useState<string[]>(initialWord?.childrenIds || []);
-  const [siblingIds, setSiblingIds] = useState<string[]>(initialWord?.siblingIds || []);
+  const [parentIds, setParentIds] = useState<string[]>(
+    (initialWord?.parentIds ?? []).map((id) => String(id))
+  );
+  const [childrenIds, setChildrenIds] = useState<string[]>(
+    (initialWord?.childrenIds ?? []).map((id) => String(id))
+  );
+  const [siblingIds, setSiblingIds] = useState<string[]>(
+    (initialWord?.siblingIds ?? []).map((id) => String(id))
+  );
   const [derivation, setDerivation] = useState(initialWord?.derivation || '');
   const [hskLevel, setHskLevel] = useState(initialWord?.metadata?.hskLevel || '');
   const [jlptLevel, setJlptLevel] = useState(initialWord?.metadata?.jlptLevel || '');
   const [frequency, setFrequency] = useState(initialWord?.metadata?.frequency || '');
 
-  const [activeOptionalFields, setActiveOptionalFields] = useState<FieldType[]>([]);
+  const [activeOptionalFields, setActiveOptionalFields] = useState<FieldType[]>(() => {
+    const initial: FieldType[] = [];
+    if (initialWord?.parentIds?.length) initial.push('parentIds');
+    if (initialWord?.childrenIds?.length) initial.push('childrenIds');
+    if (initialWord?.siblingIds?.length) initial.push('siblingIds');
+    return initial;
+  });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [searchMode, setSearchMode] = useState<'parentIds' | 'childrenIds' | 'siblingIds' | null>(
@@ -142,6 +155,10 @@ export function WordForm({ initialWord, onSubmit, onCancel }: WordFormProps) {
   };
 
   const availableOptionalFields = OPTIONAL_FIELDS.filter((f) => !activeOptionalFields.includes(f));
+  const getWordLabel = useCallback(
+    (id: string) => (resolveWordLabel ? resolveWordLabel(id) : id),
+    [resolveWordLabel]
+  );
 
   return (
     <form onSubmit={handleSubmit} className="word-form">
@@ -282,125 +299,127 @@ export function WordForm({ initialWord, onSubmit, onCancel }: WordFormProps) {
       {/* Optional Fields */}
       <div className="optional-fields-section">
         <h3>Optional Fields</h3>
-        {activeOptionalFields.includes('parentIds') && (
-          <div className="form-group">
-            <label>Parent Words</label>
-            {searchMode === 'parentIds' ? (
-              <OmniSearch onSelect={addRelationship} placeholder="Find parent word..." />
-            ) : (
+        <div className="relationship-fields">
+          {activeOptionalFields.includes('parentIds') && (
+            <div className="form-group relationship-field">
+              <label>Parent Words</label>
+              {searchMode === 'parentIds' ? (
+                <OmniSearch onSelect={addRelationship} placeholder="Find parent word..." />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setSearchMode('parentIds')}
+                  className="btn-secondary"
+                >
+                  Search Parent Words
+                </button>
+              )}
+              {parentIds.length > 0 && (
+                <div className="relationship-list">
+                  {parentIds.map((id) => (
+                    <div key={id} className="relationship-tag">
+                      {getWordLabel(id)}
+                      <button
+                        type="button"
+                        onClick={() => removeRelationship('parent', id)}
+                        className="btn-remove-tag"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
               <button
                 type="button"
-                onClick={() => setSearchMode('parentIds')}
-                className="btn-secondary"
+                onClick={() => toggleOptionalField('parentIds')}
+                className="btn-remove-field"
               >
-                Search Parent Words
+                Remove Field
               </button>
-            )}
-            {parentIds.length > 0 && (
-              <div className="relationship-list">
-                {parentIds.map((id) => (
-                  <div key={id} className="relationship-tag">
-                    {id}
-                    <button
-                      type="button"
-                      onClick={() => removeRelationship('parent', id)}
-                      className="btn-remove-tag"
-                    >
-                      ×
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
-            <button
-              type="button"
-              onClick={() => toggleOptionalField('parentIds')}
-              className="btn-remove-field"
-            >
-              Remove Field
-            </button>
-          </div>
-        )}
+            </div>
+          )}
 
-        {activeOptionalFields.includes('childrenIds') && (
-          <div className="form-group">
-            <label>Child Words</label>
-            {searchMode === 'childrenIds' ? (
-              <OmniSearch onSelect={addRelationship} placeholder="Find child word..." />
-            ) : (
+          {activeOptionalFields.includes('childrenIds') && (
+            <div className="form-group relationship-field">
+              <label>Child Words</label>
+              {searchMode === 'childrenIds' ? (
+                <OmniSearch onSelect={addRelationship} placeholder="Find child word..." />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setSearchMode('childrenIds')}
+                  className="btn-secondary"
+                >
+                  Search Child Words
+                </button>
+              )}
+              {childrenIds.length > 0 && (
+                <div className="relationship-list">
+                  {childrenIds.map((id) => (
+                    <div key={id} className="relationship-tag">
+                      {getWordLabel(id)}
+                      <button
+                        type="button"
+                        onClick={() => removeRelationship('child', id)}
+                        className="btn-remove-tag"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
               <button
                 type="button"
-                onClick={() => setSearchMode('childrenIds')}
-                className="btn-secondary"
+                onClick={() => toggleOptionalField('childrenIds')}
+                className="btn-remove-field"
               >
-                Search Child Words
+                Remove Field
               </button>
-            )}
-            {childrenIds.length > 0 && (
-              <div className="relationship-list">
-                {childrenIds.map((id) => (
-                  <div key={id} className="relationship-tag">
-                    {id}
-                    <button
-                      type="button"
-                      onClick={() => removeRelationship('child', id)}
-                      className="btn-remove-tag"
-                    >
-                      ×
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
-            <button
-              type="button"
-              onClick={() => toggleOptionalField('childrenIds')}
-              className="btn-remove-field"
-            >
-              Remove Field
-            </button>
-          </div>
-        )}
+            </div>
+          )}
 
-        {activeOptionalFields.includes('siblingIds') && (
-          <div className="form-group">
-            <label>Sibling Words</label>
-            {searchMode === 'siblingIds' ? (
-              <OmniSearch onSelect={addRelationship} placeholder="Find sibling word..." />
-            ) : (
+          {activeOptionalFields.includes('siblingIds') && (
+            <div className="form-group relationship-field">
+              <label>Sibling Words</label>
+              {searchMode === 'siblingIds' ? (
+                <OmniSearch onSelect={addRelationship} placeholder="Find sibling word..." />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setSearchMode('siblingIds')}
+                  className="btn-secondary"
+                >
+                  Search Sibling Words
+                </button>
+              )}
+              {siblingIds.length > 0 && (
+                <div className="relationship-list">
+                  {siblingIds.map((id) => (
+                    <div key={id} className="relationship-tag">
+                      {getWordLabel(id)}
+                      <button
+                        type="button"
+                        onClick={() => removeRelationship('sibling', id)}
+                        className="btn-remove-tag"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
               <button
                 type="button"
-                onClick={() => setSearchMode('siblingIds')}
-                className="btn-secondary"
+                onClick={() => toggleOptionalField('siblingIds')}
+                className="btn-remove-field"
               >
-                Search Sibling Words
+                Remove Field
               </button>
-            )}
-            {siblingIds.length > 0 && (
-              <div className="relationship-list">
-                {siblingIds.map((id) => (
-                  <div key={id} className="relationship-tag">
-                    {id}
-                    <button
-                      type="button"
-                      onClick={() => removeRelationship('sibling', id)}
-                      className="btn-remove-tag"
-                    >
-                      ×
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
-            <button
-              type="button"
-              onClick={() => toggleOptionalField('siblingIds')}
-              className="btn-remove-field"
-            >
-              Remove Field
-            </button>
-          </div>
-        )}
+            </div>
+          )}
+        </div>
 
         {activeOptionalFields.includes('hskLevel') && (
           <div className="form-group">

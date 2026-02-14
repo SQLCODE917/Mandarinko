@@ -153,6 +153,17 @@
   margin-bottom: 1rem;
 }
 
+.relationship-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.relationship-field {
+  flex: 1 1 280px;
+  min-width: 240px;
+}
+
 .relationship-tag {
   display: inline-flex;
   align-items: center;
@@ -162,6 +173,7 @@
   border: 1px solid #90caf9;
   border-radius: 20px;
   font-size: 0.9rem;
+  color: #0f172a;
 }
 
 .btn-remove-tag {

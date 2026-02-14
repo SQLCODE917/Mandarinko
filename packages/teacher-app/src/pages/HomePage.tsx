@@ -1,7 +1,9 @@
 import { useVocabulary } from '../hooks/useVocabulary';
+import { useState } from 'react';
 import { OmniSearch } from '../components/OmniSearch';
 import { WordList } from '../components/WordList';
 import { LCDText } from '../components/LCDText';
+import { WordTreeModal } from '../components/WordTreeModal';
 import './HomePage.css';
 
 interface HomePageProps {
@@ -9,7 +11,8 @@ interface HomePageProps {
 }
 
 export function HomePage({ onCreateWord }: HomePageProps) {
-  const { words, loading } = useVocabulary();
+  const { words, loading, refetch } = useVocabulary();
+  const [selectedWordId, setSelectedWordId] = useState<string | null>(null);
 
   return (
     <div className="home-page">
@@ -22,7 +25,10 @@ export function HomePage({ onCreateWord }: HomePageProps) {
 
       <div className="home-content">
         <div className="search-section">
-          <OmniSearch onSelect={() => {}} placeholder="Search the dictionary..." />
+          <OmniSearch
+            onSelect={(word) => setSelectedWordId(word.id)}
+            placeholder="Search the dictionary..."
+          />
         </div>
 
         <div className="words-section">
@@ -33,9 +39,21 @@ export function HomePage({ onCreateWord }: HomePageProps) {
             </button>
           </div>
 
-          <WordList words={words} loading={loading} />
+          <WordList
+            words={words}
+            loading={loading}
+            onSelectWord={(word) => setSelectedWordId(word.id)}
+          />
         </div>
       </div>
+
+      <WordTreeModal
+        isOpen={Boolean(selectedWordId)}
+        rootWordId={selectedWordId}
+        words={words}
+        onClose={() => setSelectedWordId(null)}
+        onUpdated={refetch}
+      />
     </div>
   );
 }

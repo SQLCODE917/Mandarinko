@@ -2,6 +2,35 @@ import type { Word, ValidationError, Spelling } from './types.js';
 
 export class ValidationService {
   /**
+   * Validate that a word has no unknown fields.
+   */
+  static validateNoExtraFields(word: unknown): ValidationError[] {
+    const errors: ValidationError[] = [];
+    if (!word || typeof word !== 'object') {
+      errors.push({ field: 'word', message: 'Word must be an object' });
+      return errors;
+    }
+    const allowedFields = new Set([
+      'id',
+      'spelling',
+      'pronunciation',
+      'definition',
+      'derivation',
+      'parentIds',
+      'childrenIds',
+      'siblingIds',
+      'metadata',
+    ]);
+
+    Object.keys(word as Record<string, unknown>).forEach((key) => {
+      if (!allowedFields.has(key)) {
+        errors.push({ field: key, message: 'Unknown field' });
+      }
+    });
+
+    return errors;
+  }
+  /**
    * Validate a complete word entry
    */
   static validateWord(word: Word): ValidationError[] {
