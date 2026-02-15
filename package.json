@@ -13,7 +13,7 @@
     "build": "pnpm --recursive run build",
     "test": "pnpm --recursive run test",
     "test:ui": "vitest --run --ui",
-    "test:coverage": "vitest --run --coverage",
+    "test:coverage": "pnpm --recursive --stream run test:coverage",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

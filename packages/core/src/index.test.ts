@@ -20,7 +20,6 @@ const testVocabulary: VocabularyData = {
     spelling: [{ language: 'zh-Hans', text: '主' }],
     pronunciation: 'zhu(3)',
     definition: ['(n) master, owner', '(adj) primary, main'],
-    parentIds: ['0'],
     metadata: { hskLevel: 2 },
   },
   '2': {
@@ -31,7 +30,6 @@ const testVocabulary: VocabularyData = {
     ],
     pronunciation: 'zhang(1)',
     definition: ['(n) sheet', '(v) stretch, spread'],
-    parentIds: ['0'],
     childrenIds: ['3'],
     metadata: { jlptLevel: 1 },
   },
@@ -40,7 +38,6 @@ const testVocabulary: VocabularyData = {
     spelling: [{ language: 'zh-Hans', text: '弓' }],
     pronunciation: 'gong(1)',
     definition: ['(n) bow', '(v) arch'],
-    parentIds: ['2'],
   },
   '5': {
     id: '5',
@@ -157,8 +154,7 @@ describe('VocabularyManager', () => {
 
     it('should get parents of a word', () => {
       const parents = manager.getParents('1');
-      expect(parents.length).toBe(1);
-      expect(parents[0].id).toBe('0');
+      expect(parents.length).toBe(0);
     });
 
     it('should get siblings of a word', () => {
@@ -174,7 +170,7 @@ describe('VocabularyManager', () => {
 
     it('should get derivation chain', () => {
       const chain = manager.getDerivationChain('3');
-      expect(chain.length).toBe(3); // 3 -> 2 -> 0
+      expect(chain.length).toBe(1); // no parent traversal
       expect(chain[0].id).toBe('3');
     });
   });
@@ -253,8 +249,6 @@ describe('VocabularyManager', () => {
       manager.linkChild('1', '3');
       const parent = manager.getById('1');
       expect(parent?.childrenIds).toContain('3');
-      const child = manager.getById('3');
-      expect(child?.parentIds).toContain('1');
     });
 
     it('should not create duplicate links', () => {
@@ -273,7 +267,6 @@ describe('VocabularyManager', () => {
     it('should unlink child words', () => {
       manager.unlinkChild('0', '1');
       expect(manager.getById('0')?.childrenIds).not.toContain('1');
-      expect(manager.getById('1')?.parentIds).not.toContain('0');
     });
 
     it('should unlink sibling words', () => {

@@ -137,6 +137,38 @@
     "derivation": "Hand 手 holding a halberd 戈",
     "metadata": {
       "hskLevel": 1
-    }
+    },
+    "childrenIds": [
+      "0e17ea86-33e5-4d7b-b114-7bb30309c697",
+      "7afe3f5c-7502-48db-9973-dcf6148d9e8b"
+    ]
+  },
+  "0e17ea86-33e5-4d7b-b114-7bb30309c697": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "手"
+      }
+    ],
+    "pronunciation": "sho(3)u",
+    "definition": [
+      "hand"
+    ],
+    "derivation": "Pictograph of a hand",
+    "id": "0e17ea86-33e5-4d7b-b114-7bb30309c697"
+  },
+  "7afe3f5c-7502-48db-9973-dcf6148d9e8b": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "戈"
+      }
+    ],
+    "pronunciation": "ge(1)",
+    "definition": [
+      "halberd, lance"
+    ],
+    "derivation": "Stake 弋 with a horizontal 一 blade",
+    "id": "7afe3f5c-7502-48db-9973-dcf6148d9e8b"
   }
 }

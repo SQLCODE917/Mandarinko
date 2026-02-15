@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "tsc -b",
-    "dev": "tsc -b && node dist/cli.js",
+    "dev": "node --watch --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('ts-node/esm', pathToFileURL('./'));\" src/cli.ts",
     "test": "vitest --run",
     "test:coverage": "vitest --run --coverage"
   },

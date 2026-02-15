@@ -87,7 +87,6 @@ describe('server package word API', () => {
     await createHandler(
       {
         body: {
-          id: 'test-word',
           spelling: [{ language: 'ja', text: '会う' }],
           pronunciation: 'あう',
           definition: ['to see (a person)', 'to meet'],

@@ -1,6 +1,7 @@
 import express, { Request, Response, Router } from 'express';
 import { DataStore } from './dataStore.js';
 import { ValidationService } from '@mandarinko/core';
+import { randomUUID } from 'crypto';
 import type { Word } from '@mandarinko/core';
 
 export function createWordRouter(store: DataStore): Router {
@@ -26,14 +27,7 @@ export function createWordRouter(store: DataStore): Router {
 
   // Ensure store loaded lazily
   router.use(async (_req, _res, next) => {
-    const mgr = store.getManager();
-    if (!mgr || mgr.getAll().length === 0) {
-      try {
-        await store.load();
-      } catch (err) {
-        // ignore load errors and continue with empty manager
-      }
-    }
+    await store.loadIfUpdated();
     next();
   });
 
@@ -124,7 +118,11 @@ export function createWordRouter(store: DataStore): Router {
   });
 
   router.post('/', async (req: Request, res: Response) => {
-    const word = req.body as Word;
+    const payload = req.body as Partial<Word> & { id?: unknown };
+    if (payload && Object.prototype.hasOwnProperty.call(payload, 'id')) {
+      return res.status(400).json({ error: 'ID must not be provided when creating a word' });
+    }
+    const word = { ...(payload as Omit<Word, 'id'>), id: randomUUID() } as Word;
     const errors = ValidationService.validateWord(word);
     const extraErrors = ValidationService.validateNoExtraFields(word);
     const refErrors = ValidationService.validateReferences(word, getWordMap());

@@ -101,11 +101,8 @@ export class VocabularyManager {
    * Get parent words
    */
   getParents(wordId: string): Word[] {
-    const word = this.getById(wordId);
-    if (!word || !word.parentIds) return [];
-    return word.parentIds
-      .map((id) => this.vocabulary.get(id))
-      .filter((word) => word !== undefined) as Word[];
+    void wordId;
+    return [];
   }
 
   /**
@@ -124,21 +121,9 @@ export class VocabularyManager {
    */
   getDerivationChain(wordId: string): Word[] {
     const chain: Word[] = [];
-    const visited = new Set<string>();
-    const queue: string[] = [wordId];
-
-    while (queue.length > 0) {
-      const id = queue.shift()!;
-      if (visited.has(id)) continue;
-      visited.add(id);
-
-      const word = this.vocabulary.get(id);
-      if (word) {
-        chain.push(word);
-        if (word.parentIds) {
-          queue.push(...word.parentIds);
-        }
-      }
+    const word = this.vocabulary.get(wordId);
+    if (word) {
+      chain.push(word);
     }
 
     return chain;
@@ -188,9 +173,6 @@ export class VocabularyManager {
 
     // Remove this word from all relationship references
     for (const word of this.vocabulary.values()) {
-      if (word.parentIds) {
-        word.parentIds = word.parentIds.filter((pid) => pid !== id);
-      }
       if (word.childrenIds) {
         word.childrenIds = word.childrenIds.filter((cid) => cid !== id);
       }
@@ -219,15 +201,8 @@ export class VocabularyManager {
     if (!parent.childrenIds) {
       parent.childrenIds = [];
     }
-    if (!child.parentIds) {
-      child.parentIds = [];
-    }
-
     if (!parent.childrenIds.includes(childId)) {
       parent.childrenIds.push(childId);
-    }
-    if (!child.parentIds.includes(parentId)) {
-      child.parentIds.push(parentId);
     }
   }
 
@@ -247,9 +222,6 @@ export class VocabularyManager {
 
     if (parent.childrenIds) {
       parent.childrenIds = parent.childrenIds.filter((id) => id !== childId);
-    }
-    if (child.parentIds) {
-      child.parentIds = child.parentIds.filter((id) => id !== parentId);
     }
   }
 

@@ -125,6 +125,13 @@
   color: #0f172a;
 }
 
+.word-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
 .word-card-subtle {
   color: #64748b;
 }

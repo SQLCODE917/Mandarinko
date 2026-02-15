@@ -2,6 +2,14 @@ import type { Word, ValidationError, Spelling } from './types.js';
 
 export class ValidationService {
   /**
+   * Validate a word input that does not require an ID yet.
+   */
+  static validateWordInput(word: Omit<Word, 'id'>): ValidationError[] {
+    const withTempId = { ...word, id: '__temp__' } as Word;
+    return ValidationService.validateWord(withTempId).filter((err) => err.field !== 'id');
+  }
+
+  /**
    * Validate that a word has no unknown fields.
    */
   static validateNoExtraFields(word: unknown): ValidationError[] {
@@ -22,11 +30,16 @@ export class ValidationService {
       'metadata',
     ]);
 
-    Object.keys(word as Record<string, unknown>).forEach((key) => {
+    const record = word as Record<string, unknown>;
+    Object.keys(record).forEach((key) => {
       if (!allowedFields.has(key)) {
         errors.push({ field: key, message: 'Unknown field' });
       }
     });
+
+    if (Array.isArray(record.parentIds) && record.parentIds.length > 0) {
+      errors.push({ field: 'parentIds', message: 'parentIds are no longer supported' });
+    }
 
     return errors;
   }
@@ -86,14 +99,12 @@ export class ValidationService {
     }
 
     // Validate relationships are arrays of strings
-    if (word.parentIds && !Array.isArray(word.parentIds)) {
-      errors.push({ field: 'parentIds', message: 'parentIds must be an array' });
-    } else if (word.parentIds) {
-      word.parentIds.forEach((id, index) => {
-        if (typeof id !== 'string' || id.trim().length === 0) {
-          errors.push({ field: `parentIds[${index}]`, message: 'parentIds must contain strings' });
-        }
-      });
+    if (word.parentIds !== undefined) {
+      if (!Array.isArray(word.parentIds)) {
+        errors.push({ field: 'parentIds', message: 'parentIds must be an array' });
+      } else if (word.parentIds.length > 0) {
+        errors.push({ field: 'parentIds', message: 'parentIds are no longer supported' });
+      }
     }
     if (word.childrenIds && !Array.isArray(word.childrenIds)) {
       errors.push({ field: 'childrenIds', message: 'childrenIds must be an array' });
@@ -162,7 +173,6 @@ export class ValidationService {
       });
     };
 
-    validateIdArray(word.parentIds, 'parentIds');
     validateIdArray(word.childrenIds, 'childrenIds');
     validateIdArray(word.siblingIds, 'siblingIds');
 

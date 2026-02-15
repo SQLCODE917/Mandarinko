@@ -7,17 +7,21 @@ import { OmniSearch } from './OmniSearch';
 import './WordForm.css';
 
 interface WordFormProps {
-  initialWord?: Word & { id: string };
-  onSubmit: (word: Word) => Promise<void>;
+  initialWord?: WordInput;
+  onSubmit: (word: WordInput) => Promise<void>;
   onCancel: () => void;
   resolveWordLabel?: (id: string) => string;
+  onCreateChild?: () => void;
+  onCreateSibling?: () => void;
+  submitDisabled?: boolean;
 }
+
+type WordInput = Omit<Word, 'id'> & { id?: string };
 
 type FieldType =
   | 'spelling'
   | 'pronunciation'
   | 'definition'
-  | 'parentIds'
   | 'childrenIds'
   | 'siblingIds'
   | 'hskLevel'
@@ -30,15 +34,20 @@ const OPTIONAL_FIELDS: readonly FieldType[] = [
   'frequency',
 ];
 
-export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: WordFormProps) {
+export function WordForm({
+  initialWord,
+  onSubmit,
+  onCancel,
+  resolveWordLabel,
+  onCreateChild,
+  onCreateSibling,
+  submitDisabled,
+}: WordFormProps) {
   const [spellings, setSpellings] = useState<Spelling[]>(
     initialWord?.spelling || [{ language: 'zh-Hans', text: '' }]
   );
   const [pronunciation, setPronunciation] = useState(initialWord?.pronunciation || '');
   const [definitions, setDefinitions] = useState<string[]>(initialWord?.definition || ['']);
-  const [parentIds, setParentIds] = useState<string[]>(
-    (initialWord?.parentIds ?? []).map((id) => String(id))
-  );
   const [childrenIds, setChildrenIds] = useState<string[]>(
     (initialWord?.childrenIds ?? []).map((id) => String(id))
   );
@@ -52,19 +61,16 @@ export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: 
 
   const [activeOptionalFields, setActiveOptionalFields] = useState<FieldType[]>(() => {
     const initial: FieldType[] = [];
-    if (initialWord?.parentIds?.length) initial.push('parentIds');
     if (initialWord?.childrenIds?.length) initial.push('childrenIds');
     if (initialWord?.siblingIds?.length) initial.push('siblingIds');
     return initial;
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
-  const [searchMode, setSearchMode] = useState<'parentIds' | 'childrenIds' | 'siblingIds' | null>(
-    null
-  );
+  const [searchMode, setSearchMode] = useState<'childrenIds' | 'siblingIds' | null>(null);
 
   const activateRelationshipField = useCallback(
-    (field: 'parentIds' | 'childrenIds' | 'siblingIds') => {
+    (field: 'childrenIds' | 'siblingIds') => {
       setActiveOptionalFields((prev) => (prev.includes(field) ? prev : [...prev, field]));
       setSearchMode(field);
     },
@@ -79,11 +85,7 @@ export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: 
 
   const addRelationship = useCallback(
     (word: Word & { id: string }) => {
-      if (searchMode === 'parentIds') {
-        if (!parentIds.includes(word.id)) {
-          setParentIds([...parentIds, word.id]);
-        }
-      } else if (searchMode === 'childrenIds') {
+      if (searchMode === 'childrenIds') {
         if (!childrenIds.includes(word.id)) {
           setChildrenIds([...childrenIds, word.id]);
         }
@@ -94,20 +96,18 @@ export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: 
       }
       setSearchMode(null);
     },
-    [parentIds, childrenIds, siblingIds, searchMode]
+    [childrenIds, siblingIds, searchMode]
   );
 
   const removeRelationship = useCallback(
-    (type: 'parent' | 'child' | 'sibling', id: string) => {
-      if (type === 'parent') {
-        setParentIds(parentIds.filter((pid) => pid !== id));
-      } else if (type === 'child') {
+    (type: 'child' | 'sibling', id: string) => {
+      if (type === 'child') {
         setChildrenIds(childrenIds.filter((cid) => cid !== id));
       } else {
         setSiblingIds(siblingIds.filter((sid) => sid !== id));
       }
     },
-    [parentIds, childrenIds, siblingIds]
+    [childrenIds, siblingIds]
   );
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -116,12 +116,10 @@ export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: 
     setLoading(true);
 
     try {
-      const word: Word = {
-        id: initialWord?.id || crypto.randomUUID(),
+      const word: WordInput = {
         spelling: spellings,
         pronunciation,
         definition: definitions.filter((d) => d.trim()),
-        ...(parentIds.length > 0 && { parentIds }),
         ...(childrenIds.length > 0 && { childrenIds }),
         ...(siblingIds.length > 0 && { siblingIds }),
         ...(derivation && { derivation }),
@@ -135,8 +133,13 @@ export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: 
             }
           : {}),
       };
+      if (initialWord?.id) {
+        word.id = initialWord.id;
+      }
 
-      const validationErrors = ValidationService.validateWord(word);
+      const validationErrors = initialWord?.id
+        ? ValidationService.validateWord(word as Word)
+        : ValidationService.validateWordInput(word as Omit<Word, 'id'>);
       if (validationErrors.length > 0) {
         const errorMap: Record<string, string> = {};
         validationErrors.forEach((err: ValidationError) => {
@@ -276,13 +279,6 @@ export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: 
         <button
           type="button"
           className="btn-secondary"
-          onClick={() => activateRelationshipField('parentIds')}
-        >
-          Add Parent
-        </button>
-        <button
-          type="button"
-          className="btn-secondary"
           onClick={() => activateRelationshipField('siblingIds')}
         >
           Add Sibling
@@ -296,50 +292,25 @@ export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: 
         </button>
       </div>
 
+      {(onCreateChild || onCreateSibling) && (
+        <div className="relationship-buttons" role="group" aria-label="Create related words">
+          {onCreateChild && (
+            <button type="button" className="btn-secondary" onClick={onCreateChild}>
+              Create Child
+            </button>
+          )}
+          {onCreateSibling && (
+            <button type="button" className="btn-secondary" onClick={onCreateSibling}>
+              Create Sibling
+            </button>
+          )}
+        </div>
+      )}
+
       {/* Optional Fields */}
       <div className="optional-fields-section">
         <h3>Optional Fields</h3>
         <div className="relationship-fields">
-          {activeOptionalFields.includes('parentIds') && (
-            <div className="form-group relationship-field">
-              <label>Parent Words</label>
-              {searchMode === 'parentIds' ? (
-                <OmniSearch onSelect={addRelationship} placeholder="Find parent word..." />
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setSearchMode('parentIds')}
-                  className="btn-secondary"
-                >
-                  Search Parent Words
-                </button>
-              )}
-              {parentIds.length > 0 && (
-                <div className="relationship-list">
-                  {parentIds.map((id) => (
-                    <div key={id} className="relationship-tag">
-                      {getWordLabel(id)}
-                      <button
-                        type="button"
-                        onClick={() => removeRelationship('parent', id)}
-                        className="btn-remove-tag"
-                      >
-                        ×
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-              <button
-                type="button"
-                onClick={() => toggleOptionalField('parentIds')}
-                className="btn-remove-field"
-              >
-                Remove Field
-              </button>
-            </div>
-          )}
-
           {activeOptionalFields.includes('childrenIds') && (
             <div className="form-group relationship-field">
               <label>Child Words</label>
@@ -507,8 +478,8 @@ export function WordForm({ initialWord, onSubmit, onCancel, resolveWordLabel }: 
 
       {/* Form Actions */}
       <div className="form-actions">
-        <button type="submit" disabled={loading} className="btn-primary">
-          {loading ? 'Saving...' : initialWord ? 'Update Word' : 'Create Word'}
+        <button type="submit" disabled={loading || submitDisabled} className="btn-primary">
+          {loading ? 'Saving...' : initialWord?.id ? 'Update Word' : 'Create Word'}
         </button>
         <button type="button" onClick={onCancel} className="btn-secondary">
           Cancel

@@ -13,7 +13,7 @@ interface WordEditorPageProps {
 export function WordEditorPage({ onSaved, onCancel, initialWord }: WordEditorPageProps) {
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (word: Word) => {
+  const handleSubmit = async (word: Omit<Word, 'id'> & { id?: string }) => {
     try {
       setError(null);
       let saved: Word & { id: string };
@@ -21,7 +21,8 @@ export function WordEditorPage({ onSaved, onCancel, initialWord }: WordEditorPag
       if (initialWord) {
         saved = await api.updateWord(initialWord.id, word);
       } else {
-        saved = await api.createWord(word);
+        const { id: _ignored, ...payload } = word;
+        saved = await api.createWord(payload);
       }
 
       onSaved(saved);
