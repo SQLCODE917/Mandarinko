@@ -1,19 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Word } from '@mandarinko/core';
 import { WordForm } from './WordForm';
-import * as api from '../services/api';
+import { useWordTree, type TreeNode, type WordInput } from '../hooks/useWordTree';
 import './WordTreeModal.css';
-
-type WordInput = Omit<Word, 'id'> & { id?: string };
-type NodeStatus = 'draft' | 'saved' | 'saving';
-
-type TreeNode = {
-  id: string;
-  word: WordInput;
-  status: NodeStatus;
-  isEditing: boolean;
-  error?: string;
-};
 
 interface WordTreeModalProps {
   isOpen: boolean;
@@ -23,31 +11,6 @@ interface WordTreeModalProps {
   onUpdated?: () => void;
 }
 
-const EMPTY_WORD: WordInput = {
-  spelling: [{ language: 'zh-Hans', text: '' }],
-  pronunciation: '',
-  definition: [''],
-};
-
-const normalizeIds = (ids?: Array<string | number>) =>
-  (ids ?? []).map((id) => String(id)).filter((id) => id.length > 0);
-
-const normalizeWordInput = (word: WordInput): WordInput => ({
-  ...word,
-  spelling: word.spelling ?? [{ language: 'zh-Hans', text: '' }],
-  pronunciation: word.pronunciation ?? '',
-  definition: word.definition ?? [''],
-  childrenIds: word.childrenIds ? normalizeIds(word.childrenIds) : undefined,
-  siblingIds: word.siblingIds ? normalizeIds(word.siblingIds) : undefined,
-});
-
-const wordToNode = (word: Word & { id: string }): TreeNode => ({
-  id: word.id,
-  word: normalizeWordInput(word),
-  status: 'saved',
-  isEditing: false,
-});
-
 export function WordTreeModal({
   isOpen,
   rootWordId,
@@ -55,180 +18,19 @@ export function WordTreeModal({
   onClose,
   onUpdated,
 }: WordTreeModalProps) {
-  const [nodes, setNodes] = useState<Map<string, TreeNode>>(new Map());
-  const [rootId, setRootId] = useState<string | null>(null);
-  const tempCounter = useRef(0);
-  const initializedRef = useRef(false);
-
-  const nextTempId = () => {
-    tempCounter.current += 1;
-    return `temp-${tempCounter.current}`;
-  };
-
-  useEffect(() => {
-    if (!isOpen) {
-      initializedRef.current = false;
-      return;
-    }
-    if (initializedRef.current) return;
-    initializedRef.current = true;
-    const nextNodes = new Map<string, TreeNode>();
-    words.forEach((word) => {
-      nextNodes.set(word.id, wordToNode(word));
-    });
-
-    if (rootWordId && nextNodes.has(rootWordId)) {
-      setRootId(rootWordId);
-    } else {
-      const tempId = nextTempId();
-      nextNodes.set(tempId, {
-        id: tempId,
-        word: { ...EMPTY_WORD },
-        status: 'draft',
-        isEditing: true,
-      });
-      setRootId(tempId);
-    }
-
-    setNodes(nextNodes);
-  }, [isOpen, rootWordId, words]);
-
-  const rootNode = useMemo(() => {
-    if (!rootId) return null;
-    return nodes.get(rootId) ?? null;
-  }, [nodes, rootId]);
-
-  const resolveWordLabel = useMemo(
-    () => (id: string) =>
-      nodes
-        .get(id)
-        ?.word.spelling?.map((s) => s.text)
-        .join(' / ') ?? id,
-    [nodes]
-  );
-
-  const allNodesSaved = useMemo(() => {
-    if (!rootId) return false;
-    for (const node of nodes.values()) {
-      if (node.id === rootId) continue;
-      if (node.status !== 'saved') return false;
-    }
-    return true;
-  }, [nodes, rootId]);
-
-  const relationsSaved = (word: WordInput) => {
-    const relationIds = [
-      ...(word.childrenIds ?? []),
-      ...(word.siblingIds ?? []),
-    ].map((id) => String(id));
-    return relationIds.every((id) => nodes.get(id)?.status === 'saved');
-  };
-
-  const updateNode = (id: string, updater: (node: TreeNode) => TreeNode) => {
-    setNodes((prev) => {
-      const next = new Map(prev);
-      const current = next.get(id);
-      if (!current) return prev;
-      next.set(id, updater(current));
-      return next;
-    });
-  };
-
-  const replaceNodeId = (oldId: string, newId: string, updatedWord: Word) => {
-    setNodes((prev) => {
-      const next = new Map<string, TreeNode>();
-      prev.forEach((node, id) => {
-        const mappedId = id === oldId ? newId : id;
-        const nextWord = normalizeWordInput({
-          ...node.word,
-          childrenIds: node.word.childrenIds?.map((rid) => (rid === oldId ? newId : rid)),
-          siblingIds: node.word.siblingIds?.map((rid) => (rid === oldId ? newId : rid)),
-        });
-        next.set(mappedId, {
-          ...node,
-          id: mappedId,
-          word: id === oldId ? normalizeWordInput(updatedWord) : nextWord,
-          status: id === oldId ? 'saved' : node.status,
-          isEditing: id === oldId ? false : node.isEditing,
-          error: id === oldId ? undefined : node.error,
-        });
-      });
-      return next;
-    });
-    if (rootId === oldId) setRootId(newId);
-  };
-
-  const addDraftNode = (seed?: Partial<WordInput>) => {
-    const tempId = nextTempId();
-    const node: TreeNode = {
-      id: tempId,
-      word: normalizeWordInput({ ...EMPTY_WORD, ...seed }),
-      status: 'draft',
-      isEditing: true,
-    };
-    setNodes((prev) => new Map(prev).set(tempId, node));
-    return tempId;
-  };
-
-  const addChild = (parentId: string) => {
-    const childId = addDraftNode();
-    updateNode(parentId, (node) => ({
-      ...node,
-      word: {
-        ...node.word,
-        childrenIds: [...normalizeIds(node.word.childrenIds), childId],
-      },
-    }));
-  };
-
-  const addSibling = (nodeId: string) => {
-    const siblingId = addDraftNode();
-    updateNode(nodeId, (node) => ({
-      ...node,
-      word: {
-        ...node.word,
-        siblingIds: [...normalizeIds(node.word.siblingIds), siblingId],
-      },
-    }));
-  };
-
-  const handleSave = async (nodeId: string, payload: WordInput) => {
-    const node = nodes.get(nodeId);
-    if (!node) return;
-    const normalized = normalizeWordInput(payload);
-    if (!relationsSaved(normalized)) {
-      updateNode(nodeId, (current) => ({
-        ...current,
-        error: 'Save related words first before saving this word.',
-      }));
-      return;
-    }
-
-    updateNode(nodeId, (current) => ({ ...current, status: 'saving', error: undefined }));
-
-    try {
-      if (node.status === 'saved') {
-        const updated = await api.updateWord(nodeId, normalized as Word);
-        updateNode(nodeId, (current) => ({
-          ...current,
-          status: 'saved',
-          isEditing: false,
-          word: normalizeWordInput(updated),
-        }));
-      } else {
-        const { id: _ignored, ...createPayload } = normalized;
-        const created = await api.createWord(createPayload);
-        replaceNodeId(nodeId, created.id, created);
-      }
-      onUpdated?.();
-    } catch (err) {
-      updateNode(nodeId, (current) => ({
-        ...current,
-        status: node.status === 'saved' ? 'saved' : 'draft',
-        error: err instanceof Error ? err.message : 'Failed to save word',
-      }));
-    }
-  };
+  const {
+    nodes,
+    rootId,
+    rootNode,
+    resolveWordLabel,
+    allNodesSaved,
+    addChild,
+    addSibling,
+    reuseExisting,
+    saveNode,
+    editNode,
+    cancelEdit,
+  } = useWordTree({ isOpen, rootWordId, words, onUpdated });
 
   if (!isOpen || !rootNode) return null;
 
@@ -249,11 +51,12 @@ export function WordTreeModal({
             rootId={rootId}
             allNodesSaved={allNodesSaved}
             resolveWordLabel={resolveWordLabel}
-            onEdit={(id) => updateNode(id, (node) => ({ ...node, isEditing: true }))}
-            onCancelEdit={(id) => updateNode(id, (node) => ({ ...node, isEditing: false }))}
-            onSave={async (id, next) => handleSave(id, next)}
+            onEdit={editNode}
+            onCancelEdit={cancelEdit}
+            onSave={saveNode}
             onAddChild={addChild}
             onAddSibling={addSibling}
+            onReuseExisting={reuseExisting}
           />
         </div>
       </div>
@@ -272,7 +75,11 @@ interface WordNodeProps {
   onSave: (id: string, word: WordInput) => Promise<void>;
   onAddChild: (id: string) => void;
   onAddSibling: (id: string) => void;
+  onReuseExisting: (nodeId: string, word: Word & { id: string }) => void;
 }
+
+const normalizeIds = (ids?: Array<string | number>) =>
+  (ids ?? []).map((id) => String(id)).filter((id) => id.length > 0);
 
 function WordNode({
   node,
@@ -285,6 +92,7 @@ function WordNode({
   onSave,
   onAddChild,
   onAddSibling,
+  onReuseExisting,
 }: WordNodeProps) {
   const word = node.word;
   const siblingIds = normalizeIds(word.siblingIds).filter((id) => id !== node.id);
@@ -329,6 +137,9 @@ function WordNode({
             submitDisabled={rootBlocked}
             onSubmit={(next) => onSave(node.id, next)}
             onCancel={() => onCancelEdit(node.id)}
+            resetKey={node.id}
+            enableReusePrompt
+            onReuseExisting={(existing) => onReuseExisting(node.id, existing)}
           />
         ) : (
           <div className="word-card-body">
@@ -344,7 +155,11 @@ function WordNode({
               <button type="button" className="btn-secondary" onClick={() => onAddChild(node.id)}>
                 Add Child
               </button>
-              <button type="button" className="btn-secondary" onClick={() => onAddSibling(node.id)}>
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={() => onAddSibling(node.id)}
+              >
                 Add Sibling
               </button>
             </div>
@@ -371,6 +186,7 @@ function WordNode({
                     onSave={onSave}
                     onAddChild={onAddChild}
                     onAddSibling={onAddSibling}
+                    onReuseExisting={onReuseExisting}
                   />
                 ))}
               </div>
@@ -394,6 +210,7 @@ function WordNode({
                     onSave={onSave}
                     onAddChild={onAddChild}
                     onAddSibling={onAddSibling}
+                    onReuseExisting={onReuseExisting}
                   />
                 ))}
               </div>

@@ -1,9 +1,11 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { Word, Spelling } from '@mandarinko/core';
 import { ValidationService } from '@mandarinko/core';
 
 type ValidationError = { field: string; message: string };
 import { OmniSearch } from './OmniSearch';
+import { WordFields } from './WordFields';
+import { useWordLookup } from '../hooks/useWordLookup';
 import './WordForm.css';
 
 interface WordFormProps {
@@ -14,6 +16,9 @@ interface WordFormProps {
   onCreateChild?: () => void;
   onCreateSibling?: () => void;
   submitDisabled?: boolean;
+  resetKey?: string;
+  enableReusePrompt?: boolean;
+  onReuseExisting?: (word: Word & { id: string }) => void;
 }
 
 type WordInput = Omit<Word, 'id'> & { id?: string };
@@ -42,6 +47,9 @@ export function WordForm({
   onCreateChild,
   onCreateSibling,
   submitDisabled,
+  resetKey,
+  enableReusePrompt,
+  onReuseExisting,
 }: WordFormProps) {
   const [spellings, setSpellings] = useState<Spelling[]>(
     initialWord?.spelling || [{ language: 'zh-Hans', text: '' }]
@@ -68,6 +76,48 @@ export function WordForm({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [searchMode, setSearchMode] = useState<'childrenIds' | 'siblingIds' | null>(null);
+  const [reusePromptOpen, setReusePromptOpen] = useState(false);
+  const [lastDeclinedSpelling, setLastDeclinedSpelling] = useState('');
+
+  useEffect(() => {
+    if (!resetKey) return;
+    setSpellings(initialWord?.spelling || [{ language: 'zh-Hans', text: '' }]);
+    setPronunciation(initialWord?.pronunciation || '');
+    setDefinitions(initialWord?.definition || ['']);
+    setDerivation(initialWord?.derivation || '');
+    setHskLevel(initialWord?.metadata?.hskLevel || '');
+    setJlptLevel(initialWord?.metadata?.jlptLevel || '');
+    setFrequency(initialWord?.metadata?.frequency || '');
+    setErrors({});
+    setReusePromptOpen(false);
+    setLastDeclinedSpelling('');
+  }, [resetKey, initialWord]);
+
+  useEffect(() => {
+    setChildrenIds((initialWord?.childrenIds ?? []).map((id) => String(id)));
+  }, [initialWord?.childrenIds?.join('|')]);
+
+  useEffect(() => {
+    setSiblingIds((initialWord?.siblingIds ?? []).map((id) => String(id)));
+  }, [initialWord?.siblingIds?.join('|')]);
+
+  const spellingText = spellings[0]?.text?.trim() ?? '';
+  const reuseEnabled =
+    Boolean(enableReusePrompt && onReuseExisting) &&
+    !initialWord?.id &&
+    spellingText !== '' &&
+    spellingText !== lastDeclinedSpelling;
+  const { match: reuseCandidate } = useWordLookup(spellingText, {
+    enabled: reuseEnabled,
+  });
+
+  useEffect(() => {
+    if (!reuseEnabled) {
+      setReusePromptOpen(false);
+      return;
+    }
+    setReusePromptOpen(Boolean(reuseCandidate));
+  }, [reuseCandidate, reuseEnabled]);
 
   const activateRelationshipField = useCallback(
     (field: 'childrenIds' | 'siblingIds') => {
@@ -167,112 +217,29 @@ export function WordForm({
     <form onSubmit={handleSubmit} className="word-form">
       {errors.submit && <div className="error-message">{errors.submit}</div>}
 
-      {/* Spellings */}
-      <div className="form-group">
-        <label>Spellings *</label>
-        {spellings.map((spelling, idx) => (
-          <div key={idx} className="spelling-input-group">
-            <select
-              value={spelling.language}
-              onChange={(e) => {
-                const updated = [...spellings];
-                updated[idx].language = e.target.value;
-                setSpellings(updated);
-              }}
-            >
-              <option value="zh-Hans">Simplified Chinese</option>
-              <option value="zh-Hant">Traditional Chinese</option>
-              <option value="ja">Japanese</option>
-            </select>
-            <input
-              type="text"
-              value={spelling.text}
-              onChange={(e) => {
-                const updated = [...spellings];
-                updated[idx].text = e.target.value;
-                setSpellings(updated);
-              }}
-              placeholder="Enter spelling"
-            />
-            {spellings.length > 1 && (
-              <button
-                type="button"
-                onClick={() => setSpellings(spellings.filter((_, i) => i !== idx))}
-                className="btn-remove"
-              >
-                Remove
-              </button>
-            )}
-          </div>
-        ))}
-        {errors.spelling && <div className="field-error">{errors.spelling}</div>}
-        <button
-          type="button"
-          onClick={() => setSpellings([...spellings, { language: 'zh-Hans', text: '' }])}
-          className="btn-secondary"
-        >
-          Add Spelling
-        </button>
-      </div>
-
-      {/* Pronunciation */}
-      <div className="form-group">
-        <label>Pronunciation *</label>
-        <input
-          type="text"
-          value={pronunciation}
-          onChange={(e) => setPronunciation(e.target.value)}
-          placeholder="e.g., zhu(3)zhang(1)"
-        />
-        {errors.pronunciation && <div className="field-error">{errors.pronunciation}</div>}
-      </div>
-
-      {/* Definitions */}
-      <div className="form-group">
-        <label>Definitions *</label>
-        {definitions.map((def, idx) => (
-          <div key={idx} className="definition-input-group">
-            <input
-              type="text"
-              value={def}
-              onChange={(e) => {
-                const updated = [...definitions];
-                updated[idx] = e.target.value;
-                setDefinitions(updated);
-              }}
-              placeholder="Enter definition"
-            />
-            {definitions.length > 1 && (
-              <button
-                type="button"
-                onClick={() => setDefinitions(definitions.filter((_, i) => i !== idx))}
-                className="btn-remove"
-              >
-                Remove
-              </button>
-            )}
-          </div>
-        ))}
-        {errors.definition && <div className="field-error">{errors.definition}</div>}
-        <button
-          type="button"
-          onClick={() => setDefinitions([...definitions, ''])}
-          className="btn-secondary"
-        >
-          Add Definition
-        </button>
-      </div>
-
-      {/* Derivation */}
-      <div className="form-group">
-        <label>Derivation</label>
-        <input
-          type="text"
-          value={derivation}
-          onChange={(e) => setDerivation(e.target.value)}
-          placeholder="Explain word derivation"
-        />
-      </div>
+      <WordFields
+        spellings={spellings}
+        onSpellingsChange={setSpellings}
+        pronunciation={pronunciation}
+        onPronunciationChange={setPronunciation}
+        definitions={definitions}
+        onDefinitionsChange={setDefinitions}
+        derivation={derivation}
+        onDerivationChange={setDerivation}
+        errors={errors}
+        reusePromptOpen={reusePromptOpen}
+        reuseCandidate={reuseCandidate}
+        onReuseDecline={() => {
+          setReusePromptOpen(false);
+          setLastDeclinedSpelling(spellings[0]?.text?.trim() ?? '');
+        }}
+        onReuseAccept={() => {
+          setReusePromptOpen(false);
+          if (reuseCandidate) {
+            onReuseExisting?.(reuseCandidate);
+          }
+        }}
+      />
 
       {/* Relationship Fields */}
       <div className="relationship-buttons" role="group" aria-label="Add relationship fields">

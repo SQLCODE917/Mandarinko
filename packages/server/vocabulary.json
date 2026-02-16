@@ -131,8 +131,7 @@
     ],
     "pronunciation": "wo(3)",
     "definition": [
-      "I",
-      "me"
+      "I, me"
     ],
     "derivation": "Hand 手 holding a halberd 戈",
     "metadata": {
@@ -169,6 +168,39 @@
       "halberd, lance"
     ],
     "derivation": "Stake 弋 with a horizontal 一 blade",
-    "id": "7afe3f5c-7502-48db-9973-dcf6148d9e8b"
+    "id": "7afe3f5c-7502-48db-9973-dcf6148d9e8b",
+    "childrenIds": [
+      "ba72cfba-faa9-4358-a880-6309a89f34d5",
+      "dfc370a5-8dc8-4c40-adeb-290a6723631b"
+    ]
+  },
+  "ba72cfba-faa9-4358-a880-6309a89f34d5": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "弋"
+      }
+    ],
+    "pronunciation": "yi(4)",
+    "definition": [
+      "stake, arrow",
+      "to shoot"
+    ],
+    "derivation": "Pictograph of a stake",
+    "id": "ba72cfba-faa9-4358-a880-6309a89f34d5"
+  },
+  "dfc370a5-8dc8-4c40-adeb-290a6723631b": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "一"
+      }
+    ],
+    "pronunciation": "yi(1)",
+    "definition": [
+      "one"
+    ],
+    "derivation": "Ideograph representing one. In combination can represent the horizon, a bar or line, or heaven",
+    "id": "dfc370a5-8dc8-4c40-adeb-290a6723631b"
   }
 }
