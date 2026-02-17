@@ -7,9 +7,11 @@ import * as api from '../services/api';
 vi.mock('../services/api', () => ({
   createWord: vi.fn(),
   updateWord: vi.fn(),
+  searchBySpelling: vi.fn(),
 }));
 
 const createWordMock = vi.mocked(api.createWord);
+const searchBySpellingMock = vi.mocked(api.searchBySpelling);
 
 const fillWordForm = async (
   form: HTMLFormElement,
@@ -72,6 +74,8 @@ const getRelationGroup = (node: HTMLElement, title: string) => {
 describe('WordTreeModal integration flow', () => {
   beforeEach(() => {
     createWordMock.mockReset();
+    searchBySpellingMock.mockReset();
+    searchBySpellingMock.mockResolvedValue([]);
     let counter = 0;
     createWordMock.mockImplementation(async (word) => ({
       ...word,

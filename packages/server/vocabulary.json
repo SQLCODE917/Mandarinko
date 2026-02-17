@@ -27,7 +27,7 @@
   "1": {
     "spelling": [
       {
-        "language": "zh-Hans",
+        "language": "zh-Hant",
         "text": "主"
       }
     ],
@@ -37,7 +37,8 @@
       "(adj) primary, main",
       "(v) advocate"
     ],
-    "derivation": "pictograph of a lamp and flame"
+    "derivation": "pictograph of a lamp and flame",
+    "id": "1"
   },
   "2": {
     "spelling": [
@@ -65,7 +66,7 @@
   "3": {
     "spelling": [
       {
-        "language": "zh-Hans",
+        "language": "zh-Hant",
         "text": "弓"
       }
     ],
@@ -74,7 +75,8 @@
       "(n) bow",
       "(v) arch"
     ],
-    "derivation": "pictograph of a bow"
+    "derivation": "pictograph of a bow",
+    "id": "3"
   },
   "4": {
     "spelling": [
@@ -125,7 +127,7 @@
     "id": "8045b1c8-a48b-4b31-87fd-179d3c5c7c6c",
     "spelling": [
       {
-        "language": "zh-Hans",
+        "language": "zh-Hant",
         "text": "我"
       }
     ],
@@ -202,5 +204,25 @@
     ],
     "derivation": "Ideograph representing one. In combination can represent the horizon, a bar or line, or heaven",
     "id": "dfc370a5-8dc8-4c40-adeb-290a6723631b"
+  },
+  "f27c926d-f884-4b01-b511-a80a7753f4f4": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "我们"
+      },
+      {
+        "language": "zh-Hant",
+        "text": "我們"
+      }
+    ],
+    "pronunciation": "wo(3)men",
+    "definition": [
+      "we, us"
+    ],
+    "childrenIds": [
+      "8045b1c8-a48b-4b31-87fd-179d3c5c7c6c"
+    ],
+    "id": "f27c926d-f884-4b01-b511-a80a7753f4f4"
   }
 }

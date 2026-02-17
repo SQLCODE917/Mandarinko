@@ -7,6 +7,13 @@ type RenderResult = {
   unmount: () => void;
 };
 
+type MountedRoot = {
+  container: HTMLElement;
+  unmount: () => void;
+};
+
+const mountedRoots: MountedRoot[] = [];
+
 const getByRole = (container: HTMLElement, role: string, options?: { name?: string | RegExp }) => {
   const name = options?.name;
   if (role === 'button') {
@@ -74,13 +81,25 @@ export const render = (ui: ReactElement): RenderResult => {
     root.render(ui);
   });
 
+  const unmount = () => {
+    act(() => root.unmount());
+    container.remove();
+  };
+
+  const entry = { container, unmount };
+  mountedRoots.push(entry);
+
   return {
     container,
-    unmount: () => {
-      act(() => root.unmount());
-      container.remove();
-    },
+    unmount,
   };
+};
+
+export const cleanup = () => {
+  while (mountedRoots.length > 0) {
+    const root = mountedRoots.pop();
+    root?.unmount();
+  }
 };
 
 export const waitFor = async (
@@ -88,19 +107,18 @@ export const waitFor = async (
   { timeout = 1000, interval = 20 }: { timeout?: number; interval?: number } = {}
 ) => {
   const start = Date.now();
-  return new Promise<void>((resolve, reject) => {
-    const tick = () => {
-      try {
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    try {
+      await act(async () => {
         callback();
-        resolve();
-      } catch (err) {
-        if (Date.now() - start >= timeout) {
-          reject(err);
-        } else {
-          setTimeout(tick, interval);
-        }
+      });
+      return;
+    } catch (err) {
+      if (Date.now() - start >= timeout) {
+        throw err;
       }
-    };
-    tick();
-  });
+      await new Promise((resolve) => setTimeout(resolve, interval));
+    }
+  }
 };

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Word } from '@mandarinko/core';
 import * as api from '../services/api';
 
@@ -56,20 +56,32 @@ export function useWordTree({
   const [nodes, setNodes] = useState<Map<string, TreeNode>>(new Map());
   const [rootId, setRootId] = useState<string | null>(null);
   const tempCounter = useRef(0);
-  const initializedRef = useRef(false);
+  const initKeyRef = useRef<string | null>(null);
+  const nodesRef = useRef(nodes);
 
-  const nextTempId = () => {
+  useEffect(() => {
+    nodesRef.current = nodes;
+  }, [nodes]);
+
+  const nextTempId = useCallback(() => {
     tempCounter.current += 1;
     return `temp-${tempCounter.current}`;
-  };
+  }, []);
 
   useEffect(() => {
     if (!isOpen) {
-      initializedRef.current = false;
+      initKeyRef.current = null;
       return;
     }
-    if (initializedRef.current) return;
-    initializedRef.current = true;
+
+    const nextKey = JSON.stringify({
+      rootWordId,
+      wordIds: words.map((word) => word.id),
+    });
+
+    if (initKeyRef.current === nextKey) return;
+    initKeyRef.current = nextKey;
+
     const nextNodes = new Map<string, TreeNode>();
     words.forEach((word) => {
       nextNodes.set(word.id, wordToNode(word));
@@ -114,15 +126,15 @@ export function useWordTree({
     return true;
   }, [nodes, rootId]);
 
-  const relationsSaved = (word: WordInput) => {
+  const relationsSaved = useCallback((word: WordInput) => {
     const relationIds = [
       ...(word.childrenIds ?? []),
       ...(word.siblingIds ?? []),
     ].map((id) => String(id));
-    return relationIds.every((id) => nodes.get(id)?.status === 'saved');
-  };
+    return relationIds.every((id) => nodesRef.current.get(id)?.status === 'saved');
+  }, []);
 
-  const updateNode = (id: string, updater: (node: TreeNode) => TreeNode) => {
+  const updateNode = useCallback((id: string, updater: (node: TreeNode) => TreeNode) => {
     setNodes((prev) => {
       const next = new Map(prev);
       const current = next.get(id);
@@ -130,9 +142,9 @@ export function useWordTree({
       next.set(id, updater(current));
       return next;
     });
-  };
+  }, []);
 
-  const replaceNodeId = (oldId: string, newId: string, updatedWord: Word) => {
+  const replaceNodeId = useCallback((oldId: string, newId: string, updatedWord: Word) => {
     setNodes((prev) => {
       const next = new Map<string, TreeNode>();
       prev.forEach((node, id) => {
@@ -154,9 +166,9 @@ export function useWordTree({
       return next;
     });
     if (rootId === oldId) setRootId(newId);
-  };
+  }, [rootId]);
 
-  const addDraftNode = (
+  const addDraftNode = useCallback((
     seed?: Partial<WordInput>,
     links?: { parentLinkId?: string; siblingLinkId?: string }
   ) => {
@@ -171,9 +183,9 @@ export function useWordTree({
     };
     setNodes((prev) => new Map(prev).set(tempId, node));
     return tempId;
-  };
+  }, [nextTempId]);
 
-  const addChild = (parentId: string) => {
+  const addChild = useCallback((parentId: string) => {
     const childId = addDraftNode(undefined, { parentLinkId: parentId });
     updateNode(parentId, (node) => ({
       ...node,
@@ -182,9 +194,9 @@ export function useWordTree({
         childrenIds: [...normalizeIds(node.word.childrenIds), childId],
       },
     }));
-  };
+  }, [addDraftNode, updateNode]);
 
-  const addSibling = (nodeId: string) => {
+  const addSibling = useCallback((nodeId: string) => {
     const siblingId = addDraftNode(undefined, { siblingLinkId: nodeId });
     updateNode(nodeId, (node) => ({
       ...node,
@@ -193,20 +205,20 @@ export function useWordTree({
         siblingIds: [...normalizeIds(node.word.siblingIds), siblingId],
       },
     }));
-  };
+  }, [addDraftNode, updateNode]);
 
   const replaceRelationId = (ids: string[] | undefined, oldId: string, newId: string) => {
     const next = (ids ?? []).map((id) => (id === oldId ? newId : id));
     return Array.from(new Set(next));
   };
 
-  const updateRelationIds = async (
+  const updateRelationIds = useCallback(async (
     parentId: string,
     field: 'childrenIds' | 'siblingIds',
     oldId: string,
     newId: string
   ) => {
-    const parentNode = nodes.get(parentId);
+    const parentNode = nodesRef.current.get(parentId);
     if (!parentNode) return;
     const currentIds =
       field === 'childrenIds'
@@ -238,10 +250,10 @@ export function useWordTree({
         error: err instanceof Error ? err.message : 'Failed to update relation',
       }));
     }
-  };
+  }, [onUpdated, updateNode]);
 
-  const reuseExisting = (nodeId: string, existing: Word & { id: string }) => {
-    const node = nodes.get(nodeId);
+  const reuseExisting = useCallback((nodeId: string, existing: Word & { id: string }) => {
+    const node = nodesRef.current.get(nodeId);
     if (!node) return;
 
     if (node.parentLinkId) {
@@ -260,10 +272,10 @@ export function useWordTree({
       }
       return next;
     });
-  };
+  }, [updateRelationIds]);
 
-  const saveNode = async (nodeId: string, payload: WordInput) => {
-    const node = nodes.get(nodeId);
+  const saveNode = useCallback(async (nodeId: string, payload: WordInput) => {
+    const node = nodesRef.current.get(nodeId);
     if (!node) return;
     const normalized = normalizeWordInput(payload);
     if (!relationsSaved(normalized)) {
@@ -301,10 +313,16 @@ export function useWordTree({
         error: err instanceof Error ? err.message : 'Failed to save word',
       }));
     }
-  };
+  }, [onUpdated, relationsSaved, replaceNodeId, updateNode, updateRelationIds]);
 
-  const editNode = (id: string) => updateNode(id, (node) => ({ ...node, isEditing: true }));
-  const cancelEdit = (id: string) => updateNode(id, (node) => ({ ...node, isEditing: false }));
+  const editNode = useCallback(
+    (id: string) => updateNode(id, (node) => ({ ...node, isEditing: true })),
+    [updateNode]
+  );
+  const cancelEdit = useCallback(
+    (id: string) => updateNode(id, (node) => ({ ...node, isEditing: false })),
+    [updateNode]
+  );
 
   return {
     nodes,

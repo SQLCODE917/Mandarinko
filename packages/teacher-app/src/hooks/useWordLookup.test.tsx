@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, waitFor } from '@testing-library/react';
 import { useWordLookup } from './useWordLookup';
 import * as api from '../services/api';
@@ -17,6 +17,11 @@ function TestLookup({ spelling }: { spelling: string }) {
 describe('useWordLookup', () => {
   beforeEach(() => {
     searchMock.mockReset();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('returns the first match for a spelling', async () => {
@@ -30,6 +35,7 @@ describe('useWordLookup', () => {
     ]);
 
     const { container } = render(<TestLookup spelling="我" />);
+    await vi.runAllTimersAsync();
     await waitFor(() => {
       const el = container.querySelector('[data-testid="match"]') as HTMLElement;
       expect(el.textContent).toBe('word-1');
