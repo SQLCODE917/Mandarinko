@@ -13,8 +13,10 @@ export function useVocabulary() {
       setError(null);
       const data = await api.fetchAllWords();
       setWords(data);
+      return data;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
+      return [];
     } finally {
       setLoading(false);
     }

@@ -1,20 +1,25 @@
-import { useVocabulary } from '../hooks/useVocabulary';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { OmniSearch } from '../components/OmniSearch';
 import { WordList } from '../components/WordList';
 import { LCDText } from '../components/LCDText';
-import { WordViewerModal } from '../components/WordViewerModal';
 import './HomePage.css';
 import type { Word } from '@mandarinko/core';
 
 interface HomePageProps {
   onCreateWord: () => void;
-  onEditWord: (word: Word & { id: string }) => void;
+  onOpenWord: (id: string) => void;
+  words: (Word & { id: string })[];
+  loading: boolean;
 }
 
-export function HomePage({ onCreateWord, onEditWord }: HomePageProps) {
-  const { words, loading } = useVocabulary();
+export function HomePage({ onCreateWord, onOpenWord, words, loading }: HomePageProps) {
   const [selectedWordId, setSelectedWordId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!selectedWordId) return;
+    onOpenWord(selectedWordId);
+    setSelectedWordId(null);
+  }, [onOpenWord, selectedWordId]);
 
   return (
     <div className="home-page">
@@ -49,16 +54,6 @@ export function HomePage({ onCreateWord, onEditWord }: HomePageProps) {
         </div>
       </div>
 
-      <WordViewerModal
-        isOpen={Boolean(selectedWordId)}
-        rootWordId={selectedWordId}
-        words={words}
-        onClose={() => setSelectedWordId(null)}
-        onEdit={(word) => {
-          setSelectedWordId(null);
-          onEditWord(word);
-        }}
-      />
     </div>
   );
 }

@@ -1,70 +1,49 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { HomePage } from './pages/HomePage';
-import { WordEditorPage } from './pages/WordEditorPage';
 import type { Word } from '@mandarinko/core';
 import * as api from './services/api';
+import { useVocabulary } from './hooks/useVocabulary';
+import { WordTraversalModal } from './components/WordTraversalModal';
 import './App.css';
 
-type PageType = 'home' | 'create' | 'edit';
-
 export function App() {
-  const [currentPage, setCurrentPage] = useState<PageType>('home');
-  const [selectedWord, setSelectedWord] = useState<(Word & { id: string }) | undefined>();
+  const { words, loading, refetch } = useVocabulary();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalRootId, setModalRootId] = useState<string | null>(null);
 
-  const handleCreateClick = () => {
-    setCurrentPage('create');
-    setSelectedWord(undefined);
+  const openWord = (id: string) => {
+    setModalRootId(id);
+    setModalOpen(true);
   };
 
-  const handleSaved = (): void => {
-    setCurrentPage('home');
-    setSelectedWord(undefined);
+  const openCreate = () => {
+    setModalRootId(null);
+    setModalOpen(true);
   };
 
-  const handleCancel = () => {
-    setCurrentPage('home');
-    setSelectedWord(undefined);
-  };
-
-  const handleEditWord = (word: Word & { id: string }) => {
-    setSelectedWord(word);
-    setCurrentPage('edit');
-  };
-
-  const handleCreateWord = async (word: Omit<Word, 'id'>) => {
-    return api.createWord(word);
-  };
-
-  const handleUpdateWord = async (id: string, updates: Partial<Word>) => {
-    return api.updateWord(id, updates);
-  };
+  const callbacks = useMemo(
+    () => ({
+      createWord: (word: Omit<Word, 'id'>) => api.createWord(word),
+      updateWord: (id: string, updates: Partial<Word>) => api.updateWord(id, updates),
+      refreshVocabulary: () => refetch(),
+    }),
+    [refetch]
+  );
 
   return (
     <div className="app">
-      {currentPage === 'home' && (
-        <HomePage onCreateWord={handleCreateClick} onEditWord={handleEditWord} />
-      )}
-      {currentPage === 'create' && (
-        <WordEditorPage
-          key="create-word"
-          title="Create New Word"
-          onCreateWord={handleCreateWord}
-          onUpdateWord={handleUpdateWord}
-          onRootSaved={handleSaved}
-          onCancel={handleCancel}
-        />
-      )}
-      {currentPage === 'edit' && selectedWord && (
-        <WordEditorPage
-          key={selectedWord.id}
-          title="Edit Word"
-          initialWord={selectedWord}
-          onCreateWord={handleCreateWord}
-          onUpdateWord={handleUpdateWord}
-          onRootSaved={handleSaved}
-          onCancel={handleCancel}
-        />
-      )}
+      <HomePage
+        onCreateWord={openCreate}
+        onOpenWord={openWord}
+        words={words}
+        loading={loading}
+      />
+      <WordTraversalModal
+        isOpen={modalOpen}
+        rootWordId={modalRootId}
+        words={words}
+        callbacks={callbacks}
+      />
     </div>
   );
 }
