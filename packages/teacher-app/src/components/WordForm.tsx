@@ -19,6 +19,8 @@ interface WordFormProps {
   resetKey?: string;
   enableReusePrompt?: boolean;
   onReuseExisting?: (word: Word & { id: string }) => void;
+  showRelationshipFields?: boolean;
+  showCancel?: boolean;
 }
 
 type WordInput = Omit<Word, 'id'> & { id?: string };
@@ -50,6 +52,8 @@ export function WordForm({
   resetKey,
   enableReusePrompt,
   onReuseExisting,
+  showRelationshipFields = true,
+  showCancel = true,
 }: WordFormProps) {
   const [spellings, setSpellings] = useState<Spelling[]>(
     initialWord?.spelling || [{ language: 'zh-Hans', text: '' }]
@@ -241,34 +245,35 @@ export function WordForm({
         }}
       />
 
-      {/* Relationship Fields */}
-      <div className="relationship-buttons" role="group" aria-label="Add relationship fields">
-        <button
-          type="button"
-          className="btn-secondary"
-          onClick={() => activateRelationshipField('siblingIds')}
-        >
-          Add Sibling
-        </button>
-        <button
-          type="button"
-          className="btn-secondary"
-          onClick={() => activateRelationshipField('childrenIds')}
-        >
-          Add Child
-        </button>
-      </div>
+      {showRelationshipFields && (
+        <div className="relationship-buttons" role="group" aria-label="Add relationship fields">
+          <button
+            type="button"
+            className="btn-secondary"
+            onClick={() => activateRelationshipField('siblingIds')}
+          >
+            Add Sibling
+          </button>
+          <button
+            type="button"
+            className="btn-secondary"
+            onClick={() => activateRelationshipField('childrenIds')}
+          >
+            Add Child
+          </button>
+        </div>
+      )}
 
       {(onCreateChild || onCreateSibling) && (
         <div className="relationship-buttons" role="group" aria-label="Create related words">
           {onCreateChild && (
             <button type="button" className="btn-secondary" onClick={onCreateChild}>
-              Create Child
+              Add Child
             </button>
           )}
           {onCreateSibling && (
             <button type="button" className="btn-secondary" onClick={onCreateSibling}>
-              Create Sibling
+              Add Sibling
             </button>
           )}
         </div>
@@ -277,87 +282,89 @@ export function WordForm({
       {/* Optional Fields */}
       <div className="optional-fields-section">
         <h3>Optional Fields</h3>
-        <div className="relationship-fields">
-          {activeOptionalFields.includes('childrenIds') && (
-            <div className="form-group relationship-field">
-              <label>Child Words</label>
-              {searchMode === 'childrenIds' ? (
-                <OmniSearch onSelect={addRelationship} placeholder="Find child word..." />
-              ) : (
+        {showRelationshipFields && (
+          <div className="relationship-fields">
+            {activeOptionalFields.includes('childrenIds') && (
+              <div className="form-group relationship-field">
+                <label>Child Words</label>
+                {searchMode === 'childrenIds' ? (
+                  <OmniSearch onSelect={addRelationship} placeholder="Find child word..." />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setSearchMode('childrenIds')}
+                    className="btn-secondary"
+                  >
+                    Search Child Words
+                  </button>
+                )}
+                {childrenIds.length > 0 && (
+                  <div className="relationship-list">
+                    {childrenIds.map((id) => (
+                      <div key={id} className="relationship-tag">
+                        {getWordLabel(id)}
+                        <button
+                          type="button"
+                          onClick={() => removeRelationship('child', id)}
+                          className="btn-remove-tag"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <button
                   type="button"
-                  onClick={() => setSearchMode('childrenIds')}
-                  className="btn-secondary"
+                  onClick={() => toggleOptionalField('childrenIds')}
+                  className="btn-remove-field"
                 >
-                  Search Child Words
+                  Remove Field
                 </button>
-              )}
-              {childrenIds.length > 0 && (
-                <div className="relationship-list">
-                  {childrenIds.map((id) => (
-                    <div key={id} className="relationship-tag">
-                      {getWordLabel(id)}
-                      <button
-                        type="button"
-                        onClick={() => removeRelationship('child', id)}
-                        className="btn-remove-tag"
-                      >
-                        ×
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-              <button
-                type="button"
-                onClick={() => toggleOptionalField('childrenIds')}
-                className="btn-remove-field"
-              >
-                Remove Field
-              </button>
-            </div>
-          )}
+              </div>
+            )}
 
-          {activeOptionalFields.includes('siblingIds') && (
-            <div className="form-group relationship-field">
-              <label>Sibling Words</label>
-              {searchMode === 'siblingIds' ? (
-                <OmniSearch onSelect={addRelationship} placeholder="Find sibling word..." />
-              ) : (
+            {activeOptionalFields.includes('siblingIds') && (
+              <div className="form-group relationship-field">
+                <label>Sibling Words</label>
+                {searchMode === 'siblingIds' ? (
+                  <OmniSearch onSelect={addRelationship} placeholder="Find sibling word..." />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setSearchMode('siblingIds')}
+                    className="btn-secondary"
+                  >
+                    Search Sibling Words
+                  </button>
+                )}
+                {siblingIds.length > 0 && (
+                  <div className="relationship-list">
+                    {siblingIds.map((id) => (
+                      <div key={id} className="relationship-tag">
+                        {getWordLabel(id)}
+                        <button
+                          type="button"
+                          onClick={() => removeRelationship('sibling', id)}
+                          className="btn-remove-tag"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <button
                   type="button"
-                  onClick={() => setSearchMode('siblingIds')}
-                  className="btn-secondary"
+                  onClick={() => toggleOptionalField('siblingIds')}
+                  className="btn-remove-field"
                 >
-                  Search Sibling Words
+                  Remove Field
                 </button>
-              )}
-              {siblingIds.length > 0 && (
-                <div className="relationship-list">
-                  {siblingIds.map((id) => (
-                    <div key={id} className="relationship-tag">
-                      {getWordLabel(id)}
-                      <button
-                        type="button"
-                        onClick={() => removeRelationship('sibling', id)}
-                        className="btn-remove-tag"
-                      >
-                        ×
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-              <button
-                type="button"
-                onClick={() => toggleOptionalField('siblingIds')}
-                className="btn-remove-field"
-              >
-                Remove Field
-              </button>
-            </div>
-          )}
-        </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {activeOptionalFields.includes('hskLevel') && (
           <div className="form-group">
@@ -448,9 +455,11 @@ export function WordForm({
         <button type="submit" disabled={loading || submitDisabled} className="btn-primary">
           {loading ? 'Saving...' : initialWord?.id ? 'Update Word' : 'Create Word'}
         </button>
-        <button type="button" onClick={onCancel} className="btn-secondary">
-          Cancel
-        </button>
+        {showCancel && (
+          <button type="button" onClick={onCancel} className="btn-secondary">
+            Cancel
+          </button>
+        )}
       </div>
     </form>
   );

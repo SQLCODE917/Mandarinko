@@ -3,15 +3,17 @@ import { useState } from 'react';
 import { OmniSearch } from '../components/OmniSearch';
 import { WordList } from '../components/WordList';
 import { LCDText } from '../components/LCDText';
-import { WordTreeModal } from '../components/WordTreeModal';
+import { WordViewerModal } from '../components/WordViewerModal';
 import './HomePage.css';
+import type { Word } from '@mandarinko/core';
 
 interface HomePageProps {
   onCreateWord: () => void;
+  onEditWord: (word: Word & { id: string }) => void;
 }
 
-export function HomePage({ onCreateWord }: HomePageProps) {
-  const { words, loading, refetch } = useVocabulary();
+export function HomePage({ onCreateWord, onEditWord }: HomePageProps) {
+  const { words, loading } = useVocabulary();
   const [selectedWordId, setSelectedWordId] = useState<string | null>(null);
 
   return (
@@ -47,12 +49,15 @@ export function HomePage({ onCreateWord }: HomePageProps) {
         </div>
       </div>
 
-      <WordTreeModal
+      <WordViewerModal
         isOpen={Boolean(selectedWordId)}
         rootWordId={selectedWordId}
         words={words}
         onClose={() => setSelectedWordId(null)}
-        onUpdated={refetch}
+        onEdit={(word) => {
+          setSelectedWordId(null);
+          onEditWord(word);
+        }}
       />
     </div>
   );

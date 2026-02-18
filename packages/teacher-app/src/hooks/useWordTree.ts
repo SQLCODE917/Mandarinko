@@ -47,11 +47,17 @@ export function useWordTree({
   rootWordId,
   words,
   onUpdated,
+  onRootSaved,
+  createWord = api.createWord,
+  updateWord = api.updateWord,
 }: {
   isOpen: boolean;
   rootWordId: string | null;
   words: (Word & { id: string })[];
   onUpdated?: () => void;
+  onRootSaved?: (word: Word & { id: string }) => void;
+  createWord?: (word: Omit<Word, 'id'>) => Promise<Word & { id: string }>;
+  updateWord?: (id: string, updates: Partial<Word>) => Promise<Word & { id: string }>;
 }) {
   const [nodes, setNodes] = useState<Map<string, TreeNode>>(new Map());
   const [rootId, setRootId] = useState<string | null>(null);
@@ -71,6 +77,9 @@ export function useWordTree({
   useEffect(() => {
     if (!isOpen) {
       initKeyRef.current = null;
+      tempCounter.current = 0;
+      setNodes(new Map());
+      setRootId(null);
       return;
     }
 
@@ -81,6 +90,7 @@ export function useWordTree({
 
     if (initKeyRef.current === nextKey) return;
     initKeyRef.current = nextKey;
+    tempCounter.current = 0;
 
     const nextNodes = new Map<string, TreeNode>();
     words.forEach((word) => {
@@ -237,7 +247,7 @@ export function useWordTree({
     if (parentNode.status !== 'saved') return;
 
     try {
-      const updated = await api.updateWord(parentId, { [field]: nextIds } as Partial<Word>);
+      const updated = await updateWord(parentId, { [field]: nextIds } as Partial<Word>);
       updateNode(parentId, (node) => ({
         ...node,
         word: normalizeWordInput(updated),
@@ -250,7 +260,7 @@ export function useWordTree({
         error: err instanceof Error ? err.message : 'Failed to update relation',
       }));
     }
-  }, [onUpdated, updateNode]);
+  }, [onUpdated, updateNode, updateWord]);
 
   const reuseExisting = useCallback((nodeId: string, existing: Word & { id: string }) => {
     const node = nodesRef.current.get(nodeId);
@@ -289,20 +299,27 @@ export function useWordTree({
     updateNode(nodeId, (current) => ({ ...current, status: 'saving', error: undefined }));
 
     try {
+      const isRoot = nodeId === rootId;
       if (node.status === 'saved') {
-        const updated = await api.updateWord(nodeId, normalized as Word);
+        const updated = await updateWord(nodeId, normalized as Word);
         updateNode(nodeId, (current) => ({
           ...current,
           status: 'saved',
           isEditing: false,
           word: normalizeWordInput(updated),
         }));
+        if (isRoot) {
+          onRootSaved?.(updated);
+        }
       } else {
         const { id: _ignored, ...createPayload } = normalized;
-        const created = await api.createWord(createPayload);
+        const created = await createWord(createPayload);
         replaceNodeId(nodeId, created.id, created);
         if (node.parentLinkId) {
           await updateRelationIds(node.parentLinkId, 'childrenIds', nodeId, created.id);
+        }
+        if (isRoot) {
+          onRootSaved?.(created);
         }
       }
       onUpdated?.();
@@ -313,7 +330,17 @@ export function useWordTree({
         error: err instanceof Error ? err.message : 'Failed to save word',
       }));
     }
-  }, [onUpdated, relationsSaved, replaceNodeId, updateNode, updateRelationIds]);
+  }, [
+    createWord,
+    onRootSaved,
+    onUpdated,
+    relationsSaved,
+    replaceNodeId,
+    rootId,
+    updateNode,
+    updateRelationIds,
+    updateWord,
+  ]);
 
   const editNode = useCallback(
     (id: string) => updateNode(id, (node) => ({ ...node, isEditing: true })),

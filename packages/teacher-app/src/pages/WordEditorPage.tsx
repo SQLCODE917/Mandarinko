@@ -1,31 +1,31 @@
 import { useState } from 'react';
-import { WordForm } from '../components/WordForm';
-import * as api from '../services/api';
+import { WordAuthoringTree } from '../components/WordAuthoringTree';
 import type { Word } from '@mandarinko/core';
 import './WordEditorPage.css';
 
 interface WordEditorPageProps {
-  onSaved: (word: Word & { id: string }) => void;
+  onCreateWord: (word: Omit<Word, 'id'>) => Promise<Word & { id: string }>;
+  onUpdateWord: (id: string, updates: Partial<Word>) => Promise<Word & { id: string }>;
   onCancel: () => void;
+  onRootSaved?: (word: Word & { id: string }) => void;
   initialWord?: Word & { id: string };
+  title: string;
 }
 
-export function WordEditorPage({ onSaved, onCancel, initialWord }: WordEditorPageProps) {
+export function WordEditorPage({
+  onCreateWord,
+  onUpdateWord,
+  onCancel,
+  onRootSaved,
+  initialWord,
+  title,
+}: WordEditorPageProps) {
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (word: Omit<Word, 'id'> & { id?: string }) => {
+  const handleRootSaved = async (word: Word & { id: string }) => {
     try {
       setError(null);
-      let saved: Word & { id: string };
-
-      if (initialWord) {
-        saved = await api.updateWord(initialWord.id, word);
-      } else {
-        const { id: _ignored, ...payload } = word;
-        saved = await api.createWord(payload);
-      }
-
-      onSaved(saved);
+      await onRootSaved?.(word);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     }
@@ -34,12 +34,17 @@ export function WordEditorPage({ onSaved, onCancel, initialWord }: WordEditorPag
   return (
     <div className="word-editor-page">
       <header className="page-header">
-        <h1>{initialWord ? 'Edit Word' : 'Create New Word'}</h1>
+        <h1>{title}</h1>
       </header>
-
       {error && <div className="page-error">{error}</div>}
-
-      <WordForm initialWord={initialWord} onSubmit={handleSubmit} onCancel={onCancel} />
+      <WordAuthoringTree
+        rootWordId={initialWord?.id ?? null}
+        words={initialWord ? [initialWord] : []}
+        onCancel={onCancel}
+        onRootSaved={handleRootSaved}
+        createWord={onCreateWord}
+        updateWord={onUpdateWord}
+      />
     </div>
   );
 }

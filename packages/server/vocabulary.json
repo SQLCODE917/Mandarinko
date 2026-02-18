@@ -221,8 +221,27 @@
       "we, us"
     ],
     "childrenIds": [
-      "8045b1c8-a48b-4b31-87fd-179d3c5c7c6c"
+      "8045b1c8-a48b-4b31-87fd-179d3c5c7c6c",
+      "40945cb1-bfa3-4154-8df4-dd41aa04eade"
     ],
     "id": "f27c926d-f884-4b01-b511-a80a7753f4f4"
+  },
+  "40945cb1-bfa3-4154-8df4-dd41aa04eade": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "們"
+      },
+      {
+        "language": "zh-Hans",
+        "text": "们"
+      }
+    ],
+    "pronunciation": "me(2)n",
+    "definition": [
+      "Indicating the plurality of persons"
+    ],
+    "derivation": "Person 人 with 門 phonetic",
+    "id": "40945cb1-bfa3-4154-8df4-dd41aa04eade"
   }
 }
