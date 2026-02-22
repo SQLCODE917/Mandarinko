@@ -125,4 +125,19 @@ describe('WordTraversalEngine', () => {
     expect(vm?.current.id).toBe('child');
     expect(vm?.current.mode).toBe('edit');
   });
+
+  it('builds nested child relations while avoiding cycles', () => {
+    const root = baseWord('root', '我們', { childrenIds: ['wo'] });
+    const wo = baseWord('wo', '我', { childrenIds: ['ge'] });
+    const ge = baseWord('ge', '戈', { childrenIds: ['root'] });
+    const callbacks = createCallbacks([root, wo, ge]);
+    const engine = new WordTraversalEngine(callbacks);
+
+    engine.open('root', [root, wo, ge], 'view');
+    const vm = engine.getViewModel();
+
+    expect(vm?.children.map((child) => child.id)).toEqual(['wo']);
+    expect(vm?.children[0]?.children.map((child) => child.id)).toEqual(['ge']);
+    expect(vm?.children[0]?.children[0]?.children).toEqual([]);
+  });
 });

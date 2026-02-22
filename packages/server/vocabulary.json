@@ -242,6 +242,61 @@
       "Indicating the plurality of persons"
     ],
     "derivation": "Person 人 with 門 phonetic",
-    "id": "40945cb1-bfa3-4154-8df4-dd41aa04eade"
+    "id": "40945cb1-bfa3-4154-8df4-dd41aa04eade",
+    "childrenIds": [
+      "d4ae1409-b137-490f-9596-65e5dbf974e1",
+      "180d05bc-3e88-4c7e-a27f-7b1329dd8b0e"
+    ]
+  },
+  "d4ae1409-b137-490f-9596-65e5dbf974e1": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "人"
+      }
+    ],
+    "pronunciation": "re(2)n",
+    "definition": [
+      "human, person, people"
+    ],
+    "derivation": "Pictograph of a human",
+    "id": "d4ae1409-b137-490f-9596-65e5dbf974e1"
+  },
+  "180d05bc-3e88-4c7e-a27f-7b1329dd8b0e": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "門"
+      },
+      {
+        "language": "zh-Hans",
+        "text": "门"
+      }
+    ],
+    "pronunciation": "me(2)n",
+    "definition": [
+      "Door, gate",
+      "school of thought"
+    ],
+    "derivation": "Double-leafed door 户",
+    "id": "180d05bc-3e88-4c7e-a27f-7b1329dd8b0e",
+    "childrenIds": [
+      "e85a8103-7d15-4589-9b84-cd62ed2f3c5f"
+    ]
+  },
+  "e85a8103-7d15-4589-9b84-cd62ed2f3c5f": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "户"
+      }
+    ],
+    "pronunciation": "hu(4)",
+    "definition": [
+      "door",
+      "household"
+    ],
+    "derivation": "Pictograph of a door leaf",
+    "id": "e85a8103-7d15-4589-9b84-cd62ed2f3c5f"
   }
 }

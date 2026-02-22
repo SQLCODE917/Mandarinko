@@ -8,6 +8,11 @@ Mandarinko is a TypeScript monorepo with three packages:
 
 This README is the authoritative guide for building and running the monorepo.
 
+**Word Traversal Modal Screenshots**
+
+![WordTraversalModal](./WordTraversalModal.png)
+![WordTraversalModal 2](./WordTraversalModal%202.png)
+
 **Requirements**
 
 - Node.js 20+

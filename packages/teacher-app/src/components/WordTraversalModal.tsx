@@ -1,7 +1,13 @@
+import type { ReactNode } from 'react';
 import type { Word } from '@mandarinko/core';
 import { WordForm } from './WordForm';
 import { useWordTraversal } from '../hooks/useWordTraversal';
-import type { EngineCallbacks, NullWord, ViewModel } from '../domain/wordTraversalEngine';
+import type {
+  EngineCallbacks,
+  NullWord,
+  RelationViewModel,
+  ViewModel,
+} from '../domain/wordTraversalEngine';
 import './WordTreeModal.css';
 
 interface WordTraversalModalProps {
@@ -58,6 +64,7 @@ export function WordTraversalModal({
                   title="Siblings"
                   items={siblings}
                   showRemove={isAuthoring}
+                  showDescendants={false}
                 />
               )}
               {children.length > 0 && (
@@ -65,6 +72,7 @@ export function WordTraversalModal({
                   title="Children"
                   items={children}
                   showRemove={isAuthoring}
+                  showDescendants
                 />
               )}
             </div>
@@ -111,21 +119,24 @@ function WordAuthoringCard({ current }: { current: CurrentViewModel }) {
 }
 
 type RelationItem = {
-  id: string;
-  word: Word & { id: string } | NullWord;
-  onEdit: () => void;
-  onRemove: () => Promise<void>;
-  canRemove: boolean;
+  id: RelationViewModel['id'];
+  word: RelationViewModel['word'];
+  onEdit: RelationViewModel['onEdit'];
+  onRemove: RelationViewModel['onRemove'];
+  canRemove: RelationViewModel['canRemove'];
+  children: RelationViewModel['children'];
 };
 
 function RelationGroup({
   title,
   items,
   showRemove,
+  showDescendants,
 }: {
   title: string;
   items: RelationItem[];
   showRemove: boolean;
+  showDescendants: boolean;
 }) {
   return (
     <div className="relation-group">
@@ -139,7 +150,18 @@ function RelationGroup({
             onEdit={item.onEdit}
             showRemove={showRemove && item.canRemove}
             onRemove={item.onRemove}
-          />
+          >
+            {showDescendants && item.children.length > 0 && (
+              <div className="word-relations">
+                <RelationGroup
+                  title="Children"
+                  items={item.children}
+                  showRemove={showRemove}
+                  showDescendants
+                />
+              </div>
+            )}
+          </WordViewerCard>
         ))}
       </div>
     </div>
@@ -152,12 +174,14 @@ function WordViewerCard({
   onEdit,
   showRemove,
   onRemove,
+  children,
 }: {
   word: Word & { id?: string };
   showEdit?: boolean;
   onEdit?: () => void;
   showRemove?: boolean;
   onRemove?: () => Promise<void>;
+  children?: ReactNode;
 }) {
   return (
     <div className="word-node">
@@ -198,6 +222,7 @@ function WordViewerCard({
           </div>
         </div>
       </div>
+      {children}
     </div>
   );
 }

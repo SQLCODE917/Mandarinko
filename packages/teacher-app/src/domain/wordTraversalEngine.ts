@@ -41,6 +41,7 @@ export type RelationViewModel = {
   onEdit: () => void;
   onRemove: () => Promise<void>;
   canRemove: boolean;
+  children: RelationViewModel[];
 };
 
 export type CurrentViewModel = {
@@ -134,25 +135,42 @@ export class WordTraversalEngine {
     const siblingIds = normalizeIds(currentWord.siblingIds).filter((id) => id !== cursor.id);
     const childIds = normalizeIds(currentWord.childrenIds).filter((id) => id !== cursor.id);
 
-    const buildRelation = (id: string, type: RelationType): RelationViewModel | null => {
+    const buildRelation = (
+      parentId: string,
+      id: string,
+      type: RelationType,
+      ancestorIds: Set<string>
+    ): RelationViewModel | null => {
       const word = words.get(id);
       if (!word) return null;
+
+      const nextAncestors = new Set(ancestorIds);
+      nextAncestors.add(id);
+      const childIds = normalizeIds(word.childrenIds).filter(
+        (childId) => childId !== id && !nextAncestors.has(childId)
+      );
+      const children = childIds
+        .map((childId) => buildRelation(id, childId, 'child', nextAncestors))
+        .filter((entry): entry is RelationViewModel => Boolean(entry));
+
       return {
         id,
         word,
         onEdit: () => this.editWord(id),
         onRemove: async () => {
-          await this.removeRelation(currentWord.id, id, type);
+          await this.removeRelation(parentId, id, type);
         },
         canRemove: cursor.mode !== 'view',
+        children,
       };
     };
 
+    const rootAncestors = new Set([cursor.id]);
     const siblings = siblingIds
-      .map((id) => buildRelation(id, 'sibling'))
+      .map((id) => buildRelation(currentWord.id, id, 'sibling', rootAncestors))
       .filter((entry): entry is RelationViewModel => Boolean(entry));
     const children = childIds
-      .map((id) => buildRelation(id, 'child'))
+      .map((id) => buildRelation(currentWord.id, id, 'child', rootAncestors))
       .filter((entry): entry is RelationViewModel => Boolean(entry));
 
     return {
