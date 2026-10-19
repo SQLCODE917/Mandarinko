@@ -8,7 +8,7 @@ import { WordTraversalModal } from './components/WordTraversalModal';
 import './App.css';
 
 export function App() {
-  const { words, loading, refetch } = useVocabulary();
+  const { words, loading, refetch, upsertWord } = useVocabulary();
   const navigation = useDictionaryNavigation();
   const derivationNavigation = {
     words,
@@ -18,11 +18,19 @@ export function App() {
 
   const callbacks = useMemo(
     () => ({
-      createWord: (word: Omit<Word, 'id'>) => api.createWord(word),
-      updateWord: (id: string, updates: Partial<Word>) => api.updateWord(id, updates),
+      createWord: async (word: Omit<Word, 'id'>) => {
+        const saved = await api.createWord(word);
+        upsertWord(saved);
+        return saved;
+      },
+      updateWord: async (id: string, updates: Partial<Word>) => {
+        const saved = await api.updateWord(id, updates);
+        upsertWord(saved);
+        return saved;
+      },
       refreshVocabulary: () => refetch(),
     }),
-    [refetch]
+    [refetch, upsertWord]
   );
 
   return (

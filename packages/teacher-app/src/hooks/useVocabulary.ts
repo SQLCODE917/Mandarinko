@@ -26,5 +26,13 @@ export function useVocabulary() {
     loadWords();
   }, [loadWords]);
 
-  return { words, loading, error, refetch: loadWords };
+  const upsertWord = useCallback((word: Word) => {
+    setWords((current) =>
+      current.some((entry) => entry.id === word.id)
+        ? current.map((entry) => (entry.id === word.id ? word : entry))
+        : [...current, word]
+    );
+  }, []);
+
+  return { words, loading, error, refetch: loadWords, upsertWord };
 }

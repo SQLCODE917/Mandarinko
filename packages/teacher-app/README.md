@@ -5,9 +5,9 @@ A React/TypeScript web application for authoring and managing vocabulary words.
 ## Features
 
 - **Landing Page**: Browse the complete vocabulary dictionary with omni-search
-- **Word Authoring**: Create new words with a data-driven form supporting all properties
+- **Word Authoring**: Enter and edit words directly in an autosaving worksheet
 - **Smart Search**: Find existing words by definition, exact spelling, or partial spelling
-- **Relationship Management**: Link parent, child, and sibling words directly from the form
+- **Relationship Management**: Add and reuse child and sibling words beside the main entry
 - **Shared Validation**: Uses the same validation logic as the backend
 
 ## Running the App
@@ -32,8 +32,8 @@ Words use a shared compact entry in the dictionary, search results, and relation
 view: character variants and pronunciation share a heading, followed by derivation
 and complete definitions. Entries wrap around their content without equal-height
 cards or truncated text. The dictionary flows into columns as space permits; the
-relationship view uses compact indented branches. Editing opens the existing form
-on demand.
+relationship view uses compact indented branches. The details view stays read-only;
+Edit opens a separate word editor in the same dialog shell.
 
 Word details follows the URL (`?word=<id>`), including direct links and reloads.
 Opening a word or following a derivation link adds a browser history entry. Back
@@ -50,13 +50,44 @@ spellings remain text. Identical spellings on variants of one word resolve to
 that word. Links support keyboard activation, copying, and opening in another
 tab. Dictionary-list and search entries retain plain derivation text so links
 are never nested inside their entry buttons. Links are also inactive during
-editing. Browser navigation restores viewing locations, not unsaved editor
-state. Navigation uses the loaded vocabulary and keeps the dialog shell mounted,
+editing. Navigation uses the loaded vocabulary and keeps the dialog shell mounted,
 without another fetch or an intermediate blank/previous-word frame.
 
 The magenta terminal banner carries the application identity: a typed wordmark,
 blinking cursor, scanlines, and restrained CRT artifacts. Motion stays in the
 banner; reduced-motion preferences show a static wordmark and cursor.
+
+## Word Editor
+
+Click a field to type directly; leaving it or pressing Tab saves a complete,
+valid entry. Enter adds a line, including in definitions and derivations. Text
+areas grow to their contents and reflow when the modal width changes. Variants
+and definitions have one-click additions that focus the new field. Levels and
+frequency remain available under a compact disclosure. Escape and Close finish
+pending edits before returning to details, and keyboard focus stays in the modal.
+
+The main word and its direct children and siblings stay together as editable
+rows. The toolbar and the ends of relationship groups offer “+ Child” and
+“+ Sibling”, which immediately focus a new character field. Enter an exact existing
+spelling and leave that field to reuse its pronunciation, definitions, variants,
+and derivation automatically. A unique match resolves across language variants;
+ambiguous matches require choosing an entry. Duplicate links and new self-links
+are rejected. Editing a reused word changes that shared dictionary entry.
+Unlink removes the relationship without deleting its word. To work on a related
+word's own relationships, use that word's Edit button in details.
+
+Partial new words stay as local drafts until spelling, pronunciation, and at
+least one definition satisfy shared validation. Close keeps incomplete edits open
+with an explanation. Discard unsaved edits restores the last successful saves;
+already saved changes remain saved. Failures retain text and offer Retry save,
+without automatic retries. Requests run in order; saving a related word precedes
+saving its link. These are separate server writes, so a failed link may leave
+its word saved independently. Successful responses update the dictionary in place
+without reloading it or resetting the active editor field.
+
+Drafts belong to the current editor session, not durable browser storage. Reload
+or leaving the page warns while changes are unsaved; browser Back and Forward
+still select dictionary viewing locations and do not restore unfinished drafts.
 
 ## Reusable CRT Treatment
 

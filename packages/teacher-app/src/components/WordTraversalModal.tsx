@@ -1,16 +1,11 @@
-import { useEffect, useLayoutEffect, useRef, type ReactNode } from 'react';
+import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import type { Word } from '@mandarinko/core';
-import { WordForm } from './WordForm';
+import { WordEditor, type WordEditorHandle } from './WordEditor';
 import { WordEntry } from './WordEntry';
 import type { DerivationNavigation } from './DerivationText';
 import type { DictionaryLocation } from '../domain/dictionaryLocation';
 import { useWordTraversal } from '../hooks/useWordTraversal';
-import type {
-  EngineCallbacks,
-  NullWord,
-  RelationViewModel,
-  ViewModel,
-} from '../domain/wordTraversalEngine';
+import type { EngineCallbacks, NullWord, RelationViewModel } from '../domain/wordTraversalEngine';
 import './WordTreeModal.css';
 
 interface WordTraversalModalProps {
@@ -36,30 +31,28 @@ export function WordTraversalModal({
   const knownWord = location.kind === 'word' && words.some((word) => word.id === rootWordId);
   const ready = location.kind === 'create' || Boolean(knownWord);
   const isOpen = location.kind !== 'closed';
+  const editorRef = useRef<WordEditorHandle>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const { viewModel } = useWordTraversal({ isOpen: ready, rootWordId, words, callbacks });
   const current = viewModel?.current;
   const isAuthoring = Boolean(current && current.mode !== 'view');
 
   useLayoutEffect(() => {
-    if (isOpen) titleRef.current?.focus({ preventScroll: true });
-  }, [isOpen, rootWordId]);
-
-  useEffect(() => {
-    if (location.kind === 'create' && current?.mode === 'view' && !isNullWord(current.word)) {
-      onCreated(current.word.id);
-    }
-  }, [location.kind, current, onCreated]);
+    if (isOpen && !isAuthoring) titleRef.current?.focus({ preventScroll: true });
+  }, [isOpen, rootWordId, isAuthoring]);
 
   if (!isOpen) return null;
 
-  const close = () => {
-    // Editing has its own draft traversal; viewing and root creation close the URL location.
-    if (current && isAuthoring && (current.mode === 'edit' || !viewModel?.isRoot)) {
-      current.onClose();
-    } else {
-      onDismiss();
-    }
+  const close = async () => {
+    if (isAuthoring && editorRef.current) {
+      const editor = editorRef.current;
+      const savedId = await editor.finish();
+      if (editorRef.current !== editor) return;
+      if (savedId === false) return;
+      if (location.kind === 'create' && savedId) onCreated(savedId);
+      else if (current?.mode === 'edit') current.onClose();
+      else onDismiss();
+    } else onDismiss();
   };
   const error =
     location.kind === 'invalid'
@@ -75,14 +68,38 @@ export function WordTraversalModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="word-tree-title"
+      onKeyDown={(event) => {
+        if (event.nativeEvent.isComposing) return;
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          void close();
+        }
+        if (event.key === 'Tab') {
+          const fields = [
+            ...event.currentTarget.querySelectorAll<HTMLElement>(
+              'button:not(:disabled), textarea, input, select, summary, a[href]'
+            ),
+          ].filter((element) => element.getClientRects().length > 0);
+          const first = fields[0];
+          const last = fields[fields.length - 1];
+          if (
+            (!event.shiftKey && document.activeElement === last) ||
+            (event.shiftKey &&
+              (document.activeElement === first || document.activeElement === titleRef.current))
+          ) {
+            event.preventDefault();
+            (event.shiftKey ? last : first)?.focus();
+          }
+        }
+      }}
     >
-      <div className="word-tree-backdrop" onClick={close} />
+      <div className="word-tree-backdrop" onClick={() => void close()} />
       <div className={`word-tree-content${isAuthoring ? ' is-authoring' : ''}`}>
         <div className="word-tree-header">
           <div className="word-tree-title" id="word-tree-title" tabIndex={-1} ref={titleRef}>
             {isAuthoring ? 'Word editor' : 'Word details'}
           </div>
-          <button type="button" className="word-tree-close" onClick={close}>
+          <button type="button" className="word-tree-close" onClick={() => void close()}>
             Close
           </button>
         </div>
@@ -94,7 +111,12 @@ export function WordTraversalModal({
           ) : (
             <>
               {isAuthoring ? (
-                <WordAuthoringCard current={viewModel.current} />
+                <WordEditor
+                  ref={editorRef}
+                  words={words}
+                  callbacks={callbacks}
+                  word={isNullWord(viewModel.current.word) ? undefined : viewModel.current.word}
+                />
               ) : (
                 <WordViewerCard
                   word={viewModel.current.word}
@@ -104,7 +126,7 @@ export function WordTraversalModal({
                   showRemove={false}
                 />
               )}
-              {(viewModel.siblings.length > 0 || viewModel.children.length > 0) && (
+              {!isAuthoring && (viewModel.siblings.length > 0 || viewModel.children.length > 0) && (
                 <div className="word-relations">
                   {viewModel.siblings.length > 0 && (
                     <RelationGroup
@@ -129,41 +151,6 @@ export function WordTraversalModal({
             </>
           )}
         </div>
-      </div>
-    </div>
-  );
-}
-
-type CurrentViewModel = ViewModel['current'];
-
-function WordAuthoringCard({ current }: { current: CurrentViewModel }) {
-  const word = current.word as Word & { id?: string };
-  const canReuse = current.mode === 'create';
-
-  return (
-    <div className="word-node word-authoring-node">
-      <div className="word-card word-authoring-card">
-        <div className="word-card-header">
-          <div>
-            <div className="word-card-title">
-              {word.spelling?.map((s) => s.text).join(' / ') || 'New Word'}
-            </div>
-            <div className="word-card-pronunciation">{word.pronunciation}</div>
-          </div>
-        </div>
-
-        <WordForm
-          initialWord={{ ...word, id: isNullWord(word) ? undefined : word.id }}
-          onSubmit={(next) => current.onSave(next)}
-          onCancel={() => {}}
-          showCancel={false}
-          resetKey={word.id ?? 'new'}
-          onCreateChild={current.onAddChild}
-          onCreateSibling={current.onAddSibling}
-          enableReusePrompt={canReuse}
-          onReuseExisting={(existing) => current.onReuseExisting(existing)}
-          showRelationshipFields={false}
-        />
       </div>
     </div>
   );

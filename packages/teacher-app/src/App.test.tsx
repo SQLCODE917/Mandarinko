@@ -40,7 +40,7 @@ vi.mock('./hooks/useVocabulary', () => {
 beforeEach(() => window.history.replaceState(null, '', '/'));
 
 describe('dictionary dialog sessions', () => {
-  it.each(['word', 'create'])('reopens the same %s dialog after closing it', (kind) => {
+  it.each(['word', 'create'])('reopens the same %s dialog after closing it', async (kind) => {
     const { container } = render(<App />);
     const trigger =
       kind === 'word'
@@ -53,7 +53,7 @@ describe('dictionary dialog sessions', () => {
         container.querySelector('[role="dialog"]'),
         `open attempt ${attempt + 1}`
       ).not.toBeNull();
-      act(() => screen.getByRole('button', { name: 'Close' }).click());
+      await act(async () => screen.getByRole('button', { name: 'Close' }).click());
       expect(container.querySelector('[role="dialog"]')).toBeNull();
     }
   });
@@ -145,14 +145,18 @@ describe('dictionary browsing', () => {
     expect(mainWord(container)).toBe('我');
   });
 
-  it('keeps list buttons free of nested links and disables browsing while editing', () => {
+  it('keeps list buttons free of nested links and opens a separate inline editor in the same shell', async () => {
     const { container } = render(<App />);
     expect(container.querySelector('.word-item a')).toBeNull();
     act(() => container.querySelector<HTMLButtonElement>('.word-item')!.click());
+    const dialog = container.querySelector('[role="dialog"]');
+    const panel = container.querySelector('.word-tree-content');
     act(() => screen.getByRole('button', { name: 'Edit' }).click());
-    expect(container.querySelector('.word-form')).not.toBeNull();
+    expect(container.querySelector('.word-editor')).not.toBeNull();
+    expect(container.querySelector('[role="dialog"]')).toBe(dialog);
+    expect(container.querySelector('.word-tree-content')).toBe(panel);
     expect(container.querySelector('.word-entry-derivation a')).toBeNull();
-    act(() => screen.getByRole('button', { name: 'Close' }).click());
+    await act(async () => screen.getByRole('button', { name: 'Close' }).click());
     expect(mainWord(container)).toBe('我');
     expect(window.location.search).toBe('?word=root');
   });
