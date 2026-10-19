@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import type { Word } from '@mandarinko/core';
-import { WordEditor, type WordEditorHandle } from './WordEditor';
+import { WordEditor, type WordEditorHandle, type EditorExit } from './WordEditor';
+import type { WordEditorSession } from '../domain/wordEditorSession';
 import { WordEntry } from './WordEntry';
 import type { DerivationNavigation } from './DerivationText';
 import type { DictionaryLocation } from '../domain/dictionaryLocation';
@@ -31,6 +32,7 @@ export function WordTraversalModal({
   const knownWord = location.kind === 'word' && words.some((word) => word.id === rootWordId);
   const ready = location.kind === 'create' || Boolean(knownWord);
   const isOpen = location.kind !== 'closed';
+  const sessions = useRef(new Map<string, WordEditorSession>());
   const editorRef = useRef<WordEditorHandle>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const { viewModel } = useWordTraversal({ isOpen: ready, rootWordId, words, callbacks });
@@ -43,16 +45,15 @@ export function WordTraversalModal({
 
   if (!isOpen) return null;
 
-  const close = async () => {
-    if (isAuthoring && editorRef.current) {
-      const editor = editorRef.current;
-      const savedId = await editor.finish();
-      if (editorRef.current !== editor) return;
-      if (savedId === false) return;
-      if (location.kind === 'create' && savedId) onCreated(savedId);
-      else if (current?.mode === 'edit') current.onClose();
-      else onDismiss();
-    } else onDismiss();
+  const close = () => {
+    if (isAuthoring) editorRef.current?.close();
+    else onDismiss();
+  };
+  const exitEditor = (result: EditorExit) => {
+    if (result.kind === 'finished' && location.kind === 'create' && result.wordId)
+      onCreated(result.wordId);
+    else if (current?.mode === 'edit') current.onClose();
+    else onDismiss();
   };
   const error =
     location.kind === 'invalid'
@@ -113,6 +114,8 @@ export function WordTraversalModal({
               {isAuthoring ? (
                 <WordEditor
                   ref={editorRef}
+                  sessions={sessions.current}
+                  onExit={exitEditor}
                   words={words}
                   callbacks={callbacks}
                   word={isNullWord(viewModel.current.word) ? undefined : viewModel.current.word}

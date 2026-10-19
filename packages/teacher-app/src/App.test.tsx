@@ -37,7 +37,10 @@ vi.mock('./hooks/useVocabulary', () => {
   return { useVocabulary: () => ({ words, loading: false, refetch }) };
 });
 
-beforeEach(() => window.history.replaceState(null, '', '/'));
+beforeEach(() => {
+  window.history.replaceState(null, '', '/');
+  window.localStorage.clear();
+});
 
 describe('dictionary dialog sessions', () => {
   it('does not validate an untouched draft on blur and closes with the first click', async () => {

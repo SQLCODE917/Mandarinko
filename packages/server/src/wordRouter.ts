@@ -2,10 +2,12 @@ import express, { Request, Response, Router } from 'express';
 import { DataStore } from './dataStore.js';
 import { ValidationService } from '@mandarinko/core';
 import { randomUUID } from 'crypto';
+import { isDeepStrictEqual } from 'node:util';
 import type { Word } from '@mandarinko/core';
 
 export function createWordRouter(store: DataStore): Router {
   const router = express.Router();
+  const pendingCreations = new Map<string, Promise<Word>>();
 
   const withIds = (words: Word[]) => {
     const dict = store.getManager().toJSON();
@@ -122,7 +124,15 @@ export function createWordRouter(store: DataStore): Router {
     if (payload && Object.prototype.hasOwnProperty.call(payload, 'id')) {
       return res.status(400).json({ error: 'ID must not be provided when creating a word' });
     }
-    const word = { ...(payload as Omit<Word, 'id'>), id: randomUUID() } as Word;
+    const requestKey = req.headers?.['idempotency-key'];
+    if (
+      requestKey !== undefined &&
+      (typeof requestKey !== 'string' ||
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(requestKey))
+    ) {
+      return res.status(400).json({ error: 'Idempotency-Key must be a UUID v4' });
+    }
+    const word = { ...(payload as Omit<Word, 'id'>), id: requestKey ?? randomUUID() } as Word;
     const errors = ValidationService.validateWord(word);
     const extraErrors = ValidationService.validateNoExtraFields(word);
     const refErrors = ValidationService.validateReferences(word, getWordMap());
@@ -132,16 +142,34 @@ export function createWordRouter(store: DataStore): Router {
         .json({ error: 'Invalid word', details: [...errors, ...extraErrors, ...refErrors] });
     }
 
+    const existing = store.getManager().getById(word.id);
+    if (existing && !isDeepStrictEqual(existing, word)) {
+      return res
+        .status(409)
+        .json({ error: 'Idempotency-Key has already been used for different word data' });
+    }
+    let pending = pendingCreations.get(word.id);
+    const ownsRequest = !pending;
     try {
-      store.getManager().addWord(word);
-      await store.save();
-      res.status(201).json(word);
+      if (!pending) {
+        pending = (async () => {
+          if (!existing) store.getManager().addWord(word);
+          // A retry also confirms durability if the preceding save failed after insertion.
+          await store.save();
+          return word;
+        })();
+        pendingCreations.set(word.id, pending);
+      }
+      const saved = await pending;
+      res.status(existing ? 200 : 201).json(saved);
     } catch (err: unknown) {
       let message = String(err);
       if (err instanceof Error) {
         message = err.message;
       }
       res.status(400).json({ error: message });
+    } finally {
+      if (ownsRequest) pendingCreations.delete(word.id);
     }
   });
 

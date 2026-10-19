@@ -8,58 +8,99 @@ import {
   useState,
 } from 'react';
 import type { Word } from '@mandarinko/core';
-import { WordEditorSession, type EditorRow } from '../domain/wordEditorSession';
-import type { EngineCallbacks } from '../domain/wordTraversalEngine';
+import {
+  WordEditorSession,
+  type EditorRow,
+  type EditorCallbacks,
+} from '../domain/wordEditorSession';
 import './WordEditor.css';
 
-export type WordEditorHandle = { finish: () => Promise<string | undefined | false> };
+export type WordEditorHandle = { close: () => void };
+export type EditorExit = { kind: 'close' | 'finished'; wordId?: string };
 
 export const WordEditor = forwardRef<
   WordEditorHandle,
   {
     word?: Word;
     words: Word[];
-    callbacks: EngineCallbacks;
+    callbacks: EditorCallbacks;
+    sessions?: Map<string, WordEditorSession>;
+    onExit: (result: EditorExit) => void;
   }
->(function WordEditor({ word, words, callbacks }, ref) {
-  const [session] = useState(() => new WordEditorSession(word, words, callbacks));
+>(function WordEditor({ word, words, callbacks, sessions, onExit }, ref) {
+  const [session] = useState(() => {
+    const slot = word ? `word:${word.id}` : 'new';
+    const previous = sessions?.get(slot);
+    const active =
+      previous && previous.lifecycle.kind !== 'closed'
+        ? previous
+        : new WordEditorSession(word, words, callbacks);
+    sessions?.set(slot, active);
+    return active;
+  });
   const [, redraw] = useReducer((revision: number) => revision + 1, 0);
   const host = useRef<HTMLDivElement>(null);
-  const [closeBlocked, setCloseBlocked] = useState(false);
+  const exited = useRef(false);
   const [focusRow, setFocusRow] = useState<number | null>(session.rows[0].key);
   useLayoutEffect(() => session.subscribe(redraw), [session]);
+  useLayoutEffect(() => session.updateDependencies(words, callbacks), [session, words, callbacks]);
   useLayoutEffect(() => {
     if (focusRow !== null)
       host.current
         ?.querySelector<HTMLTextAreaElement>(`[data-row="${focusRow}"] textarea`)
         ?.focus();
   }, [focusRow]);
+  useLayoutEffect(() => {
+    if (session.focusRevision)
+      host.current
+        ?.querySelector<HTMLTextAreaElement>(`[data-row="${session.rows[0].key}"] textarea`)
+        ?.focus();
+  }, [session.focusRevision]);
   useEffect(() => {
     const warn = (event: BeforeUnloadEvent) => {
-      if (session.dirty || session.saving || session.error) {
+      if (session.storageError) {
         event.preventDefault();
         event.returnValue = '';
       }
     };
+    const checkpoint = () => session.checkpoint();
     window.addEventListener('beforeunload', warn);
-    return () => window.removeEventListener('beforeunload', warn);
+    window.addEventListener('popstate', checkpoint, true);
+    return () => {
+      window.removeEventListener('beforeunload', warn);
+      window.removeEventListener('popstate', checkpoint, true);
+    };
   }, [session]);
   useImperativeHandle(
     ref,
     () => ({
-      finish: async () => {
-        if (!(await session.finish())) {
-          setCloseBlocked(true);
-          host.current?.querySelector<HTMLElement>('[role="alert"], .editor-row-message')?.focus();
-          return false;
-        }
-        return session.rows[0].id;
+      close: () => {
+        void session.close();
       },
     }),
     [session]
   );
+  useLayoutEffect(() => {
+    if (session.lifecycle.kind === 'closed' && !exited.current) {
+      exited.current = true;
+      onExit({ kind: session.lifecycle.outcome, wordId: session.rows[0].id });
+    }
+  });
+  useLayoutEffect(() => {
+    if (session.validation)
+      host.current?.querySelector<HTMLElement>('.editor-validation-summary')?.focus();
+    if (
+      session.lifecycle.kind === 'confirm-discard' ||
+      session.lifecycle.kind === 'confirm-leave'
+    ) {
+      host.current?.querySelector<HTMLButtonElement>('.editor-confirmation button')?.focus();
+    }
+  }, [session.lifecycle.kind, session.validation]);
 
-  const add = (relation: 'child' | 'sibling') => setFocusRow(session.addRow(relation).key);
+  const add = (relation: 'child' | 'sibling') => {
+    const row = session.addRow(relation);
+    if (row) setFocusRow(row.key);
+  };
   const renderRow = (row: EditorRow, index: number) => (
     <EditorWordRow
       key={row.key}
@@ -73,65 +114,142 @@ export const WordEditor = forwardRef<
     />
   );
   return (
-    <div className="word-editor" ref={host}>
+    <div
+      className="word-editor"
+      ref={host}
+      onKeyDown={(event) => {
+        if (event.nativeEvent.isComposing) return;
+        if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+          event.preventDefault();
+          void session.finish(event.shiftKey && session.isNew);
+        }
+        if (
+          event.key === 'Escape' &&
+          (session.lifecycle.kind === 'confirm-discard' ||
+            session.lifecycle.kind === 'confirm-leave')
+        ) {
+          event.stopPropagation();
+          event.preventDefault();
+          session.cancelDiscard();
+        }
+      }}
+    >
       <div className="editor-toolbar">
-        <span>Click to edit · Tab to save · Enter for a new line</span>
-        <button type="button" onClick={() => add('child')}>
+        <span>
+          {session.restored ? 'Restored draft · ' : ''}New words stay drafts until Create. Existing
+          words save on blur.
+        </span>
+        <button type="button" disabled={!session.editable} onClick={() => add('child')}>
           + Child
         </button>
-        <button type="button" onClick={() => add('sibling')}>
+        <button type="button" disabled={!session.editable} onClick={() => add('sibling')}>
           + Sibling
         </button>
         <button
           type="button"
-          disabled={session.saving || (!session.dirty && !session.error)}
-          title="Previously saved changes are kept"
-          onClick={() => void session.discardUnsaved()}
+          className="editor-primary"
+          disabled={!session.editable || session.lifecycle.kind === 'failed'}
+          onClick={() => void session.finish()}
         >
-          Discard unsaved edits
+          {session.hasNewWords ? (session.rows[0].id ? 'Add words' : 'Create word') : 'Done'}
+        </button>
+        {session.isNew && (
+          <button
+            type="button"
+            disabled={!session.editable || session.lifecycle.kind === 'failed'}
+            onClick={() => void session.finish(true)}
+          >
+            Create and add another
+          </button>
+        )}
+        <button
+          type="button"
+          disabled={
+            session.publishing ||
+            (!session.dirty && !session.error) ||
+            session.lifecycle.kind === 'confirm-discard' ||
+            session.lifecycle.kind === 'confirm-leave'
+          }
+          onClick={() => session.requestDiscard()}
+        >
+          {session.isNew && !session.rows[0].id ? 'Discard draft' : 'Discard unsaved edits'}
         </button>
         <span role="status" aria-live="polite">
-          {session.saving
-            ? 'Saving…'
-            : session.dirty
-              ? 'Unsaved draft'
-              : session.rows[0].id
-                ? 'Saved'
-                : 'New word'}
+          {session.storageError
+            ? 'Draft not saved'
+            : session.saving
+              ? 'Saving…'
+              : session.error
+                ? 'Save failed · draft kept'
+                : session.dirty
+                  ? 'Draft saved in this browser'
+                  : session.rows[0].id
+                    ? 'Saved'
+                    : 'New word'}
         </span>
       </div>
-      {closeBlocked && session.dirty && !session.error && (
-        <p role="alert" className="editor-validation">
-          Complete the required fields or discard unsaved edits before closing.
+      {session.validation && (
+        <p role="alert" tabIndex={-1} className="editor-validation editor-validation-summary">
+          Check the highlighted words before finishing.
         </p>
       )}
-      {session.error && (
-        <div role="alert" tabIndex={-1} className="editor-error">
-          {session.error}. Your edits are kept here.{' '}
-          <button type="button" onClick={() => void session.retry()}>
-            Retry save
+      {(session.storageError || session.error) && (
+        <div role="alert" className="editor-error">
+          {session.storageError || session.error}
+          {session.lifecycle.kind === 'failed' && (
+            <button type="button" onClick={() => void session.retry()}>
+              Retry save
+            </button>
+          )}
+        </div>
+      )}
+      {session.lifecycle.kind === 'confirm-discard' && (
+        <div className="editor-confirmation" role="group" aria-label="Discard draft?">
+          <p>
+            Discard{' '}
+            {session.lifecycle.rowKey === undefined ? 'unsaved draft content' : 'this draft'}? Saved
+            dictionary changes will be kept.
+          </p>
+          <button type="button" onClick={() => session.cancelDiscard()}>
+            Keep editing
+          </button>
+          <button type="button" onClick={() => session.confirmDiscard()}>
+            Discard{session.lifecycle.rowKey === undefined ? ' and close' : ' this draft'}
           </button>
         </div>
       )}
-      {renderRow(session.rows[0], 0)}
-      {(['child', 'sibling'] as const).map((relation) => {
-        const rows = session.rows.filter((row) => row.relation === relation);
-        return (
-          rows.length > 0 && (
-            <section
-              key={relation}
-              className="editor-relations"
-              aria-label={relation === 'child' ? 'Children' : 'Siblings'}
-            >
-              <h3>{relation === 'child' ? 'Children' : 'Siblings'}</h3>
-              {rows.map(renderRow)}
-              <button type="button" onClick={() => add(relation)}>
-                + {relation === 'child' ? 'Child' : 'Sibling'}
-              </button>
-            </section>
-          )
-        );
-      })}
+      {session.lifecycle.kind === 'confirm-leave' && (
+        <div className="editor-confirmation" role="group" aria-label="Draft could not be saved">
+          <p>This browser could not save your draft. Leaving may lose unfinished input.</p>
+          <button type="button" onClick={() => session.cancelDiscard()}>
+            Keep editing
+          </button>
+          <button type="button" onClick={() => session.leaveWithoutDraft()}>
+            Close without saving draft
+          </button>
+        </div>
+      )}
+      <fieldset className="editor-fields" disabled={!session.editable}>
+        {renderRow(session.rows[0], 0)}
+        {(['child', 'sibling'] as const).map((relation) => {
+          const rows = session.rows.filter((row) => row.relation === relation);
+          return (
+            rows.length > 0 && (
+              <section
+                key={relation}
+                className="editor-relations"
+                aria-label={relation === 'child' ? 'Children' : 'Siblings'}
+              >
+                <h3>{relation === 'child' ? 'Children' : 'Siblings'}</h3>
+                {rows.map(renderRow)}
+                <button type="button" onClick={() => add(relation)}>
+                  + {relation === 'child' ? 'Child' : 'Sibling'}
+                </button>
+              </section>
+            )
+          );
+        })}
+      </fieldset>
     </div>
   );
 });
@@ -177,7 +295,11 @@ function EditorWordRow({
       <div className="editor-row-heading">
         <strong>{name}</strong>
         {!row.id && row.relation !== 'root' && (
-          <button type="button" disabled={session.saving} onClick={() => session.removeDraft(row)}>
+          <button
+            type="button"
+            disabled={session.saving || session.lifecycle.kind === 'failed'}
+            onClick={() => session.requestDiscard(row)}
+          >
             Discard draft
           </button>
         )}

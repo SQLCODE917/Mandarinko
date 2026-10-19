@@ -26,10 +26,16 @@ export async function searchBySpelling(
   return response.json();
 }
 
-export async function createWord(word: Omit<Word, 'id'>): Promise<Word & { id: string }> {
+export async function createWord(
+  word: Omit<Word, 'id'>,
+  requestKey?: string
+): Promise<Word & { id: string }> {
   const response = await fetch(`${API_BASE}/words`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      ...(requestKey ? { 'Idempotency-Key': requestKey } : {}),
+    },
     body: JSON.stringify(word),
   });
   if (!response.ok) throw new Error('Failed to create word');

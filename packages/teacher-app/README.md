@@ -40,8 +40,8 @@ Opening a word or following a derivation link adds a browser history entry. Back
 and Forward select the previous and next word in the same dialog; Back from the
 first opened word returns to the dictionary. Close adds a closed-dictionary
 location, so Back can reopen the last viewed word. Other query parameters and
-fragments are preserved. New-word authoring uses `?newWord=1`; saving a root draft
-replaces that entry with its saved word URL. Invalid locations and missing word
+fragments are preserved. New-word authoring uses `?newWord=1`; successful Create replaces that entry
+with its saved word URL. Close leaves authoring and retains unfinished drafts. Invalid locations and missing word
 IDs show an explicit message instead of opening a draft.
 
 In the details view, Han-only spellings in derivations link to existing words.
@@ -59,35 +59,65 @@ banner; reduced-motion preferences show a static wordmark and cursor.
 
 ## Word Editor
 
-Click a field to type directly; leaving it or pressing Tab saves a complete,
-valid entry. Enter adds a line, including in definitions and derivations. Text
-areas grow to their contents and reflow when the modal width changes. Variants
-and definitions have one-click additions that focus the new field. Levels and
-frequency remain available under a compact disclosure. Escape and Close finish
-pending edits before returning to details, and keyboard focus stays in the modal.
+Click fields to edit directly. Enter adds a line; text areas grow to show their
+contents. Tab saves valid edits to existing dictionary words. New words stay in
+a browser draft until an explicit Create action, even after all required fields
+are complete. Leaving an incomplete field does not display whole-word validation.
+Variants and definitions have one-click additions that focus the new field.
+Levels and frequency remain under a compact disclosure.
+
+The toolbar separates completion from leaving:
+
+- **Create word** validates the worksheet, creates its new words, saves their
+  relationships, and opens the resulting entry in details. For new related words
+  beside an existing main word, this action is labelled **Add words**; when no new
+  words remain, it is **Done**.
+- **Create and add another** completes the same work, then clears the worksheet
+  and focuses spelling. It only resets after success.
+- **Close**, Escape, and the backdrop leave the editor safely, retaining unfinished
+  drafts. They do not validate or create new dictionary entries. Valid pending
+  edits to existing words finish saving before exit. A Close request made during
+  Create waits for that operation to settle, without another request.
+- **Discard draft** (or **Discard unsaved edits**) asks for confirmation when there
+  is unfinished input. Keep editing preserves the input. Confirming discards only
+  draft content and closes; successful dictionary writes are kept. An individual
+  related draft can be discarded without closing the worksheet.
+
+Ctrl/Cmd+Enter performs the primary completion action. Ctrl/Cmd+Shift+Enter
+creates and adds another in a new-word worksheet. Keyboard focus stays in the
+dialog, and Escape cancels a discard confirmation before leaving the editor.
 
 The main word and its direct children and siblings stay together as editable
-rows. The toolbar and the ends of relationship groups offer “+ Child” and
-“+ Sibling”, which immediately focus a new character field. Enter an exact existing
-spelling and leave that field to reuse its pronunciation, definitions, variants,
-and derivation automatically. A unique match resolves across language variants;
-ambiguous matches require choosing an entry. Duplicate links and new self-links
-are rejected. Editing a reused word changes that shared dictionary entry.
-Unlink removes the relationship without deleting its word. To work on a related
-word's own relationships, use that word's Edit button in details.
+rows. “+ Child” and “+ Sibling” focus a new character field immediately. Enter an
+exact existing spelling and leave that field to reuse its pronunciation,
+definitions, variants, and derivation. Unique matches resolve across language
+variants; ambiguous matches require choosing an entry. Self-links, duplicate
+relationships, and duplicate spellings in separate new drafts are rejected.
+Editing a reused word changes that shared dictionary entry. Unlink removes its
+relationship without deleting the word. Use a related word's Edit button in
+details to work on its own relationships.
 
-Partial new words stay as local drafts until spelling, pronunciation, and at
-least one definition satisfy shared validation. Close keeps incomplete edits open
-with an explanation. Discard unsaved edits restores the last successful saves;
-already saved changes remain saved. Failures retain text and offer Retry save,
-without automatic retries. Requests run in order; saving a related word precedes
-saving its link. These are separate server writes, so a failed link may leave
-its word saved independently. Successful responses update the dictionary in place
-without reloading it or resetting the active editor field.
+Drafts are saved to local browser storage as input changes. Opening Create again
+resumes the unfinished new-word worksheet; editing an existing word resumes that
+word's draft. Drafts survive Close, Back/Forward, and reload in the same browser
+and site origin. They do not sync between machines, and clearing site data removes
+them. Another tab's newer draft is protected from being overwritten. If storage
+is unavailable, Close offers Keep editing or an explicit exit without saving the
+draft, rather than silently losing input.
 
-Drafts belong to the current editor session, not durable browser storage. Reload
-or leaving the page warns while changes are unsaved; browser Back and Forward
-still select dictionary viewing locations and do not restore unfinished drafts.
+Failures retain draft content and offer explicit Retry save; reopening or
+reloading never automatically retries. Creation uses a persisted retry key so a
+lost response can be retried without another word. Requests run in order, and a
+word exists before its relationship is saved. These remain separate server writes:
+a failed relationship can leave its word saved independently. Discarding a draft
+does not delete such saved words. Successful responses update the dictionary in
+place without another fetch or resetting the active editor field.
+
+The pure [editor lifecycle](src/domain/editorLifecycle.ts) owns save and exit
+transitions; [WordEditorSession](src/domain/wordEditorSession.ts) owns drafts,
+validation, ordered writes, and recovery. Components render these states and send
+user intent. New-word creation pauses field entry while its submission is in
+flight; ordinary existing-word autosaves allow continued typing.
 
 ## Reusable CRT Treatment
 

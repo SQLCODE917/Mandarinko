@@ -3,6 +3,24 @@ import type { Word } from '@mandarinko/core';
 import { createWord } from './api';
 
 describe('api.createWord', () => {
+  it('sends the stable retry identity in a header, never in the word body', async () => {
+    const word = {
+      spelling: [{ language: 'zh-Hans', text: '新' }],
+      pronunciation: 'xin',
+      definition: ['new'],
+    };
+    const key = '35c47a45-c2ec-4f70-8bc3-08d55d943c10';
+    (globalThis.fetch as ReturnType<typeof vi.fn>).mockResolvedValue({
+      ok: true,
+      json: async () => ({ ...word, id: key }),
+    });
+    await createWord(word, key);
+    expect(globalThis.fetch).toHaveBeenCalledWith('http://localhost:3000/api/words', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Idempotency-Key': key },
+      body: JSON.stringify(word),
+    });
+  });
   const originalFetch = globalThis.fetch;
 
   beforeEach(() => {

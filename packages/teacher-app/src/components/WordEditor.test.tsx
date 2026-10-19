@@ -1,9 +1,11 @@
 import { act, createRef } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Word } from '@mandarinko/core';
 import { WordEditor, type WordEditorHandle } from './WordEditor';
+
+beforeEach(() => window.localStorage.clear());
 
 const word: Word = {
   id: 'root',
@@ -18,8 +20,9 @@ function setup(initial: Word | undefined = word) {
     refreshVocabulary: vi.fn(async () => [word]),
   };
   const ref = createRef<WordEditorHandle>();
+  const onExit = vi.fn();
   const { container } = render(
-    <WordEditor ref={ref} word={initial} words={[word]} callbacks={callbacks} />
+    <WordEditor ref={ref} word={initial} words={[word]} callbacks={callbacks} onExit={onExit} />
   );
   const field = (name: string) =>
     container.querySelector<HTMLTextAreaElement>(`textarea[aria-label="${name}"]`)!;
@@ -27,7 +30,7 @@ function setup(initial: Word | undefined = word) {
     [...container.querySelectorAll('button')].find(
       (element) => element.textContent?.trim() === name
     )!;
-  return { container, field, button, callbacks, ref };
+  return { container, field, button, callbacks, ref, onExit };
 }
 
 describe('direct word entry', () => {
@@ -72,8 +75,8 @@ describe('direct word entry', () => {
     expect(document.activeElement).toBe(field('Main word: Spelling 2'));
   });
 
-  it('keeps a failed save open until explicit retry succeeds', async () => {
-    const { field, callbacks, ref, button, container } = setup();
+  it('keeps a failed save recoverable until explicit retry and Done', async () => {
+    const { field, callbacks, button, container, onExit } = setup();
     callbacks.updateWord.mockRejectedValueOnce(new Error('Offline'));
     const pronunciation = field('Main word: Pronunciation');
     await userEvent.type(pronunciation, 'dào');
@@ -83,15 +86,12 @@ describe('direct word entry', () => {
       pronunciation.blur();
     });
     expect(container.querySelector('[role="alert"]')?.textContent).toContain('Offline');
-    await act(async () => {
-      expect(await ref.current!.finish()).toBe(false);
-    });
+    expect(onExit).not.toHaveBeenCalled();
     expect(callbacks.updateWord).toHaveBeenCalledTimes(1);
     expect(pronunciation.value).toBe('dào');
     await userEvent.click(button('Retry save'));
-    await act(async () => {
-      expect(await ref.current!.finish()).toBe('root');
-    });
+    await userEvent.click(button('Done'));
+    expect(onExit).toHaveBeenCalledWith({ kind: 'finished', wordId: 'root' });
     expect(callbacks.refreshVocabulary).not.toHaveBeenCalled();
   });
 });

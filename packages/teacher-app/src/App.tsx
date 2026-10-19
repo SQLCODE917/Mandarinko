@@ -18,8 +18,8 @@ export function App() {
 
   const callbacks = useMemo(
     () => ({
-      createWord: async (word: Omit<Word, 'id'>) => {
-        const saved = await api.createWord(word);
+      createWord: async (word: Omit<Word, 'id'>, requestKey?: string) => {
+        const saved = await api.createWord(word, requestKey);
         upsertWord(saved);
         return saved;
       },
