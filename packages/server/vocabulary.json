@@ -298,5 +298,38 @@
     ],
     "derivation": "Pictograph of a door leaf",
     "id": "e85a8103-7d15-4589-9b84-cd62ed2f3c5f"
+  },
+  "c40d22f6-d48d-400d-a3e6-f31b6249d869": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "尒"
+      }
+    ],
+    "pronunciation": "er(3)",
+    "definition": [
+      "(ancient) word",
+      "(pronoun) you"
+    ],
+    "derivation": "Breath, represented by ",
+    "id": "c40d22f6-d48d-400d-a3e6-f31b6249d869"
+  },
+  "55874470-7ff0-4393-8c2a-2d7af9c7f41e": {
+    "spelling": [
+      {
+        "language": "zh-Hant",
+        "text": "你"
+      }
+    ],
+    "pronunciation": "ni(3)",
+    "definition": [
+      "(pronoun) you"
+    ],
+    "childrenIds": [
+      "d4ae1409-b137-490f-9596-65e5dbf974e1",
+      "c40d22f6-d48d-400d-a3e6-f31b6249d869"
+    ],
+    "derivation": "Person 人 and you 尔",
+    "id": "55874470-7ff0-4393-8c2a-2d7af9c7f41e"
   }
 }

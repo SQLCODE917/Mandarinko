@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { OmniSearch } from '../components/OmniSearch';
 import { WordList } from '../components/WordList';
-import { LCDText } from '../components/LCDText';
+import { CRTText } from '../components/CRTText';
 import './HomePage.css';
 import type { Word } from '@mandarinko/core';
 
@@ -23,11 +23,11 @@ export function HomePage({ onCreateWord, onOpenWord, words, loading }: HomePageP
 
   return (
     <div className="home-page">
-      <header className="page-header">
-        <LCDText className="logo">
-          <span className="cartouche">&#22269;&#35821;&#12371;</span>
-          <span className="logo-text">Mandarinko</span>
-        </LCDText>
+      <header className="page-header crt-screen">
+        <div className="logo">
+          <span className="crt-badge">&#22269;&#35821;&#12371;</span>
+          <CRTText>Mandarinko</CRTText>
+        </div>
       </header>
 
       <div className="home-content">
@@ -53,7 +53,6 @@ export function HomePage({ onCreateWord, onOpenWord, words, loading }: HomePageP
           />
         </div>
       </div>
-
     </div>
   );
 }

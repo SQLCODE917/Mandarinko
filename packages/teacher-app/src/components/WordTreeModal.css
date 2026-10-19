@@ -10,177 +10,229 @@
 .word-tree-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.65);
+  background: #29272366;
 }
 
 .word-tree-content {
   position: relative;
-  width: min(1200px, 92vw);
-  max-height: 90vh;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.3);
+  width: max-content;
+  min-width: min(22rem, calc(100vw - 2rem));
+  max-width: min(70rem, calc(100vw - 2rem));
+  max-height: 90dvh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  border: 1px solid #d8cfc2;
+  border-radius: 4px;
+  background: #fffefa;
+  box-shadow: 0 12px 40px #29272326;
+  color: #292723;
 }
 
 .word-tree-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
-  background: #f8fafc;
+  gap: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #e8e1d7;
 }
 
 .word-tree-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #0f172a;
+  color: #72685c;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .word-tree-close {
-  border: none;
-  background: #0f172a;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  padding: 0.2rem 0.35rem;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: #a92568;
+  font: inherit;
+  font-size: 0.75rem;
   cursor: pointer;
 }
 
+.word-tree-close:hover {
+  background: #f8edf2;
+}
+
 .word-tree-body {
-  padding: 1.1rem 1.25rem;
-  overflow: auto;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 1.25rem;
+  min-height: 0;
+  padding: 0.75rem;
+  overflow: auto;
 }
 
 .word-node {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: max-content;
+  max-width: 100%;
+  min-width: 0;
 }
-
 
 .word-card {
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1rem 1.1rem;
-  background: #ffffff;
   display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  width: 100%;
-}
-
-.word-card .word-form {
-  max-width: none;
-  margin: 0;
-  width: 100%;
-  padding: 0;
-  border: none;
-  background: transparent;
-}
-
-.word-card-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.word-card-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.word-card-pronunciation {
-  color: #475569;
-  margin-top: 0.25rem;
-}
-
-.word-card-body {
-  display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   gap: 0.5rem;
-}
-
-.word-card-derivation {
-  color: #334155;
-  font-style: italic;
-}
-
-.word-card-definitions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.word-card-definition {
-  color: #0f172a;
+  width: fit-content;
+  max-width: 22rem;
+  padding: 0.25rem 0.35rem 0.4rem;
+  border-bottom: 1px solid #eee8de;
 }
 
 .word-card-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
+  flex-shrink: 0;
+  gap: 0.25rem;
+  padding-top: 0.25rem;
 }
 
-.word-card-subtle {
-  color: #64748b;
+.word-card-actions .btn-secondary,
+.word-card-actions .btn-remove-field {
+  padding: 0.15rem 0.25rem;
+  border: 0;
+  background: transparent;
+  color: #a92568;
+  font-size: 0.7rem;
+}
+
+.word-card-actions button:hover {
+  background: #f8edf2;
 }
 
 .word-relations {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding-left: 1.1rem;
-  border-left: 2px solid #e2e8f0;
-  width: 100%;
+  flex-shrink: 0;
+  gap: 0.75rem;
+  width: max-content;
+  max-width: 100%;
+  margin-left: 0.4rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid #d8cfc2;
 }
 
-.relation-group {
+.relation-group,
+.relation-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: flex-start;
+  gap: 0.4rem;
+  max-width: 100%;
 }
 
 .relation-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #475569;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  color: #8a7e70;
+  font-size: 0.65rem;
+  line-height: 1.4;
 }
 
-.relation-grid {
-  display: flex;
+.word-tree-content.is-authoring {
+  width: min(46rem, calc(100vw - 2rem));
+}
+
+.is-authoring .word-tree-body {
+  flex-direction: column;
+}
+
+.word-authoring-node,
+.word-authoring-card {
+  width: 100%;
+  max-width: none;
+}
+
+.word-authoring-card {
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 0;
+}
+
+.word-authoring-card .word-form {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.word-card-title {
+  color: #292723;
+  font-size: 1.2rem;
+}
+
+.word-card-pronunciation {
+  color: #72685c;
+  font-size: 0.8rem;
+}
+
+.word-authoring-card .form-group {
+  margin-bottom: 0.9rem;
+}
+
+.word-authoring-card .form-group label {
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.word-authoring-card .form-group input,
+.word-authoring-card .form-group select {
+  min-width: 0;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.word-authoring-card .spelling-input-group {
   flex-wrap: wrap;
-  gap: 0.65rem;
-  align-items: stretch;
 }
 
-.relation-grid .word-node {
-  flex: 1 1 0;
-  min-width: 220px;
+.word-authoring-card .spelling-input-group select {
+  flex-basis: 10rem;
 }
 
-@media (max-width: 768px) {
+.word-authoring-card .word-form button {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.word-authoring-card .form-actions {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .word-tree-content {
+    max-width: calc(100vw - 1rem);
+  }
+
   .word-tree-body {
-    padding: 0.9rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .word-node,
+  .relation-group,
+  .relation-grid {
+    width: 100%;
+    min-width: 0;
   }
 
   .word-card {
-    padding: 0.85rem 0.95rem;
+    max-width: 100%;
   }
 
-  .relation-grid .word-node {
-    flex: 1 1 100%;
+  .word-relations {
+    flex-shrink: 1;
+    width: calc(100% - 0.4rem);
   }
 }

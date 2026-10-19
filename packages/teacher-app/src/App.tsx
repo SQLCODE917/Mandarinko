@@ -8,17 +8,13 @@ import './App.css';
 
 export function App() {
   const { words, loading, refetch } = useVocabulary();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalRootId, setModalRootId] = useState<string | null>(null);
+  const [dialogSession, setDialogSession] = useState<{
+    id: number;
+    rootWordId: string | null;
+  } | null>(null);
 
-  const openWord = (id: string) => {
-    setModalRootId(id);
-    setModalOpen(true);
-  };
-
-  const openCreate = () => {
-    setModalRootId(null);
-    setModalOpen(true);
+  const openWord = (rootWordId: string | null) => {
+    setDialogSession((previous) => ({ id: (previous?.id ?? 0) + 1, rootWordId }));
   };
 
   const callbacks = useMemo(
@@ -33,14 +29,15 @@ export function App() {
   return (
     <div className="app">
       <HomePage
-        onCreateWord={openCreate}
+        onCreateWord={() => openWord(null)}
         onOpenWord={openWord}
         words={words}
         loading={loading}
       />
       <WordTraversalModal
-        isOpen={modalOpen}
-        rootWordId={modalRootId}
+        key={dialogSession?.id ?? 0}
+        isOpen={dialogSession !== null}
+        rootWordId={dialogSession?.rootWordId ?? null}
         words={words}
         callbacks={callbacks}
       />

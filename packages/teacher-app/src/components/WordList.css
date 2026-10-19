@@ -1,93 +1,42 @@
 .word-list {
-  display: grid;
-  gap: 1rem;
-  margin: 2rem 0;
+  columns: 16rem;
+  column-gap: 1.5rem;
+  max-width: 72rem;
 }
 
 .word-list-loading,
 .word-list-empty {
-  text-align: center;
-  padding: 2rem;
-  color: #666;
-  font-size: 1.1rem;
+  padding: 1rem 0;
+  color: #72685c;
+  font-size: 0.875rem;
 }
 
 .word-item {
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: white;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  break-inside: avoid;
+  margin: 0 0 0.65rem;
+  padding: 0.3rem 0.4rem;
+  border: 0;
+  border-left: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+}
+
+button.word-item {
   cursor: pointer;
-  transition: all 0.2s;
 }
 
-.word-item:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #0066cc;
+button.word-item:hover,
+button.word-item:focus-visible {
+  border-left-color: #c72478;
+  background: #f2eee7;
 }
 
-.word-id {
-  font-size: 0.85rem;
-  color: #999;
-  margin-bottom: 0.5rem;
-}
-
-.word-spellings {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.5rem;
-}
-
-.spelling {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #000;
-}
-
-.lang {
-  font-size: 0.75rem;
-  color: #666;
-  margin-left: 0.25rem;
-}
-
-.word-pronunciation {
-  font-size: 0.95rem;
-  color: #666;
-  margin-bottom: 0.75rem;
-  font-style: italic;
-}
-
-.word-definitions {
-  margin-bottom: 0.75rem;
-}
-
-.definition {
-  font-size: 0.95rem;
-  color: #333;
-  margin: 0.25rem 0;
-  padding-left: 1rem;
-  position: relative;
-}
-
-.definition::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-}
-
-.word-metadata {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.75rem;
-}
-
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background-color: #f0f0f0;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  color: #333;
+button.word-item:focus-visible {
+  outline: 2px solid #c72478;
+  outline-offset: 2px;
 }

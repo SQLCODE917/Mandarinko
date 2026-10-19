@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import type { Word } from '@mandarinko/core';
 import { useSearch } from '../hooks/useSearch';
+import { WordEntry } from './WordEntry';
 import './OmniSearch.css';
 
 interface OmniSearchProps {
@@ -45,10 +46,14 @@ export function OmniSearch({ onSelect, placeholder = 'Search words...' }: OmniSe
       {results.length > 0 && (
         <div className="search-results">
           {results.map((word) => (
-            <div key={word.id} className="result-item" onClick={() => onSelect(word)}>
-              <div className="result-spelling">{word.spelling.map((s) => s.text).join(' / ')}</div>
-              <div className="result-definition">{word.definition.join('; ')}</div>
-            </div>
+            <button
+              key={word.id}
+              type="button"
+              className="result-item"
+              onClick={() => onSelect(word)}
+            >
+              <WordEntry word={word} />
+            </button>
           ))}
         </div>
       )}

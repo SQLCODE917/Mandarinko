@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reusable CRT Banner Example</title>
+    <link rel="icon" href="data:," />
+    <!-- Copy crt.css into your app and adjust this path when reusing the example. -->
+    <link rel="stylesheet" href="../src/styles/crt.css" />
+    <style>
+      /* Example layout only. The reusable effects all come from crt.css. */
+      body {
+        max-width: 60rem;
+        margin: 0 auto;
+        padding: 1.5rem;
+        background: #fbfaf7;
+        color: #292723;
+        font:
+          1rem/1.5 system-ui,
+          sans-serif;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        margin: 1.5rem 0 0.5rem;
+        font-size: 1rem;
+      }
+
+      code {
+        overflow-wrap: anywhere;
+      }
+
+      .example-banner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1.3rem;
+        font-size: clamp(1.25rem, 4vw, 2rem);
+      }
+
+      .example-mark {
+        font-family: 'Noto Serif SC', 'Noto Serif JP', serif;
+        font-size: 0.7em;
+      }
+
+      .example-green {
+        --crt-background: #101c16;
+        --crt-phosphor: #c3ffd0;
+        --crt-glow: #76ff9a70;
+        --crt-rim-light: #497454;
+        --crt-rim-dark: #07110a;
+        --crt-type-duration: 2s;
+      }
+
+      .example-static {
+        --crt-phosphor: #246b36;
+        font-size: 1.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Reusable CRT banner</h1>
+      <p>
+        One stylesheet, plain HTML, no JavaScript. View the source to copy the markup and example
+        layout. Reload to replay typing. Reduced-motion preferences show static text and cursors.
+      </p>
+
+      <section aria-labelledby="magenta-title">
+        <h2 id="magenta-title">Default magenta treatment</h2>
+        <header class="crt-screen example-banner">
+          <span class="crt-badge example-mark">国语こ</span>
+          <span class="crt-text crt-type" style="--crt-steps: 10">
+            <span class="crt-type__text">Mandarinko</span>
+            <span class="crt-type__cursor" aria-hidden="true"></span>
+          </span>
+        </header>
+        <p>
+          <code>crt-screen</code> supplies the surface; <code>crt-text crt-type</code> supplies
+          terminal lettering and typing. <code>crt-badge</code> is optional.
+        </p>
+      </section>
+
+      <section aria-labelledby="green-title">
+        <h2 id="green-title">Custom green theme</h2>
+        <header class="crt-screen example-banner example-green">
+          <span class="crt-text crt-type" style="--crt-steps: 7">
+            <span class="crt-type__text">Archive</span>
+            <span class="crt-type__cursor" aria-hidden="true"></span>
+          </span>
+        </header>
+        <p>
+          The same classes use different colors and timing through custom properties.
+          <code>--crt-steps</code> matches each monospace Latin wordmark's character count.
+        </p>
+      </section>
+
+      <section aria-labelledby="static-title">
+        <h2 id="static-title">Static terminal lettering</h2>
+        <p class="crt-text example-static">READY.</p>
+        <p>Use <code>crt-text</code> alone for lettering without typing or a cursor.</p>
+      </section>
+    </main>
+  </body>
+</html>

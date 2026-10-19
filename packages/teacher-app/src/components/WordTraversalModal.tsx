@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Word } from '@mandarinko/core';
 import { WordForm } from './WordForm';
+import { WordEntry } from './WordEntry';
 import { useWordTraversal } from '../hooks/useWordTraversal';
 import type {
   EngineCallbacks,
@@ -36,11 +37,18 @@ export function WordTraversalModal({
   const isAuthoring = current.mode !== 'view';
 
   return (
-    <div className="word-tree-modal" role="dialog" aria-modal="true">
+    <div
+      className="word-tree-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="word-tree-title"
+    >
       <div className="word-tree-backdrop" onClick={current.onClose} />
-      <div className="word-tree-content">
+      <div className={`word-tree-content${isAuthoring ? ' is-authoring' : ''}`}>
         <div className="word-tree-header">
-          <div className="word-tree-title">Word Details</div>
+          <div className="word-tree-title" id="word-tree-title">
+            {isAuthoring ? 'Word editor' : 'Word details'}
+          </div>
           <button type="button" className="word-tree-close" onClick={current.onClose}>
             Close
           </button>
@@ -90,8 +98,8 @@ function WordAuthoringCard({ current }: { current: CurrentViewModel }) {
   const canReuse = current.mode === 'create';
 
   return (
-    <div className="word-node">
-      <div className="word-card">
+    <div className="word-node word-authoring-node">
+      <div className="word-card word-authoring-card">
         <div className="word-card-header">
           <div>
             <div className="word-card-title">
@@ -186,40 +194,18 @@ function WordViewerCard({
   return (
     <div className="word-node">
       <div className="word-card">
-        <div className="word-card-header">
-          <div>
-            <div className="word-card-title">
-              {word.spelling?.map((s) => s.text).join(' / ') || 'Word'}
-            </div>
-            <div className="word-card-pronunciation">{word.pronunciation}</div>
-          </div>
-          <div className="word-card-actions">
-            {showEdit && (
-              <button type="button" className="btn-secondary" onClick={onEdit}>
-                Edit
-              </button>
-            )}
-            {showRemove && (
-              <button
-                type="button"
-                className="btn-remove-field"
-                onClick={() => void onRemove?.()}
-              >
-                Remove
-              </button>
-            )}
-          </div>
-        </div>
-
-        <div className="word-card-body">
-          {word.derivation && <div className="word-card-derivation">{word.derivation}</div>}
-          <div className="word-card-definitions">
-            {word.definition?.map((def, index) => (
-              <div key={`${word.id ?? 'word'}-def-${index}`} className="word-card-definition">
-                {def}
-              </div>
-            ))}
-          </div>
+        <WordEntry word={word} />
+        <div className="word-card-actions">
+          {showEdit && (
+            <button type="button" className="btn-secondary" onClick={onEdit}>
+              Edit
+            </button>
+          )}
+          {showRemove && (
+            <button type="button" className="btn-remove-field" onClick={() => void onRemove?.()}>
+              Remove
+            </button>
+          )}
         </div>
       </div>
       {children}

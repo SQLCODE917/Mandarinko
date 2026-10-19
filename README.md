@@ -8,21 +8,36 @@ Mandarinko is a TypeScript monorepo with three packages:
 
 This README is the authoritative guide for building and running the monorepo.
 
+**Reusable UI Examples**
+
+- [CRT terminal banner](packages/teacher-app/README.md#reusable-crt-treatment):
+  portable CSS, plain HTML and React usage, themes, and a runnable example.
+
 **Word Traversal Modal Screenshots**
 
 ![WordTraversalModal](./WordTraversalModal.png)
 ![WordTraversalModal 2](./WordTraversalModal%202.png)
 
-**Requirements**
+**WSL Development Setup**
 
-- Node.js 20+
-- pnpm 8+
+Use the native Linux checkout at `~/gits/Mandarinko`, with Linux Node.js and pnpm.
+Open it from a WSL terminal with `code .` to use VS Code's WSL integration.
+The Windows checkout is a separate copy; changes and vocabulary edits do not sync
+between the two locations.
 
-**Install**
+Use the Node version in [.nvmrc](.nvmrc) and pnpm version in
+[package.json](package.json). With nvm installed, run from the repository root:
 
 ```bash
-pnpm install
+nvm install
+nvm use
+corepack enable
+pnpm install --frozen-lockfile
 ```
+
+Run `nvm use` in each terminal. Reinstall dependencies inside WSL rather than
+copying `node_modules` from Windows or a container. The pnpm workspace and
+`pnpm-lock.yaml` own dependency installation; use pnpm for dependency changes.
 
 **Build**
 
@@ -30,13 +45,34 @@ pnpm install
 pnpm build
 ```
 
-**Test**
+**Verification**
+
+Run lint, typechecking, all package tests, and the production build:
+
+```bash
+pnpm check
+```
+
+Run tests alone:
 
 ```bash
 pnpm test
 ```
 
+`pnpm format:check` checks formatting separately. Existing source and vocabulary
+formatting differences remain; the functional check does not enforce formatting.
+
 **Run (Development)**
+
+Start the core watcher, API, and teacher app together:
+
+```bash
+pnpm dev
+```
+
+This builds core before starting the watchers. Open `http://localhost:3001`;
+the API listens on `http://localhost:3000`. Vite uses native filesystem watching
+on the Linux checkout.
 
 Server (API):
 
@@ -50,7 +86,10 @@ Teacher app (Vite dev server):
 pnpm --filter @mandarinko/teacher-app run dev
 ```
 
-The server reads and writes `packages/server/vocabulary.json` by default.
+The server reads and writes `packages/server/vocabulary.json` when launched with
+these workspace commands. Keep local vocabulary changes when updating the repo.
+Development commands above target native WSL; the older devcontainer configuration
+has not been validated with the pinned runtime.
 
 **Type Safety and No-Duplication Architecture**
 

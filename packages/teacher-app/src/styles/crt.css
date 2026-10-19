@@ -1,0 +1,144 @@
+/* Standalone CRT treatment. Layout, spacing, and text size belong to the host app. */
+.crt-screen {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--crt-phosphor, #fff5e8);
+  border-top: 1px solid var(--crt-rim-light, #ff9acb);
+  border-bottom: 2px solid var(--crt-rim-dark, #780046);
+  background: var(
+    --crt-background,
+    radial-gradient(ellipse at 50% 35%, #ff169b 0%, #e0007e 60%, #a00060 100%)
+  );
+  box-shadow:
+    inset 0 1px 0 #ffe1ef55,
+    inset 0 -3px 9px #3c002d55;
+}
+
+.crt-screen::before,
+.crt-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.crt-screen::before {
+  background:
+    repeating-linear-gradient(0deg, #25001422 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, #ff404009 0 1px, #40ff4009 1px 2px, #4040ff09 2px 3px);
+  box-shadow: inset 0 0 50px #30002455;
+}
+
+.crt-screen::after {
+  inset-block: -40% auto;
+  block-size: 35%;
+  background: linear-gradient(transparent, #ffe3f012, transparent);
+  animation: crt-scan-band var(--crt-scan-duration, 9s) linear infinite;
+}
+
+.crt-text {
+  color: var(--crt-phosphor, #fff5e8);
+  font-family: 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;
+  font-variant-ligatures: none;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-shadow:
+    -1px 0 var(--crt-fringe-left, #77f6ff99),
+    1px 0 var(--crt-fringe-right, #ffb0c9cc),
+    0 0 7px var(--crt-glow, #fff4dd70);
+}
+
+.crt-badge {
+  padding: 0.12rem 0.4rem;
+  color: var(--crt-phosphor, #fff5e8);
+  border: 1px solid #fff1db99;
+  box-shadow: 0 0 5px #fff4dd30;
+  font-weight: 400;
+  text-shadow:
+    -1px 0 var(--crt-fringe-left, #77f6ff99),
+    1px 0 var(--crt-fringe-right, #ffb0c9cc),
+    0 0 6px var(--crt-glow, #fff4dd70);
+}
+
+/* Ten reveal steps by default. Set --crt-steps to the word's length for Latin text. */
+.crt-type {
+  position: relative;
+  display: inline-block;
+  inline-size: max-content;
+  padding-inline-end: 1ch;
+}
+
+.crt-type__text {
+  display: block;
+  white-space: pre;
+  clip-path: inset(0 100% 0 0);
+  animation: crt-type var(--crt-type-duration, 1.65s) steps(var(--crt-steps, 10), end)
+    var(--crt-type-delay, 0.35s) forwards;
+}
+
+.crt-type__cursor {
+  position: absolute;
+  inset-block-start: 0.12em;
+  inset-inline-start: 0;
+  inline-size: 0.65ch;
+  block-size: 1.05em;
+  background: currentColor;
+  box-shadow: 0 0 7px var(--crt-glow, #fff4dd70);
+  animation:
+    crt-cursor-travel var(--crt-type-duration, 1.65s) steps(var(--crt-steps, 10), end)
+      var(--crt-type-delay, 0.35s) forwards,
+    crt-cursor-blink var(--crt-blink-duration, 1.05s) steps(1, end) infinite;
+}
+
+@keyframes crt-type {
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes crt-cursor-travel {
+  to {
+    inset-inline-start: calc(100% - 1ch);
+  }
+}
+
+@keyframes crt-cursor-blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes crt-scan-band {
+  0%,
+  55% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(450%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-type__text {
+    animation: none;
+    clip-path: none;
+  }
+
+  .crt-type__cursor {
+    animation: none;
+    inset-inline-start: calc(100% - 1ch);
+  }
+
+  .crt-screen::after {
+    animation: none;
+    display: none;
+  }
+}
