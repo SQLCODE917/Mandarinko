@@ -115,7 +115,7 @@
   box-sizing: border-box;
   border: 1px solid #b4a899;
   background: #f5f0e8;
-  padding: 0.5rem 0.1rem;
+  padding: 0.5rem 0.4rem;
 }
 .editor-definition {
   display: flex;
@@ -163,11 +163,17 @@
   opacity: 0.5;
   cursor: wait;
 }
+.editor-validation,
 .editor-error {
   padding: 0.5rem;
-  color: #8d233a;
-  border: 1px solid currentColor;
-  margin-top: 0.5rem;
+  color: #793f35;
+  background: #fff2ed;
+  border: 1px solid #d7b2aa;
+  border-left: 3px solid #aa665c;
+  border-radius: 2px;
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
 }
 .editor-relations {
   margin-top: 0.6rem;

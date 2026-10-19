@@ -9,6 +9,7 @@ export type EditorRow = {
   saved: string;
   committed?: Omit<Word, 'id'>;
   message: string;
+  messageKind?: 'status' | 'error';
   matches: Word[];
 };
 
@@ -97,6 +98,7 @@ export class WordEditorSession {
       }
     }
     row.message = '';
+    row.messageKind = 'status';
     row.matches = [];
     this.emit();
   }
@@ -111,6 +113,7 @@ export class WordEditorSession {
       )
     ) {
       row.message = 'This word is already here. Remove this draft or enter another character.';
+      row.messageKind = 'error';
       this.emit();
       return false;
     }
@@ -119,6 +122,7 @@ export class WordEditorSession {
     row.word = shared ? copy(shared.word) : input(word);
     row.saved = shared ? shared.saved : JSON.stringify(row.word);
     row.message = 'Existing word reused';
+    row.messageKind = 'status';
     row.matches = [];
     if (row.relation === 'root') this.loadRelations(word);
     this.emit();
@@ -126,6 +130,15 @@ export class WordEditorSession {
   }
 
   commit(row: EditorRow, resolve = false) {
+    // Focus leaving a blank placeholder is not an attempt to create a word.
+    // In particular, it must not insert validation UI under a pointer targeting Close.
+    if (!row.id && same(row.word, empty())) {
+      row.committed = undefined;
+      row.message = '';
+      row.matches = [];
+      this.emit();
+      return this.queue;
+    }
     if (resolve && !row.id) {
       const text = row.word.spelling[0]?.text.trim();
       const matches = text
@@ -137,6 +150,7 @@ export class WordEditorSession {
       if (matches.length > 1) {
         row.matches = matches;
         row.message = 'Multiple entries match. Choose the word to reuse.';
+        row.messageKind = 'status';
         this.emit();
         return this.queue;
       }
@@ -162,6 +176,7 @@ export class WordEditorSession {
           const errors = ValidationService.validateWordInput(value);
           if (errors.length) {
             row.message = errors.map((error) => error.message).join('. ');
+            row.messageKind = 'error';
             continue;
           }
           const spelling = value.spelling.map((entry) => entry.text.trim());
@@ -172,6 +187,7 @@ export class WordEditorSession {
             )
           ) {
             row.message = 'An existing word matches. Leave the character field to reuse it.';
+            row.messageKind = 'error';
             continue;
           }
           const saved = row.id

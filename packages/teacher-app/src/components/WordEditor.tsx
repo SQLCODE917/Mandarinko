@@ -101,7 +101,9 @@ export const WordEditor = forwardRef<
         </span>
       </div>
       {closeBlocked && session.dirty && !session.error && (
-        <p role="alert">Complete the required fields or discard unsaved edits before closing.</p>
+        <p role="alert" className="editor-validation">
+          Complete the required fields or discard unsaved edits before closing.
+        </p>
       )}
       {session.error && (
         <div role="alert" tabIndex={-1} className="editor-error">
@@ -312,7 +314,12 @@ function EditorWordRow({
         ))}
       </details>
       {row.message && (
-        <p className="editor-row-message" tabIndex={-1}>
+        <p
+          className={`editor-row-message${row.messageKind === 'error' ? ' editor-validation' : ''}`}
+          role={row.messageKind === 'error' ? 'alert' : undefined}
+          tabIndex={-1}
+        >
+          {row.messageKind === 'error' && <strong>Check this word: </strong>}
           {row.message}
         </p>
       )}

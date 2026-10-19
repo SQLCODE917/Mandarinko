@@ -40,6 +40,19 @@ vi.mock('./hooks/useVocabulary', () => {
 beforeEach(() => window.history.replaceState(null, '', '/'));
 
 describe('dictionary dialog sessions', () => {
+  it('does not validate an untouched draft on blur and closes with the first click', async () => {
+    const { container } = render(<App />);
+    act(() => screen.getByRole('button', { name: '+ Create New Word' }).click());
+    const spelling = container.querySelector<HTMLTextAreaElement>('.word-editor textarea')!;
+    expect(document.activeElement).toBe(spelling);
+    // The local user-event harness does not generate the browser's blur-before-click sequence.
+    await act(async () => spelling.dispatchEvent(new Event('focusout', { bubbles: true })));
+    expect(container.querySelector('.editor-row-message')).toBeNull();
+    expect(container.querySelector('[role="alert"]')).toBeNull();
+    await act(async () => screen.getByRole('button', { name: 'Close' }).click());
+    expect(container.querySelector('[role="dialog"]')).toBeNull();
+  });
+
   it.each(['word', 'create'])('reopens the same %s dialog after closing it', async (kind) => {
     const { container } = render(<App />);
     const trigger =
