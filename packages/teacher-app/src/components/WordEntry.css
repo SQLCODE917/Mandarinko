@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Furifont Serif';
+  src: url('/fonts/furifont-v0.6.0/FurifontSerifVF.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 250 900;
+  font-display: swap;
+}
+
 .word-entry {
   display: block;
   min-inline-size: 0;
@@ -21,6 +29,13 @@
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1.35;
+}
+
+/* Readings are a visual aid; the stored pronunciation remains canonical. */
+.word-entry-spellings :lang(ja) {
+  font-family: 'Furifont Serif', 'Noto Serif JP', serif;
+  line-height: 1.7;
+  font-variant-ligatures: common-ligatures contextual;
 }
 
 .word-entry-separator {

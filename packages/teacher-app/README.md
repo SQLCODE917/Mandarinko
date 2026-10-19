@@ -35,6 +35,23 @@ cards or truncated text. The dictionary flows into columns as space permits; the
 relationship view uses compact indented branches. The details view stays read-only;
 Edit opens a separate word editor in the same dialog shell.
 
+Japanese spellings in dictionary entries, search results, and details use
+[Furifont Serif v0.6.0](https://github.com/antfu/furifont/releases/tag/v0.6.0)
+with built-in hiragana readings. These are a visual aid and may be incorrect or
+absent; the separately displayed pronunciation field remains canonical. The font
+uses its own reading dictionary, not the stored pronunciation. Okurigana-dependent
+reading assistance is not enabled. Editing continues to use ordinary text fields.
+
+The unmodified variable WOFF2 is self-hosted in
+[`public/fonts/furifont-v0.6.0`](public/fonts/furifont-v0.6.0), alongside the upstream
+OFL and dictionary attribution notices. It downloads only when Japanese entry
+spellings are rendered (about 8.2 MB before browser caching); fallback text remains
+visible while loading or if loading fails. The scoped rule in
+[WordEntry.css](src/components/WordEntry.css) reserves space for the readings and
+leaves Chinese spellings and the terminal banner unchanged. To update the font,
+replace the versioned asset directory and CSS URL together, retaining the release's
+license notices.
+
 Word details follows the URL (`?word=<id>`), including direct links and reloads.
 Opening a word or following a derivation link adds a browser history entry. Back
 and Forward select the previous and next word in the same dialog; Back from the
