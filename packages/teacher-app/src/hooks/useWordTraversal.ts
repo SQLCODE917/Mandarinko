@@ -1,10 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useLayoutEffect, useReducer, useState } from 'react';
 import type { Word } from '@mandarinko/core';
-import {
-  WordTraversalEngine,
-  type EngineCallbacks,
-  type ViewModel,
-} from '../domain/wordTraversalEngine';
+import { WordTraversalEngine, type EngineCallbacks } from '../domain/wordTraversalEngine';
 
 type UseWordTraversalParams = {
   isOpen: boolean;
@@ -13,51 +9,29 @@ type UseWordTraversalParams = {
   callbacks: EngineCallbacks;
 };
 
-export function useWordTraversal({
-  isOpen,
-  rootWordId,
-  words,
-  callbacks,
-}: UseWordTraversalParams) {
-  const engineRef = useRef<WordTraversalEngine | null>(null);
-  const [, forceUpdate] = useState(0);
-  const openKeyRef = useRef<string | null>(null);
+function createSession({ isOpen, rootWordId, words, callbacks }: UseWordTraversalParams) {
+  const engine = new WordTraversalEngine(callbacks);
+  if (isOpen) engine.open(rootWordId, words);
+  return { isOpen, rootWordId, engine };
+}
 
-  if (!engineRef.current) {
-    engineRef.current = new WordTraversalEngine(callbacks);
+export function useWordTraversal(params: UseWordTraversalParams) {
+  const { isOpen, rootWordId, words, callbacks } = params;
+  const [session, setSession] = useState(() => createSession(params));
+  const [, forceUpdate] = useReducer((revision: number) => revision + 1, 0);
+
+  // React restarts this render before committing. The dialog DOM stays mounted and
+  // never paints the previous selection (or a blank frame) for a new URL.
+  if (session.isOpen !== isOpen || session.rootWordId !== rootWordId) {
+    setSession(createSession(params));
   }
+  const { engine } = session;
 
-  const engine = engineRef.current;
-
-  useEffect(() => {
+  useLayoutEffect(() => engine.subscribe(forceUpdate), [engine]);
+  useLayoutEffect(() => {
     engine.setCallbacks(callbacks);
-  }, [engine, callbacks]);
-
-  useEffect(() => {
-    const unsubscribe = engine.subscribe(() => forceUpdate((prev) => prev + 1));
-    return unsubscribe;
-  }, [engine]);
-
-  const initialMode = useMemo(() => (rootWordId ? 'view' : 'create'), [rootWordId]);
-
-  useEffect(() => {
-    if (!isOpen) {
-      engine.reset();
-      openKeyRef.current = null;
-      return;
-    }
-
-    const nextKey = JSON.stringify({ rootWordId, initialMode });
-    if (openKeyRef.current !== nextKey) {
-      engine.open(rootWordId, words, initialMode);
-      openKeyRef.current = nextKey;
-      return;
-    }
-
     engine.updateVocabulary(words);
-  }, [engine, initialMode, isOpen, rootWordId, words]);
+  }, [engine, callbacks, words]);
 
-  const viewModel = engine.getViewModel() as ViewModel | null;
-
-  return { viewModel };
+  return { viewModel: engine.getViewModel() };
 }

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { OmniSearch } from '../components/OmniSearch';
 import { WordList } from '../components/WordList';
 import { CRTText } from '../components/CRTText';
@@ -13,14 +12,6 @@ interface HomePageProps {
 }
 
 export function HomePage({ onCreateWord, onOpenWord, words, loading }: HomePageProps) {
-  const [selectedWordId, setSelectedWordId] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!selectedWordId) return;
-    onOpenWord(selectedWordId);
-    setSelectedWordId(null);
-  }, [onOpenWord, selectedWordId]);
-
   return (
     <div className="home-page">
       <header className="page-header crt-screen">
@@ -33,7 +24,7 @@ export function HomePage({ onCreateWord, onOpenWord, words, loading }: HomePageP
       <div className="home-content">
         <div className="search-section">
           <OmniSearch
-            onSelect={(word) => setSelectedWordId(word.id)}
+            onSelect={(word) => onOpenWord(word.id)}
             placeholder="Search the dictionary..."
           />
         </div>
@@ -46,11 +37,7 @@ export function HomePage({ onCreateWord, onOpenWord, words, loading }: HomePageP
             </button>
           </div>
 
-          <WordList
-            words={words}
-            loading={loading}
-            onSelectWord={(word) => setSelectedWordId(word.id)}
-          />
+          <WordList words={words} loading={loading} onSelectWord={(word) => onOpenWord(word.id)} />
         </div>
       </div>
     </div>

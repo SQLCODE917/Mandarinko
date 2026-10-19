@@ -1,7 +1,9 @@
-import type { ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, type ReactNode } from 'react';
 import type { Word } from '@mandarinko/core';
 import { WordForm } from './WordForm';
 import { WordEntry } from './WordEntry';
+import type { DerivationNavigation } from './DerivationText';
+import type { DictionaryLocation } from '../domain/dictionaryLocation';
 import { useWordTraversal } from '../hooks/useWordTraversal';
 import type {
   EngineCallbacks,
@@ -12,29 +14,60 @@ import type {
 import './WordTreeModal.css';
 
 interface WordTraversalModalProps {
-  isOpen: boolean;
-  rootWordId: string | null;
+  location: DictionaryLocation;
+  loading: boolean;
   words: (Word & { id: string })[];
   callbacks: EngineCallbacks;
+  navigation: DerivationNavigation;
+  onDismiss: () => void;
+  onCreated: (wordId: string) => void;
 }
 
 export function WordTraversalModal({
-  isOpen,
-  rootWordId,
+  location,
+  loading,
   words,
   callbacks,
+  navigation,
+  onDismiss,
+  onCreated,
 }: WordTraversalModalProps) {
-  const { viewModel } = useWordTraversal({
-    isOpen,
-    rootWordId,
-    words,
-    callbacks,
-  });
+  const rootWordId = location.kind === 'word' ? location.wordId : null;
+  const knownWord = location.kind === 'word' && words.some((word) => word.id === rootWordId);
+  const ready = location.kind === 'create' || Boolean(knownWord);
+  const isOpen = location.kind !== 'closed';
+  const titleRef = useRef<HTMLDivElement>(null);
+  const { viewModel } = useWordTraversal({ isOpen: ready, rootWordId, words, callbacks });
+  const current = viewModel?.current;
+  const isAuthoring = Boolean(current && current.mode !== 'view');
 
-  if (!isOpen || !viewModel) return null;
+  useLayoutEffect(() => {
+    if (isOpen) titleRef.current?.focus({ preventScroll: true });
+  }, [isOpen, rootWordId]);
 
-  const { current, children, siblings } = viewModel;
-  const isAuthoring = current.mode !== 'view';
+  useEffect(() => {
+    if (location.kind === 'create' && current?.mode === 'view' && !isNullWord(current.word)) {
+      onCreated(current.word.id);
+    }
+  }, [location.kind, current, onCreated]);
+
+  if (!isOpen) return null;
+
+  const close = () => {
+    // Editing has its own draft traversal; viewing and root creation close the URL location.
+    if (current && isAuthoring && (current.mode === 'edit' || !viewModel?.isRoot)) {
+      current.onClose();
+    } else {
+      onDismiss();
+    }
+  };
+  const error =
+    location.kind === 'invalid'
+      ? location.message
+      : location.kind === 'word' && !knownWord && !loading
+        ? `No dictionary entry exists for word ID “${location.wordId}”.`
+        : null;
+  const links = isAuthoring ? undefined : navigation;
 
   return (
     <div
@@ -43,47 +76,57 @@ export function WordTraversalModal({
       aria-modal="true"
       aria-labelledby="word-tree-title"
     >
-      <div className="word-tree-backdrop" onClick={current.onClose} />
+      <div className="word-tree-backdrop" onClick={close} />
       <div className={`word-tree-content${isAuthoring ? ' is-authoring' : ''}`}>
         <div className="word-tree-header">
-          <div className="word-tree-title" id="word-tree-title">
+          <div className="word-tree-title" id="word-tree-title" tabIndex={-1} ref={titleRef}>
             {isAuthoring ? 'Word editor' : 'Word details'}
           </div>
-          <button type="button" className="word-tree-close" onClick={current.onClose}>
+          <button type="button" className="word-tree-close" onClick={close}>
             Close
           </button>
         </div>
         <div className="word-tree-body">
-          {isAuthoring ? (
-            <WordAuthoringCard current={current} />
+          {error ? (
+            <p role="alert">{error}</p>
+          ) : !viewModel ? (
+            <p role="status">Loading vocabulary…</p>
           ) : (
-            <WordViewerCard
-              word={current.word}
-              showEdit
-              onEdit={current.onEdit}
-              showRemove={false}
-            />
-          )}
-
-          {(siblings.length > 0 || children.length > 0) && (
-            <div className="word-relations">
-              {siblings.length > 0 && (
-                <RelationGroup
-                  title="Siblings"
-                  items={siblings}
-                  showRemove={isAuthoring}
-                  showDescendants={false}
+            <>
+              {isAuthoring ? (
+                <WordAuthoringCard current={viewModel.current} />
+              ) : (
+                <WordViewerCard
+                  word={viewModel.current.word}
+                  navigation={links}
+                  showEdit
+                  onEdit={viewModel.current.onEdit}
+                  showRemove={false}
                 />
               )}
-              {children.length > 0 && (
-                <RelationGroup
-                  title="Children"
-                  items={children}
-                  showRemove={isAuthoring}
-                  showDescendants
-                />
+              {(viewModel.siblings.length > 0 || viewModel.children.length > 0) && (
+                <div className="word-relations">
+                  {viewModel.siblings.length > 0 && (
+                    <RelationGroup
+                      title="Siblings"
+                      items={viewModel.siblings}
+                      navigation={links}
+                      showRemove={isAuthoring}
+                      showDescendants={false}
+                    />
+                  )}
+                  {viewModel.children.length > 0 && (
+                    <RelationGroup
+                      title="Children"
+                      items={viewModel.children}
+                      navigation={links}
+                      showRemove={isAuthoring}
+                      showDescendants
+                    />
+                  )}
+                </div>
               )}
-            </div>
+            </>
           )}
         </div>
       </div>
@@ -138,11 +181,13 @@ type RelationItem = {
 function RelationGroup({
   title,
   items,
+  navigation,
   showRemove,
   showDescendants,
 }: {
   title: string;
   items: RelationItem[];
+  navigation?: DerivationNavigation;
   showRemove: boolean;
   showDescendants: boolean;
 }) {
@@ -154,6 +199,7 @@ function RelationGroup({
           <WordViewerCard
             key={item.id}
             word={item.word}
+            navigation={navigation}
             showEdit
             onEdit={item.onEdit}
             showRemove={showRemove && item.canRemove}
@@ -164,6 +210,7 @@ function RelationGroup({
                 <RelationGroup
                   title="Children"
                   items={item.children}
+                  navigation={navigation}
                   showRemove={showRemove}
                   showDescendants
                 />
@@ -178,6 +225,7 @@ function RelationGroup({
 
 function WordViewerCard({
   word,
+  navigation,
   showEdit,
   onEdit,
   showRemove,
@@ -185,6 +233,7 @@ function WordViewerCard({
   children,
 }: {
   word: Word & { id?: string };
+  navigation?: DerivationNavigation;
   showEdit?: boolean;
   onEdit?: () => void;
   showRemove?: boolean;
@@ -194,7 +243,7 @@ function WordViewerCard({
   return (
     <div className="word-node">
       <div className="word-card">
-        <WordEntry word={word} />
+        <WordEntry word={word} navigation={navigation} />
         <div className="word-card-actions">
           {showEdit && (
             <button type="button" className="btn-secondary" onClick={onEdit}>

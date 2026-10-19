@@ -51,3 +51,18 @@
 .word-entry-definitions {
   display: block;
 }
+
+.word-entry-derivation a {
+  color: #a92568;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.word-entry-derivation a:hover {
+  color: #6e1744;
+}
+
+.word-entry-derivation a:focus-visible {
+  outline: 2px solid #c72478;
+  outline-offset: 2px;
+}

@@ -1,7 +1,14 @@
 import type { Word } from '@mandarinko/core';
+import { DerivationText, type DerivationNavigation } from './DerivationText';
 import './WordEntry.css';
 
-export function WordEntry({ word }: { word: Omit<Word, 'id'> }) {
+export function WordEntry({
+  word,
+  navigation,
+}: {
+  word: Omit<Word, 'id'> & { id?: string };
+  navigation?: DerivationNavigation;
+}) {
   return (
     <span className="word-entry">
       <span className="word-entry-heading">
@@ -23,7 +30,19 @@ export function WordEntry({ word }: { word: Omit<Word, 'id'> }) {
           <span className="word-entry-level">JLPT {word.metadata.jlptLevel}</span>
         )}
       </span>
-      {word.derivation && <span className="word-entry-derivation">{word.derivation}</span>}
+      {word.derivation && (
+        <span className="word-entry-derivation">
+          {navigation ? (
+            <DerivationText
+              text={word.derivation}
+              currentWordId={word.id}
+              navigation={navigation}
+            />
+          ) : (
+            word.derivation
+          )}
+        </span>
+      )}
       <span className="word-entry-definitions">{word.definition.join('; ')}</span>
     </span>
   );

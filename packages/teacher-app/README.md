@@ -35,6 +35,25 @@ cards or truncated text. The dictionary flows into columns as space permits; the
 relationship view uses compact indented branches. Editing opens the existing form
 on demand.
 
+Word details follows the URL (`?word=<id>`), including direct links and reloads.
+Opening a word or following a derivation link adds a browser history entry. Back
+and Forward select the previous and next word in the same dialog; Back from the
+first opened word returns to the dictionary. Close adds a closed-dictionary
+location, so Back can reopen the last viewed word. Other query parameters and
+fragments are preserved. New-word authoring uses `?newWord=1`; saving a root draft
+replaces that entry with its saved word URL. Invalid locations and missing word
+IDs show an explicit message instead of opening a draft.
+
+In the details view, Han-only spellings in derivations link to existing words.
+The longest matching spelling wins; unknown, ambiguous, and self-referencing
+spellings remain text. Identical spellings on variants of one word resolve to
+that word. Links support keyboard activation, copying, and opening in another
+tab. Dictionary-list and search entries retain plain derivation text so links
+are never nested inside their entry buttons. Links are also inactive during
+editing. Browser navigation restores viewing locations, not unsaved editor
+state. Navigation uses the loaded vocabulary and keeps the dialog shell mounted,
+without another fetch or an intermediate blank/previous-word frame.
+
 The magenta terminal banner carries the application identity: a typed wordmark,
 blinking cursor, scanlines, and restrained CRT artifacts. Motion stays in the
 banner; reduced-motion preferences show a static wordmark and cursor.

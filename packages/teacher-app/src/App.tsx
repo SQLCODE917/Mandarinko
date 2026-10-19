@@ -1,20 +1,19 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { HomePage } from './pages/HomePage';
 import type { Word } from '@mandarinko/core';
 import * as api from './services/api';
 import { useVocabulary } from './hooks/useVocabulary';
+import { useDictionaryNavigation } from './hooks/useDictionaryNavigation';
 import { WordTraversalModal } from './components/WordTraversalModal';
 import './App.css';
 
 export function App() {
   const { words, loading, refetch } = useVocabulary();
-  const [dialogSession, setDialogSession] = useState<{
-    id: number;
-    rootWordId: string | null;
-  } | null>(null);
-
-  const openWord = (rootWordId: string | null) => {
-    setDialogSession((previous) => ({ id: (previous?.id ?? 0) + 1, rootWordId }));
+  const navigation = useDictionaryNavigation();
+  const derivationNavigation = {
+    words,
+    hrefForWord: navigation.hrefForWord,
+    onNavigate: navigation.openWord,
   };
 
   const callbacks = useMemo(
@@ -29,15 +28,17 @@ export function App() {
   return (
     <div className="app">
       <HomePage
-        onCreateWord={() => openWord(null)}
-        onOpenWord={openWord}
+        onCreateWord={navigation.openCreate}
+        onOpenWord={navigation.openWord}
         words={words}
         loading={loading}
       />
       <WordTraversalModal
-        key={dialogSession?.id ?? 0}
-        isOpen={dialogSession !== null}
-        rootWordId={dialogSession?.rootWordId ?? null}
+        location={navigation.location}
+        loading={loading}
+        onDismiss={navigation.close}
+        onCreated={navigation.replaceWord}
+        navigation={derivationNavigation}
         words={words}
         callbacks={callbacks}
       />
