@@ -18,6 +18,36 @@ This README is the authoritative guide for building and running the monorepo.
 ![WordTraversalModal](./WordTraversalModal.png)
 ![WordTraversalModal 2](./WordTraversalModal%202.png)
 
+## Vocabulary data sources
+
+Japanese vocabulary and community JLPT study levels use a pinned
+[OpenJLPT](https://github.com/evanclan/OpenJLPT) snapshot, derived from Jonathan
+Waller’s lists and JMdict (EDRDG). The selected N5 and N4 lists are disjoint;
+levels are unofficial study classifications, not an exhaustive exam syllabus.
+Readings belong to actual Japanese words. Common kana headwords remain primary;
+reviewed kanji spellings are alternatives, not guesses from character readings.
+
+Japanese words reuse Chinese character trees. Whole-word siblings connect shared
+character spellings, with explicit Japanese old/new character correspondences;
+they do not imply equivalent meanings. Distinct histories such as Japanese 机
+(“desk”) and simplified Chinese 机 for 機 (“machine”) remain separate. New research
+adds to existing entries and relationships without replacing their IDs or trees.
+
+Additional character explanations use
+[Make Me a Hanzi](https://github.com/skishore/makemeahanzi)’s `dictionary.txt`
+(Unihan/CJKlib-derived, LGPL-3.0-or-later), supplemented by short Wiktionary
+excerpts. Source glyph explanations are retained; entries labelled “Written
+structure” describe their shape without claiming an established historical origin.
+Unknown portions of an ideographic description sequence use `？`. Chinese readings
+use tone marks; umlauts are omitted according to this dictionary’s convention.
+
+[Field provenance](packages/server/vocabulary.sources.json) identifies source
+revisions, entry IDs and adapted fields. The OpenJLPT-derived data and Wiktionary
+adaptations are CC BY-SA 4.0; Make Me a Hanzi-derived character data retains its
+LGPL-3.0-or-later terms. Source notices and license texts are in
+[server licenses](packages/server/licenses). These data terms are separate from
+the application code license. Existing dictionary material retains its provenance.
+
 **WSL Development Setup**
 
 Use the native Linux checkout at `~/gits/Mandarinko`, with Linux Node.js and pnpm.
