@@ -7,7 +7,7 @@ export function useVocabulary() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const loadWords = useCallback(async () => {
+  const loadWords = useCallback(async (strict = false) => {
     try {
       setLoading(true);
       setError(null);
@@ -16,6 +16,7 @@ export function useVocabulary() {
       return data;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
+      if (strict) throw err;
       return [];
     } finally {
       setLoading(false);
@@ -34,5 +35,6 @@ export function useVocabulary() {
     );
   }, []);
 
-  return { words, loading, error, refetch: loadWords, upsertWord };
+  const refetch = useCallback(() => loadWords(true), [loadWords]);
+  return { words, loading, error, refetch, upsertWord };
 }

@@ -19,7 +19,8 @@
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
     "clean": "pnpm --recursive exec rm -rf dist",
-    "check": "pnpm lint && pnpm build && pnpm type-check && pnpm test"
+    "check": "pnpm lint && pnpm build && pnpm type-check && pnpm test",
+    "test:browser": "playwright test"
   },
   "keywords": [
     "chinese",
@@ -33,6 +34,7 @@
   "author": "SQLCODE917",
   "license": "GPL-3.0",
   "devDependencies": {
+    "@playwright/test": "1.64.1",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
     "@typescript-eslint/parser": "^6.20.0",
     "@vitest/coverage-v8": "^1.1.0",

@@ -221,3 +221,138 @@
   font-size: 0.7rem;
   color: #72685c;
 }
+
+/* Save status owns a separate row: asynchronous status changes cannot move buttons
+   between pointer-down and pointer-up. */
+.editor-toolbar > span:first-child {
+  flex-basis: 100%;
+}
+.editor-toolbar [role='status'] {
+  flex: 0 0 100%;
+  min-height: 1.1rem;
+}
+.editor-input {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+}
+.editor-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 18rem;
+  max-width: 80vw;
+  z-index: 5;
+  border: 1px solid #b4a899;
+  background: #fffefa;
+  box-shadow: 0 3px 9px #29272322;
+}
+.editor-suggestions button {
+  display: block;
+  width: 100%;
+}
+.editor-suggestions [aria-selected='true'] {
+  background: #f8edf2;
+}
+.editor-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+.editor-breadcrumbs [aria-current] {
+  color: #292723;
+  font-weight: 600;
+}
+.editor-session,
+.editor-paste {
+  font-size: 0.75rem;
+  margin: 0.3rem 0;
+}
+.editor-session summary,
+.editor-paste summary {
+  cursor: pointer;
+  width: fit-content;
+}
+.editor-session label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0.35rem 0.5rem 0.35rem 0;
+}
+.editor-session input,
+.editor-session select,
+.editor-component-entry select {
+  border: 1px solid #b4a899;
+  background: #f5f0e8;
+  padding: 0.35rem;
+  font: inherit;
+}
+.editor-component-entry {
+  display: flex;
+  gap: 0.3rem;
+  align-items: end;
+  margin: 0.5rem 0;
+}
+.editor-component-entry label {
+  flex: 1;
+  min-width: 0;
+}
+.editor-shared {
+  color: #72685c;
+  font-size: 0.65rem;
+}
+.editor-preview {
+  font-size: 0.75rem;
+  border: 1px solid #b4a899;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+}
+.editor-preview-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.75rem;
+  padding: 0.3rem 0;
+  border-top: 1px solid #d8cfc2;
+}
+.editor-corrections {
+  flex-basis: 100%;
+  overflow-wrap: anywhere;
+}
+.editor-corrections del,
+.editor-corrections ins {
+  display: block;
+}
+.editor-corrections del {
+  color: #793f35;
+}
+.editor-corrections ins {
+  color: #315842;
+}
+.word-editor .editor-primary {
+  min-inline-size: 7.5rem;
+}
+.editor-corrections del,
+.editor-corrections ins {
+  display: inline;
+}
+.editor-row.is-reused {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.15rem 0.4rem;
+}
+.is-reused .editor-row-heading,
+.is-reused .editor-cells,
+.is-reused .editor-validation {
+  grid-column: 1 / -1;
+}
+.is-reused .editor-label {
+  display: none;
+}
+.is-reused .editor-row-tools {
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.is-reused .editor-metadata {
+  align-self: center;
+}

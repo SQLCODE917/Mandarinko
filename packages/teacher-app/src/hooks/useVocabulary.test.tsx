@@ -39,3 +39,20 @@ describe('saved vocabulary updates', () => {
     expect(word.pronunciation).toBe('dao');
   });
 });
+
+it('reports a failed explicit refresh instead of returning an empty dictionary', async () => {
+  vi.mocked(api.fetchAllWords).mockResolvedValueOnce([]);
+  let current!: ReturnType<typeof useVocabulary>;
+  function Probe() {
+    current = useVocabulary();
+    return null;
+  }
+  await act(async () => {
+    render(<Probe />);
+  });
+  vi.mocked(api.fetchAllWords).mockRejectedValueOnce(new Error('Offline'));
+  await act(async () => {
+    await expect(current.refetch()).rejects.toThrow('Offline');
+  });
+  expect(current.error).toBe('Offline');
+});

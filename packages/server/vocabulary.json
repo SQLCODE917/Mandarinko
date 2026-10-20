@@ -331,5 +331,429 @@
     ],
     "derivation": "Person 人 and you 尔",
     "id": "55874470-7ff0-4393-8c2a-2d7af9c7f41e"
+  },
+  "a6f1bcaf-fff5-4ba0-8b89-f0dd29c5eb3f": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "女"
+      }
+    ],
+    "pronunciation": "nü(3)",
+    "definition": [
+      "woman; female"
+    ],
+    "derivation": "Pictograph of a kneeling woman.",
+    "id": "a6f1bcaf-fff5-4ba0-8b89-f0dd29c5eb3f"
+  },
+  "4ab21acc-92be-4d13-8b3c-909d1ab50bf4": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "马"
+      },
+      {
+        "language": "zh-Hant",
+        "text": "馬"
+      }
+    ],
+    "pronunciation": "ma(3)",
+    "definition": [
+      "horse"
+    ],
+    "derivation": "Pictograph of a horse showing head, mane, legs and tail.",
+    "id": "4ab21acc-92be-4d13-8b3c-909d1ab50bf4"
+  },
+  "efaa92d3-adfc-4141-af59-a4cb2c781f45": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "子"
+      }
+    ],
+    "pronunciation": "zi(3), zi(5)",
+    "definition": [
+      "child; son",
+      "seed; egg",
+      "unstressed noun suffix (zi)"
+    ],
+    "derivation": "Pictograph of an infant, legs bundled together.",
+    "id": "efaa92d3-adfc-4141-af59-a4cb2c781f45"
+  },
+  "8969e02e-add9-4feb-97d1-aeddece1f2da": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "木"
+      }
+    ],
+    "pronunciation": "mu(4)",
+    "definition": [
+      "tree; wood"
+    ],
+    "derivation": "Pictograph of a tree.",
+    "id": "8969e02e-add9-4feb-97d1-aeddece1f2da"
+  },
+  "28fb4df6-cddf-43cb-8736-726c296067ca": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "大"
+      }
+    ],
+    "pronunciation": "da(4)",
+    "definition": [
+      "big; great; large"
+    ],
+    "derivation": "Pictograph of a standing person.",
+    "metadata": {
+      "hskLevel": 1
+    },
+    "id": "28fb4df6-cddf-43cb-8736-726c296067ca"
+  },
+  "ac279a2d-3ac4-45e3-98cf-ecb71ca614e9": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "𠂇"
+      }
+    ],
+    "pronunciation": "zuo(3)",
+    "definition": [
+      "left hand (ancient component)"
+    ],
+    "derivation": "Pictograph of the left hand.",
+    "id": "ac279a2d-3ac4-45e3-98cf-ecb71ca614e9"
+  },
+  "0143ca32-f3b7-4102-81a4-1fd59e8c198a": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "又"
+      }
+    ],
+    "pronunciation": "you(4)",
+    "definition": [
+      "again; also",
+      "right-hand component"
+    ],
+    "derivation": "Pictograph of the right hand.",
+    "id": "0143ca32-f3b7-4102-81a4-1fd59e8c198a"
+  },
+  "3ba92b34-a56d-4caf-bd33-5d3569cad4b7": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "冖"
+      }
+    ],
+    "pronunciation": "mi(4)",
+    "definition": [
+      "cover; covering (ancient component)"
+    ],
+    "derivation": "Pictograph of an edged cover.",
+    "id": "3ba92b34-a56d-4caf-bd33-5d3569cad4b7"
+  },
+  "a34e0a39-ac54-4242-8951-c5e2c186b1ce": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "卜"
+      }
+    ],
+    "pronunciation": "bu(3)",
+    "definition": [
+      "to divine; to foretell",
+      "divination"
+    ],
+    "derivation": "Pictograph of cracks in tortoise shells. In composition can represent a stick.",
+    "id": "a34e0a39-ac54-4242-8951-c5e2c186b1ce"
+  },
+  "9bb35f3e-b0c6-4949-8b1d-57a284748673": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "丿"
+      }
+    ],
+    "pronunciation": "pie(3)",
+    "definition": [
+      "left-falling stroke"
+    ],
+    "derivation": "A falling line suggesting motion. Now 撇.",
+    "id": "9bb35f3e-b0c6-4949-8b1d-57a284748673"
+  },
+  "1bac26da-83f1-4ca8-9b17-14255a977cbd": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "乂"
+      }
+    ],
+    "pronunciation": "yi(4)",
+    "definition": [
+      "to mow; to cut"
+    ],
+    "derivation": "Lines 丿 cutting left and right.",
+    "id": "1bac26da-83f1-4ca8-9b17-14255a977cbd",
+    "childrenIds": [
+      "9bb35f3e-b0c6-4949-8b1d-57a284748673"
+    ],
+    "siblingIds": []
+  },
+  "fe01c1bf-bfaf-4bb6-8913-427c63d78e41": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "爻"
+      }
+    ],
+    "pronunciation": "yao(2)",
+    "definition": [
+      "crossing; intersection",
+      "line of a trigram or hexagram"
+    ],
+    "derivation": "Interactive 乂 movement.",
+    "id": "fe01c1bf-bfaf-4bb6-8913-427c63d78e41",
+    "childrenIds": [
+      "1bac26da-83f1-4ca8-9b17-14255a977cbd"
+    ],
+    "siblingIds": []
+  },
+  "4a2e9afe-ac54-436c-9832-a268f04a50b5": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "攴"
+      }
+    ],
+    "pronunciation": "pu(1)",
+    "definition": [
+      "to strike; to tap",
+      "striking-hand component (also written 攵)"
+    ],
+    "derivation": "Hand 又 holding a stick 卜 (phonetic).",
+    "id": "4a2e9afe-ac54-436c-9832-a268f04a50b5",
+    "childrenIds": [
+      "0143ca32-f3b7-4102-81a4-1fd59e8c198a",
+      "a34e0a39-ac54-4242-8951-c5e2c186b1ce"
+    ],
+    "siblingIds": []
+  },
+  "761fb5d7-ea1d-4f47-92aa-6046ae998a7e": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "廾"
+      }
+    ],
+    "pronunciation": "gong(3)",
+    "definition": [
+      "two hands held together; to offer with both hands"
+    ],
+    "derivation": "Left 𠂇 and right 又 hands joined in gesture of respect.",
+    "id": "761fb5d7-ea1d-4f47-92aa-6046ae998a7e",
+    "childrenIds": [
+      "ac279a2d-3ac4-45e3-98cf-ecb71ca614e9",
+      "0143ca32-f3b7-4102-81a4-1fd59e8c198a"
+    ],
+    "siblingIds": []
+  },
+  "69ee3ba3-dcda-4336-a80e-c766d46aeafa": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "𦥑"
+      }
+    ],
+    "pronunciation": "ju(2)",
+    "definition": [
+      "two lowered hands (component)"
+    ],
+    "derivation": "Two hands lowered, inversion of 廾.",
+    "id": "69ee3ba3-dcda-4336-a80e-c766d46aeafa",
+    "childrenIds": [
+      "761fb5d7-ea1d-4f47-92aa-6046ae998a7e"
+    ],
+    "siblingIds": []
+  },
+  "2e3fb076-3f6b-44d3-ad90-0e1e10aa40ab": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "教"
+      }
+    ],
+    "pronunciation": "jiao(1), jiao(4)",
+    "definition": [
+      "to teach; to instruct",
+      "religion; teaching"
+    ],
+    "derivation": "Strikes 攴 to make learn (ancient character resembling 孝 from child 子 under influence 爻).",
+    "id": "2e3fb076-3f6b-44d3-ad90-0e1e10aa40ab",
+    "childrenIds": [
+      "4a2e9afe-ac54-436c-9832-a268f04a50b5",
+      "efaa92d3-adfc-4141-af59-a4cb2c781f45",
+      "fe01c1bf-bfaf-4bb6-8913-427c63d78e41"
+    ],
+    "siblingIds": []
+  },
+  "7469a9ce-ba08-4ec9-b057-569b5d954fe9": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "学"
+      },
+      {
+        "language": "zh-Hant",
+        "text": "學"
+      }
+    ],
+    "pronunciation": "xue(2)",
+    "definition": [
+      "to learn; to study",
+      "learning; scholarship"
+    ],
+    "derivation": "Hands 𦥑 (phonetic) reaching down through covered 冖 mind to teach 教 (abbreviated).",
+    "id": "7469a9ce-ba08-4ec9-b057-569b5d954fe9",
+    "childrenIds": [
+      "69ee3ba3-dcda-4336-a80e-c766d46aeafa",
+      "3ba92b34-a56d-4caf-bd33-5d3569cad4b7",
+      "2e3fb076-3f6b-44d3-ad90-0e1e10aa40ab"
+    ],
+    "siblingIds": []
+  },
+  "dc72ff96-ff3d-4126-abbb-966924896a04": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "交"
+      }
+    ],
+    "pronunciation": "jiao(1)",
+    "definition": [
+      "to cross; to intersect",
+      "to hand over; to meet"
+    ],
+    "derivation": "Pictograph of a person 大 with crossed legs.",
+    "id": "dc72ff96-ff3d-4126-abbb-966924896a04",
+    "childrenIds": [
+      "28fb4df6-cddf-43cb-8736-726c296067ca"
+    ],
+    "siblingIds": []
+  },
+  "8d1e3e75-62e1-4d3e-92b8-82c711d3c49c": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "校"
+      }
+    ],
+    "pronunciation": "xiao(4), jiao(4)",
+    "definition": [
+      "school (xiao)",
+      "to compare; to check; to proofread (jiao)"
+    ],
+    "derivation": "Wood 木 with 交 phonetic.",
+    "id": "8d1e3e75-62e1-4d3e-92b8-82c711d3c49c",
+    "childrenIds": [
+      "8969e02e-add9-4feb-97d1-aeddece1f2da",
+      "dc72ff96-ff3d-4126-abbb-966924896a04"
+    ],
+    "siblingIds": []
+  },
+  "0075e461-7e6d-42fb-9a4d-3d1479922128": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "妈"
+      },
+      {
+        "language": "zh-Hant",
+        "text": "媽"
+      }
+    ],
+    "pronunciation": "ma(1)",
+    "definition": [
+      "mother; mum"
+    ],
+    "derivation": "Woman 女 with 馬 phonetic.",
+    "id": "0075e461-7e6d-42fb-9a4d-3d1479922128",
+    "childrenIds": [
+      "a6f1bcaf-fff5-4ba0-8b89-f0dd29c5eb3f",
+      "4ab21acc-92be-4d13-8b3c-909d1ab50bf4"
+    ],
+    "siblingIds": []
+  },
+  "48418057-b8b4-4a91-af16-4ef151ba68d3": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "妈妈"
+      },
+      {
+        "language": "zh-Hant",
+        "text": "媽媽"
+      }
+    ],
+    "pronunciation": "ma(1)ma(5)",
+    "definition": [
+      "mum; mother"
+    ],
+    "metadata": {
+      "hskLevel": 1
+    },
+    "id": "48418057-b8b4-4a91-af16-4ef151ba68d3",
+    "childrenIds": [
+      "0075e461-7e6d-42fb-9a4d-3d1479922128"
+    ],
+    "siblingIds": []
+  },
+  "810333cc-d1f5-4418-8497-b668ca78a512": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "好"
+      }
+    ],
+    "pronunciation": "hao(3)",
+    "definition": [
+      "good; fine; well"
+    ],
+    "derivation": "Female 女 child 子.",
+    "metadata": {
+      "hskLevel": 1
+    },
+    "id": "810333cc-d1f5-4418-8497-b668ca78a512",
+    "childrenIds": [
+      "a6f1bcaf-fff5-4ba0-8b89-f0dd29c5eb3f",
+      "efaa92d3-adfc-4141-af59-a4cb2c781f45"
+    ],
+    "siblingIds": []
+  },
+  "d1ea1a05-b3c3-4279-86da-5d781e210735": {
+    "spelling": [
+      {
+        "language": "zh-Hans",
+        "text": "学校"
+      },
+      {
+        "language": "zh-Hant",
+        "text": "學校"
+      }
+    ],
+    "pronunciation": "xue(2)xiao(4)",
+    "definition": [
+      "school"
+    ],
+    "metadata": {
+      "hskLevel": 1
+    },
+    "id": "d1ea1a05-b3c3-4279-86da-5d781e210735",
+    "childrenIds": [
+      "7469a9ce-ba08-4ec9-b057-569b5d954fe9",
+      "8d1e3e75-62e1-4d3e-92b8-82c711d3c49c"
+    ],
+    "siblingIds": []
   }
 }

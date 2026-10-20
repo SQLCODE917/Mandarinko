@@ -30,6 +30,8 @@ export function dictionaryHref(href: string, destination: DictionaryDestination)
   const url = new URL(href);
   url.searchParams.delete('word');
   url.searchParams.delete('newWord');
+  url.searchParams.delete('editor');
+  url.searchParams.delete('node');
   if (destination.kind === 'word') url.searchParams.set('word', destination.wordId);
   if (destination.kind === 'create') url.searchParams.set('newWord', '1');
   return `${url.pathname}${url.search}${url.hash}`;

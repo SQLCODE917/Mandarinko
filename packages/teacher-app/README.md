@@ -129,36 +129,106 @@ creates and adds another in a new-word worksheet. Keyboard focus stays in the
 dialog, and Escape cancels a discard confirmation before leaving the editor.
 
 The main word and its direct children and siblings stay together as editable
-rows. “+ Child” and “+ Sibling” focus a new character field immediately. Enter an
-exact existing spelling and leave that field to reuse its pronunciation,
-definitions, variants, and derivation. Unique matches resolve across language
-variants; ambiguous matches require choosing an entry. Self-links, duplicate
-relationships, and duplicate spellings in separate new drafts are rejected.
-Editing a reused word changes that shared dictionary entry. Unlink removes its
-relationship without deleting the word. Use a related word's Edit button in
-details to work on its own relationships.
+rows. “+ Child” and “+ Sibling” focus a new spelling immediately. Autocomplete shows
+language, pronunciation and definitions. Chinese simplified/traditional aliases
+match the same saved entry; Japanese matches remain separate. Enter selects a
+suggestion and advances to another component field, Escape dismisses suggestions,
+and Tab retains ordinary navigation. IME composition never accepts a suggestion.
+Ambiguous matches require an explicit selection. Reused entries show a shared-entry
+indicator and stay directly editable; their saved descendants are retained.
 
-Drafts are saved to local browser storage as input changes. Opening Create again
-resumes the unfinished new-word worksheet; editing an existing word resumes that
-word's draft. Drafts survive Close, Back/Forward, and reload in the same browser
-and site origin. They do not sync between machines, and clearing site data removes
-them. Another tab's newer draft is protected from being overwritten. If storage
-is unavailable, Close offers Keep editing or an explicit exit without saving the
-draft, rather than silently losing input.
+The component list accepts commas, Chinese commas, semicolons and line breaks.
+`女, 馬` adds two components; `学校` adds one compound. Repeated references are
+idempotent. Self-links and newly introduced child cycles are rejected. Sibling
+links are independent of the child hierarchy. Derivation prose never creates links
+automatically. Unlink removes a relationship without deleting its dictionary word.
 
-Failures retain draft content and offer explicit Retry save; reopening or
-reloading never automatically retries. Creation uses a persisted retry key so a
-lost response can be retried without another word. Requests run in order, and a
-word exists before its relationship is saved. These remain separate server writes:
-a failed relationship can leave its word saved independently. Discarding a draft
-does not delete such saved words. Successful responses update the dictionary in
-place without another fetch or resetting the active editor field.
+**Edit components** descends inside the same mounted editor. Breadcrumbs and the
+nested **Return to [parent]** button checkpoint incomplete drafts without creating
+them. Browser Back/Forward follows editor navigation. Focus, selection and scroll
+are restored on returning. Root Create validates the reachable graph and opens an
+incomplete descendant at its field when attention is needed. Missing local editor
+locations display recovery instructions instead of allocating a replacement draft.
 
-The pure [editor lifecycle](src/domain/editorLifecycle.ts) owns save and exit
-transitions; [WordEditorSession](src/domain/wordEditorSession.ts) owns drafts,
-validation, ordered writes, and recovery. Components render these states and send
-user intent. New-word creation pauses field entry while its submission is in
-flight; ordinary existing-word autosaves allow continued typing.
+The compact **Entry session** disclosure configures a name, primary language and
+optional HSK/JLPT levels. These settings persist between parents. Newly created roots
+receive the defaults; components receive the language but no level metadata. Reused
+entries keep their metadata unless explicitly edited or supplied by paste. Create
+and add another retains settings and focuses a blank spelling. End session clears
+active defaults without deleting unfinished drafts.
+
+### Spreadsheet paste
+
+Open **Paste spreadsheet**, paste header-based TSV and select **Preview paste**.
+Quoted cells support embedded tabs/newlines and doubled quotes, as in spreadsheet
+exports. Supported headers are:
+
+| Header                  | Meaning                                                                          |
+| ----------------------- | -------------------------------------------------------------------------------- |
+| `spelling`              | Required row identifier; an undelimited compound stays one word.                 |
+| `language`              | Spelling language; blank uses the active session language.                       |
+| `traditional`           | Add a Chinese traditional alias; no automatic conversion.                        |
+| `pronunciation`         | Canonical pronunciation.                                                         |
+| `definitions`           | One definition per newline inside the cell.                                      |
+| `derivation`            | Exact wording, without added attribution text.                                   |
+| `children`, `siblings`  | Explicitly delimited spelling references, resolved in the row's language family. |
+| `hskLevel`, `jlptLevel` | Explicit level metadata.                                                         |
+| `root`                  | `true`/`1` or `false`/`0`; blank infers roots not referenced as children.        |
+
+For example (columns separated by tabs):
+
+```tsv
+spelling	language	pronunciation	definitions	children
+好	zh-Hans	hao3	good	女, 子
+```
+
+Only spelling is required to identify/reuse a row. New words still require valid
+pronunciation and definitions before creation. References resolve against both
+pasted rows and the saved dictionary. Missing references become editable
+placeholders; ambiguity blocks publication until an entry is selected. Preview
+shows new/reused/updated entries, missing information, relationships and before/after
+corrections. Edit entries and choose roots before **Create batch**, the explicit
+confirmation covering all selected roots and their required components.
+
+Non-empty supplied dictionary fields are authoritative; omitted or blank fields
+preserve existing values. Variants and relationships are additive, including on a
+partial paste: saved descendants and IDs survive. Shared components publish once
+across roots. Matching and the affected graph are refreshed before writing. Preview
+edits stay local until confirmation. Automated website extraction, crawling and
+regional character conversion are not implemented.
+
+### Recovery and publication
+
+Normalized workspace graphs save to browser storage as input changes. Opening
+Create resumes the unfinished new-word workspace; editing an existing word resumes
+its workspace. Local editor links use `editor` and `node` query parameters alongside
+the dictionary location. Drafts, breadcrumbs, view position, session settings and
+interrupted writes survive Close and reload in the same browser and origin. They
+do not sync across machines; clearing site data removes them. Older flat drafts
+convert without publishing, and their original record stays intact until the new
+snapshot is successfully stored. Another tab's newer draft is protected. Unavailable
+storage prompts before leaving without a draft.
+
+Failures retain unfinished work and offer explicit Retry save; reopening never
+retries automatically. Creation keeps its original request key and exact payload
+until acknowledged. New nodes are created without relationship references first;
+relationships save after all required IDs exist. These are separate server writes,
+not a transaction: acknowledged writes remain saved after a later failure. Explicit
+Retry resumes unfinished work without duplicating acknowledged or lost-response
+creations. Discard does not delete saved words. Existing-word autosaves preserve
+the active field; completion requested while saving exits once after success.
+
+The pure [editor lifecycle](src/domain/editorLifecycle.ts) owns save/exit transitions;
+[WordEditorSession](src/domain/wordEditorSession.ts) owns graph identity, drafts,
+validation, navigation and publication. Components render states and send intent.
+New-word publication pauses editing; ordinary existing-word autosaves allow typing.
+
+Run `pnpm test:browser` from the repository root for Chromium behavior tests using
+per-test temporary API vocabulary files. Install Chromium once with
+`pnpm exec playwright install chromium`. The harness owns its frontend on port 3014,
+requires no running development server, and records failure traces. `pnpm check`
+runs lint, builds, types and unit tests; `pnpm format:check` reports formatting
+separately. See [AGENTS.md](AGENTS.md) for efficient operational entry procedures.
 
 ## Reusable CRT Treatment
 

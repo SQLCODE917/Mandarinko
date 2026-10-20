@@ -59,6 +59,16 @@ Run tests alone:
 pnpm test
 ```
 
+Browser behavior tests use isolated temporary vocabulary files and their own
+frontend on port 3014. They never write to the development vocabulary:
+
+```bash
+pnpm exec playwright install chromium
+pnpm test:browser
+```
+
+Failure traces and screenshots are generated under `test-results/`.
+
 `pnpm format:check` checks formatting separately. Existing source and vocabulary
 formatting differences remain; the functional check does not enforce formatting.
 

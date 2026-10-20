@@ -5,7 +5,10 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Word } from '@mandarinko/core';
 import { WordEditor, type WordEditorHandle } from './WordEditor';
 
-beforeEach(() => window.localStorage.clear());
+beforeEach(() => {
+  window.localStorage.clear();
+  window.history.replaceState(null, '', '/');
+});
 
 const word: Word = {
   id: 'root',

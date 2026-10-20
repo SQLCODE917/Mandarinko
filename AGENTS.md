@@ -10,6 +10,7 @@ user vocabulary data, and use explicit vocabulary and relationship terminology.
   changing it; clarify intended behavior when documentation and implementation conflict.
 - Core owns shared vocabulary types, validation, search, and relationship logic.
 - Server owns HTTP contracts and persistence and consumes core's public API.
+- For teacher-app work, also read [its agent procedures](packages/teacher-app/AGENTS.md).
 - Teacher app owns React presentation and interaction. Consume core's public API
   and server's public API types; do not import another package's private source.
 

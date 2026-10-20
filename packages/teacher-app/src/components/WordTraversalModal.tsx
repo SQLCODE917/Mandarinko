@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import type { Word } from '@mandarinko/core';
 import { WordEditor, type WordEditorHandle, type EditorExit } from './WordEditor';
+import { readEditorLocation } from '../domain/editorLocation';
 import type { WordEditorSession } from '../domain/wordEditorSession';
 import { WordEntry } from './WordEntry';
 import { StrokeOrderScope } from './StrokeOrderSpelling';
@@ -38,7 +39,7 @@ export function WordTraversalModal({
   const titleRef = useRef<HTMLDivElement>(null);
   const { viewModel } = useWordTraversal({ isOpen: ready, rootWordId, words, callbacks });
   const current = viewModel?.current;
-  const isAuthoring = Boolean(current && current.mode !== 'view');
+  const isAuthoring = Boolean(current && (current.mode !== 'view' || readEditorLocation()));
 
   useLayoutEffect(() => {
     if (isOpen && !isAuthoring) titleRef.current?.focus({ preventScroll: true });
@@ -51,10 +52,9 @@ export function WordTraversalModal({
     else onDismiss();
   };
   const exitEditor = (result: EditorExit) => {
-    if (result.kind === 'finished' && location.kind === 'create' && result.wordId)
-      onCreated(result.wordId);
-    else if (current?.mode === 'edit') current.onClose();
-    else onDismiss();
+    if (current?.mode === 'edit') current.onClose();
+    if (result.kind === 'finished' && result.wordId) onCreated(result.wordId);
+    else if (location.kind !== 'word') onDismiss();
   };
   const error =
     location.kind === 'invalid'
