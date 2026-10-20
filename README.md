@@ -1,196 +1,182 @@
-# Mandarinko Monorepo
+# Mandarinko
 
-Mandarinko is a TypeScript monorepo with three packages:
+A Chinese and Japanese vocabulary dictionary built around character derivations.
+Follow a word into its components, connect Japanese kanji to their Chinese
+character histories, and reuse those explanations when authoring new entries.
 
-- `@mandarinko/core` — shared vocabulary management, validation, and types
-- `@mandarinko/server` — Express REST API
-- `@mandarinko/teacher-app` — React teacher app
+![Mandarinko’s compact Chinese and Japanese dictionary beneath its magenta CRT terminal banner](docs/screenshots/dictionary.png)
 
-This README is the authoritative guide for building and running the monorepo.
+## Explore words through their characters
 
-**Reusable UI Examples**
+Entries keep spellings, pronunciation, derivation and definitions together in a
+compact dictionary layout. Simplified and traditional Chinese variants share an
+entry; Japanese words keep their own kana reading and meaning. HSK and JLPT labels
+identify study levels.
 
-- [CRT terminal banner](packages/teacher-app/README.md#reusable-crt-treatment):
-  portable CSS, plain HTML and React usage, themes, and a runnable example.
+Open a word to explore its component tree. Characters in derivation text link to
+other entries, and browser Back and Forward let you follow a trail through the
+same details modal. Japanese vocabulary reuses the Chinese character trees: in
+**食べる → 食**, the Japanese word retains **たべる**, while 食 and its components
+show their Chinese pronunciations and explanations. Sibling links connect words
+through shared character use, even when their meanings differ.
 
-**Word Traversal Modal Screenshots**
+<img src="docs/screenshots/word-details.png" width="560" alt="Desktop word details: 食べる with its canonical Japanese reading and the shared Chinese 食 derivation tree">
+<img src="docs/screenshots/word-details-mobile.png" width="260" alt="The same 食べる character tree in the mobile word details layout">
 
-![WordTraversalModal](./WordTraversalModal.png)
-![WordTraversalModal 2](./WordTraversalModal%202.png)
+Click a spelling in Word details to loop its stroke order; click again to return
+to text. The spelling keeps its dimensions while switching. Japanese spellings
+also use Furifont’s built-in furigana. These automatic readings can be inaccurate;
+the separate pronunciation field is canonical. Stroke data loads on demand and
+requires a network connection on first use; unavailable data leaves the text
+visible. Some rare component glyphs depend on the fonts installed on your device.
 
-## Vocabulary data sources
+The terminal banner has a typing wordmark, blinking cursor and CRT effects, with
+a static presentation for reduced-motion preferences. Its
+[standalone CSS and reusable HTML/React examples](packages/teacher-app/README.md#reusable-crt-treatment)
+can be used in other applications.
 
-Japanese vocabulary and community JLPT study levels use a pinned
+## Author and reuse vocabulary
+
+**Edit** opens the word editor, where spelling, pronunciation, definitions and
+derivation are directly editable. Text fields grow with their contents. Valid
+edits to saved entries autosave on blur; new words remain drafts until an explicit
+**Create** action. **Close** retains unfinished work in the current browser.
+
+Autocomplete reuses existing entries and their complete trees. Add several
+components together, then use **Edit components** and breadcrumbs to fill missing
+descendants inside the same modal. Shared-entry indicators make it clear when an
+edit affects a word used elsewhere. Entry sessions retain language and optional
+HSK/JLPT defaults between new words.
+
+![Word editor showing 好 and its reused 女 and 子 components, with directly editable fields and growing definitions](docs/screenshots/word-editor.png)
+
+For researched batches, paste a header-based TSV spreadsheet and review new,
+reused and updated entries before **Create batch**. Non-empty supplied fields
+replace saved values after confirmation; blank cells preserve them, and supplied
+relationships are additive. Interrupted saves retain acknowledged writes and
+unfinished work for explicit retry; publication is not a transaction.
+
+![Unpublished spreadsheet preview for 山水, reusing saved 山 and 水 entries and their Japanese siblings](docs/screenshots/paste-preview.png)
+
+See the [teacher-app README](packages/teacher-app/README.md#word-editor) for editor
+controls, keyboard shortcuts, draft recovery and the clipboard format. Agent
+entry procedures live in [the teacher-app AGENTS.md](packages/teacher-app/AGENTS.md).
+
+## Vocabulary and sources
+
+The dictionary includes the classic 150-word HSK1 set and the selected JLPT N5
+and N4 study lists, alongside shared Chinese character components. Japanese
+entries represent actual words with specific readings, rather than inventories
+of every possible kanji reading. Higher-level research can enrich a shared
+character tree without replacing the entries that already use it.
+
+Japanese vocabulary and JLPT classifications use a pinned
 [OpenJLPT](https://github.com/evanclan/OpenJLPT) snapshot, derived from Jonathan
-Waller’s lists and JMdict (EDRDG). The selected N5 and N4 lists are disjoint;
-levels are unofficial study classifications, not an exhaustive exam syllabus.
-Readings belong to actual Japanese words. Common kana headwords remain primary;
-reviewed kanji spellings are alternatives, not guesses from character readings.
+Waller’s lists and JMdict (EDRDG). N5 and N4 are disjoint study lists; the levels
+are unofficial approximations, not an exhaustive exam syllabus. Common kana
+headwords remain primary, with reviewed kanji spellings as alternatives.
 
-Japanese words reuse Chinese character trees. Whole-word siblings connect shared
-character spellings, with explicit Japanese old/new character correspondences;
-they do not imply equivalent meanings. Distinct histories such as Japanese 机
-(“desk”) and simplified Chinese 机 for 機 (“machine”) remain separate. New research
-adds to existing entries and relationships without replacing their IDs or trees.
+Whole-word siblings connect shared character spellings, using explicit Japanese
+old/new character correspondences; they do not imply equivalent meanings.
+Distinct histories such as Japanese 机 (“desk”) and simplified Chinese 机 for
+機 (“machine”) remain separate.
 
-Additional character explanations use
+Character explanations draw on Zhongwen.com,
 [Make Me a Hanzi](https://github.com/skishore/makemeahanzi)’s `dictionary.txt`
-(Unihan/CJKlib-derived, LGPL-3.0-or-later), supplemented by short Wiktionary
-excerpts. Source glyph explanations are retained; entries labelled “Written
-structure” describe their shape without claiming an established historical origin.
-Unknown portions of an ideographic description sequence use `？`. Chinese readings
-use tone marks; umlauts are omitted according to this dictionary’s convention.
+(Unihan/CJKlib-derived), and supplementary Wiktionary entries. Entries labelled
+“Written structure” describe a shape without claiming an established historical
+origin; `？` marks an unknown portion of a structural description. Chinese
+pronunciations use tone marks, with umlauts omitted by this dictionary’s convention.
 
-[Field provenance](packages/server/vocabulary.sources.json) identifies source
-revisions, entry IDs and adapted fields. The OpenJLPT-derived data and Wiktionary
-adaptations are CC BY-SA 4.0; Make Me a Hanzi-derived character data retains its
-LGPL-3.0-or-later terms. Source notices and license texts are in
-[server licenses](packages/server/licenses). These data terms are separate from
-the application code license. Existing dictionary material retains its provenance.
+[Field provenance](packages/server/vocabulary.sources.json) records source
+revisions, entry IDs and adapted fields for the JLPT imports and their character
+research. OpenJLPT-derived data and Wiktionary adaptations are CC BY-SA 4.0;
+Make Me a Hanzi-derived character data retains its LGPL-3.0-or-later terms.
+[Source notices and license texts](packages/server/licenses) accompany the data.
+These terms are separate from the application’s GPL-3.0 code license; existing
+dictionary material retains its provenance.
 
-**WSL Development Setup**
+## Run locally
 
-Use the native Linux checkout at `~/gits/Mandarinko`, with Linux Node.js and pnpm.
-Open it from a WSL terminal with `code .` to use VS Code's WSL integration.
-The Windows checkout is a separate copy; changes and vocabulary edits do not sync
-between the two locations.
+Use the native WSL checkout at `~/gits/Mandarinko` with Linux Node.js and pnpm.
+The older Windows checkout is a separate copy; code and vocabulary edits do not
+sync between them. Open the Linux checkout with `code .` for VS Code’s WSL
+integration. The older devcontainer setup has not been validated with the pinned
+runtime.
 
-Use the Node version in [.nvmrc](.nvmrc) and pnpm version in
-[package.json](package.json). With nvm installed, run from the repository root:
+From the repository root, use the Node version in [.nvmrc](.nvmrc) and pnpm version
+in [package.json](package.json):
 
 ```bash
 nvm install
 nvm use
 corepack enable
 pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-Run `nvm use` in each terminal. Reinstall dependencies inside WSL rather than
-copying `node_modules` from Windows or a container. The pnpm workspace and
-`pnpm-lock.yaml` own dependency installation; use pnpm for dependency changes.
+Open **http://localhost:3001**. The API listens on **http://localhost:3000**.
+`pnpm dev` builds core before starting the core, API and frontend watchers.
+Run `nvm use` in each new terminal; install dependencies inside WSL rather than
+copying `node_modules` from Windows.
 
-**Build**
+The API reads and writes
+[`packages/server/vocabulary.json`](packages/server/vocabulary.json). Preserve local
+vocabulary edits when updating the checkout. Unfinished editor work is stored in
+the browser for that origin; it does not sync between browsers or machines.
+
+To run packages separately after building core:
 
 ```bash
-pnpm build
+pnpm --filter @mandarinko/core build
+pnpm --filter @mandarinko/server dev
+# In another terminal:
+pnpm --filter @mandarinko/teacher-app dev
 ```
 
-**Verification**
+## Develop and verify
 
-Run lint, typechecking, all package tests, and the production build:
+| Command             | Purpose                                                         |
+| ------------------- | --------------------------------------------------------------- |
+| `pnpm check`        | Lint, production builds, typechecking and package tests.        |
+| `pnpm test`         | Package tests without the full build/lint sequence.             |
+| `pnpm test:browser` | Playwright interaction tests with isolated vocabulary fixtures. |
+| `pnpm format:check` | Check formatting separately; existing formatting debt remains.  |
+| `pnpm build`        | Build all workspace packages.                                   |
 
-```bash
-pnpm check
-```
-
-Run tests alone:
-
-```bash
-pnpm test
-```
-
-Browser behavior tests use isolated temporary vocabulary files and their own
-frontend on port 3014. They never write to the development vocabulary:
+Install the pinned browser once before running browser tests:
 
 ```bash
 pnpm exec playwright install chromium
 pnpm test:browser
 ```
 
-Failure traces and screenshots are generated under `test-results/`.
+The browser harness starts its own frontend on port 3014 and an API backed by
+per-test temporary vocabulary files. It does not require the development server
+and never writes to live vocabulary. Failure traces, screenshots and results are
+written to `test-results/`.
 
-`pnpm format:check` checks formatting separately. Existing source and vocabulary
-formatting differences remain; the functional check does not enforce formatting.
+The TypeScript/pnpm monorepo has three owning packages:
 
-**Run (Development)**
+| Package                                       | Responsibility                                                    |
+| --------------------------------------------- | ----------------------------------------------------------------- |
+| [core](packages/core/README.md)               | Vocabulary types, search, validation and relationship operations. |
+| [server](packages/server/README.md)           | Express API contracts and JSON persistence.                       |
+| [teacher-app](packages/teacher-app/README.md) | React dictionary, details view and vocabulary editor.             |
 
-Start the core watcher, API, and teacher app together:
+The server and teacher app consume core’s public types and validation; the teacher
+app also consumes the server’s API types. Editor domain controllers own draft
+lifecycle, graph identity and publication. Components render their state and
+dispatch user intent.
 
-```bash
-pnpm dev
-```
-
-This builds core before starting the watchers. Open `http://localhost:3001`;
-the API listens on `http://localhost:3000`. Vite uses native filesystem watching
-on the Linux checkout.
-
-Server (API):
-
-```bash
-pnpm --filter @mandarinko/server run dev
-```
-
-Teacher app (Vite dev server):
+Use pnpm workspace filters when adding dependencies, and keep `pnpm-lock.yaml`
+current:
 
 ```bash
-pnpm --filter @mandarinko/teacher-app run dev
-```
-
-The server reads and writes `packages/server/vocabulary.json` when launched with
-these workspace commands. Keep local vocabulary changes when updating the repo.
-Development commands above target native WSL; the older devcontainer configuration
-has not been validated with the pinned runtime.
-
-**Type Safety and No-Duplication Architecture**
-
-Type safety is enforced across packages by sharing types and validation from a single source of truth:
-
-- `@mandarinko/core` exports vocabulary types (`Word`, `Spelling`, `WordMetadata`, `LanguageCode`) and shared validation via `ValidationService`.
-- `@mandarinko/server` consumes core types and exposes its own API request/response types for frontend usage.
-- `@mandarinko/teacher-app` imports core types and validation, and uses server API types to keep client/server contracts aligned.
-
-Duplication is avoided by pushing common logic into `@mandarinko/core` and reusing it in both the server and the teacher app:
-
-- Vocabulary rules and validation live in core only.
-- Server routes operate on core types and call core validation.
-- The teacher app never redefines vocabulary shapes or validation rules.
-
-**Manage Dependencies**
-
-Install all workspace dependencies:
-
-```bash
-pnpm install
-```
-
-Add a dependency to a specific package:
-
-```bash
-pnpm add <package> --filter @mandarinko/server
 pnpm add <package> --filter @mandarinko/teacher-app
-pnpm add <package> --filter @mandarinko/core
-```
-
-Add a dev dependency to a specific package:
-
-```bash
 pnpm add -D <package> --filter @mandarinko/server
-```
-
-Add a root-level tooling dependency (for shared tooling like ESLint or Prettier):
-
-```bash
 pnpm add -D <package> -w
 ```
 
-Use workspace packages as dependencies:
-
-```bash
-pnpm add @mandarinko/core --filter @mandarinko/teacher-app
-pnpm add @mandarinko/server --filter @mandarinko/teacher-app
-```
-
-**Workspace Structure**
-
-```
-packages/
-  core/
-  server/
-  teacher-app/
-```
-
-For package-specific details, see:
-
-- `packages/core/README.md`
-- `packages/server/README.md`
-- `packages/teacher-app/README.md`
+Read [AGENTS.md](AGENTS.md) before changing code, and the nested teacher-app guide
+before authoring vocabulary or changing editor behavior.
