@@ -1,0 +1,17 @@
+Stroke-order data used by Mandarinko (unmodified, loaded per character)
+
+Japanese:
+KanjiVG, copyright Ulrich Apel, CC BY-SA 3.0.
+Source: https://github.com/KanjiVG/kanjivg/tree/70a0b7ae0c18ceb5cb358274b029cce0234a43bc
+License: KanjiVG-LICENSE.txt
+
+Chinese:
+Hanzi Writer data 2.0.1, extracted from Make Me a Hanzi.
+Source: https://github.com/chanind/hanzi-writer-data/tree/v2.0.1
+Upstream: https://github.com/skishore/makemeahanzi
+Outlines derived from Arphic fonts, copyright 1999 Arphic Technology Co., Ltd.
+License: ARPHICPL.txt
+
+Animation library: Hanzi Writer 3.7.3, copyright 2014 David Chanin, MIT.
+License: HanziWriter-LICENSE.txt
+Source: https://github.com/chanind/hanzi-writer/tree/v3.7.3

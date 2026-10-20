@@ -1,0 +1,75 @@
+.word-entry-spellings .stroke-order-spelling {
+  position: relative;
+  display: inline-block;
+  max-inline-size: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  vertical-align: baseline;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  text-decoration: underline dotted #b4a99b;
+  text-underline-offset: 0.15em;
+}
+
+.stroke-order-spelling:hover {
+  text-decoration-color: #a92568;
+}
+
+.stroke-order-spelling:focus-visible {
+  outline: 2px solid #a92568;
+  outline-offset: 2px;
+}
+
+.stroke-order-spelling[data-playing='true'] .stroke-order-text {
+  visibility: hidden;
+}
+
+.stroke-order-overlay {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.stroke-order-spelling[data-playing='true'] .stroke-order-overlay {
+  visibility: visible;
+}
+
+.stroke-order-characters {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0.1em;
+  display: flex;
+  block-size: 1em;
+}
+
+.stroke-order-characters > span {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.stroke-order-characters svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.stroke-order-error {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 100%;
+  z-index: 1;
+  padding: 0.2rem 0.35rem;
+  border: 1px solid #d8cfc2;
+  background: #fff8ed;
+  color: #72685c;
+  font:
+    0.65rem/1.4 system-ui,
+    sans-serif;
+  white-space: nowrap;
+}

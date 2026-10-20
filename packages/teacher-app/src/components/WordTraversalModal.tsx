@@ -3,6 +3,7 @@ import type { Word } from '@mandarinko/core';
 import { WordEditor, type WordEditorHandle, type EditorExit } from './WordEditor';
 import type { WordEditorSession } from '../domain/wordEditorSession';
 import { WordEntry } from './WordEntry';
+import { StrokeOrderScope } from './StrokeOrderSpelling';
 import type { DerivationNavigation } from './DerivationText';
 import type { DictionaryLocation } from '../domain/dictionaryLocation';
 import { useWordTraversal } from '../hooks/useWordTraversal';
@@ -110,7 +111,7 @@ export function WordTraversalModal({
           ) : !viewModel ? (
             <p role="status">Loading vocabulary…</p>
           ) : (
-            <>
+            <StrokeOrderScope key={rootWordId}>
               {isAuthoring ? (
                 <WordEditor
                   ref={editorRef}
@@ -151,7 +152,7 @@ export function WordTraversalModal({
                   )}
                 </div>
               )}
-            </>
+            </StrokeOrderScope>
           )}
         </div>
       </div>
@@ -233,7 +234,7 @@ function WordViewerCard({
   return (
     <div className="word-node">
       <div className="word-card">
-        <WordEntry word={word} navigation={navigation} />
+        <WordEntry key={word.id} word={word} navigation={navigation} strokeOrder />
         <div className="word-card-actions">
           {showEdit && (
             <button type="button" className="btn-secondary" onClick={onEdit}>

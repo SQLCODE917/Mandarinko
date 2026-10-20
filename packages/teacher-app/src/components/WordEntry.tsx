@@ -1,13 +1,17 @@
 import type { Word } from '@mandarinko/core';
 import { DerivationText, type DerivationNavigation } from './DerivationText';
+import { StrokeOrderSpelling } from './StrokeOrderSpelling';
+import { hasStrokeOrder } from '../services/strokeOrder';
 import './WordEntry.css';
 
 export function WordEntry({
   word,
   navigation,
+  strokeOrder = false,
 }: {
   word: Omit<Word, 'id'> & { id?: string };
   navigation?: DerivationNavigation;
+  strokeOrder?: boolean;
 }) {
   return (
     <span className="word-entry">
@@ -16,9 +20,13 @@ export function WordEntry({
           {word.spelling.map((spelling, index) => (
             <span key={`${spelling.language}-${spelling.text}`}>
               {index > 0 && <span className="word-entry-separator"> / </span>}
-              <span lang={spelling.language} title={spelling.language}>
-                {spelling.text || 'New word'}
-              </span>
+              {strokeOrder && hasStrokeOrder(spelling.text, spelling.language) ? (
+                <StrokeOrderSpelling text={spelling.text} language={spelling.language} />
+              ) : (
+                <span lang={spelling.language} title={spelling.language}>
+                  {spelling.text || 'New word'}
+                </span>
+              )}
             </span>
           ))}
         </span>

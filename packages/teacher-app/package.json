@@ -11,10 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@mandarinko/core": "workspace:*",
-    "@mandarinko/server": "workspace:*"
+    "@mandarinko/server": "workspace:*",
+    "hanzi-writer": "3.7.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@testing-library/react": "^14.3.1",

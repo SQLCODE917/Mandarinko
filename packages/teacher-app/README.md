@@ -52,6 +52,30 @@ leaves Chinese spellings and the terminal banner unchanged. To update the font,
 replace the versioned asset directory and CSS URL together, retaining the release's
 license notices.
 
+In Word details, click a spelling (or focus it and press Enter/Space) to loop its
+stroke order; click again to restore text. Only one spelling plays at a time,
+including related entries. Navigating, closing, or editing stops playback. The
+original text stays mounted as an invisible sizing layer during playback, so
+switching preserves its dimensions, baseline, and the space for furigana. The
+canonical pronunciation stays visible. Multi-character spellings draw in order.
+Lists and search results stay static.
+
+Chinese playback uses [Hanzi Writer](https://hanziwriter.org/) 3.7.3 and
+[hanzi-writer-data](https://github.com/chanind/hanzi-writer-data) 2.0.1 (Make Me a
+Hanzi/Arphic outlines). Japanese playback uses ordered SVG paths from
+[KanjiVG](https://github.com/KanjiVG/kanjivg/tree/70a0b7ae0c18ceb5cb358274b029cce0234a43bc),
+© Ulrich Apel, CC BY-SA 3.0. Source and license links are retained in
+[`public/stroke-order`](public/stroke-order). Data is selected by spelling language;
+Chinese script tags do not choose a separate regional writing standard. Japanese
+forms are never substituted with Chinese data when missing.
+
+The Chinese animation library and character data load only after activation. Version-pinned data
+comes from jsDelivr and is cached for the browser session; initial access needs an
+internet connection. Failed or missing data leaves the original spelling visible
+with an unavailable message, without automatic retries. Toggle off/on to try again.
+This is playback only; handwriting practice and regional Chinese dataset selection
+are not implemented.
+
 Word details follows the URL (`?word=<id>`), including direct links and reloads.
 Opening a word or following a derivation link adds a browser history entry. Back
 and Forward select the previous and next word in the same dialog; Back from the
