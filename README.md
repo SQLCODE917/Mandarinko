@@ -96,6 +96,10 @@ Make Me a Hanzi-derived character data retains its LGPL-3.0-or-later terms.
 These terms are separate from the application’s GPL-3.0 code license; existing
 dictionary material retains its provenance.
 
+The Japanese grammar reference is stored in
+[`packages/server/grammar.json`](packages/server/grammar.json), using the dictionary's
+language and JLPT metadata conventions.
+
 ## Run locally
 
 Use the native WSL checkout at `~/gits/Mandarinko` with Linux Node.js and pnpm.
