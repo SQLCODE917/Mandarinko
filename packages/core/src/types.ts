@@ -14,16 +14,35 @@ export interface WordMetadata {
   addedBy?: string;
 }
 
-export interface Word {
-  id: string;
+export interface EntryText {
   spelling: Spelling[];
-  pronunciation: string;
   definition: string[];
+}
+
+export interface Word extends EntryText {
+  id: string;
+  pronunciation: string;
   derivation?: string;
   parentIds?: string[];
   childrenIds?: string[];
   siblingIds?: string[];
   metadata?: WordMetadata;
+}
+
+export type GrammarExample = EntryText;
+
+export interface GrammarPattern extends EntryText {
+  id: string;
+  title: string;
+  examples: GrammarExample[];
+  category?: string;
+  metadata?: WordMetadata;
+  contrastIds?: string[];
+}
+
+export interface GrammarData {
+  schemaVersion: 1;
+  patterns: GrammarPattern[];
 }
 
 export interface ValidationError {

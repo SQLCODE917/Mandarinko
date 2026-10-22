@@ -1,0 +1,184 @@
+.word-list.grammar-list {
+  column-width: 32rem;
+}
+.grammar-list .word-item {
+  width: 100%;
+}
+.word-entry.grammar-entry {
+  max-inline-size: 38rem;
+}
+.grammar-entry .word-entry-spellings {
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+.grammar-title {
+  display: block;
+  font-size: inherit;
+  font-weight: 600;
+}
+.grammar-card-quote {
+  display: block;
+  margin-top: 0.35rem;
+  padding-left: 0.65rem;
+  border-left: 2px solid #d8cfc2;
+  color: #49443e;
+  quotes: none;
+}
+.grammar-card-quote :lang(ja) {
+  font-size: 1.25rem;
+}
+.grammar-text-fields,
+.grammar-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+}
+.grammar-examples h3 {
+  color: #72685c;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 0.75rem;
+}
+.grammar-metadata {
+  margin: 0.6rem 0;
+}
+.grammar-contrasts {
+  font-size: 0.75rem;
+}
+.grammar-contrasts summary {
+  cursor: pointer;
+}
+.grammar-contrasts label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+}
+.grammar-contrast-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
+}
+.grammar-contrast-links a {
+  color: #a92568;
+}
+
+.grammar-details-dialog .word-tree-content {
+  width: min(54rem, calc(100vw - 2rem));
+  min-width: 0;
+}
+.grammar-details-dialog .word-tree-header {
+  padding: 0.85rem 1.5rem;
+}
+.grammar-details-dialog .word-tree-title,
+.grammar-details-dialog .word-tree-close {
+  font-size: 1rem;
+}
+/* The non-interactive heading receives focus for dialog announcements. */
+.grammar-details-dialog .word-tree-title:focus {
+  outline: none;
+}
+.grammar-details-dialog .word-tree-body {
+  display: block;
+  padding: 0;
+}
+.grammar-details {
+  width: 100%;
+  max-inline-size: none;
+  padding: 1.75rem 2rem 2rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+.grammar-details-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.grammar-details-heading > div {
+  min-width: 0;
+}
+.grammar-details .word-entry-heading {
+  gap: 0.25rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.grammar-details .word-entry-spellings {
+  font-size: 2rem;
+}
+.grammar-details .word-entry-level,
+.grammar-details-category {
+  font-size: 1rem;
+  color: #686057;
+}
+.grammar-details h2,
+.grammar-details h3 {
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+}
+.grammar-details-category {
+  margin-top: 0.35rem;
+}
+.grammar-details-edit {
+  flex-shrink: 0;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #ddc4cf;
+  border-radius: 3px;
+  background: transparent;
+  color: #a92568;
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.grammar-details-edit:hover {
+  background: #f8edf2;
+}
+.grammar-details-edit:focus-visible {
+  outline: 2px solid #a92568;
+  outline-offset: 2px;
+}
+.grammar-details-section {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #d8cfc2;
+}
+.grammar-details-section h3 {
+  margin-bottom: 0.65rem;
+}
+.grammar-details-section > p + p {
+  margin-top: 0.75rem;
+}
+.grammar-details-examples {
+  display: grid;
+  gap: 1.25rem;
+}
+.grammar-details .grammar-example {
+  padding-left: 1rem;
+  border-left: 2px solid #d8cfc2;
+}
+.grammar-details .grammar-translation {
+  margin-top: 0.4rem;
+  color: #686057;
+}
+.grammar-details .grammar-translation p + p {
+  margin-top: 0.4rem;
+}
+@media (max-width: 640px) {
+  .grammar-details-dialog .word-tree-content {
+    width: calc(100vw - 1rem);
+  }
+  .grammar-details-dialog .word-tree-header {
+    padding: 0.75rem 1rem;
+  }
+  .grammar-details {
+    padding: 1.25rem 1rem 1.5rem;
+  }
+  .grammar-details-heading {
+    gap: 0.5rem;
+  }
+  .grammar-text-fields,
+  .grammar-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

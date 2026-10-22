@@ -4,7 +4,34 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { AddressInfo } from 'node:net';
 import { createApp } from '../../packages/server/dist/index.js';
-import type { Word } from '../../packages/core/src/index';
+import type { Word, GrammarPattern } from '../../packages/core/src/index';
+
+export const grammarPatterns: GrammarPattern[] = [
+  {
+    id: 'de',
+    spelling: [{ language: 'ja', text: 'で' }],
+    title: 'Location of action',
+    definition: ['Marks the location of an action'],
+    category: 'Particles',
+    examples: [
+      {
+        spelling: [{ language: 'ja', text: '図書館で読みます。' }],
+        definition: ['I read at the library.'],
+      },
+    ],
+    metadata: { jlptLevel: 5 },
+    contrastIds: ['ni'],
+  },
+  {
+    id: 'ni',
+    spelling: [{ language: 'ja', text: 'に' }],
+    title: 'Destination',
+    definition: ['Marks a destination'],
+    category: 'Particles',
+    examples: [],
+    metadata: { jlptLevel: 5 },
+  },
+];
 
 export const words: Word[] = [
   {
@@ -46,6 +73,7 @@ export const words: Word[] = [
 type Fixture = {
   vocabulary: {
     read: () => Promise<Record<string, Word>>;
+    readGrammar: () => Promise<GrammarPattern[]>;
     delay: number;
     fail: 'create' | 'links' | 'lost' | null;
     writes: number;
@@ -56,12 +84,15 @@ export const test = base.extend<Fixture>({
     async ({ page }, use) => {
       const directory = await mkdtemp(join(tmpdir(), 'mandarinko-browser-'));
       const file = join(directory, 'vocabulary.json');
+      const grammarFile = join(directory, 'grammar.json');
       await writeFile(file, JSON.stringify(Object.fromEntries(words.map((w) => [w.id, w]))));
-      const { app } = createApp(file);
+      await writeFile(grammarFile, JSON.stringify({ schemaVersion: 1, patterns: grammarPatterns }));
+      const { app } = createApp(file, grammarFile);
       const server = app.listen(0, '127.0.0.1');
       await new Promise<void>((resolve) => server.once('listening', resolve));
       const fixture: Fixture['vocabulary'] = {
         read: async () => JSON.parse(await readFile(file, 'utf8')),
+        readGrammar: async () => JSON.parse(await readFile(grammarFile, 'utf8')).patterns,
         delay: 0,
         fail: null,
         writes: 0,

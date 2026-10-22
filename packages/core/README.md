@@ -1,6 +1,6 @@
 # @mandarinko/core
 
-Core vocabulary management library for the Mandarinko application.
+Framework-independent vocabulary and grammar contracts for Mandarinko.
 
 ## Features
 
@@ -100,6 +100,19 @@ manager.linkSibling('0', '5');
 - `getStats(): Stats` - Get vocabulary statistics
 
 ## Types
+
+`EntryText` owns the common `spelling: Spelling[]` and `definition: string[]`
+fields. `Word`, `GrammarPattern` and `GrammarExample` reuse those fields;
+patterns also reuse `WordMetadata` directly. Patterns contain a title, examples,
+optional category, metadata and contrast IDs. Examples contain spellings and
+definitions only; neither patterns nor examples have word relationships.
+
+`validateGrammarPattern` accepts unknown JSON and returns field-specific errors,
+including malformed examples and unsupported recursive fields.
+`validateGrammarReferences` checks contrast IDs against existing patterns.
+`parseGrammarData` validates the versioned file, unique IDs and references.
+`matchesEntry` performs case-insensitive matching of every query term across all
+entry fields; it is shared by both catalog pages.
 
 ### Word
 

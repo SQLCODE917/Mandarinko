@@ -3244,7 +3244,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "自動詞 ↔ 他動詞 (cặp)"
+          "text": "自動詞 ↔ 他動詞"
         }
       ],
       "title": "Intransitive/transitive verb pairs",
@@ -3272,7 +3272,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "自動詞 + ている (trạng thái kết quả)"
+          "text": "自動詞 + ている"
         }
       ],
       "title": "Intransitive verb + teiru (resultant state)",
@@ -3420,7 +3420,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜ないで (V2 mà không V1)"
+          "text": "〜ないで"
         }
       ],
       "title": "〜nai de (without doing)",
@@ -3502,7 +3502,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜てある vs 〜ている (phân biệt)"
+          "text": "〜てある vs 〜ている"
         }
       ],
       "title": "〜tearu vs 〜teiru (distinguishing them)",
@@ -3530,7 +3530,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜ている (thói quen)"
+          "text": "〜ている"
         }
       ],
       "title": "〜teiru (habit / repeated action)",
@@ -3600,7 +3600,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜て (cách thức)"
+          "text": "〜て"
         }
       ],
       "title": "〜te (manner of an action)",
@@ -3732,7 +3732,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "て形・た形 (cách chia)"
+          "text": "て形・た形"
         }
       ],
       "title": "Forming the te-form and ta-form",
@@ -3871,7 +3871,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜ば (điều kiện chung)"
+          "text": "〜ば"
         }
       ],
       "title": "〜ば (general / hypothetical condition)",
@@ -3899,7 +3899,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "ば形 (cách chia điều kiện)"
+          "text": "ば形"
         }
       ],
       "title": "How to form the 〜ば conditional",
@@ -3955,7 +3955,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜なら (điều kiện chủ đề)"
+          "text": "〜なら"
         }
       ],
       "title": "〜なら (contextual / topic conditional)",
@@ -3983,7 +3983,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜たら (điều kiện cụ thể)"
+          "text": "〜たら"
         }
       ],
       "title": "〜たら (specific condition / after doing)",
@@ -4011,7 +4011,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜と (điều kiện tự động)"
+          "text": "〜と"
         }
       ],
       "title": "〜と (automatic / inevitable condition)",
@@ -4067,7 +4067,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "V意向形 (cách chia)"
+          "text": "V意向形"
         }
       ],
       "title": "Volitional form (verb conjugation)",
@@ -4246,7 +4246,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜になる (trở thành / được quyết định)"
+          "text": "〜になる"
         }
       ],
       "title": "~ni naru (become / turn out to be)",
@@ -4272,7 +4272,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜にする (chọn / quyết định)"
+          "text": "〜にする"
         }
       ],
       "title": "~ni suru (choose / decide on)",
@@ -4424,7 +4424,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "命令形 (cách chia & dùng)"
+          "text": "命令形"
         }
       ],
       "title": "Imperative form (conjugation and use)",
@@ -4480,7 +4480,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜なくなりました (mất khả năng)"
+          "text": "〜なくなりました"
         }
       ],
       "title": "~naku narimashita (no longer)",
@@ -5378,7 +5378,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "〜によって (tác nhân bị động)"
+          "text": "〜によって"
         }
       ],
       "title": "~によって (agent marker in passive)",
@@ -5528,7 +5528,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "使役形 (cách chia)"
+          "text": "使役形"
         }
       ],
       "title": "Causative form conjugation (3 verb groups)",
@@ -5556,7 +5556,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "使役受身形 (cách chia)"
+          "text": "使役受身形"
         }
       ],
       "title": "Causative-passive form conjugation (3 verb groups)",
@@ -5612,7 +5612,7 @@
       "spelling": [
         {
           "language": "ja",
-          "text": "受身形 (cách chia)"
+          "text": "受身形"
         }
       ],
       "title": "Passive form conjugation (3 verb groups)",

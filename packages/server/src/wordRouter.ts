@@ -4,6 +4,7 @@ import { ValidationService } from '@mandarinko/core';
 import { randomUUID } from 'crypto';
 import { isDeepStrictEqual } from 'node:util';
 import type { Word } from '@mandarinko/core';
+import { invalidCreationKey } from './creationKey.js';
 
 export function createWordRouter(store: DataStore): Router {
   const router = express.Router();
@@ -125,11 +126,7 @@ export function createWordRouter(store: DataStore): Router {
       return res.status(400).json({ error: 'ID must not be provided when creating a word' });
     }
     const requestKey = req.headers?.['idempotency-key'];
-    if (
-      requestKey !== undefined &&
-      (typeof requestKey !== 'string' ||
-        !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(requestKey))
-    ) {
+    if (invalidCreationKey(requestKey)) {
       return res.status(400).json({ error: 'Idempotency-Key must be a UUID v4' });
     }
     const word = { ...(payload as Omit<Word, 'id'>), id: requestKey ?? randomUUID() } as Word;

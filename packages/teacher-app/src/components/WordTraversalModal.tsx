@@ -9,7 +9,7 @@ import type { DerivationNavigation } from './DerivationText';
 import type { DictionaryLocation } from '../domain/dictionaryLocation';
 import { useWordTraversal } from '../hooks/useWordTraversal';
 import type { EngineCallbacks, NullWord, RelationViewModel } from '../domain/wordTraversalEngine';
-import './WordTreeModal.css';
+import { EntryDialog } from './EntryDialog';
 
 interface WordTraversalModalProps {
   location: DictionaryLocation;
@@ -65,98 +65,62 @@ export function WordTraversalModal({
   const links = isAuthoring ? undefined : navigation;
 
   return (
-    <div
-      className="word-tree-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="word-tree-title"
-      onKeyDown={(event) => {
-        if (event.nativeEvent.isComposing) return;
-        if (event.key === 'Escape') {
-          event.preventDefault();
-          void close();
-        }
-        if (event.key === 'Tab') {
-          const fields = [
-            ...event.currentTarget.querySelectorAll<HTMLElement>(
-              'button:not(:disabled), textarea, input, select, summary, a[href]'
-            ),
-          ].filter((element) => element.getClientRects().length > 0);
-          const first = fields[0];
-          const last = fields[fields.length - 1];
-          if (
-            (!event.shiftKey && document.activeElement === last) ||
-            (event.shiftKey &&
-              (document.activeElement === first || document.activeElement === titleRef.current))
-          ) {
-            event.preventDefault();
-            (event.shiftKey ? last : first)?.focus();
-          }
-        }
-      }}
+    <EntryDialog
+      title={isAuthoring ? 'Word editor' : 'Word details'}
+      titleId="word-tree-title"
+      titleRef={titleRef}
+      authoring={isAuthoring}
+      onClose={() => void close()}
     >
-      <div className="word-tree-backdrop" onClick={() => void close()} />
-      <div className={`word-tree-content${isAuthoring ? ' is-authoring' : ''}`}>
-        <div className="word-tree-header">
-          <div className="word-tree-title" id="word-tree-title" tabIndex={-1} ref={titleRef}>
-            {isAuthoring ? 'Word editor' : 'Word details'}
-          </div>
-          <button type="button" className="word-tree-close" onClick={() => void close()}>
-            Close
-          </button>
-        </div>
-        <div className="word-tree-body">
-          {error ? (
-            <p role="alert">{error}</p>
-          ) : !viewModel ? (
-            <p role="status">Loading vocabulary…</p>
+      {error ? (
+        <p role="alert">{error}</p>
+      ) : !viewModel ? (
+        <p role="status">Loading vocabulary…</p>
+      ) : (
+        <StrokeOrderScope key={rootWordId}>
+          {isAuthoring ? (
+            <WordEditor
+              ref={editorRef}
+              sessions={sessions.current}
+              onExit={exitEditor}
+              words={words}
+              callbacks={callbacks}
+              word={isNullWord(viewModel.current.word) ? undefined : viewModel.current.word}
+            />
           ) : (
-            <StrokeOrderScope key={rootWordId}>
-              {isAuthoring ? (
-                <WordEditor
-                  ref={editorRef}
-                  sessions={sessions.current}
-                  onExit={exitEditor}
-                  words={words}
-                  callbacks={callbacks}
-                  word={isNullWord(viewModel.current.word) ? undefined : viewModel.current.word}
-                />
-              ) : (
-                <WordViewerCard
-                  word={viewModel.current.word}
-                  navigation={links}
-                  showEdit
-                  onEdit={viewModel.current.onEdit}
-                  showRemove={false}
-                />
-              )}
-              {!isAuthoring && (viewModel.siblings.length > 0 || viewModel.children.length > 0) && (
-                <div className="word-relations">
-                  {viewModel.siblings.length > 0 && (
-                    <RelationGroup
-                      title="Siblings"
-                      items={viewModel.siblings}
-                      navigation={links}
-                      showRemove={isAuthoring}
-                      showDescendants={false}
-                    />
-                  )}
-                  {viewModel.children.length > 0 && (
-                    <RelationGroup
-                      title="Children"
-                      items={viewModel.children}
-                      navigation={links}
-                      showRemove={isAuthoring}
-                      showDescendants
-                    />
-                  )}
-                </div>
-              )}
-            </StrokeOrderScope>
+            <WordViewerCard
+              word={viewModel.current.word}
+              navigation={links}
+              showEdit
+              onEdit={viewModel.current.onEdit}
+              showRemove={false}
+            />
           )}
-        </div>
-      </div>
-    </div>
+          {!isAuthoring && (viewModel.siblings.length > 0 || viewModel.children.length > 0) && (
+            <div className="word-relations">
+              {viewModel.siblings.length > 0 && (
+                <RelationGroup
+                  title="Siblings"
+                  items={viewModel.siblings}
+                  navigation={links}
+                  showRemove={isAuthoring}
+                  showDescendants={false}
+                />
+              )}
+              {viewModel.children.length > 0 && (
+                <RelationGroup
+                  title="Children"
+                  items={viewModel.children}
+                  navigation={links}
+                  showRemove={isAuthoring}
+                  showDescendants
+                />
+              )}
+            </div>
+          )}
+        </StrokeOrderScope>
+      )}
+    </EntryDialog>
   );
 }
 

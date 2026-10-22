@@ -1,4 +1,9 @@
-import type { Word } from '@mandarinko/core';
+import type { Word, GrammarPattern } from '@mandarinko/core';
+
+export type ListGrammarResponse = GrammarPattern[];
+export type CreateGrammarRequest = Omit<GrammarPattern, 'id'>;
+export type UpdateGrammarRequest = Partial<CreateGrammarRequest>;
+export type GrammarResponse = GrammarPattern;
 
 export type WordResponse = Word & { id: string };
 export type ListWordsResponse = WordResponse[];

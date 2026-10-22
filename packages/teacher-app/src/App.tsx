@@ -6,8 +6,19 @@ import { useVocabulary } from './hooks/useVocabulary';
 import { useDictionaryNavigation } from './hooks/useDictionaryNavigation';
 import { WordTraversalModal } from './components/WordTraversalModal';
 import './App.css';
+import { GrammarPage } from './pages/GrammarPage';
 
 export function App() {
+  return window.location.pathname.replace(/\/+$/, '') === '/grammar' ? (
+    <div className="app">
+      <GrammarPage />
+    </div>
+  ) : (
+    <DictionaryApp />
+  );
+}
+
+function DictionaryApp() {
   const { words, loading, refetch, upsertWord } = useVocabulary();
   const navigation = useDictionaryNavigation();
   const derivationNavigation = {

@@ -20,6 +20,7 @@ import {
 } from '../domain/editorLocation';
 import { findBrowserEditorWorkspace } from '../domain/editorDraftStore';
 import './WordEditor.css';
+import { GrowingTextField } from './GrowingTextField';
 
 export type WordEditorHandle = { close: () => void };
 export type EditorExit = { kind: 'close' | 'finished'; wordId?: string };
@@ -762,7 +763,6 @@ function GrowingField({
   row?: EditorRow;
   onEnter?: () => void;
 }) {
-  const ref = useRef<HTMLTextAreaElement>(null);
   const [open, setOpen] = useState(false),
     [selected, setSelected] = useState(0);
   const composing = useRef(false);
@@ -782,25 +782,9 @@ function GrowingField({
       }
     }
   };
-  useLayoutEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-    const resize = () => {
-      const body = element.closest('.word-tree-body');
-      const scroll = body?.scrollTop;
-      element.style.height = 'auto';
-      element.style.height = `${element.scrollHeight + 2}px`;
-      if (body && scroll !== undefined) body.scrollTop = scroll;
-    };
-    resize();
-    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(resize);
-    observer?.observe(element);
-    return () => observer?.disconnect();
-  }, [value]);
   return (
     <div className="editor-input">
-      <textarea
-        ref={ref}
+      <GrowingTextField
         aria-label={label}
         rows={1}
         value={value}

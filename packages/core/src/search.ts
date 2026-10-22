@@ -1,5 +1,15 @@
 import type { Word, LanguageCode } from './types.js';
 
+/** Match every query term across the scalar values and field names of an entry. */
+export function matchesEntry(entry: unknown, query: string): boolean {
+  const text = JSON.stringify(entry).toLowerCase();
+  return query
+    .trim()
+    .toLowerCase()
+    .split(/\s+/)
+    .every((term) => text.includes(term));
+}
+
 export class VocabularySearch {
   /**
    * Search for words by exact spelling match (case-sensitive)

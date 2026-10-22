@@ -1,5 +1,14 @@
 import { Word, VocabularyData, LanguageCode } from './types.js';
 export type { Word, VocabularyData, LanguageCode, Spelling, WordMetadata } from './types.js';
+export type {
+  EntryText,
+  GrammarExample,
+  GrammarPattern,
+  GrammarData,
+  ValidationError,
+} from './types.js';
+export { validateGrammarPattern, validateGrammarReferences, parseGrammarData } from './grammar.js';
+export { matchesEntry } from './search.js';
 import { ValidationService } from './validation.js';
 import { VocabularySearch } from './search.js';
 

@@ -70,3 +70,27 @@
     padding-inline: 0.75rem;
   }
 }
+
+.page-navigation {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.7rem 1.25rem 0;
+  font-size: 0.8rem;
+}
+.page-navigation a {
+  color: #72685c;
+  text-decoration: none;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid transparent;
+}
+.page-navigation a[aria-current='page'] {
+  color: #a92568;
+  border-bottom-color: #a92568;
+}
+.page-navigation a:hover {
+  color: #a92568;
+}
+.page-navigation a:focus-visible {
+  outline: 2px solid #a92568;
+  outline-offset: 3px;
+}

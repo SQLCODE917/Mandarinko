@@ -1,29 +1,28 @@
-import fs from 'fs/promises';
 import path from 'path';
 import { VocabularyManager, VocabularyData } from '@mandarinko/core';
+import { JsonFile } from './jsonFile.js';
 
 export class DataStore {
-  private filePath: string;
+  private file: JsonFile<VocabularyData>;
   private manager: VocabularyManager;
   private lastLoadedMtimeMs?: number;
 
   constructor(filePath?: string) {
-    this.filePath = filePath ?? path.resolve(process.cwd(), 'vocabulary.json');
+    this.file = new JsonFile(filePath ?? path.resolve(process.cwd(), 'vocabulary.json'));
     this.manager = VocabularyManager.fromJSON({});
   }
 
   async load(): Promise<void> {
-    const stat = await fs.stat(this.filePath);
-    const raw = await fs.readFile(this.filePath, 'utf-8');
-    const parsed = JSON.parse(raw) as VocabularyData;
+    const mtime = await this.file.mtime();
+    const parsed = await this.file.read();
     this.manager = VocabularyManager.fromJSON(parsed);
-    this.lastLoadedMtimeMs = stat.mtimeMs;
+    this.lastLoadedMtimeMs = mtime;
   }
 
   async loadIfUpdated(): Promise<void> {
     try {
-      const stat = await fs.stat(this.filePath);
-      if (!this.lastLoadedMtimeMs || stat.mtimeMs > this.lastLoadedMtimeMs) {
+      const mtime = await this.file.mtime();
+      if (!this.lastLoadedMtimeMs || mtime > this.lastLoadedMtimeMs) {
         await this.load();
       }
     } catch (err) {
@@ -33,7 +32,7 @@ export class DataStore {
 
   async save(): Promise<void> {
     const json = this.manager.toJSON();
-    await fs.writeFile(this.filePath, JSON.stringify(json, null, 2), 'utf-8');
+    await this.file.write(json);
   }
 
   getManager(): VocabularyManager {

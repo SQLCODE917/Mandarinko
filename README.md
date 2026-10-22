@@ -1,6 +1,6 @@
 # Mandarinko
 
-A Chinese and Japanese vocabulary dictionary built around character derivations.
+A Chinese and Japanese dictionary and grammar authoring application.
 Follow a word into its components, connect Japanese kanji to their Chinese
 character histories, and reuse those explanations when authoring new entries.
 
@@ -96,9 +96,23 @@ Make Me a Hanzi-derived character data retains its LGPL-3.0-or-later terms.
 These terms are separate from the application’s GPL-3.0 code license; existing
 dictionary material retains its provenance.
 
-The Japanese grammar reference is stored in
-[`packages/server/grammar.json`](packages/server/grammar.json), using the dictionary's
-language and JLPT metadata conventions.
+## Explore and author grammar
+
+Use **Dictionary** (`/`) and **Grammar** (`/grammar`) to switch between the two
+pages. Grammar patterns use the same compact entry presentation, language-tagged
+spellings and study metadata as words. Both pages search all entry fields,
+including examples, categories, derivations and metadata where present.
+
+Open a pattern for its definitions, translated examples and contrast links, then
+choose **Edit**. Existing patterns autosave valid edits on blur; **Create New
+Grammar Pattern** keeps a local draft until **Create**. Close retains unfinished
+input in the current browser. Failed saves require explicit **Retry save**;
+unconfirmed creations retain their original payload and request key across reload.
+Patterns and examples are flat entries, without word component trees.
+
+The grammar page reads and writes
+[`packages/server/grammar.json`](packages/server/grammar.json), preserving its
+versioned pattern array independently of vocabulary.
 
 ## Run locally
 
@@ -125,8 +139,9 @@ Run `nvm use` in each new terminal; install dependencies inside WSL rather than
 copying `node_modules` from Windows.
 
 The API reads and writes
-[`packages/server/vocabulary.json`](packages/server/vocabulary.json). Preserve local
-vocabulary edits when updating the checkout. Unfinished editor work is stored in
+[`packages/server/vocabulary.json`](packages/server/vocabulary.json) and
+[`packages/server/grammar.json`](packages/server/grammar.json). Preserve local
+catalog edits when updating the checkout. Unfinished editor work is stored in
 the browser for that origin; it does not sync between browsers or machines.
 
 To run packages separately after building core:
@@ -156,17 +171,17 @@ pnpm test:browser
 ```
 
 The browser harness starts its own frontend on port 3014 and an API backed by
-per-test temporary vocabulary files. It does not require the development server
-and never writes to live vocabulary. Failure traces, screenshots and results are
+per-test temporary vocabulary and grammar files. It does not require the development
+server and never writes to live catalogs. Failure traces, screenshots and results are
 written to `test-results/`.
 
 The TypeScript/pnpm monorepo has three owning packages:
 
-| Package                                       | Responsibility                                                    |
-| --------------------------------------------- | ----------------------------------------------------------------- |
-| [core](packages/core/README.md)               | Vocabulary types, search, validation and relationship operations. |
-| [server](packages/server/README.md)           | Express API contracts and JSON persistence.                       |
-| [teacher-app](packages/teacher-app/README.md) | React dictionary, details view and vocabulary editor.             |
+| Package                                       | Responsibility                                                 |
+| --------------------------------------------- | -------------------------------------------------------------- |
+| [core](packages/core/README.md)               | Shared entry types, search, validation and word relationships. |
+| [server](packages/server/README.md)           | Express API contracts and JSON persistence.                    |
+| [teacher-app](packages/teacher-app/README.md) | Dictionary and grammar pages, details and authoring.           |
 
 The server and teacher app consume core’s public types and validation; the teacher
 app also consumes the server’s API types. Editor domain controllers own draft

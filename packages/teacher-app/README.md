@@ -1,6 +1,6 @@
 # @mandarinko/teacher-app
 
-A React/TypeScript web application for authoring and managing vocabulary words.
+A React/TypeScript web application for authoring vocabulary and grammar patterns.
 
 ## Features
 
@@ -35,11 +35,12 @@ cards or truncated text. The dictionary flows into columns as space permits; the
 relationship view uses compact indented branches. The details view stays read-only;
 Edit opens a separate word editor in the same dialog shell.
 
-Japanese spellings in dictionary entries, search results, and details use
+Japanese spellings in dictionary entries, search results, grammar headings,
+Japanese portions of grammar titles and example sentences in pattern details use
 [Furifont Serif v0.6.0](https://github.com/antfu/furifont/releases/tag/v0.6.0)
 with built-in hiragana readings. These are a visual aid and may be incorrect or
-absent; the separately displayed pronunciation field remains canonical. The font
-uses its own reading dictionary, not the stored pronunciation. Okurigana-dependent
+absent; for dictionary words, the separately displayed pronunciation field remains
+canonical. The font uses its own reading dictionary, not the stored pronunciation. Okurigana-dependent
 reading assistance is not enabled. Editing continues to use ordinary text fields.
 
 The unmodified variable WOFF2 is self-hosted in
@@ -97,6 +98,39 @@ without another fetch or an intermediate blank/previous-word frame.
 The magenta terminal banner carries the application identity: a typed wordmark,
 blinking cursor, scanlines, and restrained CRT artifacts. Motion stays in the
 banner; reduced-motion preferences show a static wordmark and cursor.
+
+## Grammar page
+
+The navigation links open Dictionary at `/` and Grammar at `/grammar`. Both
+catalog pages use shared compact lists, spelling headings and local search across
+every field. Grammar cards show the pattern, title, definition and a quote with
+the first example and its translation. Wide columns give longer text more room.
+Spellings are bold, and examples use a darker shade with larger Japanese text
+to make Furifont's kana easier to read.
+Cards fit a single column on small screens. Category and study levels appear in details;
+all examples and metadata remain searchable from the page. Details link to contrast patterns using
+`?pattern=ID`; `?newPattern=1` opens a new draft. Browser Back, Forward and reload
+restore these locations. Invalid or unavailable patterns show an explicit error.
+
+Pattern details use a wider reading layout with larger body text. The pattern,
+title and study metadata form the heading; divided sections separate meaning
+and usage, examples with their translations, and optional contrast links. Japanese
+examples retain Furifont readings. The layout fits mobile screens and scrolls for
+longer entries; page cards retain their compact presentation.
+
+**Edit** switches existing pattern details to the editor within the same dialog
+shell. Valid changes autosave on blur; **Done** finishes editing. New patterns
+stay local until **Create**. Spellings, definitions, examples, category, title,
+levels, frequency and contrast links are editable. Fields grow with their text.
+Close and Escape retain unfinished drafts in browser storage for the current
+origin. Failed saves offer explicit **Retry save**; an unconfirmed creation keeps
+its exact payload and key across reload. Ctrl/Cmd+Enter completes editing. Drafts
+do not sync between browsers.
+
+`GrammarEditorSession` owns the flat draft and publication lifecycle through
+injected HTTP and draft-storage ports. It shares `transitionEditor` with word
+authoring, along with the dialog, growing text fields, catalog loading and HTTP
+adapters. Grammar has no character traversal or recursive authoring graph.
 
 ## Word Editor
 
