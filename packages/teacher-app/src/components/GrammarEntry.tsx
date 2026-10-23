@@ -1,13 +1,12 @@
 import type { GrammarPattern } from '@mandarinko/core';
-import { EntryHeading } from './EntryHeading';
 import { GrammarTitle } from './GrammarTitle';
+import './WordEntry.css';
 import './Grammar.css';
 
 export function GrammarEntry({ pattern }: { pattern: GrammarPattern }) {
   const example = pattern.examples[0];
   return (
     <span className="word-entry grammar-entry">
-      <EntryHeading spelling={pattern.spelling} />
       <span className="grammar-title">
         <GrammarTitle pattern={pattern} />
       </span>

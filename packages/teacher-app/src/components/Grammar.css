@@ -7,14 +7,11 @@
 .word-entry.grammar-entry {
   max-inline-size: 38rem;
 }
-.grammar-entry .word-entry-spellings {
-  font-size: 1.375rem;
-  font-weight: 700;
-}
 .grammar-title {
   display: block;
-  font-size: inherit;
-  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 1.375rem;
+  font-weight: 700;
 }
 .grammar-card-quote {
   display: block;
@@ -24,8 +21,9 @@
   color: #49443e;
   quotes: none;
 }
-.grammar-card-quote :lang(ja) {
-  font-size: 1.25rem;
+.grammar-card-quote :lang(ja),
+.grammar-details .grammar-example :lang(ja) {
+  font-size: 1.375rem;
 }
 .grammar-text-fields,
 .grammar-fields {

@@ -102,12 +102,12 @@ banner; reduced-motion preferences show a static wordmark and cursor.
 ## Grammar page
 
 The navigation links open Dictionary at `/` and Grammar at `/grammar`. Both
-catalog pages use shared compact lists, spelling headings and local search across
-every field. Grammar cards show the pattern, title, definition and a quote with
-the first example and its translation. Wide columns give longer text more room.
-Spellings are bold, and examples use a darker shade with larger Japanese text
-to make Furifont's kana easier to read.
-Cards fit a single column on small screens. Category and study levels appear in details;
+catalog pages use shared compact lists and local search across every field.
+Grammar cards use a bold title as the main heading, followed by the definition
+and a quote with the first example and its translation. Wide columns give longer
+text more room. Examples use a darker shade with larger Japanese text to make
+Furifont's kana easier to read. Cards fit a single column on small screens.
+Spellings, category and study levels appear in details;
 all examples and metadata remain searchable from the page. Details link to contrast patterns using
 `?pattern=ID`; `?newPattern=1` opens a new draft. Browser Back, Forward and reload
 restore these locations. Invalid or unavailable patterns show an explicit error.
@@ -115,7 +115,8 @@ restore these locations. Invalid or unavailable patterns show an explicit error.
 Pattern details use a wider reading layout with larger body text. The pattern,
 title and study metadata form the heading; divided sections separate meaning
 and usage, examples with their translations, and optional contrast links. Japanese
-examples retain Furifont readings. The layout fits mobile screens and scrolls for
+examples match the card examples' text size and retain Furifont readings.
+The layout fits mobile screens and scrolls for
 longer entries; page cards retain their compact presentation.
 
 **Edit** switches existing pattern details to the editor within the same dialog

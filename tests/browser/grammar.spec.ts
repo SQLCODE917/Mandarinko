@@ -277,9 +277,11 @@ test('shipped grammar samples retain a compact desktop and mobile presentation',
   await expect(page.locator('.word-item')).toHaveCount(data.patterns.length);
   const firstCard = page.locator('.word-item').first();
   expect((await firstCard.boundingBox())!.width).toBeGreaterThanOrEqual(520);
-  await expect(firstCard.locator('.word-entry-spellings')).toHaveCSS('font-weight', '700');
-  await expect(firstCard.locator('.word-entry-spellings')).toHaveCSS('font-size', '22px');
-  await expect(firstCard.locator('.grammar-card-quote [lang="ja"]')).toHaveCSS('font-size', '20px');
+  await expect(firstCard.locator('.word-entry-spellings')).toHaveCount(0);
+  await expect(firstCard.locator('.grammar-title')).toHaveText(data.patterns[0].title);
+  await expect(firstCard.locator('.grammar-title')).toHaveCSS('font-weight', '700');
+  await expect(firstCard.locator('.grammar-title')).toHaveCSS('font-size', '22px');
+  await expect(firstCard.locator('.grammar-card-quote [lang="ja"]')).toHaveCSS('font-size', '22px');
   const exampleContrast = await firstCard.locator('.grammar-card-quote').evaluate((element) => {
     const luminance = (color: string) => {
       const channels = color
@@ -301,10 +303,13 @@ test('shipped grammar samples retain a compact desktop and mobile presentation',
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true
   );
-  await expect(firstCard.locator('.grammar-card-quote [lang="ja"]')).toHaveCSS('font-size', '20px');
+  await expect(firstCard.locator('.grammar-card-quote [lang="ja"]')).toHaveCSS('font-size', '22px');
   await page.screenshot({ path: testInfo.outputPath('shipped-grammar-mobile.png') });
   await page.setViewportSize({ width: 1280, height: 720 });
   await page.locator('.word-item').first().click();
+  await expect(page.getByRole('dialog').locator('.word-entry-spellings')).toHaveText(
+    data.patterns[0].spelling[0].text
+  );
   await page.getByRole('button', { name: 'Edit', exact: true }).click();
   await page.screenshot({ path: testInfo.outputPath('shipped-grammar-desktop-editor.png') });
   await page.setViewportSize({ width: 390, height: 844 });
@@ -354,6 +359,7 @@ test('Japanese grammar examples and titles render with Furifont while English ke
     await page.goto(`/grammar?pattern=${id}`);
     const example = page.getByRole('dialog').locator('.grammar-example [lang="ja"]');
     await expect(example).toHaveText(sentence);
+    await expect(example).toHaveCSS('font-size', '22px');
     await expect(example).toHaveCSS('font-family', /Furifont Serif/);
     await expect(example).toHaveCSS('font-variant-ligatures', 'common-ligatures contextual');
     await page.evaluate(() => document.fonts.ready);
