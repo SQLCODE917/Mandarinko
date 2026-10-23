@@ -37,7 +37,6 @@ export interface GrammarPattern extends EntryText {
   examples: GrammarExample[];
   category?: string;
   metadata?: WordMetadata;
-  contrastIds?: string[];
 }
 
 export interface GrammarData {

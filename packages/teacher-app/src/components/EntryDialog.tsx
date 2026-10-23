@@ -25,7 +25,7 @@ export function EntryDialog({
   useLayoutEffect(() => {
     const trigger = document.activeElement;
     return () => {
-      if (trigger instanceof HTMLElement && trigger.isConnected)
+      if ((trigger instanceof HTMLElement || trigger instanceof SVGElement) && trigger.isConnected)
         trigger.focus({ preventScroll: true });
     };
   }, []);

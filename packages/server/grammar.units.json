@@ -1,0 +1,957 @@
+{
+  "schemaVersion": 1,
+  "units": [
+    {
+      "id": "genki-1",
+      "sourceId": "genki",
+      "order": 1,
+      "title": "New Friends（あたらしいともだち）",
+      "locator": "Syllabus p.1, Lesson 1",
+      "instructional": true
+    },
+    {
+      "id": "genki-2",
+      "sourceId": "genki",
+      "order": 2,
+      "title": "Shopping（かいもの）",
+      "locator": "Syllabus p.1, Lesson 2",
+      "instructional": true
+    },
+    {
+      "id": "genki-3",
+      "sourceId": "genki",
+      "order": 3,
+      "title": "Making a Date（デートの約束）",
+      "locator": "Syllabus p.1, Lesson 3",
+      "instructional": true
+    },
+    {
+      "id": "genki-4",
+      "sourceId": "genki",
+      "order": 4,
+      "title": "The First Date（初めてのデート）",
+      "locator": "Syllabus p.1, Lesson 4",
+      "instructional": true
+    },
+    {
+      "id": "genki-5",
+      "sourceId": "genki",
+      "order": 5,
+      "title": "A Trip to Okinawa（沖縄旅⾏）",
+      "locator": "Syllabus p.1, Lesson 5",
+      "instructional": true
+    },
+    {
+      "id": "genki-6",
+      "sourceId": "genki",
+      "order": 6,
+      "title": "A Day in Robertʼs Life（ロバートさんの⼀⽇）",
+      "locator": "Syllabus p.1, Lesson 6",
+      "instructional": true
+    },
+    {
+      "id": "genki-7",
+      "sourceId": "genki",
+      "order": 7,
+      "title": "Family Picture（家族の写真）",
+      "locator": "Syllabus p.2, Lesson 7",
+      "instructional": true
+    },
+    {
+      "id": "genki-8",
+      "sourceId": "genki",
+      "order": 8,
+      "title": "Barbecue（バーベキュー）",
+      "locator": "Syllabus p.2, Lesson 8",
+      "instructional": true
+    },
+    {
+      "id": "genki-9",
+      "sourceId": "genki",
+      "order": 9,
+      "title": "Kabuki（かぶき）",
+      "locator": "Syllabus p.2, Lesson 9",
+      "instructional": true
+    },
+    {
+      "id": "genki-10",
+      "sourceId": "genki",
+      "order": 10,
+      "title": "Winter Vacation Plans（冬休みの予定）",
+      "locator": "Syllabus p.2, Lesson 10",
+      "instructional": true
+    },
+    {
+      "id": "genki-11",
+      "sourceId": "genki",
+      "order": 11,
+      "title": "After the Vacation（休みのあと）",
+      "locator": "Syllabus p.2, Lesson 11",
+      "instructional": true
+    },
+    {
+      "id": "genki-12",
+      "sourceId": "genki",
+      "order": 12,
+      "title": "Feeling Ill（病気）",
+      "locator": "Syllabus p.2, Lesson 12",
+      "instructional": true
+    },
+    {
+      "id": "genki-13",
+      "sourceId": "genki",
+      "order": 13,
+      "title": "Looking for a Part-time Job（アルバイト探し）",
+      "locator": "Syllabus p.3, Lesson 13",
+      "instructional": true
+    },
+    {
+      "id": "genki-14",
+      "sourceId": "genki",
+      "order": 14,
+      "title": "Valentineʼs Day（バレンタインデー）",
+      "locator": "Syllabus p.3, Lesson 14",
+      "instructional": true
+    },
+    {
+      "id": "genki-15",
+      "sourceId": "genki",
+      "order": 15,
+      "title": "A Trip to Nagano（⻑野旅⾏）",
+      "locator": "Syllabus p.3, Lesson 15",
+      "instructional": true
+    },
+    {
+      "id": "genki-16",
+      "sourceId": "genki",
+      "order": 16,
+      "title": "Lost and Found（忘れ物）",
+      "locator": "Syllabus p.3, Lesson 16",
+      "instructional": true
+    },
+    {
+      "id": "genki-17",
+      "sourceId": "genki",
+      "order": 17,
+      "title": "Grumble and Gossip（ぐちとうわさ話）",
+      "locator": "Syllabus p.3, Lesson 17",
+      "instructional": true
+    },
+    {
+      "id": "genki-18",
+      "sourceId": "genki",
+      "order": 18,
+      "title": "Johnʼs Part-time Job（ジョンさんのアルバイト）",
+      "locator": "Syllabus p.3, Lesson 18",
+      "instructional": true
+    },
+    {
+      "id": "genki-19",
+      "sourceId": "genki",
+      "order": 19,
+      "title": "Meeting the Boss（出迎え）",
+      "locator": "Syllabus p.3, Lesson 19",
+      "instructional": true
+    },
+    {
+      "id": "genki-20",
+      "sourceId": "genki",
+      "order": 20,
+      "title": "Mary Goes Shopping（メアリーさんの買い物）",
+      "locator": "Syllabus p.3, Lesson 20",
+      "instructional": true
+    },
+    {
+      "id": "genki-21",
+      "sourceId": "genki",
+      "order": 21,
+      "title": "Burglar（どろぼう）",
+      "locator": "Syllabus p.4, Lesson 21",
+      "instructional": true
+    },
+    {
+      "id": "genki-22",
+      "sourceId": "genki",
+      "order": 22,
+      "title": "Education in Japan（⽇本の教育）",
+      "locator": "Syllabus p.4, Lesson 22",
+      "instructional": true
+    },
+    {
+      "id": "genki-23",
+      "sourceId": "genki",
+      "order": 23,
+      "title": "Good-bye（別れ）",
+      "locator": "Syllabus p.4, Lesson 23",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-1",
+      "sourceId": "kanzen",
+      "order": 1,
+      "title": "１課　～とき",
+      "locator": "Contents, １課　～とき",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-2",
+      "sourceId": "kanzen",
+      "order": 2,
+      "title": "２課　～と関係して",
+      "locator": "Contents, ２課　～と関係して",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-3",
+      "sourceId": "kanzen",
+      "order": 3,
+      "title": "３課　比べれば…・～がいちばん",
+      "locator": "Contents, ３課　比べれば…・～がいちばん",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-4",
+      "sourceId": "kanzen",
+      "order": 4,
+      "title": "４課　～とは違って",
+      "locator": "Contents, ４課　～とは違って",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-5",
+      "sourceId": "kanzen",
+      "order": 5,
+      "title": "５課　～だから",
+      "locator": "Contents, ５課　～だから",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-6",
+      "sourceId": "kanzen",
+      "order": 6,
+      "title": "６課　もし、…",
+      "locator": "Contents, ６課　もし、…",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-7",
+      "sourceId": "kanzen",
+      "order": 7,
+      "title": "７課　～だそうだ",
+      "locator": "Contents, ７課　～だそうだ",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-8",
+      "sourceId": "kanzen",
+      "order": 8,
+      "title": "８課　絶対～ない・必ず～とは言えない",
+      "locator": "Contents, ８課　絶対～ない・必ず～とは言えない",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-9",
+      "sourceId": "kanzen",
+      "order": 9,
+      "title": "９課　～と望む",
+      "locator": "Contents, ９課　～と望む",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-10",
+      "sourceId": "kanzen",
+      "order": 10,
+      "title": "10課　～したほうがいい・～なさい",
+      "locator": "Contents, 10課　～したほうがいい・～なさい",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-11",
+      "sourceId": "kanzen",
+      "order": 11,
+      "title": "11課　～（よ）うと思う",
+      "locator": "Contents, 11課　～（よ）うと思う",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-12",
+      "sourceId": "kanzen",
+      "order": 12,
+      "title": "12課　敬語",
+      "locator": "Contents, 12課　敬語",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-13",
+      "sourceId": "kanzen",
+      "order": 13,
+      "title": "A　いろいろな働きをする助詞",
+      "locator": "Contents, A　いろいろな働きをする助詞",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-14",
+      "sourceId": "kanzen",
+      "order": 14,
+      "title": "B　助詞のような働きをする言葉",
+      "locator": "Contents, B　助詞のような働きをする言葉",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-15",
+      "sourceId": "kanzen",
+      "order": 15,
+      "title": "C　「こと・の」の使い方",
+      "locator": "Contents, C　「こと・の」の使い方",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-16",
+      "sourceId": "kanzen",
+      "order": 16,
+      "title": "D　「よう」のいろいろな使い方",
+      "locator": "Contents, D　「よう」のいろいろな使い方",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-17",
+      "sourceId": "kanzen",
+      "order": 17,
+      "title": "E　「わけ」のいろいろな使い方",
+      "locator": "Contents, E　「わけ」のいろいろな使い方",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-18",
+      "sourceId": "kanzen",
+      "order": 18,
+      "title": "F　「ばかり」のいろいろな使い方",
+      "locator": "Contents, F　「ばかり」のいろいろな使い方",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-19",
+      "sourceId": "kanzen",
+      "order": 19,
+      "title": "G　「する・なる」の整理",
+      "locator": "Contents, G　「する・なる」の整理",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-20",
+      "sourceId": "kanzen",
+      "order": 20,
+      "title": "H　「たら・ば・と・なら」の",
+      "locator": "Contents, H　「たら・ば・と・なら」の",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-21",
+      "sourceId": "kanzen",
+      "order": 21,
+      "title": "I　後に決まった表現が来る副詞",
+      "locator": "Contents, I　後に決まった表現が来る副詞",
+      "instructional": true
+    },
+    {
+      "id": "kanzen-unit-22",
+      "sourceId": "kanzen",
+      "order": 22,
+      "title": "J　動詞や名詞の意味を広げる",
+      "locator": "Contents, J　動詞や名詞の意味を広げる",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-3",
+      "sourceId": "irodori",
+      "order": 3,
+      "title": "入門 Lesson 3",
+      "locator": "Grammar Notes, 入門 L3",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-4",
+      "sourceId": "irodori",
+      "order": 4,
+      "title": "入門 Lesson 4",
+      "locator": "Grammar Notes, 入門 L4",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-5",
+      "sourceId": "irodori",
+      "order": 5,
+      "title": "入門 Lesson 5",
+      "locator": "Grammar Notes, 入門 L5",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-6",
+      "sourceId": "irodori",
+      "order": 6,
+      "title": "入門 Lesson 6",
+      "locator": "Grammar Notes, 入門 L6",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-7",
+      "sourceId": "irodori",
+      "order": 7,
+      "title": "入門 Lesson 7",
+      "locator": "Grammar Notes, 入門 L7",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-8",
+      "sourceId": "irodori",
+      "order": 8,
+      "title": "入門 Lesson 8",
+      "locator": "Grammar Notes, 入門 L8",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-9",
+      "sourceId": "irodori",
+      "order": 9,
+      "title": "入門 Lesson 9",
+      "locator": "Grammar Notes, 入門 L9",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-10",
+      "sourceId": "irodori",
+      "order": 10,
+      "title": "入門 Lesson 10",
+      "locator": "Grammar Notes, 入門 L10",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-11",
+      "sourceId": "irodori",
+      "order": 11,
+      "title": "入門 Lesson 11",
+      "locator": "Grammar Notes, 入門 L11",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-12",
+      "sourceId": "irodori",
+      "order": 12,
+      "title": "入門 Lesson 12",
+      "locator": "Grammar Notes, 入門 L12",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-13",
+      "sourceId": "irodori",
+      "order": 13,
+      "title": "入門 Lesson 13",
+      "locator": "Grammar Notes, 入門 L13",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-14",
+      "sourceId": "irodori",
+      "order": 14,
+      "title": "入門 Lesson 14",
+      "locator": "Grammar Notes, 入門 L14",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-15",
+      "sourceId": "irodori",
+      "order": 15,
+      "title": "入門 Lesson 15",
+      "locator": "Grammar Notes, 入門 L15",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-16",
+      "sourceId": "irodori",
+      "order": 16,
+      "title": "入門 Lesson 16",
+      "locator": "Grammar Notes, 入門 L16",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-17",
+      "sourceId": "irodori",
+      "order": 17,
+      "title": "入門 Lesson 17",
+      "locator": "Grammar Notes, 入門 L17",
+      "instructional": true
+    },
+    {
+      "id": "irodori-入門-18",
+      "sourceId": "irodori",
+      "order": 18,
+      "title": "入門 Lesson 18",
+      "locator": "Grammar Notes, 入門 L18",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-1",
+      "sourceId": "irodori",
+      "order": 101,
+      "title": "初級1 Lesson 1",
+      "locator": "Grammar Notes, 初級1 L1",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-2",
+      "sourceId": "irodori",
+      "order": 102,
+      "title": "初級1 Lesson 2",
+      "locator": "Grammar Notes, 初級1 L2",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-3",
+      "sourceId": "irodori",
+      "order": 103,
+      "title": "初級1 Lesson 3",
+      "locator": "Grammar Notes, 初級1 L3",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-4",
+      "sourceId": "irodori",
+      "order": 104,
+      "title": "初級1 Lesson 4",
+      "locator": "Grammar Notes, 初級1 L4",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-5",
+      "sourceId": "irodori",
+      "order": 105,
+      "title": "初級1 Lesson 5",
+      "locator": "Grammar Notes, 初級1 L5",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-6",
+      "sourceId": "irodori",
+      "order": 106,
+      "title": "初級1 Lesson 6",
+      "locator": "Grammar Notes, 初級1 L6",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-7",
+      "sourceId": "irodori",
+      "order": 107,
+      "title": "初級1 Lesson 7",
+      "locator": "Grammar Notes, 初級1 L7",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-8",
+      "sourceId": "irodori",
+      "order": 108,
+      "title": "初級1 Lesson 8",
+      "locator": "Grammar Notes, 初級1 L8",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-9",
+      "sourceId": "irodori",
+      "order": 109,
+      "title": "初級1 Lesson 9",
+      "locator": "Grammar Notes, 初級1 L9",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-10",
+      "sourceId": "irodori",
+      "order": 110,
+      "title": "初級1 Lesson 10",
+      "locator": "Grammar Notes, 初級1 L10",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-11",
+      "sourceId": "irodori",
+      "order": 111,
+      "title": "初級1 Lesson 11",
+      "locator": "Grammar Notes, 初級1 L11",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-12",
+      "sourceId": "irodori",
+      "order": 112,
+      "title": "初級1 Lesson 12",
+      "locator": "Grammar Notes, 初級1 L12",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-13",
+      "sourceId": "irodori",
+      "order": 113,
+      "title": "初級1 Lesson 13",
+      "locator": "Grammar Notes, 初級1 L13",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-14",
+      "sourceId": "irodori",
+      "order": 114,
+      "title": "初級1 Lesson 14",
+      "locator": "Grammar Notes, 初級1 L14",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-15",
+      "sourceId": "irodori",
+      "order": 115,
+      "title": "初級1 Lesson 15",
+      "locator": "Grammar Notes, 初級1 L15",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-16",
+      "sourceId": "irodori",
+      "order": 116,
+      "title": "初級1 Lesson 16",
+      "locator": "Grammar Notes, 初級1 L16",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-17",
+      "sourceId": "irodori",
+      "order": 117,
+      "title": "初級1 Lesson 17",
+      "locator": "Grammar Notes, 初級1 L17",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級1-18",
+      "sourceId": "irodori",
+      "order": 118,
+      "title": "初級1 Lesson 18",
+      "locator": "Grammar Notes, 初級1 L18",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-1",
+      "sourceId": "irodori",
+      "order": 201,
+      "title": "初級2 Lesson 1",
+      "locator": "Grammar Notes, 初級2 L1",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-2",
+      "sourceId": "irodori",
+      "order": 202,
+      "title": "初級2 Lesson 2",
+      "locator": "Grammar Notes, 初級2 L2",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-3",
+      "sourceId": "irodori",
+      "order": 203,
+      "title": "初級2 Lesson 3",
+      "locator": "Grammar Notes, 初級2 L3",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-4",
+      "sourceId": "irodori",
+      "order": 204,
+      "title": "初級2 Lesson 4",
+      "locator": "Grammar Notes, 初級2 L4",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-5",
+      "sourceId": "irodori",
+      "order": 205,
+      "title": "初級2 Lesson 5",
+      "locator": "Grammar Notes, 初級2 L5",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-6",
+      "sourceId": "irodori",
+      "order": 206,
+      "title": "初級2 Lesson 6",
+      "locator": "Grammar Notes, 初級2 L6",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-7",
+      "sourceId": "irodori",
+      "order": 207,
+      "title": "初級2 Lesson 7",
+      "locator": "Grammar Notes, 初級2 L7",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-8",
+      "sourceId": "irodori",
+      "order": 208,
+      "title": "初級2 Lesson 8",
+      "locator": "Grammar Notes, 初級2 L8",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-9",
+      "sourceId": "irodori",
+      "order": 209,
+      "title": "初級2 Lesson 9",
+      "locator": "Grammar Notes, 初級2 L9",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-10",
+      "sourceId": "irodori",
+      "order": 210,
+      "title": "初級2 Lesson 10",
+      "locator": "Grammar Notes, 初級2 L10",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-11",
+      "sourceId": "irodori",
+      "order": 211,
+      "title": "初級2 Lesson 11",
+      "locator": "Grammar Notes, 初級2 L11",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-12",
+      "sourceId": "irodori",
+      "order": 212,
+      "title": "初級2 Lesson 12",
+      "locator": "Grammar Notes, 初級2 L12",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-13",
+      "sourceId": "irodori",
+      "order": 213,
+      "title": "初級2 Lesson 13",
+      "locator": "Grammar Notes, 初級2 L13",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-14",
+      "sourceId": "irodori",
+      "order": 214,
+      "title": "初級2 Lesson 14",
+      "locator": "Grammar Notes, 初級2 L14",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-15",
+      "sourceId": "irodori",
+      "order": 215,
+      "title": "初級2 Lesson 15",
+      "locator": "Grammar Notes, 初級2 L15",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-16",
+      "sourceId": "irodori",
+      "order": 216,
+      "title": "初級2 Lesson 16",
+      "locator": "Grammar Notes, 初級2 L16",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-17",
+      "sourceId": "irodori",
+      "order": 217,
+      "title": "初級2 Lesson 17",
+      "locator": "Grammar Notes, 初級2 L17",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初級2-18",
+      "sourceId": "irodori",
+      "order": 218,
+      "title": "初級2 Lesson 18",
+      "locator": "Grammar Notes, 初級2 L18",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-1",
+      "sourceId": "irodori",
+      "order": 301,
+      "title": "初中級 Lesson 1",
+      "locator": "Grammar Notes, 初中級 L1",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-2",
+      "sourceId": "irodori",
+      "order": 302,
+      "title": "初中級 Lesson 2",
+      "locator": "Grammar Notes, 初中級 L2",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-3",
+      "sourceId": "irodori",
+      "order": 303,
+      "title": "初中級 Lesson 3",
+      "locator": "Grammar Notes, 初中級 L3",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-4",
+      "sourceId": "irodori",
+      "order": 304,
+      "title": "初中級 Lesson 4",
+      "locator": "Grammar Notes, 初中級 L4",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-5",
+      "sourceId": "irodori",
+      "order": 305,
+      "title": "初中級 Lesson 5",
+      "locator": "Grammar Notes, 初中級 L5",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-6",
+      "sourceId": "irodori",
+      "order": 306,
+      "title": "初中級 Lesson 6",
+      "locator": "Grammar Notes, 初中級 L6",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-7",
+      "sourceId": "irodori",
+      "order": 307,
+      "title": "初中級 Lesson 7",
+      "locator": "Grammar Notes, 初中級 L7",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-8",
+      "sourceId": "irodori",
+      "order": 308,
+      "title": "初中級 Lesson 8",
+      "locator": "Grammar Notes, 初中級 L8",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-9",
+      "sourceId": "irodori",
+      "order": 309,
+      "title": "初中級 Lesson 9",
+      "locator": "Grammar Notes, 初中級 L9",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-10",
+      "sourceId": "irodori",
+      "order": 310,
+      "title": "初中級 Lesson 10",
+      "locator": "Grammar Notes, 初中級 L10",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-11",
+      "sourceId": "irodori",
+      "order": 311,
+      "title": "初中級 Lesson 11",
+      "locator": "Grammar Notes, 初中級 L11",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-12",
+      "sourceId": "irodori",
+      "order": 312,
+      "title": "初中級 Lesson 12",
+      "locator": "Grammar Notes, 初中級 L12",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-13",
+      "sourceId": "irodori",
+      "order": 313,
+      "title": "初中級 Lesson 13",
+      "locator": "Grammar Notes, 初中級 L13",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-14",
+      "sourceId": "irodori",
+      "order": 314,
+      "title": "初中級 Lesson 14",
+      "locator": "Grammar Notes, 初中級 L14",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-15",
+      "sourceId": "irodori",
+      "order": 315,
+      "title": "初中級 Lesson 15",
+      "locator": "Grammar Notes, 初中級 L15",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-16",
+      "sourceId": "irodori",
+      "order": 316,
+      "title": "初中級 Lesson 16",
+      "locator": "Grammar Notes, 初中級 L16",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-17",
+      "sourceId": "irodori",
+      "order": 317,
+      "title": "初中級 Lesson 17",
+      "locator": "Grammar Notes, 初中級 L17",
+      "instructional": true
+    },
+    {
+      "id": "irodori-初中級-18",
+      "sourceId": "irodori",
+      "order": 318,
+      "title": "初中級 Lesson 18",
+      "locator": "Grammar Notes, 初中級 L18",
+      "instructional": true
+    },
+    {
+      "id": "editorial-comparisons",
+      "sourceId": "editorial",
+      "order": 0,
+      "title": "Editorial comparisons",
+      "locator": "Authored in Mandarinko",
+      "instructional": false
+    },
+    {
+      "id": "kanzen-compare-hazu-wake",
+      "sourceId": "kanzen",
+      "order": 101,
+      "title": "はずだ / わけだ",
+      "locator": "Contents, section E, one-point lesson",
+      "instructional": false
+    },
+    {
+      "id": "kanzen-compare-bakari-tokoro",
+      "sourceId": "kanzen",
+      "order": 102,
+      "title": "たばかり / たところ",
+      "locator": "Contents, section F, one-point lesson",
+      "instructional": false
+    },
+    {
+      "id": "kanzen-build-te-kara",
+      "sourceId": "kanzen-teaching",
+      "order": 1,
+      "title": "Earlier time expressions as foundations",
+      "locator": "Section 2, introduction to N3 lesson 1",
+      "instructional": false
+    }
+  ]
+}

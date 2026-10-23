@@ -20,7 +20,6 @@ export const grammarPatterns: GrammarPattern[] = [
       },
     ],
     metadata: { jlptLevel: 5 },
-    contrastIds: ['ni'],
   },
   {
     id: 'ni',
@@ -75,7 +74,7 @@ type Fixture = {
     read: () => Promise<Record<string, Word>>;
     readGrammar: () => Promise<GrammarPattern[]>;
     delay: number;
-    fail: 'create' | 'links' | 'lost' | null;
+    fail: 'create' | 'links' | 'lost' | 'comparisons' | null;
     writes: number;
   };
 };
@@ -87,6 +86,46 @@ export const test = base.extend<Fixture>({
       const grammarFile = join(directory, 'grammar.json');
       await writeFile(file, JSON.stringify(Object.fromEntries(words.map((w) => [w.id, w]))));
       await writeFile(grammarFile, JSON.stringify({ schemaVersion: 1, patterns: grammarPatterns }));
+      const referenceTables = {
+        sources: [
+          {
+            id: 'editorial',
+            title: 'Editorial',
+            url: 'https://example.com',
+            edition: '1',
+            retrievedAt: '2026-10-23',
+            curriculum: 'editorial',
+          },
+        ],
+        units: [
+          {
+            id: 'editorial-comparisons',
+            sourceId: 'editorial',
+            title: 'Editorial comparisons',
+            order: 0,
+            locator: 'Mandarinko',
+            instructional: false,
+          },
+        ],
+        'source-items': [],
+        relationships: [
+          {
+            id: 'editorial:de:ni',
+            fromId: 'de',
+            toId: 'ni',
+            type: 'compared',
+            unitId: 'editorial-comparisons',
+            itemIds: [],
+            basis: 'editorial',
+            rationale: 'Editorial comparison.',
+          },
+        ],
+      };
+      for (const [name, rows] of Object.entries(referenceTables))
+        await writeFile(
+          join(directory, `grammar.${name}.json`),
+          JSON.stringify({ schemaVersion: 1, [name === 'source-items' ? 'items' : name]: rows })
+        );
       const { app } = createApp(file, grammarFile);
       const server = app.listen(0, '127.0.0.1');
       await new Promise<void>((resolve) => server.once('listening', resolve));
@@ -111,12 +150,13 @@ export const test = base.extend<Fixture>({
           });
           return;
         }
-        if (method === 'POST' || method === 'PATCH') {
+        if (method === 'POST' || method === 'PATCH' || method === 'PUT') {
           fixture.writes++;
           if (fixture.delay) await new Promise((resolve) => setTimeout(resolve, fixture.delay));
           const fail = fixture.fail;
           if (
             (fail === 'create' && method === 'POST') ||
+            (fail === 'comparisons' && method === 'PUT') ||
             (fail === 'links' && request.postDataJSON()?.childrenIds)
           ) {
             fixture.fail = null;

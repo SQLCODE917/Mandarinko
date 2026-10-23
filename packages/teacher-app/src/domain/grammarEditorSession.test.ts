@@ -13,7 +13,6 @@ const pattern: GrammarPattern = {
   definition: ['At'],
   examples: [],
   metadata: { jlptLevel: 5 },
-  contrastIds: ['ni'],
 };
 function fixture(recovered?: GrammarDraft) {
   let draft = recovered;
@@ -75,7 +74,6 @@ describe('flat grammar editor lifecycle', () => {
     await session.commit();
     expect(f.ports.update).toHaveBeenCalledWith('de', { ...session.draft });
     expect(session.draft.metadata).toEqual(pattern.metadata);
-    expect(session.draft.contrastIds).toEqual(['ni']);
     expect(session.dirty).toBe(false);
   });
 

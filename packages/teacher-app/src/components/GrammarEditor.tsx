@@ -20,10 +20,12 @@ export const GrammarEditor = forwardRef<
     pattern?: GrammarPattern;
     patterns: GrammarPattern[];
     ports: GrammarEditorPorts;
+    comparisonIds?: string[];
     onExit: (saved?: GrammarPattern) => void;
   }
->(function GrammarEditor({ pattern, patterns, ports, onExit }, ref) {
-  const [session] = useState(() => new GrammarEditorSession(pattern, ports));
+>(function GrammarEditor({ pattern, patterns, ports, onExit, comparisonIds }, ref) {
+  const [comparisonsAvailable] = useState(() => comparisonIds !== undefined);
+  const [session] = useState(() => new GrammarEditorSession(pattern, ports, comparisonIds));
   const [, redraw] = useReducer((revision: number) => revision + 1, 0);
   const host = useRef<HTMLDivElement>(null);
   const exited = useRef(false);
@@ -194,28 +196,35 @@ export const GrammarEditor = forwardRef<
             </label>
           ))}
         </div>
-        <details className="grammar-contrasts">
-          <summary>Contrast patterns ({draft.contrastIds?.length ?? 0})</summary>
-          {patterns
-            .filter((other) => other.id !== pattern?.id)
-            .map((other) => (
-              <label key={other.id}>
-                <input
-                  type="checkbox"
-                  checked={draft.contrastIds?.includes(other.id) ?? false}
-                  onChange={(event) => {
-                    session.change({
-                      contrastIds: event.target.checked
-                        ? [...(draft.contrastIds ?? []), other.id]
-                        : draft.contrastIds?.filter((id) => id !== other.id),
-                    });
-                    commit();
-                  }}
-                />
-                {other.title}
-              </label>
-            ))}
-        </details>
+        {comparisonsAvailable ? (
+          <details className="grammar-contrasts">
+            <summary>Contrast patterns ({draft.comparisonIds?.length ?? 0})</summary>
+            {patterns
+              .filter((other) => other.id !== pattern?.id)
+              .map((other) => (
+                <label key={other.id}>
+                  <input
+                    type="checkbox"
+                    checked={draft.comparisonIds?.includes(other.id) ?? false}
+                    onChange={(event) => {
+                      session.change({
+                        comparisonIds: event.target.checked
+                          ? [...(draft.comparisonIds ?? []), other.id]
+                          : draft.comparisonIds?.filter((id) => id !== other.id),
+                      });
+                      commit();
+                    }}
+                  />
+                  {other.title}
+                </label>
+              ))}
+          </details>
+        ) : (
+          <p>
+            Comparison data is unavailable. You can still edit pattern content; reopen the editor
+            after reloading comparisons.
+          </p>
+        )}
       </fieldset>
       {session.errors.length > 0 && (
         <div role="alert" className="editor-validation">

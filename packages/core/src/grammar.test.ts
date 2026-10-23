@@ -29,7 +29,7 @@ describe('grammar contract', () => {
     [{ ...pattern, examples: [{ spelling: [], definition: [] }] }, 'examples[0].spelling'],
     [{ ...pattern, metadata: { jlptLevel: '5' } }, 'metadata.jlptLevel'],
     [{ ...pattern, title: ' ' }, 'title'],
-    [{ ...pattern, contrastIds: [null] }, 'contrastIds[0]'],
+    [{ ...pattern, contrastIds: [null] }, 'contrastIds'],
   ])('rejects malformed and recursive input at %s', (input, field) => {
     expect(validateGrammarPattern(input).some((error) => error.field === field)).toBe(true);
   });

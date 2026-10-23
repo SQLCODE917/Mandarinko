@@ -39,3 +39,6 @@ coverage/
 # Playwright artifacts
 /test-results/
 /playwright-report/
+
+# Generated grammar research review artifacts
+/packages/server/research-results/

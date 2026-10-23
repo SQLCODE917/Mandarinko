@@ -5,7 +5,7 @@ import {
 } from '@mandarinko/core';
 import { transitionEditor, type EditorLifecycle, type LifecycleEvent } from './editorLifecycle';
 
-export type GrammarInput = Omit<GrammarPattern, 'id'>;
+export type GrammarInput = Omit<GrammarPattern, 'id'> & { comparisonIds?: string[] };
 export interface GrammarDraft {
   draft: GrammarInput;
   requestKey: string;
@@ -42,7 +42,8 @@ export class GrammarEditorSession {
 
   constructor(
     private readonly pattern: GrammarPattern | undefined,
-    private readonly ports: GrammarEditorPorts
+    private readonly ports: GrammarEditorPorts,
+    comparisonIds?: string[]
   ) {
     this.slot = pattern ? `pattern:${pattern.id}` : 'new';
     let recovered: GrammarDraft | undefined;
@@ -54,8 +55,9 @@ export class GrammarEditorSession {
     const initial = pattern
       ? withoutId(pattern)
       : { spelling: [{ language: 'ja', text: '' }], title: '', definition: [''], examples: [] };
-    this.draft = clone(recovered?.draft ?? initial);
-    this.baseline = JSON.stringify(initial);
+    const initialDraft = comparisonIds === undefined ? initial : { ...initial, comparisonIds };
+    this.draft = clone(recovered?.draft ?? initialDraft);
+    this.baseline = JSON.stringify(initialDraft);
     this.requestKey = recovered?.requestKey ?? ports.newKey();
     this.pendingCreation = recovered?.pendingCreation;
     if (this.pendingCreation)
@@ -124,7 +126,8 @@ export class GrammarEditorSession {
       return;
     }
     const snapshot = clone(this.pendingCreation ?? this.draft);
-    this.errors = validateGrammarPattern({ ...snapshot, id: this.pattern?.id ?? this.requestKey });
+    const { comparisonIds: _comparisonIds, ...content } = snapshot;
+    this.errors = validateGrammarPattern({ ...content, id: this.pattern?.id ?? this.requestKey });
     if (this.errors.length) {
       await this.dispatch({ type: 'NEEDS_INPUT', stored: this.checkpoint() });
       return;

@@ -114,6 +114,22 @@ The grammar page reads and writes
 [`packages/server/grammar.json`](packages/server/grammar.json), preserving its
 versioned pattern array independently of vocabulary.
 
+Switch **Grid / Graph** to explore the sourced grammar concept map
+(`/grammar?view=graph`). Nodes open the same pattern details; connections open
+source evidence. The weighted center and branches describe connectivity, while
+source teaching order is an optional overlay. The overview draws a disclosed subset
+of connections; **Show all connections** reveals the complete filtered network.
+**Fit map** frames connected concepts; **Fit all patterns** includes unlinked
+entries. Unsupported connections remain absent.
+
+Reference sources, lessons, source items and relationship assertions live in
+separate JSON tables. GENKI, Shin Kanzen Master N3 and Irodori provide the pinned
+heading inventories; these are selected curricula, not an official JLPT syllabus.
+Unresolved matches, possible missing constructions, source differences and proposed
+entry splits remain in generated review artifacts. See the
+[server research commands](packages/server/README.md#grammar-reference-data-and-research)
+for regeneration and coverage reports.
+
 ## Run locally
 
 Use the native WSL checkout at `~/gits/Mandarinko` with Linux Node.js and pnpm.

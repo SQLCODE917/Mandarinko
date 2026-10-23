@@ -104,15 +104,35 @@ manager.linkSibling('0', '5');
 `EntryText` owns the common `spelling: Spelling[]` and `definition: string[]`
 fields. `Word`, `GrammarPattern` and `GrammarExample` reuse those fields;
 patterns also reuse `WordMetadata` directly. Patterns contain a title, examples,
-optional category, metadata and contrast IDs. Examples contain spellings and
+optional category and metadata. Examples contain spellings and
 definitions only; neither patterns nor examples have word relationships.
 
 `validateGrammarPattern` accepts unknown JSON and returns field-specific errors,
 including malformed examples and unsupported recursive fields.
-`validateGrammarReferences` checks contrast IDs against existing patterns.
-`parseGrammarData` validates the versioned file, unique IDs and references.
+`parseGrammarData` validates the versioned catalog and unique IDs.
 `matchesEntry` performs case-insensitive matching of every query term across all
 entry fields; it is shared by both catalog pages.
+
+### Grammar references
+
+`GrammarMapData` joins independently stored sources, units, source items and
+relationship assertions through stable IDs. `parseGrammarMap` checks table
+versions, uniqueness, references, symmetric endpoint ordering, directed source
+order and required evidence. Editorial comparisons remain distinct from sourced
+assertions; explicit builds-on evidence does not assert a hard prerequisite.
+
+`normalizeGrammarForm`, `constructionKey` and `matchGrammarItem` preserve original
+text while matching conventional notation conservatively. Sense collisions and
+known combined entries remain unresolved. `suggestGrammarPatterns` supplies review
+suggestions without accepting approximate matches.
+
+`projectGrammarGraph` groups source assertions into undirected visual edges while
+retaining their typed direction and evidence. Unit-normalized co-teaching support,
+independent curricula and explicit relationships determine bounded weights;
+introduced-earlier assertions contribute no centrality. `grammarOverview` selects
+a maximum-weight forest and strongest additional links without creating edges.
+`grammarCoverage` accounts for matched/unmatched catalog entries and source-item
+statuses. These operations are pure and contain no layout or persistence logic.
 
 ### Word
 

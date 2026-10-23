@@ -13,3 +13,8 @@ export type UpdateWordRequest = Partial<Word>;
 export type CreateWordResponse = WordResponse;
 export type UpdateWordResponse = WordResponse;
 export type DeleteWordResponse = { success: boolean };
+
+export type { GrammarMapData as GrammarMapResponse, GrammarRelationship } from '@mandarinko/core';
+export interface UpdateGrammarComparisonsRequest {
+  patternIds: string[];
+}

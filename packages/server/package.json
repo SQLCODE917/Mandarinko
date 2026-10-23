@@ -20,8 +20,9 @@
   "scripts": {
     "build": "tsc -b",
     "dev": "node --watch --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('ts-node/esm', pathToFileURL('./'));\" src/cli.ts",
-    "test": "vitest --run",
-    "test:coverage": "vitest --run --coverage"
+    "test": "vitest --run && node --test scripts/grammarResearch.test.mjs",
+    "test:coverage": "vitest --run --coverage",
+    "research:grammar": "node scripts/grammarResearch.mjs"
   },
   "dependencies": {
     "express": "^4.18.2",

@@ -3,7 +3,6 @@ import { randomUUID } from 'node:crypto';
 import { isDeepStrictEqual } from 'node:util';
 import {
   validateGrammarPattern,
-  validateGrammarReferences,
   type GrammarPattern,
   type ValidationError,
 } from '@mandarinko/core';
@@ -28,10 +27,8 @@ function bodyOf(req: Request): Record<string, unknown> {
   return req.body;
 }
 
-function validate(pattern: unknown, patterns: GrammarPattern[]): asserts pattern is GrammarPattern {
+function validate(pattern: unknown): asserts pattern is GrammarPattern {
   const errors = validateGrammarPattern(pattern);
-  if (!errors.length)
-    errors.push(...validateGrammarReferences(pattern as GrammarPattern, patterns));
   if (errors.length) throw new RequestError(400, 'Invalid grammar pattern', errors);
 }
 
@@ -72,7 +69,7 @@ export function createGrammarRouter(store: GrammarRepository): Router {
       const pattern = { ...body, id: key ?? randomUUID() };
       let status = 201;
       await store.change((data) => {
-        validate(pattern, data.patterns);
+        validate(pattern);
         const existing = data.patterns.find((entry) => entry.id === pattern.id);
         if (existing) {
           if (!isDeepStrictEqual(existing, pattern))
@@ -97,7 +94,7 @@ export function createGrammarRouter(store: GrammarRepository): Router {
         const existing = data.patterns.find((entry) => entry.id === req.params.id);
         if (!existing) throw new RequestError(404, 'Grammar pattern not found');
         const pattern = { ...existing, ...updates };
-        validate(pattern, data.patterns);
+        validate(pattern);
         saved = pattern;
         return {
           ...data,

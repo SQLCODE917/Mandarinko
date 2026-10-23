@@ -1,0 +1,4700 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "genki-1-1",
+      "unitId": "genki-1",
+      "position": 0,
+      "form": "X は Y です",
+      "meaning": "X は Y です",
+      "locator": "Syllabus p.1, Lesson 1",
+      "patternId": "desu-copula-polite",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-1-2",
+      "unitId": "genki-1",
+      "position": 1,
+      "form": "Question Sentences",
+      "meaning": "Question Sentences",
+      "locator": "Syllabus p.1, Lesson 1",
+      "patternId": "ka-question",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-1-3",
+      "unitId": "genki-1",
+      "position": 2,
+      "form": "Noun1 の Noun2",
+      "meaning": "Noun1 の Noun2",
+      "locator": "Syllabus p.1, Lesson 1",
+      "patternId": "no-possessive",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-2-1",
+      "unitId": "genki-2",
+      "position": 0,
+      "form": "これ/あれ/それ/どれ",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 2",
+      "patternId": "kore-sore-are-dore",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-2-2",
+      "unitId": "genki-2",
+      "position": 1,
+      "form": "この/その/あの/どの＋Noun",
+      "meaning": "この/その/あの/どの＋Noun",
+      "locator": "Syllabus p.1, Lesson 2",
+      "patternId": "kono-sono-ano-dono",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-2-3",
+      "unitId": "genki-2",
+      "position": 2,
+      "form": "ここ/そこ/あそこ/どこ",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 2",
+      "patternId": "koko-soko-asoko-doko",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-2-4",
+      "unitId": "genki-2",
+      "position": 3,
+      "form": "だれの Noun",
+      "meaning": "だれの Noun",
+      "locator": "Syllabus p.1, Lesson 2",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-2-5",
+      "unitId": "genki-2",
+      "position": 4,
+      "form": "Noun も",
+      "meaning": "Noun も",
+      "locator": "Syllabus p.1, Lesson 2",
+      "status": "review"
+    },
+    {
+      "id": "genki-2-6",
+      "unitId": "genki-2",
+      "position": 5,
+      "form": "Noun じゃないです",
+      "meaning": "Noun じゃないです",
+      "locator": "Syllabus p.1, Lesson 2",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-2-7",
+      "unitId": "genki-2",
+      "position": 6,
+      "form": "〜ね/〜よ",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 2",
+      "status": "review"
+    },
+    {
+      "id": "genki-3-1",
+      "unitId": "genki-3",
+      "position": 0,
+      "form": "Verb Conjugation",
+      "meaning": "Verb Conjugation",
+      "locator": "Syllabus p.1, Lesson 3",
+      "status": "review"
+    },
+    {
+      "id": "genki-3-2",
+      "unitId": "genki-3",
+      "position": 1,
+      "form": "Verb Types and the “Present Tense”",
+      "meaning": "Verb Types and the “Present Tense”",
+      "locator": "Syllabus p.1, Lesson 3",
+      "status": "review"
+    },
+    {
+      "id": "genki-3-3",
+      "unitId": "genki-3",
+      "position": 2,
+      "form": "Particles",
+      "meaning": "Particles",
+      "locator": "Syllabus p.1, Lesson 3",
+      "status": "review"
+    },
+    {
+      "id": "genki-3-4",
+      "unitId": "genki-3",
+      "position": 3,
+      "form": "Time References",
+      "meaning": "Time References",
+      "locator": "Syllabus p.1, Lesson 3",
+      "status": "review"
+    },
+    {
+      "id": "genki-3-5",
+      "unitId": "genki-3",
+      "position": 4,
+      "form": "〜ませんか",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 3",
+      "patternId": "masen-ka",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-3-6",
+      "unitId": "genki-3",
+      "position": 5,
+      "form": "Frequency Adverbs",
+      "meaning": "Frequency Adverbs",
+      "locator": "Syllabus p.1, Lesson 3",
+      "status": "review"
+    },
+    {
+      "id": "genki-3-7",
+      "unitId": "genki-3",
+      "position": 6,
+      "form": "Word Order",
+      "meaning": "Word Order",
+      "locator": "Syllabus p.1, Lesson 3",
+      "status": "review"
+    },
+    {
+      "id": "genki-3-8",
+      "unitId": "genki-3",
+      "position": 7,
+      "form": "The Topic Particle は",
+      "meaning": "The Topic Particle は",
+      "locator": "Syllabus p.1, Lesson 3",
+      "patternId": "wa-topic",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-4-1",
+      "unitId": "genki-4",
+      "position": 0,
+      "form": "X があります/います",
+      "meaning": "X があります/います",
+      "locator": "Syllabus p.1, Lesson 4",
+      "patternId": "imasu-animate-exist",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-4-2",
+      "unitId": "genki-4",
+      "position": 1,
+      "form": "Describing Where Things Are",
+      "meaning": "Describing Where Things Are",
+      "locator": "Syllabus p.1, Lesson 4",
+      "status": "review"
+    },
+    {
+      "id": "genki-4-3",
+      "unitId": "genki-4",
+      "position": 2,
+      "form": "Past Tense of です",
+      "meaning": "Past Tense of です",
+      "locator": "Syllabus p.1, Lesson 4",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-4-4",
+      "unitId": "genki-4",
+      "position": 3,
+      "form": "Past Tense of Verbs",
+      "meaning": "Past Tense of Verbs",
+      "locator": "Syllabus p.1, Lesson 4",
+      "status": "review"
+    },
+    {
+      "id": "genki-4-5",
+      "unitId": "genki-4",
+      "position": 4,
+      "form": "も",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 4",
+      "status": "review"
+    },
+    {
+      "id": "genki-4-6",
+      "unitId": "genki-4",
+      "position": 5,
+      "form": "⼀時間",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 4",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-4-7",
+      "unitId": "genki-4",
+      "position": 6,
+      "form": "たくさん",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 4",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-4-8",
+      "unitId": "genki-4",
+      "position": 7,
+      "form": "と",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 4",
+      "status": "review"
+    },
+    {
+      "id": "genki-5-1",
+      "unitId": "genki-5",
+      "position": 0,
+      "form": "Adjectives (Present Tense)",
+      "meaning": "Adjectives (Present Tense)",
+      "locator": "Syllabus p.1, Lesson 5",
+      "status": "review"
+    },
+    {
+      "id": "genki-5-2",
+      "unitId": "genki-5",
+      "position": 1,
+      "form": "Adjectives (Past Tense)",
+      "meaning": "Adjectives (Past Tense)",
+      "locator": "Syllabus p.1, Lesson 5",
+      "status": "review"
+    },
+    {
+      "id": "genki-5-3",
+      "unitId": "genki-5",
+      "position": 2,
+      "form": "Adjectives (Noun Modification)",
+      "meaning": "Adjectives (Noun Modification)",
+      "locator": "Syllabus p.1, Lesson 5",
+      "status": "review"
+    },
+    {
+      "id": "genki-5-4",
+      "unitId": "genki-5",
+      "position": 3,
+      "form": "好き（な）/きらい（な）",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 5",
+      "patternId": "ga-suki",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-5-5",
+      "unitId": "genki-5",
+      "position": 4,
+      "form": "〜ましょう/〜ましょうか",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 5",
+      "patternId": "mashou",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-5-6",
+      "unitId": "genki-5",
+      "position": 5,
+      "form": "Counting",
+      "meaning": "Counting",
+      "locator": "Syllabus p.1, Lesson 5",
+      "status": "review"
+    },
+    {
+      "id": "genki-6-1",
+      "unitId": "genki-6",
+      "position": 0,
+      "form": "Te- form",
+      "meaning": "Te- form",
+      "locator": "Syllabus p.1, Lesson 6",
+      "status": "review"
+    },
+    {
+      "id": "genki-6-2",
+      "unitId": "genki-6",
+      "position": 1,
+      "form": "〜てください",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 6",
+      "patternId": "te-kudasai",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-6-3",
+      "unitId": "genki-6",
+      "position": 2,
+      "form": "Describing Two Activities",
+      "meaning": "Describing Two Activities",
+      "locator": "Syllabus p.1, Lesson 6",
+      "patternId": "te-form-connector",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-6-4",
+      "unitId": "genki-6",
+      "position": 3,
+      "form": "〜てもいいです",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 6",
+      "patternId": "te-mo-ii",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-6-5",
+      "unitId": "genki-6",
+      "position": 4,
+      "form": "〜てはいけません",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 6",
+      "patternId": "te-wa-ikenai",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-6-6",
+      "unitId": "genki-6",
+      "position": 5,
+      "form": "〜から",
+      "meaning": "",
+      "locator": "Syllabus p.1, Lesson 6",
+      "status": "review"
+    },
+    {
+      "id": "genki-6-7",
+      "unitId": "genki-6",
+      "position": 6,
+      "form": "〜ましょうか (Offering Assistance)",
+      "meaning": "〜ましょうか (Offering Assistance)",
+      "locator": "Syllabus p.1, Lesson 6",
+      "status": "review"
+    },
+    {
+      "id": "genki-7-1",
+      "unitId": "genki-7",
+      "position": 0,
+      "form": "〜ている (Action in Progress)",
+      "meaning": "〜ている (Action in Progress)",
+      "locator": "Syllabus p.2, Lesson 7",
+      "patternId": "te-iru",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-7-2",
+      "unitId": "genki-7",
+      "position": 1,
+      "form": "〜ている (Result of a Change)",
+      "meaning": "〜ている (Result of a Change)",
+      "locator": "Syllabus p.2, Lesson 7",
+      "patternId": "te-iru",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-7-3",
+      "unitId": "genki-7",
+      "position": 2,
+      "form": "メアリーさんは髪が⻑いです",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 7",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-7-4",
+      "unitId": "genki-7",
+      "position": 3,
+      "form": "Adjective/Noun Te- forms for Joining Sentences",
+      "meaning": "Adjective/Noun Te- forms for Joining Sentences",
+      "locator": "Syllabus p.2, Lesson 7",
+      "status": "review"
+    },
+    {
+      "id": "genki-7-5",
+      "unitId": "genki-7",
+      "position": 4,
+      "form": "Verb Stem＋に⾏く",
+      "meaning": "Verb Stem＋に⾏く",
+      "locator": "Syllabus p.2, Lesson 7",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-7-6",
+      "unitId": "genki-7",
+      "position": 5,
+      "form": "Counting People",
+      "meaning": "Counting People",
+      "locator": "Syllabus p.2, Lesson 7",
+      "patternId": "counter-nin",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-8-1",
+      "unitId": "genki-8",
+      "position": 0,
+      "form": "Short Forms",
+      "meaning": "Short Forms",
+      "locator": "Syllabus p.2, Lesson 8",
+      "status": "review"
+    },
+    {
+      "id": "genki-8-2",
+      "unitId": "genki-8",
+      "position": 1,
+      "form": "Short Forms in Informal Speech",
+      "meaning": "Short Forms in Informal Speech",
+      "locator": "Syllabus p.2, Lesson 8",
+      "status": "review"
+    },
+    {
+      "id": "genki-8-3",
+      "unitId": "genki-8",
+      "position": 2,
+      "form": "Short Forms in Quoted Speech: 〜と思います",
+      "meaning": "Short Forms in Quoted Speech: 〜と思います",
+      "locator": "Syllabus p.2, Lesson 8",
+      "patternId": "to-omou",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-8-4",
+      "unitId": "genki-8",
+      "position": 3,
+      "form": "Short Forms in Quoted Speech: 〜と⾔っていました",
+      "meaning": "Short Forms in Quoted Speech: 〜と⾔っていました",
+      "locator": "Syllabus p.2, Lesson 8",
+      "patternId": "to-itte-imashita-reported",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-8-5",
+      "unitId": "genki-8",
+      "position": 4,
+      "form": "〜ないでください",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 8",
+      "patternId": "naide-kudasai",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-8-6",
+      "unitId": "genki-8",
+      "position": 5,
+      "form": "Verb のが好きです/上⼿です",
+      "meaning": "Verb のが好きです/上⼿です",
+      "locator": "Syllabus p.2, Lesson 8",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-8-7",
+      "unitId": "genki-8",
+      "position": 6,
+      "form": "The Subject Particle が",
+      "meaning": "The Subject Particle が",
+      "locator": "Syllabus p.2, Lesson 8",
+      "patternId": "ga-subject",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-8-8",
+      "unitId": "genki-8",
+      "position": 7,
+      "form": "何か and 何も",
+      "meaning": "何か and 何も",
+      "locator": "Syllabus p.2, Lesson 8",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-9-1",
+      "unitId": "genki-9",
+      "position": 0,
+      "form": "Past Tense Short Forms",
+      "meaning": "Past Tense Short Forms",
+      "locator": "Syllabus p.2, Lesson 9",
+      "status": "review"
+    },
+    {
+      "id": "genki-9-2",
+      "unitId": "genki-9",
+      "position": 1,
+      "form": "Past Tense Short Forms in Informal Speech",
+      "meaning": "Past Tense Short Forms in Informal Speech",
+      "locator": "Syllabus p.2, Lesson 9",
+      "status": "review"
+    },
+    {
+      "id": "genki-9-3",
+      "unitId": "genki-9",
+      "position": 2,
+      "form": "Past Tense Short Forms in Quoted Speech: 〜と思います",
+      "meaning": "Past Tense Short Forms in Quoted Speech: 〜と思います",
+      "locator": "Syllabus p.2, Lesson 9",
+      "patternId": "to-omou",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-9-4",
+      "unitId": "genki-9",
+      "position": 3,
+      "form": "Past Tense Short Forms in Quoted Speech: 〜と⾔っていました",
+      "meaning": "Past Tense Short Forms in Quoted Speech: 〜と⾔っていました",
+      "locator": "Syllabus p.2, Lesson 9",
+      "patternId": "to-itte-imashita-reported",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-9-5",
+      "unitId": "genki-9",
+      "position": 4,
+      "form": "Qualifying Nouns with Verbs and Adjectives",
+      "meaning": "Qualifying Nouns with Verbs and Adjectives",
+      "locator": "Syllabus p.2, Lesson 9",
+      "patternId": "noun-modification",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-9-6",
+      "unitId": "genki-9",
+      "position": 5,
+      "form": "もう〜ました and まだ〜ていません",
+      "meaning": "もう〜ました and まだ〜ていません",
+      "locator": "Syllabus p.2, Lesson 9",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-9-7",
+      "unitId": "genki-9",
+      "position": 6,
+      "form": "Explanation から、Situation",
+      "meaning": "Explanation から、Situation",
+      "locator": "Syllabus p.2, Lesson 9",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-10-1",
+      "unitId": "genki-10",
+      "position": 0,
+      "form": "Comparison between Two Items",
+      "meaning": "Comparison between Two Items",
+      "locator": "Syllabus p.2, Lesson 10",
+      "status": "review"
+    },
+    {
+      "id": "genki-10-2",
+      "unitId": "genki-10",
+      "position": 1,
+      "form": "Comparison among Three or More Items",
+      "meaning": "Comparison among Three or More Items",
+      "locator": "Syllabus p.2, Lesson 10",
+      "status": "review"
+    },
+    {
+      "id": "genki-10-3",
+      "unitId": "genki-10",
+      "position": 2,
+      "form": "Adjective/Noun ＋の",
+      "meaning": "Adjective/Noun ＋の",
+      "locator": "Syllabus p.2, Lesson 10",
+      "patternId": "no-possessive",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-10-4",
+      "unitId": "genki-10",
+      "position": 3,
+      "form": "〜つもりだ",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 10",
+      "status": "review"
+    },
+    {
+      "id": "genki-10-5",
+      "unitId": "genki-10",
+      "position": 4,
+      "form": "Adjective＋なる",
+      "meaning": "Adjective＋なる",
+      "locator": "Syllabus p.2, Lesson 10",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-10-6",
+      "unitId": "genki-10",
+      "position": 5,
+      "form": "どこかに/どこにも",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 10",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-10-7",
+      "unitId": "genki-10",
+      "position": 6,
+      "form": "で",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 10",
+      "status": "review"
+    },
+    {
+      "id": "genki-11-1",
+      "unitId": "genki-11",
+      "position": 0,
+      "form": "〜たい",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 11",
+      "patternId": "tai-want-to",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-11-2",
+      "unitId": "genki-11",
+      "position": 1,
+      "form": "〜たり〜たりする",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 11",
+      "patternId": "tari-tari",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-11-3",
+      "unitId": "genki-11",
+      "position": 2,
+      "form": "〜ことがある",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 11",
+      "status": "review"
+    },
+    {
+      "id": "genki-11-4",
+      "unitId": "genki-11",
+      "position": 3,
+      "form": "Noun A や Noun B",
+      "meaning": "Noun A や Noun B",
+      "locator": "Syllabus p.2, Lesson 11",
+      "patternId": "ya-partial",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-12-1",
+      "unitId": "genki-12",
+      "position": 0,
+      "form": "〜んです",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 12",
+      "patternId": "n-desu-explanation",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-12-2",
+      "unitId": "genki-12",
+      "position": 1,
+      "form": "〜すぎる",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 12",
+      "patternId": "sugiru",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-12-3",
+      "unitId": "genki-12",
+      "position": 2,
+      "form": "〜ほうがいいです",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 12",
+      "patternId": "hou-ga-ii-advice",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-12-4",
+      "unitId": "genki-12",
+      "position": 3,
+      "form": "〜ので",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 12",
+      "patternId": "node-because",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-12-5",
+      "unitId": "genki-12",
+      "position": 4,
+      "form": "〜なければいけません/〜なきゃいけません",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 12",
+      "status": "review"
+    },
+    {
+      "id": "genki-12-6",
+      "unitId": "genki-12",
+      "position": 5,
+      "form": "〜でしょうか",
+      "meaning": "",
+      "locator": "Syllabus p.2, Lesson 12",
+      "status": "review"
+    },
+    {
+      "id": "genki-13-1",
+      "unitId": "genki-13",
+      "position": 0,
+      "form": "Potential Verbs",
+      "meaning": "Potential Verbs",
+      "locator": "Syllabus p.3, Lesson 13",
+      "status": "review"
+    },
+    {
+      "id": "genki-13-2",
+      "unitId": "genki-13",
+      "position": 1,
+      "form": "〜し",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 13",
+      "status": "review"
+    },
+    {
+      "id": "genki-13-3",
+      "unitId": "genki-13",
+      "position": 2,
+      "form": "〜そうです (It looks like . . . )",
+      "meaning": "〜そうです (It looks like . . . )",
+      "locator": "Syllabus p.3, Lesson 13",
+      "patternId": "sou-da-appearance",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-13-4",
+      "unitId": "genki-13",
+      "position": 3,
+      "form": "〜てみる",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 13",
+      "patternId": "te-miru",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-13-5",
+      "unitId": "genki-13",
+      "position": 4,
+      "form": "なら",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 13",
+      "status": "review"
+    },
+    {
+      "id": "genki-13-6",
+      "unitId": "genki-13",
+      "position": 5,
+      "form": "⼀週間に三回",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 13",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-14-1",
+      "unitId": "genki-14",
+      "position": 0,
+      "form": "ほしい",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 14",
+      "patternId": "ga-hoshii",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-14-2",
+      "unitId": "genki-14",
+      "position": 1,
+      "form": "〜かもしれません",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 14",
+      "patternId": "kamoshirenai-might",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-14-3",
+      "unitId": "genki-14",
+      "position": 2,
+      "form": "あげる/くれる/もらう",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 14",
+      "patternId": "ageru-morau-kureru",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-14-4",
+      "unitId": "genki-14",
+      "position": 3,
+      "form": "〜たらどうですか",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 14",
+      "patternId": "tara-dou-ka",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-14-5",
+      "unitId": "genki-14",
+      "position": 4,
+      "form": "Number＋も / Number＋しか＋Negative",
+      "meaning": "Number＋も / Number＋しか＋Negative",
+      "locator": "Syllabus p.3, Lesson 14",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-15-1",
+      "unitId": "genki-15",
+      "position": 0,
+      "form": "Volitional Form",
+      "meaning": "Volitional Form",
+      "locator": "Syllabus p.3, Lesson 15",
+      "status": "review"
+    },
+    {
+      "id": "genki-15-2",
+      "unitId": "genki-15",
+      "position": 1,
+      "form": "Volitional Form＋と思っています",
+      "meaning": "Volitional Form＋と思っています",
+      "locator": "Syllabus p.3, Lesson 15",
+      "patternId": "you-to-omou",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-15-3",
+      "unitId": "genki-15",
+      "position": 2,
+      "form": "〜ておく",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 15",
+      "patternId": "te-oku",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-15-4",
+      "unitId": "genki-15",
+      "position": 3,
+      "form": "Using Sentences to Qualify Nouns",
+      "meaning": "Using Sentences to Qualify Nouns",
+      "locator": "Syllabus p.3, Lesson 15",
+      "patternId": "noun-modification",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-16-1",
+      "unitId": "genki-16",
+      "position": 0,
+      "form": "〜てあげる/くれる/もらう",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 16",
+      "status": "review"
+    },
+    {
+      "id": "genki-16-2",
+      "unitId": "genki-16",
+      "position": 1,
+      "form": "〜ていただけませんか",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 16",
+      "patternId": "te-itadakemasenka-request",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-16-3",
+      "unitId": "genki-16",
+      "position": 2,
+      "form": "〜といい",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 16",
+      "patternId": "to-ii-hope",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-16-4",
+      "unitId": "genki-16",
+      "position": 3,
+      "form": "〜時",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 16",
+      "patternId": "toki-when-time",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-16-5",
+      "unitId": "genki-16",
+      "position": 4,
+      "form": "〜てすみませんでした",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 16",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-17-1",
+      "unitId": "genki-17",
+      "position": 0,
+      "form": "〜そうです (I hear)",
+      "meaning": "〜そうです (I hear)",
+      "locator": "Syllabus p.3, Lesson 17",
+      "patternId": "sou-da-hearsay",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-17-2",
+      "unitId": "genki-17",
+      "position": 1,
+      "form": "〜って",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 17",
+      "patternId": "tte-kuchigo",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-17-3",
+      "unitId": "genki-17",
+      "position": 2,
+      "form": "〜たら",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 17",
+      "patternId": "tara-conditional",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-17-4",
+      "unitId": "genki-17",
+      "position": 3,
+      "form": "〜なくてもいいです",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 17",
+      "patternId": "nakute-mo-ii",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-17-5",
+      "unitId": "genki-17",
+      "position": 4,
+      "form": "〜みたいです",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 17",
+      "status": "review"
+    },
+    {
+      "id": "genki-17-6",
+      "unitId": "genki-17",
+      "position": 5,
+      "form": "〜前に/〜てから",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 17",
+      "status": "review"
+    },
+    {
+      "id": "genki-18-1",
+      "unitId": "genki-18",
+      "position": 0,
+      "form": "Transitivity Pairs",
+      "meaning": "Transitivity Pairs",
+      "locator": "Syllabus p.3, Lesson 18",
+      "status": "review"
+    },
+    {
+      "id": "genki-18-2",
+      "unitId": "genki-18",
+      "position": 1,
+      "form": "Paired Intransitive Verbs＋ている",
+      "meaning": "Paired Intransitive Verbs＋ている",
+      "locator": "Syllabus p.3, Lesson 18",
+      "patternId": "jidoushi-teiru-state",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-18-3",
+      "unitId": "genki-18",
+      "position": 2,
+      "form": "〜てしまう",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 18",
+      "patternId": "te-shimau-completion-regret",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-18-4",
+      "unitId": "genki-18",
+      "position": 3,
+      "form": "〜と",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 18",
+      "patternId": "to-conditional-natural",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-18-5",
+      "unitId": "genki-18",
+      "position": 4,
+      "form": "〜ながら",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 18",
+      "patternId": "nagara-while",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-18-6",
+      "unitId": "genki-18",
+      "position": 5,
+      "form": "〜ばよかったです",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 18",
+      "patternId": "ba-yokatta",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-19-1",
+      "unitId": "genki-19",
+      "position": 0,
+      "form": "Honorific Verbs",
+      "meaning": "Honorific Verbs",
+      "locator": "Syllabus p.3, Lesson 19",
+      "patternId": "sonkeigo",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-19-2",
+      "unitId": "genki-19",
+      "position": 1,
+      "form": "Giving Respectful Advice",
+      "meaning": "Giving Respectful Advice",
+      "locator": "Syllabus p.3, Lesson 19",
+      "patternId": "o-kudasai-honorific-request",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-19-3",
+      "unitId": "genki-19",
+      "position": 2,
+      "form": "〜てくれてありがとう",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 19",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-19-4",
+      "unitId": "genki-19",
+      "position": 3,
+      "form": "〜てよかったです",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 19",
+      "status": "review"
+    },
+    {
+      "id": "genki-19-5",
+      "unitId": "genki-19",
+      "position": 4,
+      "form": "〜はずです",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 19",
+      "status": "review"
+    },
+    {
+      "id": "genki-20-1",
+      "unitId": "genki-20",
+      "position": 0,
+      "form": "Extra-modest Expressions",
+      "meaning": "Extra-modest Expressions",
+      "locator": "Syllabus p.3, Lesson 20",
+      "status": "review"
+    },
+    {
+      "id": "genki-20-2",
+      "unitId": "genki-20",
+      "position": 1,
+      "form": "Humble Expressions",
+      "meaning": "Humble Expressions",
+      "locator": "Syllabus p.3, Lesson 20",
+      "status": "review"
+    },
+    {
+      "id": "genki-20-3",
+      "unitId": "genki-20",
+      "position": 2,
+      "form": "〜ないで",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 20",
+      "patternId": "naide-without-doing",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-20-4",
+      "unitId": "genki-20",
+      "position": 3,
+      "form": "Questions within Larger Sentences",
+      "meaning": "Questions within Larger Sentences",
+      "locator": "Syllabus p.3, Lesson 20",
+      "status": "review"
+    },
+    {
+      "id": "genki-20-5",
+      "unitId": "genki-20",
+      "position": 4,
+      "form": "Name という Item",
+      "meaning": "Name という Item",
+      "locator": "Syllabus p.3, Lesson 20",
+      "status": "backfill"
+    },
+    {
+      "id": "genki-20-6",
+      "unitId": "genki-20",
+      "position": 5,
+      "form": "〜やすい/〜にくい",
+      "meaning": "",
+      "locator": "Syllabus p.3, Lesson 20",
+      "status": "review"
+    },
+    {
+      "id": "genki-21-1",
+      "unitId": "genki-21",
+      "position": 0,
+      "form": "Passive Sentences",
+      "meaning": "Passive Sentences",
+      "locator": "Syllabus p.4, Lesson 21",
+      "status": "review"
+    },
+    {
+      "id": "genki-21-2",
+      "unitId": "genki-21",
+      "position": 1,
+      "form": "〜てある",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 21",
+      "patternId": "tearu-prepared-state",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-21-3",
+      "unitId": "genki-21",
+      "position": 2,
+      "form": "〜間に",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 21",
+      "status": "review"
+    },
+    {
+      "id": "genki-21-4",
+      "unitId": "genki-21",
+      "position": 3,
+      "form": "Adjective＋する",
+      "meaning": "Adjective＋する",
+      "locator": "Syllabus p.4, Lesson 21",
+      "patternId": "ni-suru-ku-suru",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-21-5",
+      "unitId": "genki-21",
+      "position": 4,
+      "form": "〜てほしい",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 21",
+      "patternId": "te-hoshii",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-22-1",
+      "unitId": "genki-22",
+      "position": 0,
+      "form": "Causative Sentences",
+      "meaning": "Causative Sentences",
+      "locator": "Syllabus p.4, Lesson 22",
+      "status": "review"
+    },
+    {
+      "id": "genki-22-2",
+      "unitId": "genki-22",
+      "position": 1,
+      "form": "Causative＋てあげる/てくれる/てもらう",
+      "meaning": "Causative＋てあげる/てくれる/てもらう",
+      "locator": "Syllabus p.4, Lesson 22",
+      "status": "review"
+    },
+    {
+      "id": "genki-22-3",
+      "unitId": "genki-22",
+      "position": 2,
+      "form": "Verb Stem＋なさい",
+      "meaning": "Verb Stem＋なさい",
+      "locator": "Syllabus p.4, Lesson 22",
+      "patternId": "nasai-soft-command",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-22-4",
+      "unitId": "genki-22",
+      "position": 3,
+      "form": "〜ば",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 22",
+      "patternId": "ba-conditional",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-22-5",
+      "unitId": "genki-22",
+      "position": 4,
+      "form": "〜のに",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 22",
+      "patternId": "noni-gyakusetsu",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-22-6",
+      "unitId": "genki-22",
+      "position": 5,
+      "form": "〜のように/〜のような",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 22",
+      "patternId": "no-youni-hikaku",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-23-1",
+      "unitId": "genki-23",
+      "position": 0,
+      "form": "Causative-passive Sentences",
+      "meaning": "Causative-passive Sentences",
+      "locator": "Syllabus p.4, Lesson 23",
+      "status": "review"
+    },
+    {
+      "id": "genki-23-2",
+      "unitId": "genki-23",
+      "position": 1,
+      "form": "〜ても",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 23",
+      "patternId": "temo-even-if",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-23-3",
+      "unitId": "genki-23",
+      "position": 2,
+      "form": "〜ことにする",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 23",
+      "patternId": "koto-ni-suru",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-23-4",
+      "unitId": "genki-23",
+      "position": 3,
+      "form": "〜ことにしている",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 23",
+      "patternId": "koto-ni-suru",
+      "status": "resolved"
+    },
+    {
+      "id": "genki-23-5",
+      "unitId": "genki-23",
+      "position": 4,
+      "form": "〜まで",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 23",
+      "status": "review"
+    },
+    {
+      "id": "genki-23-6",
+      "unitId": "genki-23",
+      "position": 5,
+      "form": "〜⽅",
+      "meaning": "",
+      "locator": "Syllabus p.4, Lesson 23",
+      "patternId": "kata-way-of-doing",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-1-1",
+      "unitId": "kanzen-unit-1",
+      "position": 0,
+      "form": "～うちに…",
+      "meaning": "",
+      "locator": "Contents, １課　～とき",
+      "patternId": "uchini-toki",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-1-2",
+      "unitId": "kanzen-unit-1",
+      "position": 1,
+      "form": "～間…・～間に…",
+      "meaning": "",
+      "locator": "Contents, １課　～とき",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-1-3",
+      "unitId": "kanzen-unit-1",
+      "position": 2,
+      "form": "～てからでないと…・～てからでなければ",
+      "meaning": "",
+      "locator": "Contents, １課　～とき",
+      "patternId": "tekara-denai-to",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-1-4",
+      "unitId": "kanzen-unit-1",
+      "position": 3,
+      "form": "～～ところだ・～ところ（＋助詞）",
+      "meaning": "",
+      "locator": "Contents, １課　～とき",
+      "patternId": "tokoro-da-jiten",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-2-1",
+      "unitId": "kanzen-unit-2",
+      "position": 0,
+      "form": "～とおりだ・～とおり（に）…",
+      "meaning": "",
+      "locator": "Contents, ２課　～と関係して",
+      "patternId": "toori-doori",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-2-2",
+      "unitId": "kanzen-unit-2",
+      "position": 1,
+      "form": "～によって…・～よっては…",
+      "meaning": "",
+      "locator": "Contents, ２課　～と関係して",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-2-3",
+      "unitId": "kanzen-unit-2",
+      "position": 2,
+      "form": "～たびに…",
+      "meaning": "",
+      "locator": "Contents, ２課　～と関係して",
+      "patternId": "tabini-maikai",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-2-4",
+      "unitId": "kanzen-unit-2",
+      "position": 3,
+      "form": "（～ば）～ほど…・（～なら）～ほど…～ほど…",
+      "meaning": "",
+      "locator": "Contents, ２課　～と関係して",
+      "patternId": "ba-hodo-proportion",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-2-5",
+      "unitId": "kanzen-unit-2",
+      "position": 4,
+      "form": "～ついでに…",
+      "meaning": "",
+      "locator": "Contents, ２課　～と関係して",
+      "patternId": "tsuide-ni",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-3-1",
+      "unitId": "kanzen-unit-3",
+      "position": 0,
+      "form": "～くらいだ・～ぐらいだ・～くらい",
+      "meaning": "",
+      "locator": "Contents, ３課　比べれば…・～がいちばん",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-3-2",
+      "unitId": "kanzen-unit-3",
+      "position": 1,
+      "form": "～くらい…はない・～ぐらい…はない・～ほど…はない",
+      "meaning": "",
+      "locator": "Contents, ３課　比べれば…・～がいちばん",
+      "patternId": "hodo-wa-nai-saijou",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-3-3",
+      "unitId": "kanzen-unit-3",
+      "position": 2,
+      "form": "～くらいなら…・～ぐらいなら…",
+      "meaning": "",
+      "locator": "Contents, ３課　比べれば…・～がいちばん",
+      "patternId": "kurai-nara",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-3-4",
+      "unitId": "kanzen-unit-3",
+      "position": 3,
+      "form": "～に限る",
+      "meaning": "",
+      "locator": "Contents, ３課　比べれば…・～がいちばん",
+      "patternId": "ni-kagiru",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-4-1",
+      "unitId": "kanzen-unit-4",
+      "position": 0,
+      "form": "～に対して…",
+      "meaning": "",
+      "locator": "Contents, ４課　～とは違って",
+      "patternId": "ni-taishite-taihi",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-4-2",
+      "unitId": "kanzen-unit-4",
+      "position": 1,
+      "form": "～反面…",
+      "meaning": "",
+      "locator": "Contents, ４課　～とは違って",
+      "patternId": "hanmen",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-4-3",
+      "unitId": "kanzen-unit-4",
+      "position": 2,
+      "form": "～一方（で）",
+      "meaning": "",
+      "locator": "Contents, ４課　～とは違って",
+      "patternId": "ippou-de",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-4-4",
+      "unitId": "kanzen-unit-4",
+      "position": 3,
+      "form": "～というより…",
+      "meaning": "",
+      "locator": "Contents, ４課　～とは違って",
+      "patternId": "to-iu-yori",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-4-5",
+      "unitId": "kanzen-unit-4",
+      "position": 4,
+      "form": "～かわりに…",
+      "meaning": "",
+      "locator": "Contents, ４課　～とは違って",
+      "patternId": "kawari-ni",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-5-1",
+      "unitId": "kanzen-unit-5",
+      "position": 0,
+      "form": "～ためだ・～ため（に）…",
+      "meaning": "",
+      "locator": "Contents, ５課　～だから",
+      "patternId": "tame-ni-genin",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-5-2",
+      "unitId": "kanzen-unit-5",
+      "position": 1,
+      "form": "～によって…・～による",
+      "meaning": "",
+      "locator": "Contents, ５課　～だから",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-5-3",
+      "unitId": "kanzen-unit-5",
+      "position": 2,
+      "form": "～から…・～ことから…",
+      "meaning": "",
+      "locator": "Contents, ５課　～だから",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-5-4",
+      "unitId": "kanzen-unit-5",
+      "position": 3,
+      "form": "～おかげだ・～おかげで…／～せいだ・～せいで…",
+      "meaning": "",
+      "locator": "Contents, ５課　～だから",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-5-5",
+      "unitId": "kanzen-unit-5",
+      "position": 4,
+      "form": "～のだから…",
+      "meaning": "",
+      "locator": "Contents, ５課　～だから",
+      "patternId": "no-dakara",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-6-1",
+      "unitId": "kanzen-unit-6",
+      "position": 0,
+      "form": "～（の）なら…",
+      "meaning": "",
+      "locator": "Contents, ６課　もし、…",
+      "patternId": "no-nara",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-6-2",
+      "unitId": "kanzen-unit-6",
+      "position": 1,
+      "form": "～ては…・～（の）では…",
+      "meaning": "",
+      "locator": "Contents, ６課　もし、…",
+      "patternId": "te-wa-dewa",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-6-3",
+      "unitId": "kanzen-unit-6",
+      "position": 2,
+      "form": "～さえ～ば…・～さえ～なら…",
+      "meaning": "",
+      "locator": "Contents, ６課　もし、…",
+      "patternId": "sae-ba",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-6-4",
+      "unitId": "kanzen-unit-6",
+      "position": 3,
+      "form": "たとえ～ても…・たとえ～でも…",
+      "meaning": "",
+      "locator": "Contents, ６課　もし、…",
+      "patternId": "tatoe-temo",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-6-5",
+      "unitId": "kanzen-unit-6",
+      "position": 4,
+      "form": "～ば…・～たら…・～なら…",
+      "meaning": "",
+      "locator": "Contents, ６課　もし、…",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-7-1",
+      "unitId": "kanzen-unit-7",
+      "position": 0,
+      "form": "～ということだ・～とのことだ",
+      "meaning": "",
+      "locator": "Contents, ７課　～だそうだ",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-7-2",
+      "unitId": "kanzen-unit-7",
+      "position": 1,
+      "form": "～と言われている",
+      "meaning": "",
+      "locator": "Contents, ７課　～だそうだ",
+      "patternId": "to-iwarete-iru",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-7-3",
+      "unitId": "kanzen-unit-7",
+      "position": 2,
+      "form": "～とか",
+      "meaning": "",
+      "locator": "Contents, ７課　～だそうだ",
+      "patternId": "toka-denbun",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-7-4",
+      "unitId": "kanzen-unit-7",
+      "position": 3,
+      "form": "～って",
+      "meaning": "",
+      "locator": "Contents, ７課　～だそうだ",
+      "patternId": "tte-kuchigo",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-7-5",
+      "unitId": "kanzen-unit-7",
+      "position": 4,
+      "form": "～という",
+      "meaning": "",
+      "locator": "Contents, ７課　～だそうだ",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-8-1",
+      "unitId": "kanzen-unit-8",
+      "position": 0,
+      "form": "～はずがない・～わけがない",
+      "meaning": "",
+      "locator": "Contents, ８課　絶対～ない・必ず～とは言えない",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-8-2",
+      "unitId": "kanzen-unit-8",
+      "position": 1,
+      "form": "～とは限らない",
+      "meaning": "",
+      "locator": "Contents, ８課　絶対～ない・必ず～とは言えない",
+      "patternId": "towa-kagiranai",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-8-3",
+      "unitId": "kanzen-unit-8",
+      "position": 2,
+      "form": "～わけではない・～というわけではない・～のではない",
+      "meaning": "",
+      "locator": "Contents, ８課　絶対～ない・必ず～とは言えない",
+      "patternId": "wake-dewa-nai",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-8-4",
+      "unitId": "kanzen-unit-8",
+      "position": 3,
+      "form": "～ないことはない",
+      "meaning": "",
+      "locator": "Contents, ８課　絶対～ない・必ず～とは言えない",
+      "patternId": "nai-koto-wa-nai",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-8-5",
+      "unitId": "kanzen-unit-8",
+      "position": 4,
+      "form": "～ことは～が、…",
+      "meaning": "",
+      "locator": "Contents, ８課　絶対～ない・必ず～とは言えない",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-9-1",
+      "unitId": "kanzen-unit-9",
+      "position": 0,
+      "form": "～てもらいたい・～ていただきたい・～てほしい",
+      "meaning": "",
+      "locator": "Contents, ９課　～と望む",
+      "patternId": "te-hoshii",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-9-2",
+      "unitId": "kanzen-unit-9",
+      "position": 1,
+      "form": "～（さ）せてもらいたい・～（さ）せていただきたい",
+      "meaning": "",
+      "locator": "Contents, ９課　～と望む",
+      "patternId": "sasete-hoshii",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-9-3",
+      "unitId": "kanzen-unit-9",
+      "position": 2,
+      "form": "～といい・～ばいい・～たらいい",
+      "meaning": "",
+      "locator": "Contents, ９課　～と望む",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-10-1",
+      "unitId": "kanzen-unit-10",
+      "position": 0,
+      "form": "命令（しろ）／禁止（～な）",
+      "meaning": "",
+      "locator": "Contents, 10課　～したほうがいい・～なさい",
+      "patternId": "meirei-kinshi",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-10-2",
+      "unitId": "kanzen-unit-10",
+      "position": 1,
+      "form": "～こと",
+      "meaning": "",
+      "locator": "Contents, 10課　～したほうがいい・～なさい",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-10-3",
+      "unitId": "kanzen-unit-10",
+      "position": 2,
+      "form": "～べきだ・～べき／～べきではない",
+      "meaning": "",
+      "locator": "Contents, 10課　～したほうがいい・～なさい",
+      "patternId": "beki-da",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-10-4",
+      "unitId": "kanzen-unit-10",
+      "position": 3,
+      "form": "～たらどうか",
+      "meaning": "",
+      "locator": "Contents, 10課　～したほうがいい・～なさい",
+      "patternId": "tara-dou-ka",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-11-1",
+      "unitId": "kanzen-unit-11",
+      "position": 0,
+      "form": "～ことにする・～ことにしている",
+      "meaning": "",
+      "locator": "Contents, 11課　～（よ）うと思う",
+      "patternId": "koto-ni-suru",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-11-2",
+      "unitId": "kanzen-unit-11",
+      "position": 1,
+      "form": "～ようにする・～ようにしている",
+      "meaning": "",
+      "locator": "Contents, 11課　～（よ）うと思う",
+      "patternId": "youni-suru",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-11-3",
+      "unitId": "kanzen-unit-11",
+      "position": 2,
+      "form": "～（よ）うとする",
+      "meaning": "",
+      "locator": "Contents, 11課　～（よ）うと思う",
+      "patternId": "you-to-suru",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-11-4",
+      "unitId": "kanzen-unit-11",
+      "position": 3,
+      "form": "～つもりだ",
+      "meaning": "",
+      "locator": "Contents, 11課　～（よ）うと思う",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-12-1",
+      "unitId": "kanzen-unit-12",
+      "position": 0,
+      "form": "尊敬語",
+      "meaning": "",
+      "locator": "Contents, 12課　敬語",
+      "patternId": "sonkeigo",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-12-2",
+      "unitId": "kanzen-unit-12",
+      "position": 1,
+      "form": "謙譲語１",
+      "meaning": "",
+      "locator": "Contents, 12課　敬語",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-12-3",
+      "unitId": "kanzen-unit-12",
+      "position": 2,
+      "form": "謙譲語２",
+      "meaning": "",
+      "locator": "Contents, 12課　敬語",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-12-4",
+      "unitId": "kanzen-unit-12",
+      "position": 3,
+      "form": "丁寧語",
+      "meaning": "",
+      "locator": "Contents, 12課　敬語",
+      "patternId": "teineigo",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-14-1",
+      "unitId": "kanzen-unit-14",
+      "position": 0,
+      "form": "～について…",
+      "meaning": "",
+      "locator": "Contents, B　助詞のような働きをする言葉",
+      "patternId": "ni-tsuite",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-14-2",
+      "unitId": "kanzen-unit-14",
+      "position": 1,
+      "form": "～に対して…・～に対する",
+      "meaning": "",
+      "locator": "Contents, B　助詞のような働きをする言葉",
+      "patternId": "ni-taishite-taihi",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-14-3",
+      "unitId": "kanzen-unit-14",
+      "position": 2,
+      "form": "～によって…",
+      "meaning": "",
+      "locator": "Contents, B　助詞のような働きをする言葉",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-14-4",
+      "unitId": "kanzen-unit-14",
+      "position": 3,
+      "form": "～にとって…",
+      "meaning": "",
+      "locator": "Contents, B　助詞のような働きをする言葉",
+      "patternId": "ni-totte",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-14-5",
+      "unitId": "kanzen-unit-14",
+      "position": 4,
+      "form": "～として…",
+      "meaning": "",
+      "locator": "Contents, B　助詞のような働きをする言葉",
+      "patternId": "to-shite",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-16-1",
+      "unitId": "kanzen-unit-16",
+      "position": 0,
+      "form": "～（かの）ようだ・～のようだ",
+      "meaning": "",
+      "locator": "Contents, D　「よう」のいろいろな使い方",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-16-2",
+      "unitId": "kanzen-unit-16",
+      "position": 1,
+      "form": "～ように…",
+      "meaning": "",
+      "locator": "Contents, D　「よう」のいろいろな使い方",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-16-3",
+      "unitId": "kanzen-unit-16",
+      "position": 2,
+      "form": "～ように…",
+      "meaning": "",
+      "locator": "Contents, D　「よう」のいろいろな使い方",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-16-4",
+      "unitId": "kanzen-unit-16",
+      "position": 3,
+      "form": "～ように…・～ようにと…・～よう…",
+      "meaning": "",
+      "locator": "Contents, D　「よう」のいろいろな使い方",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-17-1",
+      "unitId": "kanzen-unit-17",
+      "position": 0,
+      "form": "～わけだ・～というわけだ",
+      "meaning": "",
+      "locator": "Contents, E　「わけ」のいろいろな使い方",
+      "patternId": "wake-da",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-17-2",
+      "unitId": "kanzen-unit-17",
+      "position": 1,
+      "form": "～わけにはいかない",
+      "meaning": "",
+      "locator": "Contents, E　「わけ」のいろいろな使い方",
+      "patternId": "wake-niwa-ikanai",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-17-3",
+      "unitId": "kanzen-unit-17",
+      "position": 2,
+      "form": "～ないわけにはいかない",
+      "meaning": "",
+      "locator": "Contents, E　「わけ」のいろいろな使い方",
+      "patternId": "nai-wake-niwa-ikanai",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-18-1",
+      "unitId": "kanzen-unit-18",
+      "position": 0,
+      "form": "～ばかり…",
+      "meaning": "",
+      "locator": "Contents, F　「ばかり」のいろいろな使い方",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-18-2",
+      "unitId": "kanzen-unit-18",
+      "position": 1,
+      "form": "～てばかりいる…",
+      "meaning": "",
+      "locator": "Contents, F　「ばかり」のいろいろな使い方",
+      "patternId": "te-bakari-iru",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-18-3",
+      "unitId": "kanzen-unit-18",
+      "position": 2,
+      "form": "～ばかりでなく",
+      "meaning": "",
+      "locator": "Contents, F　「ばかり」のいろいろな使い方",
+      "patternId": "bakari-de-naku",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-18-4",
+      "unitId": "kanzen-unit-18",
+      "position": 3,
+      "form": "～ばかりだ",
+      "meaning": "",
+      "locator": "Contents, F　「ばかり」のいろいろな使い方",
+      "patternId": "bakari-da-henka",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-18-5",
+      "unitId": "kanzen-unit-18",
+      "position": 4,
+      "form": "～たばかりだ",
+      "meaning": "",
+      "locator": "Contents, F　「ばかり」のいろいろな使い方",
+      "patternId": "ta-bakari-da",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-unit-20-1",
+      "unitId": "kanzen-unit-20",
+      "position": 0,
+      "form": "～と…た・～たら…た",
+      "meaning": "",
+      "locator": "Contents, H　「たら・ば・と・なら」の",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-20-2",
+      "unitId": "kanzen-unit-20",
+      "position": 1,
+      "form": "～と…た",
+      "meaning": "",
+      "locator": "Contents, H　「たら・ば・と・なら」の",
+      "status": "review"
+    },
+    {
+      "id": "kanzen-unit-20-3",
+      "unitId": "kanzen-unit-20",
+      "position": 2,
+      "form": "～も…ば～も…・～も…なら～も…",
+      "meaning": "",
+      "locator": "Contents, H　「たら・ば・と・なら」の",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-3-1",
+      "unitId": "irodori-入門-3",
+      "position": 0,
+      "form": "N です",
+      "meaning": "N です",
+      "locator": "PDF p.1",
+      "patternId": "desu-copula-polite",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-3-2",
+      "unitId": "irodori-入門-3",
+      "position": 1,
+      "form": "【place  場所】から来ました",
+      "meaning": "【place  場所】から来ました",
+      "locator": "PDF p.1",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-3-3",
+      "unitId": "irodori-入門-3",
+      "position": 2,
+      "form": "Ｎは？",
+      "meaning": "Ｎは？",
+      "locator": "PDF p.2",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-3-4",
+      "unitId": "irodori-入門-3",
+      "position": 3,
+      "form": "S か？",
+      "meaning": "S か？",
+      "locator": "PDF p.3",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-3-5",
+      "unitId": "irodori-入門-3",
+      "position": 4,
+      "form": "Nも",
+      "meaning": "Nも",
+      "locator": "PDF p.3",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-3-6",
+      "unitId": "irodori-入門-3",
+      "position": 5,
+      "form": "N じゃないです",
+      "meaning": "N じゃないです",
+      "locator": "PDF p.4",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-4-1",
+      "unitId": "irodori-入門-4",
+      "position": 0,
+      "form": "N1 と N2",
+      "meaning": "N1 と N2",
+      "locator": "PDF p.5",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-4-2",
+      "unitId": "irodori-入門-4",
+      "position": 1,
+      "form": "【interrogative expressions  疑問表現 】ですか？",
+      "meaning": "【interrogative expressions  疑問表現 】ですか？",
+      "locator": "PDF p.5",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-4-3",
+      "unitId": "irodori-入門-4",
+      "position": 2,
+      "form": "【place  場所】に 住んでいます",
+      "meaning": "【place  場所】に 住んでいます",
+      "locator": "PDF p.6",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-4-4",
+      "unitId": "irodori-入門-4",
+      "position": 3,
+      "form": "N1 の N2",
+      "meaning": "N1 の N2",
+      "locator": "PDF p.7",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-5-1",
+      "unitId": "irodori-入門-5",
+      "position": 0,
+      "form": "N が 好きです",
+      "meaning": "N が 好きです",
+      "locator": "PDF p.8",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-5-2",
+      "unitId": "irodori-入門-5",
+      "position": 1,
+      "form": "N は ちょっと…",
+      "meaning": "N は ちょっと…",
+      "locator": "PDF p.9",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-5-3",
+      "unitId": "irodori-入門-5",
+      "position": 2,
+      "form": "V- ますか？\b",
+      "meaning": "V- ますか？\b",
+      "locator": "PDF p.10",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-5-4",
+      "unitId": "irodori-入門-5",
+      "position": 3,
+      "form": "N を V- ます",
+      "meaning": "N を V- ます",
+      "locator": "PDF p.11",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-5-5",
+      "unitId": "irodori-入門-5",
+      "position": 4,
+      "form": "V- ません",
+      "meaning": "V- ません",
+      "locator": "PDF p.12",
+      "patternId": "masen-polite-negative",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-5-6",
+      "unitId": "irodori-入門-5",
+      "position": 5,
+      "form": "いつも／よく",
+      "meaning": "",
+      "locator": "PDF p.13",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-6-1",
+      "unitId": "irodori-入門-6",
+      "position": 0,
+      "form": "お願いします",
+      "meaning": "",
+      "locator": "PDF p.14",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-6-2",
+      "unitId": "irodori-入門-6",
+      "position": 1,
+      "form": "Ｎにします",
+      "meaning": "Ｎにします",
+      "locator": "PDF p.15",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-6-3",
+      "unitId": "irodori-入門-6",
+      "position": 2,
+      "form": "かず",
+      "meaning": "",
+      "locator": "PDF p.15",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-6-4",
+      "unitId": "irodori-入門-6",
+      "position": 3,
+      "form": "Ｎ",
+      "meaning": "Ｎ",
+      "locator": "PDF p.16",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-7-1",
+      "unitId": "irodori-入門-7",
+      "position": 0,
+      "form": "ここは【place  場所】です",
+      "meaning": "ここは【place  場所】です",
+      "locator": "PDF p.17",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-7-2",
+      "unitId": "irodori-入門-7",
+      "position": 1,
+      "form": "【place  場所】に N が あります",
+      "meaning": "【place  場所】に N が あります",
+      "locator": "PDF p.17",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-7-3",
+      "unitId": "irodori-入門-7",
+      "position": 2,
+      "form": "ありません",
+      "meaning": "",
+      "locator": "PDF p.18",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-7-4",
+      "unitId": "irodori-入門-7",
+      "position": 3,
+      "form": "ナ A- です",
+      "meaning": "ナ A- です",
+      "locator": "PDF p.18",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-7-5",
+      "unitId": "irodori-入門-7",
+      "position": 4,
+      "form": "ナ A- じゃないです",
+      "meaning": "ナ A- じゃないです",
+      "locator": "PDF p.19",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-8-1",
+      "unitId": "irodori-入門-8",
+      "position": 0,
+      "form": "【place  場所】で V- ます",
+      "meaning": "【place  場所】で V- ます",
+      "locator": "PDF p.21",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-8-2",
+      "unitId": "irodori-入門-8",
+      "position": 1,
+      "form": "【person  人】は 【place  場所】に います",
+      "meaning": "【person  人】は 【place  場所】に います",
+      "locator": "PDF p.21",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-8-3",
+      "unitId": "irodori-入門-8",
+      "position": 2,
+      "form": "ひと",
+      "meaning": "",
+      "locator": "PDF p.22",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-8-4",
+      "unitId": "irodori-入門-8",
+      "position": 3,
+      "form": "ここ",
+      "meaning": "",
+      "locator": "PDF p.23",
+      "patternId": "koko-soko-asoko-doko",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-8-5",
+      "unitId": "irodori-入門-8",
+      "position": 4,
+      "form": "N の【location  位置】に あります",
+      "meaning": "N の【location  位置】に あります",
+      "locator": "PDF p.24",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-9-1",
+      "unitId": "irodori-入門-9",
+      "position": 0,
+      "form": "【time  時間】に",
+      "meaning": "【time  時間】に",
+      "locator": "PDF p.26",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-9-2",
+      "unitId": "irodori-入門-9",
+      "position": 1,
+      "form": "【time  時間】から【time  時間】まで",
+      "meaning": "【time  時間】から【time  時間】まで",
+      "locator": "PDF p.26",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-9-3",
+      "unitId": "irodori-入門-9",
+      "position": 2,
+      "form": "【date and time  日時】がいいです",
+      "meaning": "【date and time  日時】がいいです",
+      "locator": "PDF p.27",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-10-1",
+      "unitId": "irodori-入門-10",
+      "position": 0,
+      "form": "V- てください",
+      "meaning": "V- てください",
+      "locator": "PDF p.28",
+      "patternId": "te-kudasai",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-10-2",
+      "unitId": "irodori-入門-10",
+      "position": 1,
+      "form": "Ｎですね",
+      "meaning": "Ｎですね",
+      "locator": "PDF p.29",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-10-3",
+      "unitId": "irodori-入門-10",
+      "position": 2,
+      "form": "N、貸してください",
+      "meaning": "N、貸してください",
+      "locator": "PDF p.30",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-11-1",
+      "unitId": "irodori-入門-11",
+      "position": 0,
+      "form": "Nは 何ですか？",
+      "meaning": "Nは 何ですか？",
+      "locator": "PDF p.32",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-11-2",
+      "unitId": "irodori-入門-11",
+      "position": 1,
+      "form": "どんなＮ",
+      "meaning": "どんなＮ",
+      "locator": "PDF p.33",
+      "patternId": "donna",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-11-3",
+      "unitId": "irodori-入門-11",
+      "position": 2,
+      "form": "ナ A- じゃないです",
+      "meaning": "ナ A- じゃないです",
+      "locator": "PDF p.33",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-11-4",
+      "unitId": "irodori-入門-11",
+      "position": 3,
+      "form": "いつも／たいてい／よく／ときどき",
+      "meaning": "",
+      "locator": "PDF p.34",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-11-5",
+      "unitId": "irodori-入門-11",
+      "position": 4,
+      "form": "【person  人】と",
+      "meaning": "【person  人】と",
+      "locator": "PDF p.35",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-12-1",
+      "unitId": "irodori-入門-12",
+      "position": 0,
+      "form": "【date and time  日時】に",
+      "meaning": "【date and time  日時】に",
+      "locator": "PDF p.36",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-12-2",
+      "unitId": "irodori-入門-12",
+      "position": 1,
+      "form": "N に行きます",
+      "meaning": "N に行きます",
+      "locator": "PDF p.37",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-12-3",
+      "unitId": "irodori-入門-12",
+      "position": 2,
+      "form": "V- ませんか？",
+      "meaning": "V- ませんか？",
+      "locator": "PDF p.38",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-12-4",
+      "unitId": "irodori-入門-12",
+      "position": 3,
+      "form": "V- ましょう",
+      "meaning": "V- ましょう",
+      "locator": "PDF p.38",
+      "patternId": "mashou",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-12-5",
+      "unitId": "irodori-入門-12",
+      "position": 4,
+      "form": "V- に行きます",
+      "meaning": "V- に行きます",
+      "locator": "PDF p.39",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-13-1",
+      "unitId": "irodori-入門-13",
+      "position": 0,
+      "form": "この【vehicle  乗り物】は【place  場所】に行きますか？",
+      "meaning": "この【vehicle  乗り物】は【place  場所】に行きますか？",
+      "locator": "PDF p.40",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-13-2",
+      "unitId": "irodori-入門-13",
+      "position": 1,
+      "form": "ここは【place  場所】ですか？",
+      "meaning": "ここは【place  場所】ですか？",
+      "locator": "PDF p.41",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-13-3",
+      "unitId": "irodori-入門-13",
+      "position": 2,
+      "form": "【vehicle  乗り物】で来ます",
+      "meaning": "【vehicle  乗り物】で来ます",
+      "locator": "PDF p.42",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-13-4",
+      "unitId": "irodori-入門-13",
+      "position": 3,
+      "form": "【time / period  時間／期間】かかります",
+      "meaning": "【time / period  時間／期間】かかります",
+      "locator": "PDF p.43",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-13-5",
+      "unitId": "irodori-入門-13",
+      "position": 4,
+      "form": "ばしょ",
+      "meaning": "",
+      "locator": "PDF p.44",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-13-6",
+      "unitId": "irodori-入門-13",
+      "position": 5,
+      "form": "【place  場所】から【place  場所】まで",
+      "meaning": "【place  場所】から【place  場所】まで",
+      "locator": "PDF p.44",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-14-1",
+      "unitId": "irodori-入門-14",
+      "position": 0,
+      "form": "【place  場所】に N",
+      "meaning": "【place  場所】に N",
+      "locator": "PDF p.45",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-14-2",
+      "unitId": "irodori-入門-14",
+      "position": 1,
+      "form": "Ｎの【location  位置】に います",
+      "meaning": "Ｎの【location  位置】に います",
+      "locator": "PDF p.45",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-14-3",
+      "unitId": "irodori-入門-14",
+      "position": 2,
+      "form": "ナ A- な N",
+      "meaning": "ナ A- な N",
+      "locator": "PDF p.46",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-15-1",
+      "unitId": "irodori-入門-15",
+      "position": 0,
+      "form": "N がほしいんですが",
+      "meaning": "N がほしいんですが",
+      "locator": "PDF p.48",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-15-2",
+      "unitId": "irodori-入門-15",
+      "position": 1,
+      "form": "ナ A- ですね",
+      "meaning": "ナ A- ですね",
+      "locator": "PDF p.49",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-16-1",
+      "unitId": "irodori-入門-16",
+      "position": 0,
+      "form": "これ",
+      "meaning": "",
+      "locator": "PDF p.50",
+      "patternId": "kore-sore-are-dore",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-16-2",
+      "unitId": "irodori-入門-16",
+      "position": 1,
+      "form": "この",
+      "meaning": "",
+      "locator": "PDF p.51",
+      "patternId": "kono-sono-ano-dono",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-16-3",
+      "unitId": "irodori-入門-16",
+      "position": 2,
+      "form": "【amount  数量】ずつ",
+      "meaning": "【amount  数量】ずつ",
+      "locator": "PDF p.53",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-17-1",
+      "unitId": "irodori-入門-17",
+      "position": 0,
+      "form": "V- ました",
+      "meaning": "V- ました",
+      "locator": "PDF p.54",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-17-2",
+      "unitId": "irodori-入門-17",
+      "position": 1,
+      "form": "何も",
+      "meaning": "",
+      "locator": "PDF p.55",
+      "patternId": "nanimo-daremo-neg",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-17-3",
+      "unitId": "irodori-入門-17",
+      "position": 2,
+      "form": "ナ A- でした",
+      "meaning": "ナ A- でした",
+      "locator": "PDF p.55",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-17-4",
+      "unitId": "irodori-入門-17",
+      "position": 3,
+      "form": "N でした",
+      "meaning": "N でした",
+      "locator": "PDF p.57",
+      "patternId": "na-adj-past",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-入門-17-5",
+      "unitId": "irodori-入門-17",
+      "position": 4,
+      "form": "N じゃなかったです",
+      "meaning": "N じゃなかったです",
+      "locator": "PDF p.58",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-18-1",
+      "unitId": "irodori-入門-18",
+      "position": 0,
+      "form": "V- たいです",
+      "meaning": "V- たいです",
+      "locator": "PDF p.60",
+      "status": "review"
+    },
+    {
+      "id": "irodori-入門-18-2",
+      "unitId": "irodori-入門-18",
+      "position": 1,
+      "form": "どこか V- ます",
+      "meaning": "どこか V- ます",
+      "locator": "PDF p.60",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-18-3",
+      "unitId": "irodori-入門-18",
+      "position": 2,
+      "form": "S1。あと、S2。",
+      "meaning": "S1。あと、S2。",
+      "locator": "PDF p.62",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-18-4",
+      "unitId": "irodori-入門-18",
+      "position": 3,
+      "form": "【place  場所】へ行きます",
+      "meaning": "【place  場所】へ行きます",
+      "locator": "PDF p.62",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-18-5",
+      "unitId": "irodori-入門-18",
+      "position": 4,
+      "form": "S1。それから、S2。",
+      "meaning": "S1。それから、S2。",
+      "locator": "PDF p.64",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-入門-18-6",
+      "unitId": "irodori-入門-18",
+      "position": 5,
+      "form": "S1。それに、S2。",
+      "meaning": "S1。それに、S2。",
+      "locator": "PDF p.64",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-1-1",
+      "unitId": "irodori-初級1-1",
+      "position": 0,
+      "form": "Polite style / Plain style  丁寧体・普通体",
+      "meaning": "Polite style / Plain style  丁寧体・普通体",
+      "locator": "PDF p.66",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-1-2",
+      "unitId": "irodori-初級1-1",
+      "position": 1,
+      "form": "【duration  期間】になります",
+      "meaning": "【duration  期間】になります",
+      "locator": "PDF p.67",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-1-3",
+      "unitId": "irodori-初級1-1",
+      "position": 2,
+      "form": "【point in time  時点】",
+      "meaning": "【point in time  時点】",
+      "locator": "PDF p.67",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-1-4",
+      "unitId": "irodori-初級1-1",
+      "position": 3,
+      "form": "V- ています ①",
+      "meaning": "V- ています ①",
+      "locator": "PDF p.68",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-2-1",
+      "unitId": "irodori-初級1-2",
+      "position": 0,
+      "form": "V- ることです",
+      "meaning": "V- ることです",
+      "locator": "PDF p.70",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-2-2",
+      "unitId": "irodori-初級1-2",
+      "position": 1,
+      "form": "V- るのが好きです",
+      "meaning": "V- るのが好きです",
+      "locator": "PDF p.70",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-2-3",
+      "unitId": "irodori-初級1-2",
+      "position": 2,
+      "form": "ひと",
+      "meaning": "",
+      "locator": "PDF p.71",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-2-4",
+      "unitId": "irodori-初級1-2",
+      "position": 3,
+      "form": "V1- て、V2",
+      "meaning": "V1- て、V2",
+      "locator": "PDF p.71",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-2-5",
+      "unitId": "irodori-初級1-2",
+      "position": 4,
+      "form": "V- ています ②",
+      "meaning": "V- ています ②",
+      "locator": "PDF p.72",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-2-6",
+      "unitId": "irodori-初級1-2",
+      "position": 5,
+      "form": "N ができます",
+      "meaning": "N ができます",
+      "locator": "PDF p.72",
+      "patternId": "ga-dekimasu-completion",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級1-3-1",
+      "unitId": "irodori-初級1-3",
+      "position": 0,
+      "form": "す",
+      "meaning": "",
+      "locator": "PDF p.74",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-3-2",
+      "unitId": "irodori-初級1-3",
+      "position": 1,
+      "form": "N1 や N2",
+      "meaning": "N1 や N2",
+      "locator": "PDF p.75",
+      "patternId": "ya-partial",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級1-3-3",
+      "unitId": "irodori-初級1-3",
+      "position": 2,
+      "form": "N1 とか（N2 とか）",
+      "meaning": "N1 とか（N2 とか）",
+      "locator": "PDF p.76",
+      "patternId": "toka-denbun",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級1-4-1",
+      "unitId": "irodori-初級1-4",
+      "position": 0,
+      "form": "Non-past / Past  非過去 ･ 過去",
+      "meaning": "Non-past / Past  非過去 ･ 過去",
+      "locator": "PDF p.77",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-4-2",
+      "unitId": "irodori-初級1-4",
+      "position": 1,
+      "form": "V- ています ③",
+      "meaning": "V- ています ③",
+      "locator": "PDF p.78",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-5-1",
+      "unitId": "irodori-初級1-5",
+      "position": 0,
+      "form": "V- ることができます",
+      "meaning": "V- ることができます",
+      "locator": "PDF p.81",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-6-1",
+      "unitId": "irodori-初級1-6",
+      "position": 0,
+      "form": "Ｎに行きたいんですが…",
+      "meaning": "Ｎに行きたいんですが…",
+      "locator": "PDF p.82",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-6-2",
+      "unitId": "irodori-初級1-6",
+      "position": 1,
+      "form": "V- て、～",
+      "meaning": "V- て、～",
+      "locator": "PDF p.82",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-6-3",
+      "unitId": "irodori-初級1-6",
+      "position": 2,
+      "form": "N1 じゃなくて、N2",
+      "meaning": "N1 じゃなくて、N2",
+      "locator": "PDF p.83",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-7-1",
+      "unitId": "irodori-初級1-7",
+      "position": 0,
+      "form": "N はどうですか？",
+      "meaning": "N はどうですか？",
+      "locator": "PDF p.84",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-7-2",
+      "unitId": "irodori-初級1-7",
+      "position": 1,
+      "form": "N でもいいですか？",
+      "meaning": "N でもいいですか？",
+      "locator": "PDF p.84",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-7-3",
+      "unitId": "irodori-初級1-7",
+      "position": 2,
+      "form": "N で、～",
+      "meaning": "N で、～",
+      "locator": "PDF p.85",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-8-1",
+      "unitId": "irodori-初級1-8",
+      "position": 0,
+      "form": "もう V- ました",
+      "meaning": "もう V- ました",
+      "locator": "PDF p.86",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-8-2",
+      "unitId": "irodori-初級1-8",
+      "position": 1,
+      "form": "V- たことがあります",
+      "meaning": "V- たことがあります",
+      "locator": "PDF p.86",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-8-3",
+      "unitId": "irodori-初級1-8",
+      "position": 2,
+      "form": "V- に行きませんか？",
+      "meaning": "V- に行きませんか？",
+      "locator": "PDF p.88",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-8-4",
+      "unitId": "irodori-初級1-8",
+      "position": 3,
+      "form": "N の前に、～",
+      "meaning": "N の前に、～",
+      "locator": "PDF p.88",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-8-5",
+      "unitId": "irodori-初級1-8",
+      "position": 4,
+      "form": "V- たいんですが…",
+      "meaning": "V- たいんですが…",
+      "locator": "PDF p.89",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-9-1",
+      "unitId": "irodori-初級1-9",
+      "position": 0,
+      "form": "Nで",
+      "meaning": "Nで",
+      "locator": "PDF p.90",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-9-2",
+      "unitId": "irodori-初級1-9",
+      "position": 1,
+      "form": "N1 は、～。",
+      "meaning": "N1 は、～。",
+      "locator": "PDF p.91",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-9-3",
+      "unitId": "irodori-初級1-9",
+      "position": 2,
+      "form": "V- てもらえませんか？",
+      "meaning": "V- てもらえませんか？",
+      "locator": "PDF p.92",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-9-4",
+      "unitId": "irodori-初級1-9",
+      "position": 3,
+      "form": "V- 方",
+      "meaning": "V- 方",
+      "locator": "PDF p.92",
+      "patternId": "kata-way-of-doing",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級1-10-1",
+      "unitId": "irodori-初級1-10",
+      "position": 0,
+      "form": "V- てみたいんですが…",
+      "meaning": "V- てみたいんですが…",
+      "locator": "PDF p.93",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-10-2",
+      "unitId": "irodori-初級1-10",
+      "position": 1,
+      "form": "【duration  期間】",
+      "meaning": "【duration  期間】",
+      "locator": "PDF p.93",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-10-3",
+      "unitId": "irodori-初級1-10",
+      "position": 2,
+      "form": "V- ましょうか？",
+      "meaning": "V- ましょうか？",
+      "locator": "PDF p.94",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-10-4",
+      "unitId": "irodori-初級1-10",
+      "position": 3,
+      "form": "Asking again  聞き返し",
+      "meaning": "Asking again  聞き返し",
+      "locator": "PDF p.94",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-10-5",
+      "unitId": "irodori-初級1-10",
+      "position": 4,
+      "form": "N のとき、～",
+      "meaning": "N のとき、～",
+      "locator": "PDF p.95",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-11-1",
+      "unitId": "irodori-初級1-11",
+      "position": 0,
+      "form": "行きます",
+      "meaning": "",
+      "locator": "PDF p.96",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-11-2",
+      "unitId": "irodori-初級1-11",
+      "position": 1,
+      "form": "N1 と N2（と）、どっちがいいですか？",
+      "meaning": "N1 と N2（と）、どっちがいいですか？",
+      "locator": "PDF p.96",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-11-3",
+      "unitId": "irodori-初級1-11",
+      "position": 2,
+      "form": "N のほうがいいです",
+      "meaning": "N のほうがいいです",
+      "locator": "PDF p.97",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-11-4",
+      "unitId": "irodori-初級1-11",
+      "position": 3,
+      "form": "【interrogative  疑問詞】でもいいです",
+      "meaning": "【interrogative  疑問詞】でもいいです",
+      "locator": "PDF p.97",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-12-1",
+      "unitId": "irodori-初級1-12",
+      "position": 0,
+      "form": "ナ A-",
+      "meaning": "ナ A-",
+      "locator": "PDF p.98",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-12-2",
+      "unitId": "irodori-初級1-12",
+      "position": 1,
+      "form": "ナ A-",
+      "meaning": "ナ A-",
+      "locator": "PDF p.98",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-12-3",
+      "unitId": "irodori-初級1-12",
+      "position": 2,
+      "form": "イ A- くて、～",
+      "meaning": "イ A- くて、～",
+      "locator": "PDF p.99",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-12-4",
+      "unitId": "irodori-初級1-12",
+      "position": 3,
+      "form": "V- てみます",
+      "meaning": "V- てみます",
+      "locator": "PDF p.99",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-12-5",
+      "unitId": "irodori-初級1-12",
+      "position": 4,
+      "form": "Intransitive verbs / Transitive verbs  自動詞・他動詞",
+      "meaning": "Intransitive verbs / Transitive verbs  自動詞・他動詞",
+      "locator": "PDF p.100",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-12-6",
+      "unitId": "irodori-初級1-12",
+      "position": 5,
+      "form": "イ A- くないですか？",
+      "meaning": "イ A- くないですか？",
+      "locator": "PDF p.101",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-13-1",
+      "unitId": "irodori-初級1-13",
+      "position": 0,
+      "form": "～んですが…",
+      "meaning": "",
+      "locator": "PDF p.102",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-13-2",
+      "unitId": "irodori-初級1-13",
+      "position": 1,
+      "form": "V- そうです",
+      "meaning": "V- そうです",
+      "locator": "PDF p.103",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-13-3",
+      "unitId": "irodori-初級1-13",
+      "position": 2,
+      "form": "V- たいとき、～",
+      "meaning": "V- たいとき、～",
+      "locator": "PDF p.104",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-13-4",
+      "unitId": "irodori-初級1-13",
+      "position": 3,
+      "form": "V- ると、～",
+      "meaning": "V- ると、～",
+      "locator": "PDF p.104",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-13-5",
+      "unitId": "irodori-初級1-13",
+      "position": 4,
+      "form": "はい、",
+      "meaning": "",
+      "locator": "PDF p.105",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-14-1",
+      "unitId": "irodori-初級1-14",
+      "position": 0,
+      "form": "N で、～",
+      "meaning": "N で、～",
+      "locator": "PDF p.106",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-14-2",
+      "unitId": "irodori-初級1-14",
+      "position": 1,
+      "form": "S1。それで、S2",
+      "meaning": "S1。それで、S2",
+      "locator": "PDF p.107",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-14-3",
+      "unitId": "irodori-初級1-14",
+      "position": 2,
+      "form": "V- てもいいですか？",
+      "meaning": "V- てもいいですか？",
+      "locator": "PDF p.107",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-14-4",
+      "unitId": "irodori-初級1-14",
+      "position": 3,
+      "form": "V- てもいいでしょうか？",
+      "meaning": "V- てもいいでしょうか？",
+      "locator": "PDF p.108",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-14-5",
+      "unitId": "irodori-初級1-14",
+      "position": 4,
+      "form": "V- なければなりません",
+      "meaning": "V- なければなりません",
+      "locator": "PDF p.108",
+      "patternId": "nakereba-narimasen",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級1-14-6",
+      "unitId": "irodori-初級1-14",
+      "position": 5,
+      "form": "～んです ①",
+      "meaning": "",
+      "locator": "PDF p.109",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-15-1",
+      "unitId": "irodori-初級1-15",
+      "position": 0,
+      "form": "～んです ②",
+      "meaning": "",
+      "locator": "PDF p.110",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-15-2",
+      "unitId": "irodori-初級1-15",
+      "position": 1,
+      "form": "V- ないでください",
+      "meaning": "V- ないでください",
+      "locator": "PDF p.111",
+      "patternId": "naide-kudasai",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級1-15-3",
+      "unitId": "irodori-初級1-15",
+      "position": 2,
+      "form": "V（plain-form  普通形）+N ①",
+      "meaning": "V（plain-form  普通形）+N ①",
+      "locator": "PDF p.112",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-15-4",
+      "unitId": "irodori-初級1-15",
+      "position": 3,
+      "form": "V- る前に、～",
+      "meaning": "V- る前に、～",
+      "locator": "PDF p.113",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-15-5",
+      "unitId": "irodori-初級1-15",
+      "position": 4,
+      "form": "～とき（に）、～",
+      "meaning": "",
+      "locator": "PDF p.114",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-16-1",
+      "unitId": "irodori-初級1-16",
+      "position": 0,
+      "form": "V- るといいです",
+      "meaning": "V- るといいです",
+      "locator": "PDF p.115",
+      "patternId": "to-ii-hope",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級1-16-2",
+      "unitId": "irodori-初級1-16",
+      "position": 1,
+      "form": "V- すぎます",
+      "meaning": "V- すぎます",
+      "locator": "PDF p.115",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-16-3",
+      "unitId": "irodori-初級1-16",
+      "position": 2,
+      "form": "V1- たり、V2- たり",
+      "meaning": "V1- たり、V2- たり",
+      "locator": "PDF p.116",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-17-1",
+      "unitId": "irodori-初級1-17",
+      "position": 0,
+      "form": "V（plain-form  普通形）+N ②",
+      "meaning": "V（plain-form  普通形）+N ②",
+      "locator": "PDF p.117",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-17-2",
+      "unitId": "irodori-初級1-17",
+      "position": 1,
+      "form": "【person  人】に【thing  物】をもらいます",
+      "meaning": "【person  人】に【thing  物】をもらいます",
+      "locator": "PDF p.118",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-17-3",
+      "unitId": "irodori-初級1-17",
+      "position": 2,
+      "form": "【person  人】が【thing  物】をくれます",
+      "meaning": "【person  人】が【thing  物】をくれます",
+      "locator": "PDF p.119",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-18-1",
+      "unitId": "irodori-初級1-18",
+      "position": 0,
+      "form": "S（plain-form  普通形）そうです",
+      "meaning": "S（plain-form  普通形）そうです",
+      "locator": "PDF p.120",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-18-2",
+      "unitId": "irodori-初級1-18",
+      "position": 1,
+      "form": "【person  人】に【thing  物】をあげます",
+      "meaning": "【person  人】に【thing  物】をあげます",
+      "locator": "PDF p.122",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級1-18-3",
+      "unitId": "irodori-初級1-18",
+      "position": 2,
+      "form": "S（plain-form  普通形）と言っていました",
+      "meaning": "S（plain-form  普通形）と言っていました",
+      "locator": "PDF p.123",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級1-18-4",
+      "unitId": "irodori-初級1-18",
+      "position": 3,
+      "form": "S（plain-form  普通形）と思います",
+      "meaning": "S（plain-form  普通形）と思います",
+      "locator": "PDF p.123",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-1-1",
+      "unitId": "irodori-初級2-1",
+      "position": 0,
+      "form": "N1 という N2",
+      "meaning": "N1 という N2",
+      "locator": "PDF p.124",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-1-2",
+      "unitId": "irodori-初級2-1",
+      "position": 1,
+      "form": "V- たばかりです",
+      "meaning": "V- たばかりです",
+      "locator": "PDF p.124",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-1-3",
+      "unitId": "irodori-初級2-1",
+      "position": 2,
+      "form": "V- ていました",
+      "meaning": "V- ていました",
+      "locator": "PDF p.125",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-1-4",
+      "unitId": "irodori-初級2-1",
+      "position": 3,
+      "form": "それ／そこ",
+      "meaning": "",
+      "locator": "PDF p.125",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-1-5",
+      "unitId": "irodori-初級2-1",
+      "position": 4,
+      "form": "～て、～",
+      "meaning": "",
+      "locator": "PDF p.126",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-2-1",
+      "unitId": "irodori-初級2-2",
+      "position": 0,
+      "form": "ナ A- です",
+      "meaning": "ナ A- です",
+      "locator": "PDF p.127",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-2-2",
+      "unitId": "irodori-初級2-2",
+      "position": 1,
+      "form": "V- ている＋人",
+      "meaning": "V- ている＋人",
+      "locator": "PDF p.127",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-2-3",
+      "unitId": "irodori-初級2-2",
+      "position": 2,
+      "form": "Sよ",
+      "meaning": "Sよ",
+      "locator": "PDF p.128",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-2-4",
+      "unitId": "irodori-初級2-2",
+      "position": 3,
+      "form": "S し、～",
+      "meaning": "S し、～",
+      "locator": "PDF p.129",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-3-1",
+      "unitId": "irodori-初級2-3",
+      "position": 0,
+      "form": "S1 ので、S2",
+      "meaning": "S1 ので、S2",
+      "locator": "PDF p.130",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-3-2",
+      "unitId": "irodori-初級2-3",
+      "position": 1,
+      "form": "S よね",
+      "meaning": "S よね",
+      "locator": "PDF p.130",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-3-3",
+      "unitId": "irodori-初級2-3",
+      "position": 2,
+      "form": "N で～",
+      "meaning": "N で～",
+      "locator": "PDF p.131",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-4-1",
+      "unitId": "irodori-初級2-4",
+      "position": 0,
+      "form": "N なら、～",
+      "meaning": "N なら、～",
+      "locator": "PDF p.133",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-4-2",
+      "unitId": "irodori-初級2-4",
+      "position": 1,
+      "form": "V- ちゃだめです",
+      "meaning": "V- ちゃだめです",
+      "locator": "PDF p.134",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-4-3",
+      "unitId": "irodori-初級2-4",
+      "position": 2,
+      "form": "V- てから、～",
+      "meaning": "V- てから、～",
+      "locator": "PDF p.134",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-4-4",
+      "unitId": "irodori-初級2-4",
+      "position": 3,
+      "form": "S1 が、S2",
+      "meaning": "S1 が、S2",
+      "locator": "PDF p.135",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-5-1",
+      "unitId": "irodori-初級2-5",
+      "position": 0,
+      "form": "V-（られ）ます",
+      "meaning": "V-（られ）ます",
+      "locator": "PDF p.136",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-5-2",
+      "unitId": "irodori-初級2-5",
+      "position": 1,
+      "form": "～ところ",
+      "meaning": "",
+      "locator": "PDF p.137",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-5-3",
+      "unitId": "irodori-初級2-5",
+      "position": 2,
+      "form": "ふつうけい",
+      "meaning": "",
+      "locator": "PDF p.137",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-5-4",
+      "unitId": "irodori-初級2-5",
+      "position": 3,
+      "form": "【interrogative  疑問詞】V- たらいいですか？",
+      "meaning": "【interrogative  疑問詞】V- たらいいですか？",
+      "locator": "PDF p.138",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-5-5",
+      "unitId": "irodori-初級2-5",
+      "position": 4,
+      "form": "V- た",
+      "meaning": "V- た",
+      "locator": "PDF p.138",
+      "patternId": "plain-past-ta",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級2-6-1",
+      "unitId": "irodori-初級2-6",
+      "position": 0,
+      "form": "V- るつもりです",
+      "meaning": "V- るつもりです",
+      "locator": "PDF p.140",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-6-2",
+      "unitId": "irodori-初級2-6",
+      "position": 1,
+      "form": "V‐",
+      "meaning": "V‐",
+      "locator": "PDF p.140",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-6-3",
+      "unitId": "irodori-初級2-6",
+      "position": 2,
+      "form": "S1 し、S2 し、～",
+      "meaning": "S1 し、S2 し、～",
+      "locator": "PDF p.141",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-6-4",
+      "unitId": "irodori-初級2-6",
+      "position": 3,
+      "form": "【person  人】と【number of people  人数】で",
+      "meaning": "【person  人】と【number of people  人数】で",
+      "locator": "PDF p.142",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-7-1",
+      "unitId": "irodori-初級2-7",
+      "position": 0,
+      "form": "～たら、～",
+      "meaning": "",
+      "locator": "PDF p.143",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-7-2",
+      "unitId": "irodori-初級2-7",
+      "position": 1,
+      "form": "V-（ら）れます",
+      "meaning": "V-（ら）れます",
+      "locator": "PDF p.144",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-7-3",
+      "unitId": "irodori-初級2-7",
+      "position": 2,
+      "form": "V-（られ）ます",
+      "meaning": "V-（られ）ます",
+      "locator": "PDF p.146",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-8-1",
+      "unitId": "irodori-初級2-8",
+      "position": 0,
+      "form": "もう V- ました",
+      "meaning": "もう V- ました",
+      "locator": "PDF p.147",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-8-2",
+      "unitId": "irodori-初級2-8",
+      "position": 1,
+      "form": "まだ V- ます",
+      "meaning": "まだ V- ます",
+      "locator": "PDF p.147",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-8-3",
+      "unitId": "irodori-初級2-8",
+      "position": 2,
+      "form": "【interrogative  疑問詞】＋ S（plain-form  普通形）か、～",
+      "meaning": "【interrogative  疑問詞】＋ S（plain-form  普通形）か、～",
+      "locator": "PDF p.148",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-9-1",
+      "unitId": "irodori-初級2-9",
+      "position": 0,
+      "form": "～んですか？",
+      "meaning": "",
+      "locator": "PDF p.149",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-9-2",
+      "unitId": "irodori-初級2-9",
+      "position": 1,
+      "form": "N しか ＋ negative sentence  否定文",
+      "meaning": "N しか ＋ negative sentence  否定文",
+      "locator": "PDF p.149",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-9-3",
+      "unitId": "irodori-初級2-9",
+      "position": 2,
+      "form": "N だけ",
+      "meaning": "N だけ",
+      "locator": "PDF p.150",
+      "patternId": "dake-gentei",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級2-9-4",
+      "unitId": "irodori-初級2-9",
+      "position": 3,
+      "form": "V- たりして、～",
+      "meaning": "V- たりして、～",
+      "locator": "PDF p.150",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-9-5",
+      "unitId": "irodori-初級2-9",
+      "position": 4,
+      "form": "V- なくちゃならない",
+      "meaning": "V- なくちゃならない",
+      "locator": "PDF p.151",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-9-6",
+      "unitId": "irodori-初級2-9",
+      "position": 5,
+      "form": "V- れます ＜ Potential-form 可能形③＞",
+      "meaning": "V- れます ＜ Potential-form 可能形③＞",
+      "locator": "PDF p.151",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-9-7",
+      "unitId": "irodori-初級2-9",
+      "position": 6,
+      "form": "S（plain-form  普通形）+ 人が～",
+      "meaning": "S（plain-form  普通形）+ 人が～",
+      "locator": "PDF p.152",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-9-8",
+      "unitId": "irodori-初級2-9",
+      "position": 7,
+      "form": "V- ながら、～",
+      "meaning": "V- ながら、～",
+      "locator": "PDF p.153",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-9-9",
+      "unitId": "irodori-初級2-9",
+      "position": 8,
+      "form": "N によって",
+      "meaning": "N によって",
+      "locator": "PDF p.153",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-10-1",
+      "unitId": "irodori-初級2-10",
+      "position": 0,
+      "form": "【interrogative  疑問詞】V- ばいいですか？",
+      "meaning": "【interrogative  疑問詞】V- ばいいですか？",
+      "locator": "PDF p.154",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-10-2",
+      "unitId": "irodori-初級2-10",
+      "position": 1,
+      "form": "V- ては",
+      "meaning": "V- ては",
+      "locator": "PDF p.155",
+      "patternId": "te-wa-dewa",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級2-10-3",
+      "unitId": "irodori-初級2-10",
+      "position": 2,
+      "form": "V- なくちゃ",
+      "meaning": "V- なくちゃ",
+      "locator": "PDF p.155",
+      "patternId": "nakya-nakucha-must-casual",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級2-10-4",
+      "unitId": "irodori-初級2-10",
+      "position": 3,
+      "form": "V- る",
+      "meaning": "V- る",
+      "locator": "PDF p.156",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-10-5",
+      "unitId": "irodori-初級2-10",
+      "position": 4,
+      "form": "V-（ら）れます",
+      "meaning": "V-（ら）れます",
+      "locator": "PDF p.157",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-10-6",
+      "unitId": "irodori-初級2-10",
+      "position": 5,
+      "form": "S（plain-form 普通形）の？",
+      "meaning": "S（plain-form 普通形）の？",
+      "locator": "PDF p.158",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-10-7",
+      "unitId": "irodori-初級2-10",
+      "position": 6,
+      "form": "V- なきゃ",
+      "meaning": "V- なきゃ",
+      "locator": "PDF p.159",
+      "patternId": "nakya-nakucha-must-casual",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初級2-11-1",
+      "unitId": "irodori-初級2-11",
+      "position": 0,
+      "form": "V-てみてもいいですか？",
+      "meaning": "V-てみてもいいですか？",
+      "locator": "PDF p.160",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-11-2",
+      "unitId": "irodori-初級2-11",
+      "position": 1,
+      "form": "ナ A-",
+      "meaning": "ナ A-",
+      "locator": "PDF p.160",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-11-3",
+      "unitId": "irodori-初級2-11",
+      "position": 2,
+      "form": "ナ A- な",
+      "meaning": "ナ A- な",
+      "locator": "PDF p.161",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-11-4",
+      "unitId": "irodori-初級2-11",
+      "position": 3,
+      "form": "N を V-（ら）れます",
+      "meaning": "N を V-（ら）れます",
+      "locator": "PDF p.161",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-11-5",
+      "unitId": "irodori-初級2-11",
+      "position": 4,
+      "form": "S（plain-form 普通形）かもしれません",
+      "meaning": "S（plain-form 普通形）かもしれません",
+      "locator": "PDF p.162",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-11-6",
+      "unitId": "irodori-初級2-11",
+      "position": 5,
+      "form": "V- てしまいました",
+      "meaning": "V- てしまいました",
+      "locator": "PDF p.163",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-12-1",
+      "unitId": "irodori-初級2-12",
+      "position": 0,
+      "form": "V- るまで、～",
+      "meaning": "V- るまで、～",
+      "locator": "PDF p.164",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-12-2",
+      "unitId": "irodori-初級2-12",
+      "position": 1,
+      "form": "V- やすいです",
+      "meaning": "V- やすいです",
+      "locator": "PDF p.164",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-12-3",
+      "unitId": "irodori-初級2-12",
+      "position": 2,
+      "form": "N1 と N2（と）、どちら／どっちが～か？",
+      "meaning": "N1 と N2（と）、どちら／どっちが～か？",
+      "locator": "PDF p.165",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-13-1",
+      "unitId": "irodori-初級2-13",
+      "position": 0,
+      "form": "V-（ら）れます",
+      "meaning": "V-（ら）れます",
+      "locator": "PDF p.166",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-13-2",
+      "unitId": "irodori-初級2-13",
+      "position": 1,
+      "form": "V- てあります",
+      "meaning": "V- てあります",
+      "locator": "PDF p.167",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-13-3",
+      "unitId": "irodori-初級2-13",
+      "position": 2,
+      "form": "N1 だけじゃなくて、N2 も～",
+      "meaning": "N1 だけじゃなくて、N2 も～",
+      "locator": "PDF p.168",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-13-4",
+      "unitId": "irodori-初級2-13",
+      "position": 3,
+      "form": "N なら、～",
+      "meaning": "N なら、～",
+      "locator": "PDF p.169",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-13-5",
+      "unitId": "irodori-初級2-13",
+      "position": 4,
+      "form": "【interrogative  疑問詞】V- ても、～",
+      "meaning": "【interrogative  疑問詞】V- ても、～",
+      "locator": "PDF p.169",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-14-1",
+      "unitId": "irodori-初級2-14",
+      "position": 0,
+      "form": "ナ A- に",
+      "meaning": "ナ A- に",
+      "locator": "PDF p.170",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-14-2",
+      "unitId": "irodori-初級2-14",
+      "position": 1,
+      "form": "N のために、～",
+      "meaning": "N のために、～",
+      "locator": "PDF p.170",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-15-1",
+      "unitId": "irodori-初級2-15",
+      "position": 0,
+      "form": "V- たままです",
+      "meaning": "V- たままです",
+      "locator": "PDF p.171",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-15-2",
+      "unitId": "irodori-初級2-15",
+      "position": 1,
+      "form": "V- るのにいいです",
+      "meaning": "V- るのにいいです",
+      "locator": "PDF p.172",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-16-1",
+      "unitId": "irodori-初級2-16",
+      "position": 0,
+      "form": "V（imperative-form  命令形）",
+      "meaning": "V（imperative-form  命令形）",
+      "locator": "PDF p.173",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-16-2",
+      "unitId": "irodori-初級2-16",
+      "position": 1,
+      "form": "V- ないようにしてください",
+      "meaning": "V- ないようにしてください",
+      "locator": "PDF p.174",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-16-3",
+      "unitId": "irodori-初級2-16",
+      "position": 2,
+      "form": "V-（られ）なくなります",
+      "meaning": "V-（られ）なくなります",
+      "locator": "PDF p.175",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-16-4",
+      "unitId": "irodori-初級2-16",
+      "position": 3,
+      "form": "S ても、～",
+      "meaning": "S ても、～",
+      "locator": "PDF p.175",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-16-5",
+      "unitId": "irodori-初級2-16",
+      "position": 4,
+      "form": "V（plain-form  普通形）かどうか、～",
+      "meaning": "V（plain-form  普通形）かどうか、～",
+      "locator": "PDF p.176",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-17-1",
+      "unitId": "irodori-初級2-17",
+      "position": 0,
+      "form": "V-（られ）るようになりました",
+      "meaning": "V-（られ）るようになりました",
+      "locator": "PDF p.177",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-18-1",
+      "unitId": "irodori-初級2-18",
+      "position": 0,
+      "form": "V-（よ）うと思います／思っています",
+      "meaning": "V-（よ）うと思います／思っています",
+      "locator": "PDF p.179",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-18-2",
+      "unitId": "irodori-初級2-18",
+      "position": 1,
+      "form": "V- るために、～",
+      "meaning": "V- るために、～",
+      "locator": "PDF p.180",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初級2-18-3",
+      "unitId": "irodori-初級2-18",
+      "position": 2,
+      "form": "V- てあげます",
+      "meaning": "V- てあげます",
+      "locator": "PDF p.181",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-18-4",
+      "unitId": "irodori-初級2-18",
+      "position": 3,
+      "form": "V- てもらいます",
+      "meaning": "V- てもらいます",
+      "locator": "PDF p.182",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初級2-18-5",
+      "unitId": "irodori-初級2-18",
+      "position": 4,
+      "form": "V- てくれます",
+      "meaning": "V- てくれます",
+      "locator": "PDF p.183",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-1-1",
+      "unitId": "irodori-初中級-1",
+      "position": 0,
+      "form": "N でしたっけ？",
+      "meaning": "N でしたっけ？",
+      "locator": "PDF p.184",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-1-2",
+      "unitId": "irodori-初中級-1",
+      "position": 1,
+      "form": "V- ることになった",
+      "meaning": "V- ることになった",
+      "locator": "PDF p.185",
+      "patternId": "koto-ni-naru",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-1-3",
+      "unitId": "irodori-初中級-1",
+      "position": 2,
+      "form": "V- てくれませんか？",
+      "meaning": "V- てくれませんか？",
+      "locator": "PDF p.185",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-2-1",
+      "unitId": "irodori-初中級-2",
+      "position": 0,
+      "form": "S（plain-form 普通形）でしょう？",
+      "meaning": "S（plain-form 普通形）でしょう？",
+      "locator": "PDF p.186",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-2-2",
+      "unitId": "irodori-初中級-2",
+      "position": 1,
+      "form": "S（plain-form 普通形）気がする",
+      "meaning": "S（plain-form 普通形）気がする",
+      "locator": "PDF p.186",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-2-3",
+      "unitId": "irodori-初中級-2",
+      "position": 2,
+      "form": "S（plain-form 普通形）って N",
+      "meaning": "S（plain-form 普通形）って N",
+      "locator": "PDF p.187",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-2-4",
+      "unitId": "irodori-初中級-2",
+      "position": 3,
+      "form": "Connecting expressions  接続の表現",
+      "meaning": "Connecting expressions  接続の表現",
+      "locator": "PDF p.188",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-3-1",
+      "unitId": "irodori-初中級-3",
+      "position": 0,
+      "form": "S（plain-form 普通形）なら、～",
+      "meaning": "S（plain-form 普通形）なら、～",
+      "locator": "PDF p.190",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-3-2",
+      "unitId": "irodori-初中級-3",
+      "position": 1,
+      "form": "N っぽい",
+      "meaning": "N っぽい",
+      "locator": "PDF p.190",
+      "patternId": "ppoi",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-3-3",
+      "unitId": "irodori-初中級-3",
+      "position": 2,
+      "form": "ありがたいです",
+      "meaning": "",
+      "locator": "PDF p.191",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-4-1",
+      "unitId": "irodori-初中級-4",
+      "position": 0,
+      "form": "S（plain-form 普通形）みたいだ",
+      "meaning": "S（plain-form 普通形）みたいだ",
+      "locator": "PDF p.192",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-4-2",
+      "unitId": "irodori-初中級-4",
+      "position": 1,
+      "form": "お＋N",
+      "meaning": "お＋N",
+      "locator": "PDF p.193",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-4-3",
+      "unitId": "irodori-初中級-4",
+      "position": 2,
+      "form": "お V ください",
+      "meaning": "お V ください",
+      "locator": "PDF p.194",
+      "patternId": "o-kudasai-honorific-request",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-4-4",
+      "unitId": "irodori-初中級-4",
+      "position": 3,
+      "form": "V-（ら）れる",
+      "meaning": "V-（ら）れる",
+      "locator": "PDF p.195",
+      "patternId": "rareru-potential-ability",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-5-1",
+      "unitId": "irodori-初中級-5",
+      "position": 0,
+      "form": "N1 みたいな N2",
+      "meaning": "N1 みたいな N2",
+      "locator": "PDF p.198",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-5-2",
+      "unitId": "irodori-初中級-5",
+      "position": 1,
+      "form": "S（plain-form 普通形）やつ",
+      "meaning": "S（plain-form 普通形）やつ",
+      "locator": "PDF p.199",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-6-1",
+      "unitId": "irodori-初中級-6",
+      "position": 0,
+      "form": "V- ておく",
+      "meaning": "V- ておく",
+      "locator": "PDF p.200",
+      "patternId": "te-oku",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-6-2",
+      "unitId": "irodori-初中級-6",
+      "position": 1,
+      "form": "V がち",
+      "meaning": "V がち",
+      "locator": "PDF p.201",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-6-3",
+      "unitId": "irodori-初中級-6",
+      "position": 2,
+      "form": "S（plain-form 普通形）じゃないですか",
+      "meaning": "S（plain-form 普通形）じゃないですか",
+      "locator": "PDF p.202",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-7-1",
+      "unitId": "irodori-初中級-7",
+      "position": 0,
+      "form": "V- ば、～",
+      "meaning": "V- ば、～",
+      "locator": "PDF p.203",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-7-2",
+      "unitId": "irodori-初中級-7",
+      "position": 1,
+      "form": "V- ているうちに、～",
+      "meaning": "V- ているうちに、～",
+      "locator": "PDF p.204",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-7-3",
+      "unitId": "irodori-初中級-7",
+      "position": 2,
+      "form": "と思っています",
+      "meaning": "",
+      "locator": "PDF p.204",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-8-1",
+      "unitId": "irodori-初中級-8",
+      "position": 0,
+      "form": "V なさい",
+      "meaning": "V なさい",
+      "locator": "PDF p.206",
+      "patternId": "nasai-soft-command",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-8-2",
+      "unitId": "irodori-初中級-8",
+      "position": 1,
+      "form": "Respectful verbs  尊敬の動詞",
+      "meaning": "Respectful verbs  尊敬の動詞",
+      "locator": "PDF p.206",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-8-3",
+      "unitId": "irodori-初中級-8",
+      "position": 2,
+      "form": "V-（さ）せる",
+      "meaning": "V-（さ）せる",
+      "locator": "PDF p.208",
+      "patternId": "saseru-causative",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-8-4",
+      "unitId": "irodori-初中級-8",
+      "position": 3,
+      "form": "いいです",
+      "meaning": "",
+      "locator": "PDF p.209",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-9-1",
+      "unitId": "irodori-初中級-9",
+      "position": 0,
+      "form": "V- る間に、～",
+      "meaning": "V- る間に、～",
+      "locator": "PDF p.210",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-9-2",
+      "unitId": "irodori-初中級-9",
+      "position": 1,
+      "form": "Polite style and plain style  丁寧体・普通体②",
+      "meaning": "Polite style and plain style  丁寧体・普通体②",
+      "locator": "PDF p.210",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-9-3",
+      "unitId": "irodori-初中級-9",
+      "position": 2,
+      "form": "V はじめる",
+      "meaning": "V はじめる",
+      "locator": "PDF p.213",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-9-4",
+      "unitId": "irodori-初中級-9",
+      "position": 3,
+      "form": "Expressions used to state a hope  希望を言うときの表現",
+      "meaning": "Expressions used to state a hope  希望を言うときの表現",
+      "locator": "PDF p.213",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-10-1",
+      "unitId": "irodori-初中級-10",
+      "position": 0,
+      "form": "V（plain-form 普通形）＋N ③",
+      "meaning": "V（plain-form 普通形）＋N ③",
+      "locator": "PDF p.215",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-10-2",
+      "unitId": "irodori-初中級-10",
+      "position": 1,
+      "form": "Expressions ending with nouns  名詞で終わる言い方",
+      "meaning": "Expressions ending with nouns  名詞で終わる言い方",
+      "locator": "PDF p.216",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-10-3",
+      "unitId": "irodori-初中級-10",
+      "position": 2,
+      "form": "【quantity  数量】も",
+      "meaning": "【quantity  数量】も",
+      "locator": "PDF p.216",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-10-4",
+      "unitId": "irodori-初中級-10",
+      "position": 3,
+      "form": "V- てくる",
+      "meaning": "V- てくる",
+      "locator": "PDF p.217",
+      "patternId": "te-kuru-te-iku",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-11-1",
+      "unitId": "irodori-初中級-11",
+      "position": 0,
+      "form": "V- てほしいんですが",
+      "meaning": "V- てほしいんですが",
+      "locator": "PDF p.218",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-11-2",
+      "unitId": "irodori-初中級-11",
+      "position": 1,
+      "form": "N になっている",
+      "meaning": "N になっている",
+      "locator": "PDF p.218",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-11-3",
+      "unitId": "irodori-初中級-11",
+      "position": 2,
+      "form": "V- ていただけますか？",
+      "meaning": "V- ていただけますか？",
+      "locator": "PDF p.219",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-11-4",
+      "unitId": "irodori-初中級-11",
+      "position": 3,
+      "form": "お V になる",
+      "meaning": "お V になる",
+      "locator": "PDF p.219",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-11-5",
+      "unitId": "irodori-初中級-11",
+      "position": 4,
+      "form": "V- ることがある",
+      "meaning": "V- ることがある",
+      "locator": "PDF p.220",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-12-1",
+      "unitId": "irodori-初中級-12",
+      "position": 0,
+      "form": "お V です",
+      "meaning": "お V です",
+      "locator": "PDF p.221",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-12-2",
+      "unitId": "irodori-初中級-12",
+      "position": 1,
+      "form": "V-（ら）れる",
+      "meaning": "V-（ら）れる",
+      "locator": "PDF p.221",
+      "patternId": "rareru-potential-ability",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-12-3",
+      "unitId": "irodori-初中級-12",
+      "position": 2,
+      "form": "S（plain-form 普通形）ようだ",
+      "meaning": "S（plain-form 普通形）ようだ",
+      "locator": "PDF p.222",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-12-4",
+      "unitId": "irodori-初中級-12",
+      "position": 3,
+      "form": "イA- がる",
+      "meaning": "イA- がる",
+      "locator": "PDF p.223",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-12-5",
+      "unitId": "irodori-初中級-12",
+      "position": 4,
+      "form": "V-（さ）せる",
+      "meaning": "V-（さ）せる",
+      "locator": "PDF p.224",
+      "patternId": "saseru-causative",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-12-6",
+      "unitId": "irodori-初中級-12",
+      "position": 5,
+      "form": "V- ることにする",
+      "meaning": "V- ることにする",
+      "locator": "PDF p.225",
+      "patternId": "koto-ni-suru",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-13-1",
+      "unitId": "irodori-初中級-13",
+      "position": 0,
+      "form": "S（plain-form 普通形）らしい",
+      "meaning": "S（plain-form 普通形）らしい",
+      "locator": "PDF p.226",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-13-2",
+      "unitId": "irodori-初中級-13",
+      "position": 1,
+      "form": "V-（よ）うと思うんですが",
+      "meaning": "V-（よ）うと思うんですが",
+      "locator": "PDF p.226",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-13-3",
+      "unitId": "irodori-初中級-13",
+      "position": 2,
+      "form": "N とか、いいんじゃないですか？",
+      "meaning": "N とか、いいんじゃないですか？",
+      "locator": "PDF p.227",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-13-4",
+      "unitId": "irodori-初中級-13",
+      "position": 3,
+      "form": "V- てくださる",
+      "meaning": "V- てくださる",
+      "locator": "PDF p.228",
+      "patternId": "te-itadaku-honorific-receiving",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-13-5",
+      "unitId": "irodori-初中級-13",
+      "position": 4,
+      "form": "V-（さ）せていただく",
+      "meaning": "V-（さ）せていただく",
+      "locator": "PDF p.228",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-14-1",
+      "unitId": "irodori-初中級-14",
+      "position": 0,
+      "form": "N にとって",
+      "meaning": "N にとって",
+      "locator": "PDF p.230",
+      "patternId": "ni-totte",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-14-2",
+      "unitId": "irodori-初中級-14",
+      "position": 1,
+      "form": "ナ A- な",
+      "meaning": "ナ A- な",
+      "locator": "PDF p.230",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-14-3",
+      "unitId": "irodori-初中級-14",
+      "position": 2,
+      "form": "S（plain-form 普通形）のに、～",
+      "meaning": "S（plain-form 普通形）のに、～",
+      "locator": "PDF p.231",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-14-4",
+      "unitId": "irodori-初中級-14",
+      "position": 3,
+      "form": "N のことで",
+      "meaning": "N のことで",
+      "locator": "PDF p.231",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-15-1",
+      "unitId": "irodori-初中級-15",
+      "position": 0,
+      "form": "Suspended form  連用中止",
+      "meaning": "Suspended form  連用中止",
+      "locator": "PDF p.232",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-15-2",
+      "unitId": "irodori-初中級-15",
+      "position": 1,
+      "form": "N1 ＋particle 助詞 ＋ の N2",
+      "meaning": "N1 ＋particle 助詞 ＋ の N2",
+      "locator": "PDF p.232",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-15-3",
+      "unitId": "irodori-初中級-15",
+      "position": 2,
+      "form": "もし S ば、～",
+      "meaning": "もし S ば、～",
+      "locator": "PDF p.233",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-16-1",
+      "unitId": "irodori-初中級-16",
+      "position": 0,
+      "form": "V- たところだ",
+      "meaning": "V- たところだ",
+      "locator": "PDF p.234",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-16-2",
+      "unitId": "irodori-初中級-16",
+      "position": 1,
+      "form": "もらえますか？",
+      "meaning": "",
+      "locator": "PDF p.234",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-16-3",
+      "unitId": "irodori-初中級-16",
+      "position": 2,
+      "form": "N になります",
+      "meaning": "N になります",
+      "locator": "PDF p.235",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-16-4",
+      "unitId": "irodori-初中級-16",
+      "position": 3,
+      "form": "Humble verbs  謙譲の動詞 ＜ Humble expressions  謙譲語①＞",
+      "meaning": "Humble verbs  謙譲の動詞 ＜ Humble expressions  謙譲語①＞",
+      "locator": "PDF p.236",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-16-5",
+      "unitId": "irodori-初中級-16",
+      "position": 4,
+      "form": "お V する",
+      "meaning": "お V する",
+      "locator": "PDF p.238",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-16-6",
+      "unitId": "irodori-初中級-16",
+      "position": 5,
+      "form": "V- さ",
+      "meaning": "V- さ",
+      "locator": "PDF p.239",
+      "patternId": "sa-meishika",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-17-1",
+      "unitId": "irodori-初中級-17",
+      "position": 0,
+      "form": "N でございます",
+      "meaning": "N でございます",
+      "locator": "PDF p.240",
+      "status": "backfill"
+    },
+    {
+      "id": "irodori-初中級-17-2",
+      "unitId": "irodori-初中級-17",
+      "position": 1,
+      "form": "V- ること",
+      "meaning": "V- ること",
+      "locator": "PDF p.240",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-17-3",
+      "unitId": "irodori-初中級-17",
+      "position": 2,
+      "form": "と思います",
+      "meaning": "",
+      "locator": "PDF p.241",
+      "patternId": "to-omou",
+      "status": "resolved"
+    },
+    {
+      "id": "irodori-初中級-18-1",
+      "unitId": "irodori-初中級-18",
+      "position": 0,
+      "form": "V- ていた",
+      "meaning": "V- ていた",
+      "locator": "PDF p.242",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-18-2",
+      "unitId": "irodori-初中級-18",
+      "position": 1,
+      "form": "S（plain-form 普通形）はずだ",
+      "meaning": "S（plain-form 普通形）はずだ",
+      "locator": "PDF p.242",
+      "status": "review"
+    },
+    {
+      "id": "irodori-初中級-18-3",
+      "unitId": "irodori-初中級-18",
+      "position": 2,
+      "form": "Respectful and humble expressions  尊敬語と謙譲語",
+      "meaning": "Respectful and humble expressions  尊敬語と謙譲語",
+      "locator": "PDF p.243",
+      "status": "backfill"
+    },
+    {
+      "id": "kanzen-compare-hazu-wake-1",
+      "unitId": "kanzen-compare-hazu-wake",
+      "position": 0,
+      "form": "〜はずだ",
+      "meaning": "Expectation",
+      "locator": "Contents, section E, one-point lesson",
+      "patternId": "hazu-da",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-compare-hazu-wake-2",
+      "unitId": "kanzen-compare-hazu-wake",
+      "position": 1,
+      "form": "〜わけだ",
+      "meaning": "Explanation of consequence",
+      "locator": "Contents, section E, one-point lesson",
+      "patternId": "wake-da",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-compare-bakari-tokoro-1",
+      "unitId": "kanzen-compare-bakari-tokoro",
+      "position": 0,
+      "form": "〜たばかり",
+      "meaning": "Recent completion",
+      "locator": "Contents, section F, one-point lesson",
+      "patternId": "ta-bakari-da",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-compare-bakari-tokoro-2",
+      "unitId": "kanzen-compare-bakari-tokoro",
+      "position": 1,
+      "form": "〜たところ",
+      "meaning": "Just completed action",
+      "locator": "Contents, section F, one-point lesson",
+      "patternId": "tokoro-da-jiten",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-build-te-kara-1",
+      "unitId": "kanzen-build-te-kara",
+      "position": 0,
+      "form": "〜てから",
+      "meaning": "After doing",
+      "locator": "Section 2, introduction to N3 lesson 1",
+      "patternId": "te-kara",
+      "status": "resolved"
+    },
+    {
+      "id": "kanzen-build-te-kara-2",
+      "unitId": "kanzen-build-te-kara",
+      "position": 1,
+      "form": "〜てからでないと",
+      "meaning": "Not until after doing",
+      "locator": "Section 2, introduction to N3 lesson 1",
+      "patternId": "tekara-denai-to",
+      "status": "resolved"
+    }
+  ]
+}

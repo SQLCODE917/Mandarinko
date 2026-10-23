@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "genki",
+      "title": "GENKI third edition grammar syllabus",
+      "url": "https://bookclub2.japantimes.co.jp/download/files/genki3/genki-3rd_syllabus_E.pdf",
+      "edition": "Third edition",
+      "curriculum": "genki-3",
+      "retrievedAt": "2026-10-23",
+      "sha256": "9dfd87867132a86515e269e163f73b6160c5fb4df3ab916128fcb3757d607542"
+    },
+    {
+      "id": "kanzen",
+      "title": "Shin Kanzen Master Grammar N3 contents",
+      "url": "https://www.3anet.co.jp/np/books/3604/",
+      "edition": "ISBN 9784883196104",
+      "curriculum": "kanzen-n3",
+      "retrievedAt": "2026-10-23",
+      "sha256": "5dedf126a50ddf5495f5953d8cbae8d4cf2759f661c136f6967b7abb4a83650a"
+    },
+    {
+      "id": "irodori",
+      "title": "Irodori compiled Grammar Notes",
+      "url": "https://www.irodori.jpf.go.jp/assets/data/Grammar_all.pdf",
+      "edition": "Starter, Elementary 1/2, Pre-Intermediate snapshot",
+      "curriculum": "irodori",
+      "retrievedAt": "2026-10-23",
+      "sha256": "3c54a7740a22c582f0ba4b834054c0e7ea5e817c18bccbad2519379f11ecd98d"
+    },
+    {
+      "id": "kanzen-teaching",
+      "title": "N3 author teaching guide",
+      "url": "https://plus.3anet.co.jp/japanese-edu/koza035-01/",
+      "edition": "2017-11-28",
+      "curriculum": "kanzen-n3",
+      "retrievedAt": "2026-10-23",
+      "sha256": "11ccb148e40273ba7dc7c8b14cd91d9f72f1213ee6f72fd157d7adfd63dd0453"
+    },
+    {
+      "id": "editorial",
+      "title": "Mandarinko editorial comparisons",
+      "url": "https://github.com/SQLCODE917/Mandarinko",
+      "edition": "Local authoring",
+      "curriculum": "editorial",
+      "retrievedAt": "2026-10-23"
+    }
+  ]
+}

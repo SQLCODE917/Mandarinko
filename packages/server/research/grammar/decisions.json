@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "matches": {
+    "genki-1-1": {
+      "form": "X は Y です",
+      "patternId": "desu-copula-polite",
+      "reason": "Noun identification with the polite copula; the source example ends in です."
+    },
+    "genki-1-2": {
+      "form": "Question Sentences",
+      "patternId": "ka-question",
+      "reason": "The source examples form yes/no questions by appending か."
+    },
+    "genki-1-3": {
+      "form": "Noun1 の Noun2",
+      "patternId": "no-possessive",
+      "reason": "Noun1 の Noun2 is noun modification with の."
+    },
+    "genki-3-8": {
+      "form": "The Topic Particle は",
+      "patternId": "wa-topic",
+      "reason": "The source explicitly identifies the topic particle は."
+    },
+    "genki-5-4": {
+      "form": "好き（な）/きらい（な）",
+      "patternId": "ga-suki",
+      "reason": "The source heading pairs 好き and きらい; the catalog entry covers this pair."
+    },
+    "genki-6-3": {
+      "form": "Describing Two Activities",
+      "patternId": "te-form-connector",
+      "reason": "The source teaches joining sequential activities with verb te-form, rather than manner."
+    },
+    "genki-7-6": {
+      "form": "Counting People",
+      "patternId": "counter-nin",
+      "reason": "Counting people uses the people counter, not the general object counters."
+    },
+    "genki-8-3": {
+      "form": "Short Forms in Quoted Speech: 〜と思います",
+      "patternId": "to-omou",
+      "reason": "The source explicitly gives と思います for expressing thoughts."
+    },
+    "genki-8-4": {
+      "form": "Short Forms in Quoted Speech: 〜と⾔っていました",
+      "patternId": "to-itte-imashita-reported",
+      "reason": "The source explicitly gives と言っていました for reported speech."
+    },
+    "genki-8-7": {
+      "form": "The Subject Particle が",
+      "patternId": "ga-subject",
+      "reason": "The source explicitly identifies the subject particle が."
+    },
+    "genki-9-3": {
+      "form": "Past Tense Short Forms in Quoted Speech: 〜と思います",
+      "patternId": "to-omou",
+      "reason": "This revisits と思います with past-tense quoted content; the outer construction retains its identity."
+    },
+    "genki-9-4": {
+      "form": "Past Tense Short Forms in Quoted Speech: 〜と⾔っていました",
+      "patternId": "to-itte-imashita-reported",
+      "reason": "This revisits reported speech with past-tense quoted content."
+    },
+    "genki-9-5": {
+      "form": "Qualifying Nouns with Verbs and Adjectives",
+      "patternId": "noun-modification",
+      "reason": "The source teaches clauses qualifying nouns, matching the catalog clause-plus-noun entry."
+    },
+    "genki-11-4": {
+      "form": "Noun A や Noun B",
+      "patternId": "ya-partial",
+      "reason": "Noun A や Noun B is the non-exhaustive noun-listing construction."
+    },
+    "genki-12-3": {
+      "form": "〜ほうがいいです",
+      "patternId": "hou-ga-ii-advice",
+      "reason": "The source uses the polite ending of the same ほうがいい advice construction."
+    },
+    "genki-13-3": {
+      "form": "〜そうです (It looks like . . . )",
+      "patternId": "sou-da-appearance",
+      "reason": "The source explicitly says It looks like, distinguishing appearance from hearsay."
+    },
+    "genki-14-1": {
+      "form": "ほしい",
+      "patternId": "ga-hoshii",
+      "reason": "The lesson uses ほしい for wanting an object; が marks the wanted object."
+    },
+    "genki-14-2": {
+      "form": "〜かもしれません",
+      "patternId": "kamoshirenai-might",
+      "reason": "かもしれません is the polite form of the possibility construction."
+    },
+    "genki-14-3": {
+      "form": "あげる/くれる/もらう",
+      "patternId": "ageru-morau-kureru",
+      "reason": "The combined source heading corresponds to the combined catalog entry for giving and receiving objects."
+    },
+    "genki-14-4": {
+      "form": "〜たらどうですか",
+      "patternId": "tara-dou-ka",
+      "reason": "たらどうですか is the polite question form of the advisory たらどうか construction."
+    },
+    "genki-15-2": {
+      "form": "Volitional Form＋と思っています",
+      "patternId": "you-to-omou",
+      "reason": "The source explicitly combines the volitional form with と思っています for intention."
+    },
+    "genki-15-4": {
+      "form": "Using Sentences to Qualify Nouns",
+      "patternId": "noun-modification",
+      "reason": "The source explicitly teaches using clauses to qualify nouns."
+    },
+    "genki-16-3": {
+      "form": "〜といい",
+      "patternId": "to-ii-hope",
+      "reason": "The syllabus identifies expressing wishes as the function of といい here."
+    },
+    "genki-17-1": {
+      "form": "〜そうです (I hear)",
+      "patternId": "sou-da-hearsay",
+      "reason": "The source explicitly says I hear, distinguishing hearsay from appearance."
+    },
+    "genki-17-2": {
+      "form": "〜って",
+      "patternId": "tte-kuchigo",
+      "reason": "The syllabus groups this って introduction with reporting speech and gossip."
+    },
+    "genki-17-3": {
+      "form": "〜たら",
+      "patternId": "tara-conditional",
+      "reason": "The standalone conditional construction is distinct from the catalog comparison of conditionals."
+    },
+    "genki-18-2": {
+      "form": "Paired Intransitive Verbs＋ている",
+      "patternId": "jidoushi-teiru-state",
+      "reason": "The source explicitly restricts this use to paired intransitive verbs and resultant state."
+    },
+    "genki-18-4": {
+      "form": "〜と",
+      "patternId": "to-conditional-natural",
+      "reason": "The syllabus example describes the automatic seasonal result of autumn arriving."
+    },
+    "genki-18-6": {
+      "form": "〜ばよかったです",
+      "patternId": "ba-yokatta",
+      "reason": "The source example expresses regret about insufficient past study, matching regretful counterfactuals."
+    },
+    "genki-19-1": {
+      "form": "Honorific Verbs",
+      "patternId": "sonkeigo",
+      "reason": "Honorific verbs concern respect for the subject, rather than humble self-reference."
+    },
+    "genki-19-2": {
+      "form": "Giving Respectful Advice",
+      "patternId": "o-kudasai-honorific-request",
+      "reason": "The publisher example is お待ちください, an honorific request."
+    },
+    "genki-21-2": {
+      "form": "〜てある",
+      "patternId": "tearu-prepared-state",
+      "reason": "The source construction describes an intentionally prepared resultant state with てある."
+    },
+    "genki-21-4": {
+      "form": "Adjective＋する",
+      "patternId": "ni-suru-ku-suru",
+      "reason": "Adjective + する expresses intentional change, matching the catalog にする / くする entry."
+    },
+    "genki-22-3": {
+      "form": "Verb Stem＋なさい",
+      "patternId": "nasai-soft-command",
+      "reason": "Verb stem + なさい is the catalog なさい command construction."
+    },
+    "genki-22-4": {
+      "form": "〜ば",
+      "patternId": "ba-conditional",
+      "reason": "The standalone ば conditional is distinct from its conjugation-reference and comparison entries."
+    },
+    "genki-23-6": {
+      "form": "〜⽅",
+      "patternId": "kata-way-of-doing",
+      "reason": "The source 方 construction expresses the way of doing an action."
+    }
+  },
+  "glosses": {},
+  "explicit": [
+    {
+      "id": "kanzen-compare-hazu-wake",
+      "sourceId": "kanzen",
+      "order": 101,
+      "title": "はずだ / わけだ",
+      "locator": "Contents, section E, one-point lesson",
+      "type": "compared",
+      "endpoints": [
+        {
+          "form": "〜はずだ",
+          "meaning": "Expectation",
+          "patternId": "hazu-da"
+        },
+        {
+          "form": "〜わけだ",
+          "meaning": "Explanation of consequence",
+          "patternId": "wake-da"
+        }
+      ],
+      "rationale": "The publisher explicitly pairs these constructions in a comparison lesson."
+    },
+    {
+      "id": "kanzen-compare-bakari-tokoro",
+      "sourceId": "kanzen",
+      "order": 102,
+      "title": "たばかり / たところ",
+      "locator": "Contents, section F, one-point lesson",
+      "type": "compared",
+      "endpoints": [
+        {
+          "form": "〜たばかり",
+          "meaning": "Recent completion",
+          "patternId": "ta-bakari-da"
+        },
+        {
+          "form": "〜たところ",
+          "meaning": "Just completed action",
+          "patternId": "tokoro-da-jiten"
+        }
+      ],
+      "rationale": "The publisher explicitly pairs these constructions in a comparison lesson."
+    },
+    {
+      "id": "kanzen-build-te-kara",
+      "sourceId": "kanzen-teaching",
+      "order": 1,
+      "title": "Earlier time expressions as foundations",
+      "locator": "Section 2, introduction to N3 lesson 1",
+      "type": "buildsOn",
+      "endpoints": [
+        {
+          "form": "〜てから",
+          "meaning": "After doing",
+          "patternId": "te-kara"
+        },
+        {
+          "form": "〜てからでないと",
+          "meaning": "Not until after doing",
+          "patternId": "tekara-denai-to"
+        }
+      ],
+      "rationale": "The author recommends recalling earlier time expressions, including てから, before introducing this N3 lesson. This is pedagogical scaffolding, not a hard prerequisite."
+    }
+  ],
+  "proposals": [
+    {
+      "kind": "split",
+      "patternIds": ["koto-ga-aru"],
+      "reason": "Occasional occurrence and past experience have distinct connection forms and source introductions. Preserve the entry until reviewed."
+    },
+    {
+      "kind": "mergeOrDistinguish",
+      "patternIds": ["ikoukei-volitional", "ikoukei-volitional-conjugation"],
+      "reason": "Clarify whether use and conjugation are deliberately separate constructions before resolving generic volitional-form headings."
+    },
+    {
+      "kind": "splitOrDistinguish",
+      "patternIds": ["bakari-only-just", "bakari-gentei", "ta-bakari-da"],
+      "reason": "The combined entry overlaps the limitation and recent-completion entries; do not merge or split automatically."
+    },
+    {
+      "kind": "hardPrerequisite",
+      "patternIds": ["te-ta-form-conjugation", "te-kudasai"],
+      "reason": "Review only for independent production: Irodori teaches recognizing requests before teaching the conjugation rules, so recognition must not acquire this requirement."
+    }
+  ]
+}

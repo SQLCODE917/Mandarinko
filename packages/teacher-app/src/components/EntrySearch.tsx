@@ -8,11 +8,13 @@ export function EntrySearch<T extends { id: string }>({
   placeholder,
   renderEntry,
   onSelect,
+  onQueryChange,
 }: {
   entries: T[];
   placeholder: string;
   renderEntry: (entry: T) => ReactNode;
   onSelect: (entry: T) => void;
+  onQueryChange?: (query: string) => void;
 }) {
   const [query, setQuery] = useState('');
   const results = query.trim() ? entries.filter((entry) => matchesEntry(entry, query)) : [];
@@ -25,7 +27,10 @@ export function EntrySearch<T extends { id: string }>({
           aria-label={placeholder}
           placeholder={placeholder}
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            onQueryChange?.(event.target.value);
+          }}
         />
       </div>
       {results.length > 0 && (

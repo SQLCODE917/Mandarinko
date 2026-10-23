@@ -133,6 +133,38 @@ injected HTTP and draft-storage ports. It shares `transitionEditor` with word
 authoring, along with the dialog, growing text fields, catalog loading and HTTP
 adapters. Grammar has no character traversal or recursive authoring graph.
 
+### Grammar concept map
+
+**Grid / Graph** is a single-choice segmented control: exactly one view is selected,
+with arrow keys moving between the options. It preserves view choice in
+`?view=graph` alongside pattern and draft locations. The graph reuses catalog search: matches highlight in place and search
+results open the existing details modal. Closing details restores node focus and
+viewport. Switching to Grid and back retains the graph viewport in the mounted
+page; a reload restores the view choice and resets the viewport.
+
+Pan the SVG background or zoom with the mouse wheel or zoom controls. Scrolling
+up over the graph zooms in; scrolling down zooms out without moving the page.
+**Fit map** frames
+connected concepts; **Fit all patterns** includes unlinked patterns at the
+periphery. Stable seeded D3 forces settle once per catalog/reference change.
+Connectivity weights pull hubs inward; source-order overlays never change layout.
+Labels are decluttered, with more available on zoom or focus. Japanese labels use
+Furifont. The settled layout has no ongoing motion.
+
+Select a connection for its types, direction, rationale and source locations in
+the evidence panel. On narrow screens the panel appears below the canvas. Default
+filters show co-teaching, explicit comparisons and explicit scaffolding;
+introduced-earlier is opt-in. The branch overview discloses displayed/total counts;
+**Show all connections** restores every filtered connection. An expandable list
+provides keyboard-operable pattern and evidence navigation.
+
+Graph reference failures expose explicit reload without hiding Grid. Comparison
+data is stored separately from pattern content. The editor retains its comparison
+choices in the local draft and saves them through a dedicated API; source-backed
+comparisons cannot be removed by editorial checkboxes. If reference loading fails,
+content editing remains available and comparison editing requires reopening after
+reloading the data.
+
 ## Word Editor
 
 Click fields to edit directly. Enter adds a line; text areas grow to show their

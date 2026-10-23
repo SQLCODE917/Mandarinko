@@ -19,7 +19,6 @@ export function validateGrammarPattern(input: unknown): ValidationError[] {
       'examples',
       'category',
       'metadata',
-      'contrastIds',
     ]),
   ];
   for (const field of ['id', 'title']) {
@@ -70,28 +69,7 @@ export function validateGrammarPattern(input: unknown): ValidationError[] {
       }
     }
   }
-  if (input.contrastIds !== undefined) {
-    if (!Array.isArray(input.contrastIds))
-      errors.push({ field: 'contrastIds', message: 'Contrast IDs must be an array' });
-    else
-      input.contrastIds.forEach((id, index) => {
-        if (!isText(id))
-          errors.push({ field: `contrastIds[${index}]`, message: 'Contrast ID must be a string' });
-      });
-  }
   return errors;
-}
-
-export function validateGrammarReferences(
-  pattern: GrammarPattern,
-  patterns: GrammarPattern[]
-): ValidationError[] {
-  return (pattern.contrastIds ?? [])
-    .filter((id) => id === pattern.id || !patterns.some((other) => other.id === id))
-    .map((id) => ({
-      field: 'contrastIds',
-      message: `Contrast “${id}” must refer to another existing grammar pattern`,
-    }));
 }
 
 export function parseGrammarData(input: unknown): GrammarData {
@@ -108,9 +86,5 @@ export function parseGrammarData(input: unknown): GrammarData {
     ids.add(pattern.id);
   }
   const data = input as unknown as GrammarData;
-  for (const pattern of data.patterns) {
-    const errors = validateGrammarReferences(pattern, data.patterns);
-    if (errors.length) throw new Error(errors[0].message);
-  }
   return data;
 }
