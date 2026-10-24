@@ -102,7 +102,7 @@ test('evidence, search, relation filters and accessible list share the real grap
     'https://example.com'
   );
   await page.getByLabel('Show all connections').check();
-  await expect(page.locator('.grammar-map-caption')).toContainText('All connections');
+  await expect(page.getByLabel('Show all connections')).toBeChecked();
   await page.getByLabel('Explicitly compared', { exact: true }).uncheck();
   await expect(canvas.locator('.grammar-map-edge')).toHaveCount(0);
   await page.getByLabel('Introduced earlier', { exact: true }).check();
@@ -162,9 +162,22 @@ test('actual catalog graph is finite and responsive on desktop and mobile', asyn
     route.fulfill({ json: data })
   );
   await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.setViewportSize({ width: 1600, height: 1000 });
   await page.goto('/grammar?view=graph');
   const canvas = page.locator('.grammar-map-canvas');
   await expect(canvas.locator('.grammar-map-node')).toHaveCount(grammar.patterns.length);
+  await expect(page.getByText(/Branch overview|Size shows connectivity/)).toHaveCount(0);
+  expect((await canvas.boundingBox())!.width).toBeGreaterThan(1540);
+  const listSummary = page.locator('.grammar-map-accessible > summary');
+  const expectListAtBottom = async (height: number) => {
+    const bounds = (await listSummary.boundingBox())!;
+    expect(bounds.y + bounds.height).toBeGreaterThan(height - 32);
+    expect(bounds.y + bounds.height).toBeLessThanOrEqual(height);
+  };
+  await expectListAtBottom(1000);
+  await page.setViewportSize({ width: 1600, height: 1300 });
+  await expectListAtBottom(1300);
+  await page.setViewportSize({ width: 1600, height: 1000 });
   await page.evaluate(() => document.fonts.ready);
   expect(
     await canvas
@@ -192,6 +205,8 @@ test('actual catalog graph is finite and responsive on desktop and mobile', asyn
     fullPage: true,
   });
   await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('button', { name: 'Close evidence', exact: true }).click();
+  await expectListAtBottom(844);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true
   );
@@ -211,6 +226,15 @@ test('actual catalog graph is finite and responsive on desktop and mobile', asyn
     )
     .toBeGreaterThanOrEqual(15.9);
   await page.screenshot({ path: info.outputPath('grammar-map-mobile.png'), fullPage: true });
+  await canvas.locator('.grammar-map-edge').first().focus();
+  await page.keyboard.press('Enter');
+  const mobileEvidence = page.getByRole('complementary', { name: 'Connection evidence' });
+  await expect(mobileEvidence).toBeVisible();
+  await mobileEvidence.getByRole('link').first().scrollIntoViewIfNeeded();
+  await page.screenshot({
+    path: info.outputPath('grammar-map-evidence-mobile.png'),
+    fullPage: true,
+  });
 });
 
 test('new-pattern comparison failure retries the same creation without duplicating catalog entries', async ({

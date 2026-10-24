@@ -189,12 +189,6 @@ export function GrammarGraph({
           </label>
         </div>
       </div>
-      <p className="grammar-map-caption" role="status">
-        {showAll ? 'All connections' : 'Branch overview'} · {visible.length} / {filtered.length}{' '}
-        connections · {patterns.length} patterns ({graph.nodes.filter((n) => n.weight === 0).length}{' '}
-        without conceptual links). Size shows connectivity. Source order is an optional overlay, not
-        a lesson plan.
-      </p>
       <div className={`grammar-map-workspace${edge ? ' has-evidence' : ''}`}>
         <svg
           ref={svg}

@@ -122,7 +122,7 @@ export function GrammarPage() {
         : null;
   return (
     <>
-      <CatalogLayout page="grammar">
+      <CatalogLayout page="grammar" wide={graphView}>
         <div className="search-section">
           <EntrySearch
             entries={patterns}
@@ -170,7 +170,7 @@ export function GrammarPage() {
             </div>
           ) : (
             <>
-              <div hidden={!graphView}>
+              <div className="grammar-graph-view" hidden={!graphView}>
                 {mapError ? (
                   <p role="alert">
                     {mapError}{' '}

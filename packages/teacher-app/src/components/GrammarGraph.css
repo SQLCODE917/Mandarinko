@@ -33,6 +33,12 @@
   outline: 2px solid #a92568;
   outline-offset: 2px;
 }
+.grammar-graph-view:not([hidden]),
+.grammar-map {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .grammar-map button {
   font: inherit;
   color: #604b54;
@@ -59,14 +65,13 @@
   gap: 0.35rem;
   font-size: 0.9rem;
 }
-.grammar-map-caption {
-  color: #685b50;
-  font-size: 0.9rem;
-  margin: 0.85rem 0;
-}
 .grammar-map-workspace {
+  flex: 1 0 240px;
+  min-height: 240px;
+  margin-top: 0.75rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   border: 1px solid #d8cfc2;
   border-radius: 6px;
   background: radial-gradient(ellipse at center, #fffaf1, #f8f2e8);
@@ -78,8 +83,8 @@
 .grammar-map-canvas {
   display: block;
   width: 100%;
-  height: min(76vh, 850px);
-  min-height: 440px;
+  height: 100%;
+  min-height: 240px;
   touch-action: none;
   cursor: grab;
 }
@@ -135,7 +140,7 @@
   background: #fffaf4;
   border-left: 1px solid #d8cfc2;
   padding: 1rem;
-  max-height: min(76vh, 850px);
+  min-height: 0;
   overflow-y: auto;
   font-size: 1rem;
   line-height: 1.55;
@@ -173,14 +178,11 @@
 @media (max-width: 800px) {
   .grammar-map-workspace.has-evidence {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(240px, 1fr) auto;
   }
   .grammar-map-evidence {
     border-left: 0;
     border-top: 1px solid #d8cfc2;
     max-height: 50vh;
-  }
-  .grammar-map-canvas {
-    height: min(70vh, calc(100vw - 2rem));
-    min-height: 320px;
   }
 }

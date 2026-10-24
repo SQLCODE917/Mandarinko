@@ -154,7 +154,10 @@ Furifont. The settled layout has no ongoing motion.
 Select a connection for its types, direction, rationale and source locations in
 the evidence panel. On narrow screens the panel appears below the canvas. Default
 filters show co-teaching, explicit comparisons and explicit scaffolding;
-introduced-earlier is opt-in. The branch overview discloses displayed/total counts;
+introduced-earlier is opt-in. The graph fills the available page width and remaining
+screen height, with the collapsed pattern list at the bottom. Small screens can
+scroll when controls and evidence need more room. The graph initially
+shows a reduced selection of connections;
 **Show all connections** restores every filtered connection. An expandable list
 provides keyboard-operable pattern and evidence navigation.
 

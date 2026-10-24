@@ -4,13 +4,15 @@ import '../pages/HomePage.css';
 
 export function CatalogLayout({
   page,
+  wide = false,
   children,
 }: {
   page: 'dictionary' | 'grammar';
+  wide?: boolean;
   children: ReactNode;
 }) {
   return (
-    <div className="home-page">
+    <div className={`home-page${wide ? ' home-page-expanded' : ''}`}>
       <header className="page-header crt-screen">
         <div className="logo">
           <span className="crt-badge">国语こ</span>
@@ -25,7 +27,7 @@ export function CatalogLayout({
           Grammar
         </a>
       </nav>
-      <main className="home-content">{children}</main>
+      <main className={`home-content${wide ? ' home-content-wide' : ''}`}>{children}</main>
     </div>
   );
 }

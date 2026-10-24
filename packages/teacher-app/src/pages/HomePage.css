@@ -28,6 +28,23 @@
   padding: 1rem 1.25rem;
 }
 
+.home-content-wide {
+  max-width: none;
+}
+
+.home-page-expanded {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-content-wide,
+.home-content-wide > .words-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .search-section {
   max-width: 28rem;
   margin-bottom: 1.1rem;
