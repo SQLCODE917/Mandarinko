@@ -45,7 +45,7 @@ export async function searchBySpelling(
 
 export async function fetchGrammarMap(): Promise<GrammarMapResponse> {
   const response = await fetch(`${API_BASE}/grammar-map`);
-  if (!response.ok) throw new Error('Failed to load grammar reference data');
+  if (!response.ok) throw new Error('Failed to load grammar connections');
   return response.json();
 }
 export async function fetchGrammarComparisons(): Promise<

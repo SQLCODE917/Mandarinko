@@ -46,15 +46,10 @@ export function GrammarPage() {
     else url.searchParams.delete('view');
     navigateHref(`${url.pathname}${url.search}${url.hash}`);
   };
-  const comparisonIds = (id: string, editorialOnly = false) => [
+  const comparisonIds = (id: string) => [
     ...new Set(
       comparisons.entries
-        .filter(
-          (r) =>
-            r.type === 'compared' &&
-            (!editorialOnly || r.basis === 'editorial') &&
-            (r.fromId === id || r.toId === id)
-        )
+        .filter((r) => r.type === 'compared' && (r.fromId === id || r.toId === id))
         .map((r) => (r.fromId === id ? r.toId : r.fromId))
     ),
   ];
@@ -231,7 +226,7 @@ export function GrammarPage() {
                 pattern
                   ? comparisons.loading || comparisons.error
                     ? undefined
-                    : comparisonIds(pattern.id, true)
+                    : comparisonIds(pattern.id)
                   : []
               }
               onExit={exitEditor}

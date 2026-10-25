@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { GrammarReferenceStore } from './grammarReferenceStore.js';
+import { GrammarConnectionStore } from './grammarConnectionStore.js';
 import { createGrammarMapRouter } from './grammarMapRouter.js';
 import express, { Express } from 'express';
 import cors from 'cors';
@@ -11,7 +11,7 @@ import { createGrammarRouter } from './grammarRouter.js';
 export function createApp(
   vocabPath?: string,
   grammarPath?: string,
-  referenceDirectory?: string
+  connectionDirectory?: string
 ): Readonly<{ app: Express; store: DataStore }> {
   const app = express();
   app.use(cors());
@@ -19,11 +19,11 @@ export function createApp(
   const store = new DataStore(vocabPath);
   app.use('/api/words', createWordRouter(store));
   const grammar = new GrammarStore(grammarPath);
-  const references = new GrammarReferenceStore(
+  const connections = new GrammarConnectionStore(
     grammar,
-    referenceDirectory ?? path.dirname(grammarPath ?? path.resolve(process.cwd(), 'grammar.json'))
+    connectionDirectory ?? path.dirname(grammarPath ?? path.resolve(process.cwd(), 'grammar.json'))
   );
-  app.use('/api', createGrammarMapRouter(references, grammar));
+  app.use('/api', createGrammarMapRouter(connections, grammar));
   app.use('/api/grammar', createGrammarRouter(grammar));
   return { app, store } as const;
 }

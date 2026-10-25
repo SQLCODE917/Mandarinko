@@ -146,25 +146,24 @@ Pan the SVG background or zoom with the mouse wheel or zoom controls. Scrolling
 up over the graph zooms in; scrolling down zooms out without moving the page.
 **Fit map** frames
 connected concepts; **Fit all patterns** includes unlinked patterns at the
-periphery. Stable seeded D3 forces settle once per catalog/reference change.
-Connectivity weights pull hubs inward; source-order overlays never change layout.
+periphery. Stable seeded D3 forces settle once per catalog/connection change.
+Connectivity weights pull hubs inward; introduction-order overlays never change layout.
 Labels are decluttered, with more available on zoom or focus. Japanese labels use
 Furifont. The settled layout has no ongoing motion.
 
-Select a connection for its types, direction, rationale and source locations in
-the evidence panel. On narrow screens the panel appears below the canvas. Default
-filters show co-teaching, explicit comparisons and explicit scaffolding;
+Select a connection for its types, direction and optional rationale in
+the connection details panel. On narrow screens the panel appears below the canvas. Default
+filters show co-teaching, comparisons and builds-on relationships;
 introduced-earlier is opt-in. The graph fills the available page width and remaining
 screen height, with the collapsed pattern list at the bottom. Small screens can
-scroll when controls and evidence need more room. The graph initially
+scroll when controls and connection details need more room. The graph initially
 shows a reduced selection of connections;
 **Show all connections** restores every filtered connection. An expandable list
-provides keyboard-operable pattern and evidence navigation.
+provides keyboard-operable pattern and connection navigation.
 
-Graph reference failures expose explicit reload without hiding Grid. Comparison
+Graph connection failures expose explicit reload without hiding Grid. Comparison
 data is stored separately from pattern content. The editor retains its comparison
-choices in the local draft and saves them through a dedicated API; source-backed
-comparisons cannot be removed by editorial checkboxes. If reference loading fails,
+choices in the local draft and saves them through a dedicated API. Every comparison is editable. If connection loading fails,
 content editing remains available and comparison editing requires reopening after
 reloading the data.
 

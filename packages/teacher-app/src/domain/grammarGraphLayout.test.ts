@@ -14,7 +14,7 @@ it('keeps a large unconnected catalog close to the connected core', () => {
       fromId: 'hub',
       toId: n.id,
       weight: 1,
-      assertions: [],
+      relationships: [],
     })),
   };
   const { nodes } = layoutGrammarGraph(graph);
@@ -39,7 +39,7 @@ it('settles deterministically around the weighted centroid with a central hub', 
     nodes,
     edges: nodes
       .slice(1, -1)
-      .map((n) => ({ id: n.id, fromId: 'hub', toId: n.id, weight: 1, assertions: [] })),
+      .map((n) => ({ id: n.id, fromId: 'hub', toId: n.id, weight: 1, relationships: [] })),
   };
   const before = JSON.stringify(graph);
   const a = layoutGrammarGraph(graph),

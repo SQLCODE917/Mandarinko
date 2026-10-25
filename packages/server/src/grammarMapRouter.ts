@@ -1,22 +1,22 @@
 import express, { type Router } from 'express';
-import type { GrammarReferenceRepository } from './grammarReferenceStore.js';
+import type { GrammarConnectionRepository } from './grammarConnectionStore.js';
 import type { GrammarRepository } from './grammarStore.js';
 
 export function createGrammarMapRouter(
-  references: GrammarReferenceRepository,
+  connections: GrammarConnectionRepository,
   grammar: GrammarRepository
 ): Router {
   const router = express.Router();
   router.get('/grammar-map', async (_req, res) => {
     try {
-      res.json(await references.read());
+      res.json(await connections.read());
     } catch (error) {
       res.status(500).json({ error: error instanceof Error ? error.message : String(error) });
     }
   });
   router.get('/grammar-comparisons', async (_req, res) => {
     try {
-      res.json((await references.read()).relationships.filter((r) => r.type === 'compared'));
+      res.json((await connections.read()).relationships.filter((r) => r.type === 'compared'));
     } catch (error) {
       res.status(500).json({ error: error instanceof Error ? error.message : String(error) });
     }
@@ -44,7 +44,7 @@ export function createGrammarMapRouter(
           .json({ error: 'patternIds must contain unique IDs of other existing grammar patterns' });
         return;
       }
-      res.json(await references.replaceComparisons(req.params.id, ids));
+      res.json(await connections.replaceComparisons(req.params.id, ids));
     } catch (error) {
       res.status(500).json({ error: error instanceof Error ? error.message : String(error) });
     }

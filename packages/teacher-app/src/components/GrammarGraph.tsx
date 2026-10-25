@@ -14,8 +14,8 @@ import './GrammarGraph.css';
 export const relationshipLabels: Record<GrammarRelationshipType, string> = {
   taughtTogether: 'Taught together',
   introducedEarlier: 'Introduced earlier',
-  compared: 'Explicitly compared',
-  buildsOn: 'Explicitly builds on',
+  compared: 'Compared',
+  buildsOn: 'Builds on',
 };
 export function GrammarGraph({
   patterns,
@@ -52,8 +52,11 @@ export function GrammarGraph({
   const filtered = useMemo(
     () =>
       graph.edges
-        .map((e) => ({ ...e, assertions: e.assertions.filter((r) => enabled.includes(r.type)) }))
-        .filter((e) => e.assertions.length),
+        .map((e) => ({
+          ...e,
+          relationships: e.relationships.filter((r) => enabled.includes(r.type)),
+        }))
+        .filter((e) => e.relationships.length),
     [graph, enabled]
   );
   const visible = useMemo(
@@ -62,8 +65,6 @@ export function GrammarGraph({
   );
   const edge = filtered.find((e) => e.id === edgeId);
   const highest = Math.max(1, ...layout.nodes.map((n) => n.weight));
-  const unitById = new Map(data.units.map((u) => [u.id, u]));
-  const sourceById = new Map(data.sources.map((s) => [s.id, s]));
   useEffect(() => {
     const canvas = svg.current;
     if (!canvas) return;
@@ -189,7 +190,7 @@ export function GrammarGraph({
           </label>
         </div>
       </div>
-      <div className={`grammar-map-workspace${edge ? ' has-evidence' : ''}`}>
+      <div className={`grammar-map-workspace${edge ? ' has-details' : ''}`}>
         <svg
           ref={svg}
           className="grammar-map-canvas"
@@ -237,7 +238,7 @@ export function GrammarGraph({
                   }}
                 >
                   <title>
-                    {e.assertions
+                    {e.relationships
                       .map((r) => relationshipLabels[r.type])
                       .filter((v, i, a) => a.indexOf(v) === i)
                       .join(', ')}
@@ -284,7 +285,7 @@ export function GrammarGraph({
                 >
                   <title>
                     {p.title}
-                    {n.weight === 0 ? ' — no sourced conceptual connections' : ''}
+                    {n.weight === 0 ? ' — no conceptual connections' : ''}
                   </title>
                   <circle cx={n.x} cy={n.y} r={n.radius} />
                   {labels.has(n.id) && (
@@ -298,15 +299,15 @@ export function GrammarGraph({
           </g>
         </svg>
         {edge && (
-          <aside className="grammar-map-evidence" aria-label="Connection evidence">
+          <aside className="grammar-map-details" aria-label="Connection details">
             <button
               type="button"
-              className="grammar-map-evidence-close"
+              className="grammar-map-details-close"
               onClick={() => setEdgeId(null)}
             >
-              Close evidence
+              Close details
             </button>
-            <h3>Connection evidence</h3>
+            <h3>Connection details</h3>
             <div>
               {[edge.fromId, edge.toId].map((id) => (
                 <button type="button" key={id} onClick={() => openNode(id)}>
@@ -314,33 +315,17 @@ export function GrammarGraph({
                 </button>
               ))}
             </div>
-            {edge.assertions.map((r) => {
-              const u = unitById.get(r.unitId)!;
-              const s = sourceById.get(u.sourceId)!;
-              return (
-                <article key={r.id}>
-                  <h4>{relationshipLabels[r.type]}</h4>
-                  {(r.type === 'buildsOn' || r.type === 'introducedEarlier') && (
-                    <p>
-                      {entries.get(r.fromId)?.title} → {entries.get(r.toId)?.title}
-                    </p>
-                  )}
-                  <p>{r.rationale}</p>
-                  <a href={s.url} target="_blank" rel="noreferrer">
-                    {s.title}
-                  </a>
+            {edge.relationships.map((r) => (
+              <article key={r.id}>
+                <h4>{relationshipLabels[r.type]}</h4>
+                {(r.type === 'buildsOn' || r.type === 'introducedEarlier') && (
                   <p>
-                    {[
-                      u.locator,
-                      ...r.itemIds.map((id) => data.items.find((item) => item.id === id)?.locator),
-                    ]
-                      .filter((value, index, all) => value && all.indexOf(value) === index)
-                      .join(' · ')}{' '}
-                    · {s.edition}
+                    {entries.get(r.fromId)?.title} → {entries.get(r.toId)?.title}
                   </p>
-                </article>
-              );
-            })}
+                )}
+                {r.rationale && <p>{r.rationale}</p>}
+              </article>
+            ))}
           </aside>
         )}
       </div>
@@ -361,9 +346,9 @@ export function GrammarGraph({
                       <li key={e.id}>
                         <button type="button" onClick={() => inspect(e)}>
                           {entries.get(e.fromId === p.id ? e.toId : e.fromId)?.title} —{' '}
-                          {[...new Set(e.assertions.map((r) => relationshipLabels[r.type]))].join(
-                            ', '
-                          )}
+                          {[
+                            ...new Set(e.relationships.map((r) => relationshipLabels[r.type])),
+                          ].join(', ')}
                         </button>
                       </li>
                     ))}

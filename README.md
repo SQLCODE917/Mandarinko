@@ -114,21 +114,19 @@ The grammar page reads and writes
 [`packages/server/grammar.json`](packages/server/grammar.json), preserving its
 versioned pattern array independently of vocabulary.
 
-Switch **Grid / Graph** to explore the sourced grammar concept map
+Switch **Grid / Graph** to explore the grammar concept map
 (`/grammar?view=graph`). Nodes open the same pattern details; connections open
-source evidence. The weighted center and branches describe connectivity, while
-source teaching order is an optional overlay. The overview draws a disclosed subset
-of connections; **Show all connections** reveals the complete filtered network.
-**Fit map** frames connected concepts; **Fit all patterns** includes unlinked
-entries. Unsupported connections remain absent.
+their types, direction and optional rationale. Mandarinko owns these judgments.
+Each conceptual relationship contributes equally to node size and layout;
+introduction order is an optional overlay and does not affect layout or prescribe
+a lesson plan. The overview draws a subset of connections; **Show all connections**
+reveals the complete filtered network. **Fit map** frames connected concepts;
+**Fit all patterns** includes unlinked entries.
 
-Reference sources, lessons, source items and relationship assertions live in
-separate JSON tables. GENKI, Shin Kanzen Master N3 and Irodori provide the pinned
-heading inventories; these are selected curricula, not an official JLPT syllabus.
-Unresolved matches, possible missing constructions, source differences and proposed
-entry splits remain in generated review artifacts. See the
-[server research commands](packages/server/README.md#grammar-reference-data-and-research)
-for regeneration and coverage reports.
+Connections live separately in
+[`grammar.relationships.json`](packages/server/grammar.relationships.json).
+See the [server connection API](packages/server/README.md#grammar-connections)
+for the schema and comparison editing contract.
 
 ## Run locally
 

@@ -80,7 +80,7 @@ test('graph toggle, node details, keyboard focus, history and viewport survive n
   await expect(canvas).toBeVisible();
   await expect(page.getByRole('radio', { name: 'Graph', exact: true })).toBeChecked();
 });
-test('evidence, search, relation filters and accessible list share the real graph', async ({
+test('details, search, relation filters and accessible list share the real graph', async ({
   page,
 }) => {
   await page.goto('/grammar?view=graph');
@@ -95,30 +95,27 @@ test('evidence, search, relation filters and accessible list share the real grap
   const connection = canvas.getByRole('button', { name: /Inspect connections/ });
   await connection.focus();
   await page.keyboard.press('Enter');
-  const evidence = page.getByRole('complementary', { name: 'Connection evidence' });
-  await expect(evidence).toContainText('Editorial comparison.');
-  await expect(evidence.getByRole('link', { name: 'Editorial', exact: true })).toHaveAttribute(
-    'href',
-    'https://example.com'
-  );
+  const details = page.getByRole('complementary', { name: 'Connection details' });
+  await expect(details).toContainText('Distinguish action locations from destinations.');
+  await expect(details.getByRole('link')).toHaveCount(0);
   await page.getByLabel('Show all connections').check();
   await expect(page.getByLabel('Show all connections')).toBeChecked();
-  await page.getByLabel('Explicitly compared', { exact: true }).uncheck();
+  await page.getByLabel('Compared', { exact: true }).uncheck();
   await expect(canvas.locator('.grammar-map-edge')).toHaveCount(0);
   await page.getByLabel('Introduced earlier', { exact: true }).check();
   expect(await canvas.locator('[data-pattern-id="de"] circle').getAttribute('cx')).toBe(before);
-  await page.getByLabel('Explicitly compared', { exact: true }).check();
+  await page.getByLabel('Compared', { exact: true }).check();
   await page.getByText('Browse patterns and connections as a list', { exact: true }).click();
   await expect(page.locator('.grammar-map-accessible')).toContainText('Destination');
 });
-test('reference failures leave grid usable and require explicit map retry', async ({ page }) => {
+test('connection failures leave grid usable and require explicit map retry', async ({ page }) => {
   let failed = true;
   await page.route('http://localhost:3000/api/grammar-map', async (route) => {
     if (failed) await route.fulfill({ status: 500, json: { error: 'Unavailable' } });
     else await route.fallback();
   });
   await page.goto('/grammar?view=graph');
-  await expect(page.getByRole('alert')).toContainText('Failed to load grammar reference data');
+  await expect(page.getByRole('alert')).toContainText('Failed to load grammar connections');
   await page.getByRole('radio', { name: 'Grid', exact: true }).click();
   await expect(page.locator('.word-item')).toHaveCount(2);
   failed = false;
@@ -131,30 +128,64 @@ test('comparison edits persist outside grammar content and retain modal behavior
   page,
   vocabulary,
 }) => {
-  await page.goto('/grammar?pattern=de');
+  await page.goto('/grammar?view=graph&pattern=de');
   await expect(page.getByRole('region', { name: 'Compare patterns' })).toContainText('Destination');
   await page.getByRole('button', { name: 'Edit', exact: true }).click();
   await page.getByText('Contrast patterns (1)', { exact: true }).click();
-  await page.getByLabel('Destination', { exact: true }).uncheck();
+  await page.getByRole('checkbox', { name: 'Destination', exact: true }).uncheck();
   await expect(page.locator('.editor-toolbar [role="status"]')).toHaveText('Saved');
   await page.getByRole('button', { name: 'Done', exact: true }).click();
-  await page.reload();
   await expect(page.getByRole('region', { name: 'Compare patterns' })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+  await expect(page.locator('.grammar-map-edge')).toHaveCount(0);
+  await page.reload();
+  await expect(page.locator('.grammar-map-canvas')).toBeVisible();
+  await expect(page.locator('.grammar-map-edge')).toHaveCount(0);
   expect((await vocabulary.readGrammar())[0]).not.toHaveProperty('contrastIds');
+});
+test('connection details retain types and authored direction without source metadata', async ({
+  page,
+}) => {
+  await page.route('http://localhost:3000/api/grammar-map', (route) =>
+    route.fulfill({
+      json: {
+        schemaVersion: 2,
+        relationships: [
+          {
+            id: 'buildsOn:de:ni',
+            fromId: 'de',
+            toId: 'ni',
+            type: 'buildsOn',
+            rationale: 'Extend location concepts.',
+          },
+          { id: 'introducedEarlier:ni:de', fromId: 'ni', toId: 'de', type: 'introducedEarlier' },
+        ],
+      },
+    })
+  );
+  await page.goto('/grammar?view=graph');
+  await page.getByLabel('Introduced earlier', { exact: true }).check();
+  const connection = page.locator('.grammar-map-edge').first();
+  await connection.focus();
+  await page.keyboard.press('Enter');
+  const details = page.getByRole('complementary', { name: 'Connection details' });
+  await expect(details).toContainText('Location of action → Destination');
+  await expect(details).toContainText('Destination → Location of action');
+  await expect(details).toContainText('Extend location concepts.');
+  await expect(details.getByRole('heading', { name: 'Builds on', exact: true })).toBeVisible();
+  await expect(
+    details.getByRole('heading', { name: 'Introduced earlier', exact: true })
+  ).toBeVisible();
+  await expect(details.getByRole('link')).toHaveCount(0);
+  await details.getByRole('button', { name: 'Destination', exact: true }).click();
+  await expect(page.getByRole('dialog')).toContainText('Marks a destination');
 });
 test('actual catalog graph is finite and responsive on desktop and mobile', async ({
   page,
 }, info) => {
   const base = new URL('../../packages/server/', import.meta.url);
   const grammar = JSON.parse(await readFile(new URL('grammar.json', base), 'utf8'));
-  const data: Record<string, unknown> = { schemaVersion: 1 };
-  for (const [file, key] of [
-    ['sources', 'sources'],
-    ['units', 'units'],
-    ['source-items', 'items'],
-    ['relationships', 'relationships'],
-  ])
-    data[key] = JSON.parse(await readFile(new URL(`grammar.${file}.json`, base), 'utf8'))[key];
+  const data = JSON.parse(await readFile(new URL('grammar.relationships.json', base), 'utf8'));
   await page.route('http://localhost:3000/api/grammar', (route) =>
     route.fulfill({ json: grammar.patterns })
   );
@@ -199,13 +230,13 @@ test('actual catalog graph is finite and responsive on desktop and mobile', asyn
   await page.getByRole('button', { name: 'Fit map', exact: true }).click();
   await canvas.locator('.grammar-map-edge').first().focus();
   await page.keyboard.press('Enter');
-  await expect(page.getByRole('complementary', { name: 'Connection evidence' })).toBeVisible();
+  await expect(page.getByRole('complementary', { name: 'Connection details' })).toBeVisible();
   await page.screenshot({
-    path: info.outputPath('grammar-map-evidence-desktop.png'),
+    path: info.outputPath('grammar-map-details-desktop.png'),
     fullPage: true,
   });
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.getByRole('button', { name: 'Close evidence', exact: true }).click();
+  await page.getByRole('button', { name: 'Close details', exact: true }).click();
   await expectListAtBottom(844);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true
@@ -228,11 +259,11 @@ test('actual catalog graph is finite and responsive on desktop and mobile', asyn
   await page.screenshot({ path: info.outputPath('grammar-map-mobile.png'), fullPage: true });
   await canvas.locator('.grammar-map-edge').first().focus();
   await page.keyboard.press('Enter');
-  const mobileEvidence = page.getByRole('complementary', { name: 'Connection evidence' });
-  await expect(mobileEvidence).toBeVisible();
-  await mobileEvidence.getByRole('link').first().scrollIntoViewIfNeeded();
+  const mobileDetails = page.getByRole('complementary', { name: 'Connection details' });
+  await expect(mobileDetails).toBeVisible();
+  await expect(mobileDetails.getByRole('heading', { name: 'Taught together' })).toBeVisible();
   await page.screenshot({
-    path: info.outputPath('grammar-map-evidence-mobile.png'),
+    path: info.outputPath('grammar-map-details-mobile.png'),
     fullPage: true,
   });
 });

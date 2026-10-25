@@ -113,26 +113,23 @@ including malformed examples and unsupported recursive fields.
 `matchesEntry` performs case-insensitive matching of every query term across all
 entry fields; it is shared by both catalog pages.
 
-### Grammar references
+### Grammar connections
 
-`GrammarMapData` joins independently stored sources, units, source items and
-relationship assertions through stable IDs. `parseGrammarMap` checks table
-versions, uniqueness, references, symmetric endpoint ordering, directed source
-order and required evidence. Editorial comparisons remain distinct from sourced
-assertions; explicit builds-on evidence does not assert a hard prerequisite.
+`GrammarMapData` contains `{ schemaVersion: 2, relationships }`. Each Mandarinko-owned
+relationship has an ID, two pattern IDs, one of `taughtTogether`, `introducedEarlier`,
+`compared` or `buildsOn`, and optional rationale. The first and third types are
+symmetric with sorted endpoints; the others preserve their authored direction.
+`grammarRelationshipId` generates deterministic IDs, escaping pattern IDs.
+`parseGrammarMap` checks schema version, fields, unique IDs and typed connections,
+existing distinct endpoints, symmetric ordering and optional nonempty rationale.
 
-`normalizeGrammarForm`, `constructionKey` and `matchGrammarItem` preserve original
-text while matching conventional notation conservatively. Sense collisions and
-known combined entries remain unresolved. `suggestGrammarPatterns` supplies review
-suggestions without accepting approximate matches.
-
-`projectGrammarGraph` groups source assertions into undirected visual edges while
-retaining their typed direction and evidence. Unit-normalized co-teaching support,
-independent curricula and explicit relationships determine bounded weights;
-introduced-earlier assertions contribute no centrality. `grammarOverview` selects
-a maximum-weight forest and strongest additional links without creating edges.
-`grammarCoverage` accounts for matched/unmatched catalog entries and source-item
-statuses. These operations are pure and contain no layout or persistence logic.
+`projectGrammarGraph` groups relationships into visual edges while retaining their
+types and directions. Each conceptual relationship contributes one to edge weight;
+a node's weight is the sum of its incident edge weights. Introduced-earlier links
+contribute zero. `grammarOverview` selects a maximum-weight forest and strongest
+additional links without creating edges. These operations are pure and contain no
+layout or persistence logic. Builds-on and introduction order do not assert hard
+prerequisites or a prescribed lesson plan.
 
 ### Word
 

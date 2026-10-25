@@ -86,46 +86,21 @@ export const test = base.extend<Fixture>({
       const grammarFile = join(directory, 'grammar.json');
       await writeFile(file, JSON.stringify(Object.fromEntries(words.map((w) => [w.id, w]))));
       await writeFile(grammarFile, JSON.stringify({ schemaVersion: 1, patterns: grammarPatterns }));
-      const referenceTables = {
-        sources: [
-          {
-            id: 'editorial',
-            title: 'Editorial',
-            url: 'https://example.com',
-            edition: '1',
-            retrievedAt: '2026-10-23',
-            curriculum: 'editorial',
-          },
-        ],
-        units: [
-          {
-            id: 'editorial-comparisons',
-            sourceId: 'editorial',
-            title: 'Editorial comparisons',
-            order: 0,
-            locator: 'Mandarinko',
-            instructional: false,
-          },
-        ],
-        'source-items': [],
-        relationships: [
-          {
-            id: 'editorial:de:ni',
-            fromId: 'de',
-            toId: 'ni',
-            type: 'compared',
-            unitId: 'editorial-comparisons',
-            itemIds: [],
-            basis: 'editorial',
-            rationale: 'Editorial comparison.',
-          },
-        ],
-      };
-      for (const [name, rows] of Object.entries(referenceTables))
-        await writeFile(
-          join(directory, `grammar.${name}.json`),
-          JSON.stringify({ schemaVersion: 1, [name === 'source-items' ? 'items' : name]: rows })
-        );
+      await writeFile(
+        join(directory, 'grammar.relationships.json'),
+        JSON.stringify({
+          schemaVersion: 2,
+          relationships: [
+            {
+              id: 'compared:de:ni',
+              fromId: 'de',
+              toId: 'ni',
+              type: 'compared',
+              rationale: 'Distinguish action locations from destinations.',
+            },
+          ],
+        })
+      );
       const { app } = createApp(file, grammarFile);
       const server = app.listen(0, '127.0.0.1');
       await new Promise<void>((resolve) => server.once('listening', resolve));
