@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import '../styles/crt.css';
+import '@mandarinko/ui/crt.css';
 
 interface CRTTextProps {
   children: string;

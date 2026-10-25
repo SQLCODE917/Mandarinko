@@ -126,7 +126,8 @@ export class GrammarEditorSession {
       return;
     }
     const snapshot = clone(this.pendingCreation ?? this.draft);
-    const { comparisonIds: _comparisonIds, ...content } = snapshot;
+    const content = { ...snapshot };
+    delete content.comparisonIds;
     this.errors = validateGrammarPattern({ ...content, id: this.pattern?.id ?? this.requestKey });
     if (this.errors.length) {
       await this.dispatch({ type: 'NEEDS_INPUT', stored: this.checkpoint() });

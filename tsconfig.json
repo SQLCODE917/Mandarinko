@@ -23,7 +23,8 @@
     "baseUrl": ".",
     "paths": {
       "@mandarinko/core": ["packages/core/src"],
-      "@mandarinko/server": ["packages/server/src"]
+      "@mandarinko/server": ["packages/server/src"],
+      "@mandarinko/ui": ["packages/ui/src"]
     }
   },
   "include": ["packages"],

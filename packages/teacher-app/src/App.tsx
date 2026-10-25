@@ -1,3 +1,4 @@
+import './components/WordTreeModal.css';
 import { useMemo } from 'react';
 import { HomePage } from './pages/HomePage';
 import type { Word } from '@mandarinko/core';

@@ -1,5 +1,5 @@
 import { useLayoutEffect, useId, useRef, type ReactNode, type RefObject } from 'react';
-import './WordTreeModal.css';
+import '@mandarinko/ui/dialog.css';
 
 export function EntryDialog({
   title,

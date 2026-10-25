@@ -32,7 +32,9 @@ afterEach(async () => {
 
 function getRouteHandler(method: 'get' | 'post' | 'patch', routePath: string) {
   const layer = router.stack.find((stackEntry) => {
-    const route = stackEntry.route as undefined | { path?: string; methods?: Record<string, boolean> };
+    const route = stackEntry.route as
+      | undefined
+      | { path?: string; methods?: Record<string, boolean> };
     return route?.path === routePath && route?.methods?.[method];
   });
 
@@ -100,7 +102,10 @@ describe('server package word API', () => {
     const id = (createRes.body as { id: string }).id;
     const patchHandler = getRouteHandler('patch', '/:id');
     const patchRes = createMockResponse();
-    await patchHandler({ params: { id }, body: { pronunciation: 'X' } } as unknown as Request, patchRes);
+    await patchHandler(
+      { params: { id }, body: { pronunciation: 'X' } } as unknown as Request,
+      patchRes
+    );
     expect(patchRes.statusCode).toBe(200);
     expect((patchRes.body as { pronunciation?: string }).pronunciation).toBe('X');
   });

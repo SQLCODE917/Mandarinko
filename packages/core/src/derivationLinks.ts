@@ -1,4 +1,4 @@
-import type { Word } from '@mandarinko/core';
+import type { Word } from './types.js';
 
 export type DerivationPart = { text: string; wordId?: string };
 

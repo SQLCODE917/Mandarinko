@@ -9,7 +9,7 @@ export default defineConfig({
   use: { baseURL: 'http://127.0.0.1:3014', trace: 'retain-on-failure' },
   webServer: {
     command:
-      'pnpm --filter @mandarinko/core build && pnpm --filter @mandarinko/server build && pnpm --filter @mandarinko/teacher-app exec vite --host 127.0.0.1 --port 3014 --strictPort',
+      'pnpm --filter @mandarinko/ui... build && pnpm --filter @mandarinko/server build && pnpm --filter @mandarinko/teacher-app exec vite --host 127.0.0.1 --port 3014 --strictPort',
     url: 'http://127.0.0.1:3014',
     reuseExistingServer: false,
   },

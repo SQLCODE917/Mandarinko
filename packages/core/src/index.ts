@@ -8,7 +8,7 @@ export type {
   ValidationError,
 } from './types.js';
 export { validateGrammarPattern, parseGrammarData } from './grammar.js';
-export { matchesEntry } from './search.js';
+export { matchesEntry, createEntrySearch } from './search.js';
 import { ValidationService } from './validation.js';
 import { VocabularySearch } from './search.js';
 
@@ -321,3 +321,6 @@ export class VocabularyManager {
 
 export default VocabularyManager;
 export * from './grammarMap.js';
+
+export { derivationParts, type DerivationPart } from './derivationLinks.js';
+export { wordRelations, type ReadingNode } from './reading.js';

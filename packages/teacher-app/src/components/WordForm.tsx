@@ -35,11 +35,7 @@ type FieldType =
   | 'jlptLevel'
   | 'frequency';
 
-const OPTIONAL_FIELDS: readonly FieldType[] = [
-  'hskLevel',
-  'jlptLevel',
-  'frequency',
-];
+const OPTIONAL_FIELDS: readonly FieldType[] = ['hskLevel', 'jlptLevel', 'frequency'];
 
 export function WordForm({
   initialWord,
@@ -123,13 +119,10 @@ export function WordForm({
     setReusePromptOpen(Boolean(reuseCandidate));
   }, [reuseCandidate, reuseEnabled]);
 
-  const activateRelationshipField = useCallback(
-    (field: 'childrenIds' | 'siblingIds') => {
-      setActiveOptionalFields((prev) => (prev.includes(field) ? prev : [...prev, field]));
-      setSearchMode(field);
-    },
-    []
-  );
+  const activateRelationshipField = useCallback((field: 'childrenIds' | 'siblingIds') => {
+    setActiveOptionalFields((prev) => (prev.includes(field) ? prev : [...prev, field]));
+    setSearchMode(field);
+  }, []);
 
   const toggleOptionalField = useCallback((field: FieldType) => {
     setActiveOptionalFields((prev) =>

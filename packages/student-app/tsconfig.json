@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "noEmit": true
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../ui"
+    }
+  ]
+}

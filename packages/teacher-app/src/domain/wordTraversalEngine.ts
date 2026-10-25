@@ -1,4 +1,4 @@
-import type { Word } from '@mandarinko/core';
+import { wordRelations, type ReadingNode, type Word } from '@mandarinko/core';
 
 export type WordInput = Omit<Word, 'id'> & { id?: string };
 export type WordEntity = Word & { id: string };
@@ -132,27 +132,14 @@ export class WordTraversalEngine {
     const currentWord = words.get(cursor.id);
     if (!currentWord) return null;
 
-    const siblingIds = normalizeIds(currentWord.siblingIds).filter((id) => id !== cursor.id);
-    const childIds = normalizeIds(currentWord.childrenIds).filter((id) => id !== cursor.id);
-
+    const relations = wordRelations(currentWord, words);
     const buildRelation = (
       parentId: string,
-      id: string,
-      type: RelationType,
-      ancestorIds: Set<string>
-    ): RelationViewModel | null => {
-      const word = words.get(id);
-      if (!word) return null;
-
-      const nextAncestors = new Set(ancestorIds);
-      nextAncestors.add(id);
-      const childIds = normalizeIds(word.childrenIds).filter(
-        (childId) => childId !== id && !nextAncestors.has(childId)
-      );
-      const children = childIds
-        .map((childId) => buildRelation(id, childId, 'child', nextAncestors))
-        .filter((entry): entry is RelationViewModel => Boolean(entry));
-
+      node: ReadingNode,
+      type: RelationType
+    ): RelationViewModel => {
+      const id = node.word.id;
+      const word = words.get(id)!;
       return {
         id,
         word,
@@ -161,17 +148,13 @@ export class WordTraversalEngine {
           await this.removeRelation(parentId, id, type);
         },
         canRemove: cursor.mode !== 'view',
-        children,
+        children: node.children.map((child) => buildRelation(id, child, 'child')),
       };
     };
-
-    const rootAncestors = new Set([cursor.id]);
-    const siblings = siblingIds
-      .map((id) => buildRelation(currentWord.id, id, 'sibling', rootAncestors))
-      .filter((entry): entry is RelationViewModel => Boolean(entry));
-    const children = childIds
-      .map((id) => buildRelation(currentWord.id, id, 'child', rootAncestors))
-      .filter((entry): entry is RelationViewModel => Boolean(entry));
+    const siblings = relations.siblings.map((node) =>
+      buildRelation(currentWord.id, node, 'sibling')
+    );
+    const children = relations.children.map((node) => buildRelation(currentWord.id, node, 'child'));
 
     return {
       current: {
@@ -378,7 +361,8 @@ export class WordTraversalEngine {
     const normalized = normalizeWordInput(wordInput);
 
     if (cursor.mode === 'edit') {
-      const { id: _ignored, ...updates } = normalized as WordInput & { id?: string };
+      const updates = { ...normalized };
+      delete updates.id;
       const updated = await this.callbacks.updateWord(cursor.id, updates);
       words.set(cursor.id, normalizeWordEntity(updated));
       await this.refreshVocabulary();
@@ -388,7 +372,8 @@ export class WordTraversalEngine {
     }
 
     if (cursor.mode === 'create') {
-      const { id: _ignored, ...createPayload } = normalized as WordInput & { id?: string };
+      const createPayload = { ...normalized };
+      delete createPayload.id;
       const created = await this.callbacks.createWord(createPayload);
       const replacement = normalizeWordEntity(created);
 

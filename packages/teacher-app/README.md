@@ -2,6 +2,10 @@
 
 A React/TypeScript web application for authoring vocabulary and grammar patterns.
 
+Read-only entry presentation, dialog primitives and CRT styling are shared with
+the student app through `@mandarinko/ui`. Teacher-specific spelling rendering keeps
+Furifont and stroke-order behavior in this package. Derivation matching lives in core.
+
 ## Features
 
 - **Landing Page**: Browse the complete vocabulary dictionary with omni-search
@@ -301,7 +305,7 @@ separately. See [AGENTS.md](AGENTS.md) for efficient operational entry procedure
 
 ## Reusable CRT Treatment
 
-[crt.css](src/styles/crt.css) is a standalone stylesheet: copy it to another app
+[crt.css](../ui/src/crt.css) is a standalone stylesheet: copy it to another app
 and load it with a normal stylesheet link or CSS import. It has no React, font
 download, JavaScript, or build-tool dependency. All selectors and keyframes use
 the `crt-` prefix; the screen effect uses the host element's `::before` and
@@ -314,7 +318,7 @@ while the teacher app dev server is running. The example itself needs no backend
 or JavaScript. [HomePage](src/pages/HomePage.tsx) shows the React integration used
 by Mandarinko.
 
-To reuse it elsewhere, copy `src/styles/crt.css` into your application, then copy
+To reuse it elsewhere, copy `packages/ui/src/crt.css` into your application, then copy
 the desired markup and layout styles from the example. Update the stylesheet
 link to its new location. For example, with `crt.css` beside your HTML file:
 

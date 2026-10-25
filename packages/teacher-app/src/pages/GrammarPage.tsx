@@ -4,7 +4,7 @@ import { matchesEntry, type GrammarMapData } from '@mandarinko/core';
 import { CatalogLayout } from '../components/CatalogLayout';
 import { EntrySearch } from '../components/EntrySearch';
 import { EntryList } from '../components/EntryList';
-import { EntryDialog } from '../components/EntryDialog';
+import { EntryDialog } from '@mandarinko/ui';
 import { GrammarEntry } from '../components/GrammarEntry';
 import { GrammarDetails } from '../components/GrammarDetails';
 import { GrammarEditor, type GrammarEditorHandle } from '../components/GrammarEditor';

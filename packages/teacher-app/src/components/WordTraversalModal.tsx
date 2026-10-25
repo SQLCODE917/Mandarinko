@@ -5,11 +5,11 @@ import { readEditorLocation } from '../domain/editorLocation';
 import type { WordEditorSession } from '../domain/wordEditorSession';
 import { WordEntry } from './WordEntry';
 import { StrokeOrderScope } from './StrokeOrderSpelling';
-import type { DerivationNavigation } from './DerivationText';
+import type { DerivationNavigation } from '@mandarinko/ui';
 import type { DictionaryLocation } from '../domain/dictionaryLocation';
 import { useWordTraversal } from '../hooks/useWordTraversal';
 import type { EngineCallbacks, NullWord, RelationViewModel } from '../domain/wordTraversalEngine';
-import { EntryDialog } from './EntryDialog';
+import { EntryDialog } from '@mandarinko/ui';
 
 interface WordTraversalModalProps {
   location: DictionaryLocation;

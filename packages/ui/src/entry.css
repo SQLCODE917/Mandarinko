@@ -1,0 +1,68 @@
+.word-entry {
+  display: block;
+  min-inline-size: 0;
+  max-inline-size: 19rem;
+  color: #292723;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.word-entry-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.word-entry-spellings {
+  font-family: 'Noto Serif SC', 'Noto Serif JP', 'Songti SC', SimSun, serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.word-entry-separator {
+  color: #a49a8e;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.word-entry-pronunciation {
+  color: #686057;
+  font-size: 0.8rem;
+}
+
+.word-entry-level {
+  color: #81796f;
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+.word-entry-derivation {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: #72685c;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.word-entry-definitions {
+  display: block;
+}
+
+.word-entry-derivation a {
+  color: #a92568;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.word-entry-derivation a:hover {
+  color: #6e1744;
+}
+
+.word-entry-derivation a:focus-visible {
+  outline: 2px solid #c72478;
+  outline-offset: 2px;
+}

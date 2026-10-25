@@ -12,7 +12,9 @@ catalog data, and use explicit word, grammar pattern and relationship terminolog
   word relationship logic.
 - Server owns HTTP contracts and persistence and consumes core's public API.
 - For teacher-app work, also read [its agent procedures](packages/teacher-app/AGENTS.md).
-- Teacher app owns React presentation and interaction. Consume core's public API
+- Student app owns static dictionary delivery and read-only study interaction.
+- UI owns shared reading presentation without editor, server or font dependencies.
+- Teacher app owns React authoring presentation and interaction. Consume core's public API
   and server's public API types; do not import another package's private source.
 
 ## Workflow

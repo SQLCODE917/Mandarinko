@@ -1,0 +1,74 @@
+name: Student dictionary Pages
+on:
+  push:
+    paths:
+      - 'packages/student-app/**'
+      - 'packages/ui/**'
+      - 'packages/core/**'
+      - 'packages/teacher-app/**'
+      - 'packages/server/vocabulary.json'
+      - 'packages/server/vocabulary.sources.json'
+      - 'packages/server/licenses/**'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'package.json'
+      - 'tsconfig.json'
+      - 'playwright*.config.ts'
+      - 'tests/**'
+      - '.github/workflows/student-pages.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: student-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.0
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - uses: actions/configure-pages@v5
+        id: pages
+      - run: pnpm check
+      - run: pnpm test:browser
+      - run: pnpm test:browser:student
+      - run: pnpm build:student
+        env:
+          STUDENT_BASE: '${{ steps.pages.outputs.base_path }}/'
+      - run: pnpm performance:student
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: student-verification
+          path: |
+            test-results/
+            packages/student-app/dist/budgets.json
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: packages/student-app/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy student dictionary
+        id: deployment
+        uses: actions/deploy-pages@v4

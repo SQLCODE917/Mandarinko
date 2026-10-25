@@ -1,0 +1,29 @@
+{
+  "name": "@mandarinko/student-app",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3002",
+    "build": "tsc --noEmit && node scripts/build.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 3015 --strictPort",
+    "test": "vitest --run && node --test scripts/snapshot.test.mjs",
+    "performance": "node scripts/performance.mjs"
+  },
+  "dependencies": {
+    "@mandarinko/core": "workspace:*",
+    "@mandarinko/ui": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@types/node": "^25.0.10",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vitest": "^1.1.0",
+    "lighthouse": "13.0.1"
+  }
+}

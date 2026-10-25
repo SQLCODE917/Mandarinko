@@ -1,6 +1,7 @@
 # Mandarinko
 
-A Chinese and Japanese dictionary and grammar authoring application.
+A Chinese and Japanese vocabulary workspace: the teacher app authors dictionary
+and grammar data, and the student app publishes a read-only dictionary for study.
 Follow a word into its components, connect Japanese kanji to their Chinese
 character histories, and reuse those explanations when authoring new entries.
 
@@ -128,6 +129,21 @@ Connections live separately in
 See the [server connection API](packages/server/README.md#grammar-connections)
 for the schema and comparison editing contract.
 
+## Student dictionary
+
+[`@mandarinko/student-app`](packages/student-app/README.md) is the read-only student
+site for GitHub Pages. It shares the teacher's vocabulary, entry presentation and
+CRT treatment. Students can browse, search and follow character/component and
+sibling links without an API server. Canonical pronunciations are displayed using
+system fonts; grammar, authoring, stroke animation and automatic furigana are not
+part of the student MVP.
+
+Use `pnpm dev:student`, `pnpm build:student` and `pnpm preview:student` from the root.
+Committed dictionary changes on the default branch are published by the student
+Pages workflow after verification; local teacher edits do not appear online until
+committed and deployed. The [student README](packages/student-app/README.md)
+describes Pages setup, base paths, data ownership and performance checks.
+
 ## Run locally
 
 Use the native WSL checkout at `~/gits/Mandarinko` with Linux Node.js and pnpm.
@@ -148,7 +164,8 @@ pnpm dev
 ```
 
 Open **http://localhost:3001**. The API listens on **http://localhost:3000**.
-`pnpm dev` builds core before starting the core, API and frontend watchers.
+`pnpm dev` builds core and shared UI before starting the core, API and frontend
+development processes. The student app uses **http://localhost:3002**.
 Run `nvm use` in each new terminal; install dependencies inside WSL rather than
 copying `node_modules` from Windows.
 

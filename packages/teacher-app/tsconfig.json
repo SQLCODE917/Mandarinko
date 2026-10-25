@@ -11,5 +11,15 @@
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"],
-  "references": [{ "path": "../core" }, { "path": "../server" }]
+  "references": [
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../server"
+    },
+    {
+      "path": "../ui"
+    }
+  ]
 }

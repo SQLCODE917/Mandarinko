@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #fbfaf7;
+  color: #292723;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+button,
+input {
+  font: inherit;
+}
+button,
+a,
+input {
+  touch-action: manipulation;
+}
+a {
+  color: #92205a;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #92205a;
+  outline-offset: 3px;
+}
+.student-page > header {
+  padding: 1.3rem 1.25rem;
+  text-align: center;
+}
+.student-page h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 3.8vw, 2rem);
+}
+.student-page main {
+  padding: 1.5rem 1.25rem;
+  max-width: 90rem;
+  margin: auto;
+}
+.search-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+input[type='search'] {
+  width: min(100%, 32rem);
+  padding: 0.7rem;
+  border: 1px solid #a79a8b;
+  border-radius: 4px;
+  background: #fffefa;
+  color: inherit;
+}
+.catalog-heading {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  min-height: 3.5rem;
+}
+.catalog-heading h2 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem 1.5rem;
+  align-items: start;
+}
+.dictionary-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #d8cfc2;
+  padding: 0.5rem 0.35rem 0.75rem;
+  min-height: 6rem;
+}
+.dictionary-card:hover {
+  background: #f8edf2;
+}
+.word-entry {
+  max-inline-size: none;
+}
+.word-entry-pronunciation,
+.word-entry-derivation {
+  color: #5e554c;
+}
+.word-entry-level {
+  font-size: 0.75rem;
+  color: #62594f;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  min-height: 3rem;
+}
+.pagination button,
+main > p button {
+  border: 1px solid #b8a99b;
+  border-radius: 4px;
+  background: #fffefa;
+  padding: 0.4rem 0.75rem;
+  color: #79204e;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+}
+.student-details .word-tree-content {
+  width: min(52rem, calc(100vw - 2rem));
+  height: min(44rem, 90dvh);
+}
+.student-details .word-tree-body {
+  display: block;
+  padding: 1.25rem;
+}
+.student-details .word-tree-title,
+.student-details .word-tree-close {
+  font-size: 1rem;
+  color: #66594d;
+}
+.student-details .word-tree-close {
+  color: #92205a;
+}
+.student-details .word-entry {
+  font-size: 1rem;
+}
+.student-details .word-entry-derivation,
+.student-details .word-entry-pronunciation {
+  font-size: 0.95rem;
+}
+.student-details section {
+  border-top: 1px solid #d8cfc2;
+  margin-top: 1.25rem;
+  padding-top: 0.5rem;
+}
+.student-details h3 {
+  font-size: 1rem;
+}
+.relation-list {
+  list-style: none;
+  padding-left: 1rem;
+  border-left: 1px solid #d8cfc2;
+}
+.relation-list li {
+  margin: 0.7rem 0;
+}
+.relation-list a {
+  display: block;
+  text-decoration: none;
+}
+.relation-list a:hover {
+  background: #f8edf2;
+}
+.student-page header::after {
+  animation: none;
+}
+@media (max-width: 480px) {
+  .student-page main {
+    padding: 1rem 0.75rem;
+  }
+  .student-details .word-tree-body {
+    padding: 1rem;
+  }
+  .pagination {
+    gap: 0.5rem;
+  }
+}

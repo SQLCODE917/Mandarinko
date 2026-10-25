@@ -137,10 +137,9 @@ export function useWordTree({
   }, [nodes, rootId]);
 
   const relationsSaved = useCallback((word: WordInput) => {
-    const relationIds = [
-      ...(word.childrenIds ?? []),
-      ...(word.siblingIds ?? []),
-    ].map((id) => String(id));
+    const relationIds = [...(word.childrenIds ?? []), ...(word.siblingIds ?? [])].map((id) =>
+      String(id)
+    );
     return relationIds.every((id) => nodesRef.current.get(id)?.status === 'saved');
   }, []);
 
@@ -154,193 +153,207 @@ export function useWordTree({
     });
   }, []);
 
-  const replaceNodeId = useCallback((oldId: string, newId: string, updatedWord: Word) => {
-    setNodes((prev) => {
-      const next = new Map<string, TreeNode>();
-      prev.forEach((node, id) => {
-        const mappedId = id === oldId ? newId : id;
-        const nextWord = normalizeWordInput({
-          ...node.word,
-          childrenIds: node.word.childrenIds?.map((rid) => (rid === oldId ? newId : rid)),
-          siblingIds: node.word.siblingIds?.map((rid) => (rid === oldId ? newId : rid)),
+  const replaceNodeId = useCallback(
+    (oldId: string, newId: string, updatedWord: Word) => {
+      setNodes((prev) => {
+        const next = new Map<string, TreeNode>();
+        prev.forEach((node, id) => {
+          const mappedId = id === oldId ? newId : id;
+          const nextWord = normalizeWordInput({
+            ...node.word,
+            childrenIds: node.word.childrenIds?.map((rid) => (rid === oldId ? newId : rid)),
+            siblingIds: node.word.siblingIds?.map((rid) => (rid === oldId ? newId : rid)),
+          });
+          next.set(mappedId, {
+            ...node,
+            id: mappedId,
+            word: id === oldId ? normalizeWordInput(updatedWord) : nextWord,
+            status: id === oldId ? 'saved' : node.status,
+            isEditing: id === oldId ? false : node.isEditing,
+            error: id === oldId ? undefined : node.error,
+          });
         });
-        next.set(mappedId, {
-          ...node,
-          id: mappedId,
-          word: id === oldId ? normalizeWordInput(updatedWord) : nextWord,
-          status: id === oldId ? 'saved' : node.status,
-          isEditing: id === oldId ? false : node.isEditing,
-          error: id === oldId ? undefined : node.error,
-        });
+        return next;
       });
-      return next;
-    });
-    if (rootId === oldId) setRootId(newId);
-  }, [rootId]);
+      if (rootId === oldId) setRootId(newId);
+    },
+    [rootId]
+  );
 
-  const addDraftNode = useCallback((
-    seed?: Partial<WordInput>,
-    links?: { parentLinkId?: string; siblingLinkId?: string }
-  ) => {
-    const tempId = nextTempId();
-    const node: TreeNode = {
-      id: tempId,
-      word: normalizeWordInput({ ...createEmptyWord(), ...seed }),
-      status: 'draft',
-      isEditing: true,
-      parentLinkId: links?.parentLinkId,
-      siblingLinkId: links?.siblingLinkId,
-    };
-    setNodes((prev) => new Map(prev).set(tempId, node));
-    return tempId;
-  }, [nextTempId]);
+  const addDraftNode = useCallback(
+    (seed?: Partial<WordInput>, links?: { parentLinkId?: string; siblingLinkId?: string }) => {
+      const tempId = nextTempId();
+      const node: TreeNode = {
+        id: tempId,
+        word: normalizeWordInput({ ...createEmptyWord(), ...seed }),
+        status: 'draft',
+        isEditing: true,
+        parentLinkId: links?.parentLinkId,
+        siblingLinkId: links?.siblingLinkId,
+      };
+      setNodes((prev) => new Map(prev).set(tempId, node));
+      return tempId;
+    },
+    [nextTempId]
+  );
 
-  const addChild = useCallback((parentId: string) => {
-    const childId = addDraftNode(undefined, { parentLinkId: parentId });
-    updateNode(parentId, (node) => ({
-      ...node,
-      word: {
-        ...node.word,
-        childrenIds: [...normalizeIds(node.word.childrenIds), childId],
-      },
-    }));
-  }, [addDraftNode, updateNode]);
+  const addChild = useCallback(
+    (parentId: string) => {
+      const childId = addDraftNode(undefined, { parentLinkId: parentId });
+      updateNode(parentId, (node) => ({
+        ...node,
+        word: {
+          ...node.word,
+          childrenIds: [...normalizeIds(node.word.childrenIds), childId],
+        },
+      }));
+    },
+    [addDraftNode, updateNode]
+  );
 
-  const addSibling = useCallback((nodeId: string) => {
-    const siblingId = addDraftNode(undefined, { siblingLinkId: nodeId });
-    updateNode(nodeId, (node) => ({
-      ...node,
-      word: {
-        ...node.word,
-        siblingIds: [...normalizeIds(node.word.siblingIds), siblingId],
-      },
-    }));
-  }, [addDraftNode, updateNode]);
+  const addSibling = useCallback(
+    (nodeId: string) => {
+      const siblingId = addDraftNode(undefined, { siblingLinkId: nodeId });
+      updateNode(nodeId, (node) => ({
+        ...node,
+        word: {
+          ...node.word,
+          siblingIds: [...normalizeIds(node.word.siblingIds), siblingId],
+        },
+      }));
+    },
+    [addDraftNode, updateNode]
+  );
 
   const replaceRelationId = (ids: string[] | undefined, oldId: string, newId: string) => {
     const next = (ids ?? []).map((id) => (id === oldId ? newId : id));
     return Array.from(new Set(next));
   };
 
-  const updateRelationIds = useCallback(async (
-    parentId: string,
-    field: 'childrenIds' | 'siblingIds',
-    oldId: string,
-    newId: string
-  ) => {
-    const parentNode = nodesRef.current.get(parentId);
-    if (!parentNode) return;
-    const currentIds =
-      field === 'childrenIds'
-        ? normalizeIds(parentNode.word.childrenIds)
-        : normalizeIds(parentNode.word.siblingIds);
-    const nextIds = replaceRelationId(currentIds, oldId, newId);
+  const updateRelationIds = useCallback(
+    async (parentId: string, field: 'childrenIds' | 'siblingIds', oldId: string, newId: string) => {
+      const parentNode = nodesRef.current.get(parentId);
+      if (!parentNode) return;
+      const currentIds =
+        field === 'childrenIds'
+          ? normalizeIds(parentNode.word.childrenIds)
+          : normalizeIds(parentNode.word.siblingIds);
+      const nextIds = replaceRelationId(currentIds, oldId, newId);
 
-    updateNode(parentId, (node) => ({
-      ...node,
-      word: {
-        ...node.word,
-        [field]: nextIds,
-      },
-    }));
-
-    if (parentNode.status !== 'saved') return;
-
-    try {
-      const updated = await updateWord(parentId, { [field]: nextIds } as Partial<Word>);
       updateNode(parentId, (node) => ({
         ...node,
-        word: normalizeWordInput(updated),
-        error: undefined,
+        word: {
+          ...node.word,
+          [field]: nextIds,
+        },
       }));
-      onUpdated?.();
-    } catch (err) {
-      updateNode(parentId, (node) => ({
-        ...node,
-        error: err instanceof Error ? err.message : 'Failed to update relation',
-      }));
-    }
-  }, [onUpdated, updateNode, updateWord]);
 
-  const reuseExisting = useCallback((nodeId: string, existing: Word & { id: string }) => {
-    const node = nodesRef.current.get(nodeId);
-    if (!node) return;
+      if (parentNode.status !== 'saved') return;
 
-    if (node.parentLinkId) {
-      void updateRelationIds(node.parentLinkId, 'childrenIds', nodeId, existing.id);
-    }
-
-    if (node.siblingLinkId) {
-      void updateRelationIds(node.siblingLinkId, 'siblingIds', nodeId, existing.id);
-    }
-
-    setNodes((prev) => {
-      const next = new Map(prev);
-      next.delete(nodeId);
-      if (!next.has(existing.id)) {
-        next.set(existing.id, wordToNode(existing));
+      try {
+        const updated = await updateWord(parentId, { [field]: nextIds } as Partial<Word>);
+        updateNode(parentId, (node) => ({
+          ...node,
+          word: normalizeWordInput(updated),
+          error: undefined,
+        }));
+        onUpdated?.();
+      } catch (err) {
+        updateNode(parentId, (node) => ({
+          ...node,
+          error: err instanceof Error ? err.message : 'Failed to update relation',
+        }));
       }
-      return next;
-    });
-  }, [updateRelationIds]);
+    },
+    [onUpdated, updateNode, updateWord]
+  );
 
-  const saveNode = useCallback(async (nodeId: string, payload: WordInput) => {
-    const node = nodesRef.current.get(nodeId);
-    if (!node) return;
-    const normalized = normalizeWordInput(payload);
-    if (!relationsSaved(normalized)) {
-      updateNode(nodeId, (current) => ({
-        ...current,
-        error: 'Save related words first before saving this word.',
-      }));
-      return;
-    }
+  const reuseExisting = useCallback(
+    (nodeId: string, existing: Word & { id: string }) => {
+      const node = nodesRef.current.get(nodeId);
+      if (!node) return;
 
-    updateNode(nodeId, (current) => ({ ...current, status: 'saving', error: undefined }));
+      if (node.parentLinkId) {
+        void updateRelationIds(node.parentLinkId, 'childrenIds', nodeId, existing.id);
+      }
 
-    try {
-      const isRoot = nodeId === rootId;
-      if (node.status === 'saved') {
-        const updated = await updateWord(nodeId, normalized as Word);
+      if (node.siblingLinkId) {
+        void updateRelationIds(node.siblingLinkId, 'siblingIds', nodeId, existing.id);
+      }
+
+      setNodes((prev) => {
+        const next = new Map(prev);
+        next.delete(nodeId);
+        if (!next.has(existing.id)) {
+          next.set(existing.id, wordToNode(existing));
+        }
+        return next;
+      });
+    },
+    [updateRelationIds]
+  );
+
+  const saveNode = useCallback(
+    async (nodeId: string, payload: WordInput) => {
+      const node = nodesRef.current.get(nodeId);
+      if (!node) return;
+      const normalized = normalizeWordInput(payload);
+      if (!relationsSaved(normalized)) {
         updateNode(nodeId, (current) => ({
           ...current,
-          status: 'saved',
-          isEditing: false,
-          word: normalizeWordInput(updated),
+          error: 'Save related words first before saving this word.',
         }));
-        if (isRoot) {
-          onRootSaved?.(updated);
-        }
-      } else {
-        const { id: _ignored, ...createPayload } = normalized;
-        const created = await createWord(createPayload);
-        replaceNodeId(nodeId, created.id, created);
-        if (node.parentLinkId) {
-          await updateRelationIds(node.parentLinkId, 'childrenIds', nodeId, created.id);
-        }
-        if (isRoot) {
-          onRootSaved?.(created);
-        }
+        return;
       }
-      onUpdated?.();
-    } catch (err) {
-      updateNode(nodeId, (current) => ({
-        ...current,
-        status: node.status === 'saved' ? 'saved' : 'draft',
-        error: err instanceof Error ? err.message : 'Failed to save word',
-      }));
-    }
-  }, [
-    createWord,
-    onRootSaved,
-    onUpdated,
-    relationsSaved,
-    replaceNodeId,
-    rootId,
-    updateNode,
-    updateRelationIds,
-    updateWord,
-  ]);
+
+      updateNode(nodeId, (current) => ({ ...current, status: 'saving', error: undefined }));
+
+      try {
+        const isRoot = nodeId === rootId;
+        if (node.status === 'saved') {
+          const updated = await updateWord(nodeId, normalized as Word);
+          updateNode(nodeId, (current) => ({
+            ...current,
+            status: 'saved',
+            isEditing: false,
+            word: normalizeWordInput(updated),
+          }));
+          if (isRoot) {
+            onRootSaved?.(updated);
+          }
+        } else {
+          const createPayload = { ...normalized };
+          delete createPayload.id;
+          const created = await createWord(createPayload);
+          replaceNodeId(nodeId, created.id, created);
+          if (node.parentLinkId) {
+            await updateRelationIds(node.parentLinkId, 'childrenIds', nodeId, created.id);
+          }
+          if (isRoot) {
+            onRootSaved?.(created);
+          }
+        }
+        onUpdated?.();
+      } catch (err) {
+        updateNode(nodeId, (current) => ({
+          ...current,
+          status: node.status === 'saved' ? 'saved' : 'draft',
+          error: err instanceof Error ? err.message : 'Failed to save word',
+        }));
+      }
+    },
+    [
+      createWord,
+      onRootSaved,
+      onUpdated,
+      relationsSaved,
+      replaceNodeId,
+      rootId,
+      updateNode,
+      updateRelationIds,
+      updateWord,
+    ]
+  );
 
   const editNode = useCallback(
     (id: string) => updateNode(id, (node) => ({ ...node, isEditing: true })),

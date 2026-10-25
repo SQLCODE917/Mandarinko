@@ -2,6 +2,12 @@
 
 Framework-independent vocabulary and grammar contracts for Mandarinko.
 
+`createEntrySearch` compiles the same field/term matching as `matchesEntry` for a
+loaded snapshot. `wordRelations` traverses existing child/sibling IDs while stopping
+cycles and missing references, preserving Japanese word identity and shared Chinese
+components. `derivationParts` conservatively links unambiguous Han spellings.
+These helpers have no browser, filesystem or HTTP dependencies.
+
 ## Features
 
 - **Vocabulary Management**: Load, query, and manage vocabulary entries

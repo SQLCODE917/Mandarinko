@@ -2,12 +2,20 @@ import type { Word, LanguageCode } from './types.js';
 
 /** Match every query term across the scalar values and field names of an entry. */
 export function matchesEntry(entry: unknown, query: string): boolean {
-  const text = JSON.stringify(entry).toLowerCase();
+  return matchSearchText(JSON.stringify(entry).toLowerCase(), query);
+}
+function matchSearchText(text: string, query: string): boolean {
   return query
     .trim()
     .toLowerCase()
     .split(/\s+/)
     .every((term) => text.includes(term));
+}
+/** Compile scalar/field text once, preserving the same matching and catalog order. */
+export function createEntrySearch<T>(entries: readonly T[]): (query: string) => T[] {
+  const indexed = entries.map((entry) => ({ entry, text: JSON.stringify(entry).toLowerCase() }));
+  return (query) =>
+    indexed.filter((item) => matchSearchText(item.text, query)).map((item) => item.entry);
 }
 
 export class VocabularySearch {

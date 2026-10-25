@@ -1,5 +1,5 @@
 import type { Word } from '@mandarinko/core';
-import { derivationParts } from '../domain/derivationLinks';
+import { derivationParts } from '@mandarinko/core';
 
 export type DerivationNavigation = {
   words: readonly Word[];

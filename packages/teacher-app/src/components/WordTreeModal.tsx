@@ -155,11 +155,7 @@ function WordNode({
               <button type="button" className="btn-secondary" onClick={() => onAddChild(node.id)}>
                 Add Child
               </button>
-              <button
-                type="button"
-                className="btn-secondary"
-                onClick={() => onAddSibling(node.id)}
-              >
+              <button type="button" className="btn-secondary" onClick={() => onAddSibling(node.id)}>
                 Add Sibling
               </button>
             </div>

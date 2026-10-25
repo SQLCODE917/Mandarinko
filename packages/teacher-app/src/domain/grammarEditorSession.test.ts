@@ -59,7 +59,8 @@ describe('flat grammar editor lifecycle', () => {
     await session.finish();
     expect(session.errors.some((error) => error.field === 'title')).toBe(true);
     expect(f.ports.create).not.toHaveBeenCalled();
-    const { id: _id, ...input } = pattern;
+    const input: Omit<GrammarPattern, 'id'> & { id?: string } = { ...pattern };
+    delete input.id;
     session.change(input);
     await session.finish();
     expect(f.ports.create).toHaveBeenCalledTimes(1);
@@ -81,7 +82,8 @@ describe('flat grammar editor lifecycle', () => {
     const f = fixture();
     vi.mocked(f.ports.create).mockRejectedValueOnce(new Error('Lost response'));
     const session = new GrammarEditorSession(undefined, f.ports);
-    const { id: _id, ...input } = pattern;
+    const input: Omit<GrammarPattern, 'id'> & { id?: string } = { ...pattern };
+    delete input.id;
     session.change(input);
     await session.finish();
     expect(session.lifecycle.kind).toBe('failed');

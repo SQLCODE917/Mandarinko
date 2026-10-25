@@ -1,0 +1,75 @@
+.word-tree-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.word-tree-backdrop {
+  position: absolute;
+  inset: 0;
+  background: #29272366;
+}
+
+.word-tree-content {
+  position: relative;
+  width: max-content;
+  min-width: min(22rem, calc(100vw - 2rem));
+  max-width: min(70rem, calc(100vw - 2rem));
+  max-height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #d8cfc2;
+  border-radius: 4px;
+  background: #fffefa;
+  box-shadow: 0 12px 40px #29272326;
+  color: #292723;
+}
+
+.word-tree-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #e8e1d7;
+}
+
+.word-tree-title {
+  color: #72685c;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.word-tree-close {
+  padding: 0.2rem 0.35rem;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: #a92568;
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.word-tree-close:hover {
+  background: #f8edf2;
+}
+
+.word-tree-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  min-height: 0;
+  padding: 0.75rem;
+  overflow: auto;
+}
+
+@media (max-width: 640px) {
+  .word-tree-content {
+    max-width: calc(100vw - 1rem);
+  }
+}
