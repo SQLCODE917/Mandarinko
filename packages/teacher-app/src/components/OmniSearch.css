@@ -67,3 +67,9 @@
   outline: 2px solid #c72478;
   outline-offset: -2px;
 }
+
+/* Search popovers may contain the complete catalog; defer off-screen rendering. */
+.result-item {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100px;
+}

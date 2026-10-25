@@ -1,12 +1,11 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode, RefObject } from 'react';
-import type { ReadingNode } from '@mandarinko/core';
+import type { Word, ReadingNode } from '@mandarinko/core';
 import { wordRelations } from '@mandarinko/core';
 import { EntryDialog, WordEntry } from '@mandarinko/ui';
 import '@mandarinko/ui/crt.css';
 import './style.css';
 import {
-  PAGE_SIZE,
   readLocation,
   searchDictionary,
   type DictionaryBoot,
@@ -32,9 +31,6 @@ export function App({
   const location = readLocation(search);
   const matches = useMemo(() => searchWords(location.query), [searchWords, location.query]);
   const total = loaded ? matches.length : boot.total;
-  const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-  const page = Math.min(location.page, pages);
-  const shown = matches.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
   const word = location.wordId ? byId.get(location.wordId) : undefined;
   const load = () => {
     setError('');
@@ -59,7 +55,7 @@ export function App({
   useEffect(() => {
     if (location.wordId) title.current?.focus();
   }, [location.wordId, loaded]);
-  const navigate = (updates: Record<string, string | null>, replace = false) => {
+  const navigate = useCallback((updates: Record<string, string | null>, replace = false) => {
     const url = new URL(window.location.href);
     for (const [key, value] of Object.entries(updates))
       if (value === null) url.searchParams.delete(key);
@@ -67,9 +63,9 @@ export function App({
     window.history[replace ? 'replaceState' : 'pushState'](null, '', url.pathname + url.search);
     setSearch(url.search);
     setDraft(readLocation(url.search).query);
-  };
+  }, []);
   const query = (value: string) => navigate({ q: value || null, page: null, word: null }, true);
-  const open = (id: string) => navigate({ word: id });
+  const open = useCallback((id: string) => navigate({ word: id }), [navigate]);
   const close = () => {
     navigate({ word: null });
     requestAnimationFrame(() => {
@@ -149,40 +145,9 @@ export function App({
             {error} <button onClick={load}>Retry</button>
           </p>
         )}
-        {loaded && shown.length === 0 && <p role="status">No results</p>}
-        <div className="student-grid">
-          {shown.map((w) => (
-            <button
-              key={w.id}
-              data-word-id={w.id}
-              className="dictionary-card"
-              onClick={() => open(w.id)}
-            >
-              <WordEntry word={w} />
-            </button>
-          ))}
-        </div>
-        <nav className="pagination" aria-label="Dictionary pages">
-          <button
-            disabled={!loaded || page <= 1}
-            onClick={() => navigate({ page: String(page - 1), word: null })}
-          >
-            Previous
-          </button>
-          <span aria-live="polite">
-            Page {page} of {pages}
-          </span>
-          <button
-            disabled={!loaded || page >= pages}
-            onClick={() => navigate({ page: String(page + 1), word: null })}
-          >
-            Next
-          </button>
-        </nav>
+        {loaded && matches.length === 0 && <p role="status">No results</p>}
+        <DictionaryCards words={words} matches={matches} onOpen={open} />
       </main>
-      <footer>
-        <a href="attribution.html">Dictionary sources and licenses</a>
-      </footer>
       {location.wordId && (
         <StudentDialog titleRef={title} onClose={close} wordId={location.wordId}>
           {word ? (
@@ -245,3 +210,44 @@ function StudentDialog({
     </EntryDialog>
   );
 }
+
+// Keep entry content mounted: filtering changes visibility rather than rebuilding the catalog.
+const CardContent = memo(WordEntry);
+const DictionaryCard = memo(function DictionaryCard({
+  word,
+  hidden,
+  onOpen,
+}: {
+  word: Word;
+  hidden: boolean;
+  onOpen: (id: string) => void;
+}) {
+  return (
+    <button
+      data-word-id={word.id}
+      className="dictionary-card"
+      hidden={hidden}
+      onClick={() => onOpen(word.id)}
+    >
+      <CardContent word={word} />
+    </button>
+  );
+});
+const DictionaryCards = memo(function DictionaryCards({
+  words,
+  matches,
+  onOpen,
+}: {
+  words: Word[];
+  matches: Word[];
+  onOpen: (id: string) => void;
+}) {
+  const ids = new Set(matches.map((word) => word.id));
+  return (
+    <div className="student-grid">
+      {words.map((word) => (
+        <DictionaryCard key={word.id} word={word} hidden={!ids.has(word.id)} onOpen={onOpen} />
+      ))}
+    </div>
+  );
+});

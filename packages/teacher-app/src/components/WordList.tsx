@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { Word } from '@mandarinko/core';
 import { WordEntry } from './WordEntry';
 import { EntryList } from './EntryList';
@@ -8,7 +9,7 @@ interface WordListProps {
   onSelectWord?: (word: Word & { id: string }) => void;
 }
 
-export function WordList({ words, loading, onSelectWord }: WordListProps) {
+export const WordList = memo(function WordList({ words, loading, onSelectWord }: WordListProps) {
   return (
     <EntryList
       entries={words}
@@ -19,4 +20,4 @@ export function WordList({ words, loading, onSelectWord }: WordListProps) {
       onSelect={onSelectWord}
     />
   );
-}
+});

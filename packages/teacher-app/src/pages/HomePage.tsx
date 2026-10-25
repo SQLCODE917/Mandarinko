@@ -1,3 +1,4 @@
+import { memo, useCallback } from 'react';
 import { EntrySearch } from '../components/EntrySearch';
 import { WordEntry } from '../components/WordEntry';
 import { WordList } from '../components/WordList';
@@ -12,14 +13,20 @@ interface HomePageProps {
   loading: boolean;
 }
 
-export function HomePage({ onCreateWord, onOpenWord, words, loading }: HomePageProps) {
+export const HomePage = memo(function HomePage({
+  onCreateWord,
+  onOpenWord,
+  words,
+  loading,
+}: HomePageProps) {
+  const selectWord = useCallback((word: Word) => onOpenWord(word.id), [onOpenWord]);
   return (
     <CatalogLayout page="dictionary">
       <div className="search-section">
         <EntrySearch
           entries={words}
           renderEntry={(word) => <WordEntry word={word} />}
-          onSelect={(word) => onOpenWord(word.id)}
+          onSelect={selectWord}
           placeholder="Search the dictionary..."
         />
       </div>
@@ -32,8 +39,8 @@ export function HomePage({ onCreateWord, onOpenWord, words, loading }: HomePageP
           </button>
         </div>
 
-        <WordList words={words} loading={loading} onSelectWord={(word) => onOpenWord(word.id)} />
+        <WordList words={words} loading={loading} onSelectWord={selectWord} />
       </div>
     </CatalogLayout>
   );
-}
+});

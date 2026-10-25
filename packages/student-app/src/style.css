@@ -75,6 +75,8 @@ input[type='search'] {
   align-items: start;
 }
 .dictionary-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 120px;
   display: block;
   width: 100%;
   text-align: left;
@@ -83,6 +85,9 @@ input[type='search'] {
   border-bottom: 1px solid #d8cfc2;
   padding: 0.5rem 0.35rem 0.75rem;
   min-height: 6rem;
+}
+.dictionary-card[hidden] {
+  display: none;
 }
 .dictionary-card:hover {
   background: #f8edf2;
@@ -98,15 +103,6 @@ input[type='search'] {
   font-size: 0.75rem;
   color: #62594f;
 }
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  min-height: 3rem;
-}
-.pagination button,
 main > p button {
   border: 1px solid #b8a99b;
   border-radius: 4px;
@@ -114,11 +110,7 @@ main > p button {
   padding: 0.4rem 0.75rem;
   color: #79204e;
 }
-footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.875rem;
-}
+
 .student-details .word-tree-content {
   width: min(52rem, calc(100vw - 2rem));
   height: min(44rem, 90dvh);
@@ -174,8 +166,5 @@ footer {
   }
   .student-details .word-tree-body {
     padding: 1rem;
-  }
-  .pagination {
-    gap: 0.5rem;
   }
 }

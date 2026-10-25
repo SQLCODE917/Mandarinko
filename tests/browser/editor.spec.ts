@@ -295,3 +295,26 @@ test('related saved-word workspace reopens from its editor URL and Done returns 
   expect((await vocabulary.read()).child.pronunciation).toBe('updated');
   await expect(page).toHaveURL(/word=child/);
 });
+
+test('catalog cards and the cached search index reflect teacher edits', async ({
+  page,
+  vocabulary,
+}) => {
+  await page.goto('/');
+  const search = page.getByRole('searchbox');
+  await search.fill('old');
+  await page.locator('.result-item').click();
+  await page.getByRole('button', { name: 'Edit', exact: true }).click();
+  await page.getByLabel('Main word: Derivation', { exact: true }).fill('updated catalog phrase');
+  await page.getByRole('button', { name: 'Done', exact: true }).click();
+  await expect(page.locator('#word-tree-title')).toHaveText('Word details');
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
+  await expect(page.locator('.result-item')).toHaveCount(0);
+  await expect(page.locator('.word-item').filter({ hasText: 'nü3' })).toContainText(
+    'updated catalog phrase'
+  );
+  await search.fill('updated catalog phrase');
+  await expect(page.locator('.result-item')).toHaveCount(1);
+  await expect(page.locator('.result-item')).toContainText('nü3');
+  expect((await vocabulary.read()).female.derivation).toBe('updated catalog phrase');
+});

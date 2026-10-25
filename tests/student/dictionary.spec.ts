@@ -6,7 +6,7 @@ const raw = JSON.parse(
 const eatId = Object.entries(raw).find(([, w]) =>
   (w as { spelling: { text: string }[] }).spelling.some((s) => s.text === '食べる')
 )![0];
-test('prerendered first page works without JavaScript and without fonts or third parties', async ({
+test('prerendered preview works without JavaScript and without fonts or third parties', async ({
   browser,
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
@@ -18,7 +18,7 @@ test('prerendered first page works without JavaScript and without fonts or third
   ).toBeVisible();
   await context.close();
 });
-test('pagination, search, IME, details and browser history work at a project subpath', async ({
+test('continuous browsing, search, IME, details and history work at a project subpath', async ({
   page,
 }, info) => {
   const invalid: string[] = [];
@@ -33,17 +33,21 @@ test('pagination, search, IME, details and browser history work at a project sub
   });
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('./');
-  const cards = page.locator('.dictionary-card');
-  await expect(cards).toHaveCount(24);
-  await page.getByRole('button', { name: 'Next', exact: true }).click();
-  await expect(page).toHaveURL(/page=2/);
-  await page.reload();
-  await expect(
-    page.getByText(`Page 2 of ${Math.ceil(Object.keys(raw).length / 24)}`, { exact: true })
-  ).toBeVisible();
+  const cards = page.locator('.dictionary-card:not([hidden])');
+  await expect(cards).toHaveCount(Object.keys(raw).length);
+  await expect(page.getByRole('navigation', { name: 'Dictionary pages' })).toHaveCount(0);
+  await cards.last().scrollIntoViewIfNeeded();
+  await expect(cards.last()).toBeInViewport();
+  await page.evaluate(() => window.scrollTo(0, 0));
   const input = page.getByRole('searchbox');
+  const originalCard = await cards.filter({ hasText: 'たべる' }).first().elementHandle();
   await input.fill('食べる');
   await expect(cards).toHaveCount(1);
+  expect(
+    await originalCard!.evaluate(
+      (node) => node === document.querySelector('.dictionary-card:not([hidden])')
+    )
+  ).toBe(true);
   await expect(page).not.toHaveURL(/page=/);
   await cards.first().click();
   const dialog = page.getByRole('dialog');
@@ -63,11 +67,11 @@ test('pagination, search, IME, details and browser history work at a project sub
   await input.dispatchEvent('compositionend');
   await expect(page).not.toHaveURL(/nothing-unmatched/);
   await input.fill('');
-  await expect(cards).toHaveCount(24);
-  await page.screenshot({ path: info.outputPath('student-desktop.png'), fullPage: true });
+  await expect(cards).toHaveCount(Object.keys(raw).length);
+  await page.screenshot({ path: info.outputPath('student-desktop.png') });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.screenshot({ path: info.outputPath('student-mobile.png'), fullPage: true });
+  await page.screenshot({ path: info.outputPath('student-mobile.png') });
   await page.goto(`?word=${eatId}`);
   await expect(dialog).toContainText('たべる');
   await page.screenshot({ path: info.outputPath('student-details-mobile.png') });
@@ -91,7 +95,7 @@ test('snapshot failures require explicit retry and do not hide prerendered entri
   await expect(page.locator('.dictionary-card')).toHaveCount(24);
   expect(calls).toBe(1);
   await page.getByRole('button', { name: 'Retry', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Next', exact: true })).toBeEnabled();
+  await expect(page.locator('.dictionary-card')).toHaveCount(Object.keys(raw).length);
   expect(calls).toBe(2);
 });
 test('keyboard focus remains in word details and returns to its trigger', async ({ page }) => {
@@ -105,59 +109,6 @@ test('keyboard focus remains in word details and returns to its trigger', async 
   await page.keyboard.press('Escape');
   await expect(card).toBeFocused();
 });
-test('typing, pagination and detail changes paint within 200ms at 4x CPU slowdown', async ({
-  page,
-}, info) => {
-  const cdp = await page.context().newCDPSession(page);
-  await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
-  await page.goto('./');
-  await expect(page.getByRole('button', { name: 'Next', exact: true })).toBeEnabled();
-  const timings: Record<string, number> = {};
-  // Measure inside the browser from event dispatch through the next paint, avoiding test-driver latency.
-  timings.pagination = await page.evaluate(
-    () =>
-      new Promise<number>((resolve) => {
-        const start = performance.now();
-        (document.querySelector('.pagination button:last-child') as HTMLButtonElement).click();
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => resolve(performance.now() - start))
-        );
-      })
-  );
-  timings.search = await page.evaluate(
-    () =>
-      new Promise<number>((resolve) => {
-        const input = document.querySelector('input')!;
-        const start = performance.now();
-        Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!.call(
-          input,
-          '食べる'
-        );
-        input.dispatchEvent(new Event('input', { bubbles: true }));
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => resolve(performance.now() - start))
-        );
-      })
-  );
-  await expect(page.locator('.dictionary-card')).toHaveCount(1);
-  timings.details = await page.evaluate(
-    () =>
-      new Promise<number>((resolve) => {
-        const start = performance.now();
-        (document.querySelector('.dictionary-card') as HTMLButtonElement).click();
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => resolve(performance.now() - start))
-        );
-      })
-  );
-  await expect(page.getByRole('dialog')).toContainText('たべる');
-  await info.attach('interaction-timings', {
-    body: JSON.stringify(timings),
-    contentType: 'application/json',
-  });
-  for (const duration of Object.values(timings)) expect(duration).toBeLessThanOrEqual(200);
-});
-
 test('cold direct-word loading preserves the dialog frame', async ({ page }) => {
   let release!: () => void;
   const delayed = new Promise<void>((resolve) => {

@@ -1,7 +1,6 @@
 # @mandarinko/student-app
 
-Read-only Chinese and Japanese dictionary, built for GitHub Pages. Browse 24 words
-per page, search every dictionary field, and explore canonical readings, derivation
+Read-only Chinese and Japanese dictionary, built for GitHub Pages. Browse a continuous word list, search every dictionary field, and explore canonical readings, derivation
 links, shared character components and siblings. It uses system fonts: no automatic
 furigana, stroke animation, grammar or authoring tools are loaded.
 
@@ -20,14 +19,17 @@ Development uses port 3002; production preview uses port 3015. Restart the stude
 development server to refresh its snapshot after teacher edits. Rebuild shared UI
 TypeScript after changing it with `pnpm --filter @mandarinko/ui... build`. Set
 `STUDENT_BASE=/Mandarinko/` for a project site, or `/` for a domain root, when
-building and previewing. Query parameters `q`, `page` and `word` preserve search,
-pagination and selected word without requiring server-side route rewrites.
+building and previewing. Query parameters `q` and `word` preserve search
+and selected word without requiring server-side route rewrites.
 
 The build reads `../server/vocabulary.json` and produces one content-hashed snapshot.
 Legacy numeric relationship IDs become strings, as in the teacher's adapter; the
 canonical file is never rewritten. The first 24 entries and complete wordmark are
-prerendered. JavaScript hydrates that page and loads the complete snapshot once;
-failed loads expose explicit Retry. The repository port has no write operation.
+prerendered. JavaScript hydrates that page and loads the complete snapshot once, then displays all matching words;
+failed loads expose explicit Retry. The repository port has no write operation. Cards use `content-visibility: auto`
+and estimated intrinsic height to defer off-screen layout and painting; all words
+remain in the DOM. Search hides nonmatching cards while retaining their entry content;
+memoized cards and stable navigation callbacks avoid rebuilding unchanged entries.
 
 Teacher edits reach students after the edited vocabulary is committed to the
 repository's default branch and its Pages workflow succeeds. Uncommitted local
@@ -48,7 +50,7 @@ pnpm format:check
 ```
 
 Student browser tests build production assets beneath `/Mandarinko/` and use no API
-server. They cover prerendering without JavaScript, IME search, pagination, history,
+server. They cover prerendering without JavaScript, IME search, continuous browsing, history,
 keyboard focus, direct word links, missing entries, explicit retry and responsive
 layouts. Interaction samples measure browser event dispatch through the next paint
 at 4x CPU slowdown, with a 200 ms limit. They are not measurements of field INP.
@@ -65,3 +67,18 @@ execution environment; failures are reported without automatic retries.
 The field targets are LCP ≤2.5 s, CLS ≤0.1 and INP ≤200 ms at the 75th percentile.
 Lab checks do not establish real-user compliance. The MVP includes no analytics,
 service worker, offline guarantee or external font/CDN requests.
+
+To compare cached-catalog interaction timings in both production apps, build the
+student at the domain root and build the teacher, then run:
+
+```sh
+STUDENT_BASE=/ pnpm build:student
+pnpm --filter @mandarinko/teacher-app build
+node tests/performance/dictionary.mjs
+```
+
+This records three samples per app at a mobile viewport and 4x CPU slowdown,
+with tracing disabled. Teacher API reads use the published snapshot as a read-only
+fixture; no live catalog is written. Reports and desktop/mobile screenshots go to
+`test-results/dictionary-performance`. Search-to-paint measurements exclude network
+loading and are separate from Lighthouse startup metrics.

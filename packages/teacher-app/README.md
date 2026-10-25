@@ -35,7 +35,10 @@ pnpm test
 Words use a shared compact entry in the dictionary, search results, and relationship
 view: character variants and pronunciation share a heading, followed by derivation
 and complete definitions. Entries wrap around their content without equal-height
-cards or truncated text. The dictionary flows into columns as space permits; the
+cards or truncated text. Search indexes are compiled once per loaded catalog and refreshed after edits.
+Unchanged dictionary entries are memoized, and opening details retains the catalog
+without rerendering it. Search popovers defer off-screen layout and paint.
+The dictionary flows into columns as space permits; the
 relationship view uses compact indented branches. The details view stays read-only;
 Edit opens a separate word editor in the same dialog shell.
 

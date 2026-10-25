@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import type { Word } from '@mandarinko/core';
 import { WordEntry as ReadingEntry, type DerivationNavigation } from '@mandarinko/ui';
 import { EntryHeading } from './EntryHeading';
 import './WordEntry.css';
-export function WordEntry({
+export const WordEntry = memo(function WordEntry({
   word,
   navigation,
   strokeOrder = false,
@@ -25,4 +26,4 @@ export function WordEntry({
       }
     />
   );
-}
+});

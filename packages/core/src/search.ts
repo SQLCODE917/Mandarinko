@@ -4,18 +4,22 @@ import type { Word, LanguageCode } from './types.js';
 export function matchesEntry(entry: unknown, query: string): boolean {
   return matchSearchText(JSON.stringify(entry).toLowerCase(), query);
 }
+function queryTerms(query: string): string[] {
+  return query.trim().toLowerCase().split(/\s+/);
+}
 function matchSearchText(text: string, query: string): boolean {
-  return query
-    .trim()
-    .toLowerCase()
-    .split(/\s+/)
-    .every((term) => text.includes(term));
+  return queryTerms(query).every((term) => text.includes(term));
 }
 /** Compile scalar/field text once, preserving the same matching and catalog order. */
 export function createEntrySearch<T>(entries: readonly T[]): (query: string) => T[] {
   const indexed = entries.map((entry) => ({ entry, text: JSON.stringify(entry).toLowerCase() }));
-  return (query) =>
-    indexed.filter((item) => matchSearchText(item.text, query)).map((item) => item.entry);
+  return (query) => {
+    const terms = queryTerms(query);
+    if (terms[0] === '') return [...entries];
+    return indexed
+      .filter(({ text }) => terms.every((term) => text.includes(term)))
+      .map(({ entry }) => entry);
+  };
 }
 
 export class VocabularySearch {

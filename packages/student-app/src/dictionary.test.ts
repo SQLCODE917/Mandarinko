@@ -15,10 +15,9 @@ it('compiled search retains core semantics and original order across every field
   for (const query of ['', '食', 'たべる', 'TO EAT', 'jlptLevel 5', 'Food 手', 'missing'])
     expect(search(query)).toEqual(words.filter((w) => matchesEntry(w, query)));
 });
-it('URLs handle invalid pages and multilingual text', () => {
-  expect(readLocation('?page=-3&q=食&word=1')).toEqual({ page: 1, query: '食', wordId: '1' });
-  expect(readLocation('?page=0').page).toBe(1);
-  expect(readLocation('?page=3').page).toBe(3);
+it('URLs retain multilingual queries and word selection while ignoring old page numbers', () => {
+  expect(readLocation('?page=-3&q=食&word=1')).toEqual({ query: '食', wordId: '1' });
+  expect(readLocation('?page=3')).toEqual({ query: '', wordId: null });
 });
 it('shares a successful snapshot and makes a failed load explicitly retryable', async () => {
   const request = vi

@@ -67,6 +67,7 @@ try {
           Object.entries(result.lhr.categories).map(([k, v]) => [k, v.score * 100])
         ),
         lcp: result.lhr.audits['largest-contentful-paint'].numericValue,
+        tbt: result.lhr.audits['total-blocking-time'].numericValue,
         cls: result.lhr.audits['cumulative-layout-shift'].numericValue,
       });
     }
@@ -76,7 +77,8 @@ try {
     );
     const lcp = median(runs.map((r) => r.lcp)),
       cls = median(runs.map((r) => r.cls));
-    summary.push({ name, scores, lcp, cls });
+    const tbt = median(runs.map((r) => r.tbt));
+    summary.push({ name, scores, lcp, cls, tbt });
     console.log(JSON.stringify(summary.at(-1)));
   }
   await writeFile(`${directory}/summary.json`, JSON.stringify(summary, null, 2) + '\n');

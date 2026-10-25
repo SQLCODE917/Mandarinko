@@ -1,5 +1,5 @@
-import { useState, type ReactNode } from 'react';
-import { matchesEntry } from '@mandarinko/core';
+import { useMemo, useState, type ReactNode } from 'react';
+import { createEntrySearch } from '@mandarinko/core';
 import './OmniSearch.css';
 
 /** In-memory catalog search shares core matching across dictionary and grammar. */
@@ -17,7 +17,8 @@ export function EntrySearch<T extends { id: string }>({
   onQueryChange?: (query: string) => void;
 }) {
   const [query, setQuery] = useState('');
-  const results = query.trim() ? entries.filter((entry) => matchesEntry(entry, query)) : [];
+  const search = useMemo(() => createEntrySearch(entries), [entries]);
+  const results = useMemo(() => (query.trim() ? search(query) : []), [search, query]);
   return (
     <div className="omni-search">
       <div className="search-controls">
