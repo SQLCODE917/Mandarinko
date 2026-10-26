@@ -94,8 +94,10 @@ with its saved word URL. Close leaves authoring and retains unfinished drafts. I
 IDs show an explicit message instead of opening a draft.
 
 In the details view, Han-only spellings in derivations link to existing words.
-The longest matching spelling wins; unknown, ambiguous, and self-referencing
-spellings remain text. Identical spellings on variants of one word resolve to
+The longest matching spelling wins. Matches prefer the current entry’s language
+family, treating simplified and traditional Chinese together. Multiple matches
+within that family, unknown spellings, and self-references remain text. A unique
+cross-language match still links when there is no same-family match. Identical spellings on variants of one word resolve to
 that word. Links support keyboard activation, copying, and opening in another
 tab. Dictionary-list and search entries retain plain derivation text so links
 are never nested inside their entry buttons. Links are also inactive during

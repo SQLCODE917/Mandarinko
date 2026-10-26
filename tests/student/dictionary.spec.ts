@@ -8,10 +8,11 @@ const eatId = Object.entries(raw).find(([, w]) =>
 )![0];
 test('prerendered preview works without JavaScript and without fonts or third parties', async ({
   browser,
+  baseURL,
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto('http://127.0.0.1:3015/Mandarinko/');
+  await page.goto(baseURL!);
   await expect(page.locator('.dictionary-card')).toHaveCount(24);
   await expect(
     page.getByRole('heading', { name: `All Words (${Object.keys(raw).length})` })
@@ -20,13 +21,14 @@ test('prerendered preview works without JavaScript and without fonts or third pa
 });
 test('continuous browsing, search, IME, details and history work at a project subpath', async ({
   page,
+  baseURL,
 }, info) => {
   const invalid: string[] = [];
   const errors: string[] = [];
   page.on('request', (r) => {
     if (
       r.method() !== 'GET' ||
-      !r.url().startsWith('http://127.0.0.1:3015/Mandarinko/') ||
+      !r.url().startsWith(baseURL!) ||
       /\.(woff2?|ttf)|localhost:3000|stroke|grammar/i.test(r.url())
     )
       invalid.push(r.url());
@@ -127,4 +129,62 @@ test('cold direct-word loading preserves the dialog frame', async ({ page }) => 
   const after = (await frame.boundingBox())!;
   expect(after.y).toBeCloseTo(before.y, 0);
   expect(after.height).toBeCloseTo(before.height, 0);
+});
+
+test('Chinese derivation references prefer Chinese homographs over Japanese entries', async ({
+  page,
+}) => {
+  await page.goto('?word=c40d22f6-d48d-400d-a3e6-f31b6249d869');
+  const dialog = page.getByRole('dialog');
+  const link = dialog
+    .locator('.word-entry-derivation')
+    .getByRole('link', { name: '八', exact: true });
+  await expect(link).toHaveAttribute('href', /word=c4d70470-1a5f-4231-af61-2bf56e688796/);
+  await link.click();
+  await expect(page).toHaveURL(/word=c4d70470-1a5f-4231-af61-2bf56e688796/);
+  await expect(dialog).toContainText('bā');
+  await expect(dialog).toContainText('Ideograph representing division.');
+  await page.goBack();
+  await expect(dialog).toContainText('separated by 八');
+});
+
+test('query links expose static social metadata and a published image without JavaScript', async ({
+  browser,
+  baseURL,
+  request,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  try {
+    const page = await context.newPage();
+    await page.goto(`${baseURL}?q=%E7%A7%8B`);
+    const canonical = new URL(new URL(baseURL!).pathname, 'https://sqlcode917.github.io/').href;
+    await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'website');
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
+      'content',
+      'Mandarinko — Chinese & Japanese Dictionary'
+    );
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', canonical);
+    await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', canonical);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      'content',
+      `${canonical}mandarinko-preview.png`
+    );
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+      'content',
+      'summary_large_image'
+    );
+    expect(
+      await page.evaluate(() =>
+        performance
+          .getEntriesByType('resource')
+          .some((r) => r.name.endsWith('mandarinko-preview.png'))
+      )
+    ).toBe(false);
+    const image = await request.get(new URL('mandarinko-preview.png', baseURL).href);
+    expect(image.ok()).toBe(true);
+    expect(image.headers()['content-type']).toContain('image/png');
+    expect((await image.body()).subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
+  } finally {
+    await context.close();
+  }
 });

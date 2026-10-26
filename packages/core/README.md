@@ -5,7 +5,9 @@ Framework-independent vocabulary and grammar contracts for Mandarinko.
 `createEntrySearch` compiles the same field/term matching as `matchesEntry` for a
 loaded snapshot. `wordRelations` traverses existing child/sibling IDs while stopping
 cycles and missing references, preserving Japanese word identity and shared Chinese
-components. `derivationParts` conservatively links unambiguous Han spellings.
+components. `derivationParts` conservatively links unambiguous Han spellings, preferring the
+current entry’s language family (including simplified/traditional Chinese variants).
+Same-family ambiguity stays plain; a unique cross-language reference can still link.
 These helpers have no browser, filesystem or HTTP dependencies.
 
 ## Features

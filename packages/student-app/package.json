@@ -7,8 +7,9 @@
     "dev": "vite --port 3002",
     "build": "tsc --noEmit && node scripts/build.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 3015 --strictPort",
-    "test": "vitest --run && node --test scripts/snapshot.test.mjs",
-    "performance": "node scripts/performance.mjs"
+    "test": "vitest --run && node --test scripts/*.test.mjs",
+    "performance": "node scripts/performance.mjs",
+    "preview:image": "node scripts/preview-image.mjs"
   },
   "dependencies": {
     "@mandarinko/core": "workspace:*",

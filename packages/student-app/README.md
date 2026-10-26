@@ -22,6 +22,15 @@ TypeScript after changing it with `pnpm --filter @mandarinko/ui... build`. Set
 building and previewing. Query parameters `q` and `word` preserve search
 and selected word without requiring server-side route rewrites.
 
+Open Graph and large-image card metadata are emitted into the initial HTML. All
+search and word URLs share the site's canonical preview. `STUDENT_SITE_URL` sets
+the absolute public site URL (including any project path); by default it uses
+`https://sqlcode917.github.io` plus `STUDENT_BASE`. The Pages workflow derives both
+settings from deployment metadata. The preview PNG is a committed static asset,
+referenced only by metadata and not downloaded by the dictionary UI. Regenerate
+it from the shared CRT styles with `pnpm --filter @mandarinko/student-app preview:image`
+(requires the pinned Playwright Chromium browser).
+
 The build reads `../server/vocabulary.json` and produces one content-hashed snapshot.
 Legacy numeric relationship IDs become strings, as in the teacher's adapter; the
 canonical file is never rewritten. The first 24 entries and complete wordmark are

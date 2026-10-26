@@ -318,3 +318,46 @@ test('catalog cards and the cached search index reflect teacher edits', async ({
   await expect(page.locator('.result-item')).toContainText('nü3');
   expect((await vocabulary.read()).female.derivation).toBe('updated catalog phrase');
 });
+
+test('Chinese derivations navigate to Chinese rather than Japanese homographs', async ({
+  page,
+}) => {
+  await page.route('http://localhost:3000/api/words', (route) =>
+    route.fulfill({
+      json: [
+        {
+          id: 'er',
+          spelling: [{ language: 'zh-Hant', text: '尒' }],
+          pronunciation: 'ěr',
+          definition: ['you'],
+          derivation: 'Breath, represented by 丨, drawn in 入 and separated by 八.',
+        },
+        {
+          id: 'eight-zh',
+          spelling: [{ language: 'zh-Hans', text: '八' }],
+          pronunciation: 'bā',
+          definition: ['eight'],
+          derivation: 'Ideograph representing division.',
+        },
+        {
+          id: 'eight-ja',
+          spelling: [{ language: 'ja', text: '八' }],
+          pronunciation: 'はち',
+          definition: ['eight'],
+        },
+      ],
+      headers: { 'access-control-allow-origin': '*' },
+    })
+  );
+  await page.goto('/?word=er');
+  const dialog = page.getByRole('dialog');
+  const link = dialog
+    .locator('.word-entry-derivation')
+    .getByRole('link', { name: '八', exact: true });
+  await expect(link).toHaveAttribute('href', '/?word=eight-zh');
+  await link.click();
+  await expect(page).toHaveURL(/word=eight-zh/);
+  await expect(dialog).toContainText('bā');
+  await page.goBack();
+  await expect(dialog).toContainText('separated by 八');
+});

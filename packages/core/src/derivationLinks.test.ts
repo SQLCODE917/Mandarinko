@@ -59,6 +59,44 @@ describe('derivation references', () => {
     ]);
   });
 
+  it('resolves Chinese versus Japanese homographs using the current language family', () => {
+    const chinese = word('eight-zh', '八');
+    chinese.spelling[0].language = 'zh-Hans';
+    const japanese = word('eight-ja', '八');
+    japanese.spelling[0].language = 'ja';
+    const root = word('root', '尒');
+    const words = [root, chinese, japanese];
+    expect(derivationParts('separated by 八', words, root.id)).toEqual([
+      { text: 'separated by ' },
+      { text: '八', wordId: chinese.id },
+    ]);
+    expect(derivationParts('八', words)).toEqual([{ text: '八' }]);
+    expect(derivationParts('八', words, 'missing')).toEqual([{ text: '八' }]);
+    root.spelling[0].language = 'ja';
+    expect(derivationParts('八', words, root.id)).toEqual([{ text: '八', wordId: japanese.id }]);
+  });
+
+  it('retains same-language ambiguity and self-reference protection', () => {
+    const words = [word('root', '尒'), word('a', '八'), word('b', '八')];
+    expect(derivationParts('八', words, 'root')).toEqual([{ text: '八' }]);
+    const japanese = word('ja', '八');
+    japanese.spelling[0].language = 'ja';
+    expect(derivationParts('八', [word('self', '八'), japanese], 'self')).toEqual([{ text: '八' }]);
+  });
+
+  it('keeps unique cross-language references but does not guess for mixed-language roots', () => {
+    const root = word('root', '尒');
+    const japanese = word('eight-ja', '八');
+    japanese.spelling[0].language = 'ja';
+    expect(derivationParts('八', [root, japanese], 'root')).toEqual([
+      { text: '八', wordId: japanese.id },
+    ]);
+    root.spelling.push({ language: 'ja', text: '尒' });
+    expect(derivationParts('八', [root, word('eight-zh', '八'), japanese], 'root')).toEqual([
+      { text: '八' },
+    ]);
+  });
+
   it('accepts an empty derivation or vocabulary without inventing links', () => {
     expect(derivationParts('', [])).toEqual([]);
     expect(derivationParts('<b>手</b>', [])).toEqual([{ text: '<b>手</b>' }]);

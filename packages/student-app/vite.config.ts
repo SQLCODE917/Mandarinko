@@ -4,10 +4,13 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 // @ts-expect-error Build-only JavaScript module, tested independently.
 import { snapshot, safeJson } from './scripts/snapshot.mjs';
+// @ts-expect-error Build-only JavaScript module, tested independently.
+import { socialMetadata } from './scripts/social.mjs';
 export default defineConfig(() => {
   const base = process.env.STUDENT_BASE || '/';
   if (!base.startsWith('/') || !base.endsWith('/'))
     throw Error('STUDENT_BASE must begin and end with /');
+  const socialTags = socialMetadata(base, process.env.STUDENT_SITE_URL);
   const data = snapshot(
     JSON.parse(
       readFileSync(fileURLToPath(new URL('../server/vocabulary.json', import.meta.url)), 'utf8')
@@ -24,11 +27,13 @@ export default defineConfig(() => {
       react(),
       {
         name: 'dictionary-snapshot',
-        transformIndexHtml: (html) =>
-          html.replace(
+        transformIndexHtml: (html) => ({
+          tags: socialTags,
+          html: html.replace(
             '<!--boot-->',
             `<script id="dictionary-boot" type="application/json">${safeJson(boot)}</script>`
           ),
+        }),
         generateBundle() {
           this.emitFile({ type: 'asset', fileName: `data/${data.file}`, source: data.json });
         },
