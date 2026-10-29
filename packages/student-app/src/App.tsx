@@ -1,10 +1,11 @@
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode, RefObject } from 'react';
-import type { Word, ReadingNode } from '@mandarinko/core';
+import type { Word } from '@mandarinko/core';
 import { wordRelations } from '@mandarinko/core';
 import { EntryDialog, WordEntry } from '@mandarinko/ui';
 import '@mandarinko/ui/crt.css';
 import './style.css';
+import { RelationList } from './RelationList';
 import {
   readLocation,
   searchDictionary,
@@ -85,26 +86,6 @@ export function App({
   };
   const navigation = { words, hrefForWord, onNavigate: open };
   const relations = word ? wordRelations(word, byId) : null;
-  const relationNodes = (nodes: ReadingNode[]): ReactNode => (
-    <ul className="relation-list">
-      {nodes.map((node) => (
-        <li key={node.word.id}>
-          <a
-            href={hrefForWord(node.word.id)}
-            onClick={(e) => {
-              if (e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
-                e.preventDefault();
-                open(node.word.id);
-              }
-            }}
-          >
-            <WordEntry word={node.word} />
-          </a>
-          {node.children.length > 0 && relationNodes(node.children)}
-        </li>
-      ))}
-    </ul>
-  );
   return (
     <div className="student-page">
       <header className="crt-screen">
@@ -156,13 +137,18 @@ export function App({
               {relations!.children.length > 0 && (
                 <section aria-label="Components">
                   <h3>Components</h3>
-                  {relationNodes(relations!.children)}
+                  <RelationList
+                    key={word.id}
+                    nodes={relations!.children}
+                    collapsible
+                    navigation={navigation}
+                  />
                 </section>
               )}
               {relations!.siblings.length > 0 && (
                 <section aria-label="Related words">
                   <h3>Related words</h3>
-                  {relationNodes(relations!.siblings)}
+                  <RelationList key={word.id} nodes={relations!.siblings} navigation={navigation} />
                 </section>
               )}
             </>

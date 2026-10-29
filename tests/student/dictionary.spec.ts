@@ -188,3 +188,169 @@ test('query links expose static social metadata and a published image without Ja
     await context.close();
   }
 });
+
+for (const width of [1280, 390]) {
+  test(`component branches collapse independently with pointer and keyboard at ${width}px`, async ({
+    page,
+  }, info) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.route('**/data/dictionary.*.json', (route) =>
+      route.fulfill({
+        json: [
+          {
+            id: 'collapse-root',
+            spelling: [{ language: 'zh-Hant', text: '林' }],
+            pronunciation: 'lín',
+            definition: ['forest'],
+            childrenIds: ['branch', 'next'],
+          },
+          {
+            id: 'branch',
+            spelling: [{ language: 'zh-Hant', text: '木' }],
+            pronunciation: 'mù',
+            definition: ['branch definition'],
+            derivation: 'A tree with roots. '.repeat(35),
+            childrenIds: ['nested'],
+          },
+          {
+            id: 'nested',
+            spelling: [{ language: 'zh-Hant', text: '十' }],
+            pronunciation: 'shí',
+            definition: ['nested definition'],
+          },
+          {
+            id: 'next',
+            spelling: [{ language: 'zh-Hant', text: '八' }],
+            pronunciation: 'bā',
+            definition: ['next component definition'],
+          },
+        ],
+      })
+    );
+    await page.goto('?word=collapse-root');
+    const dialog = page.getByRole('dialog');
+    const components = dialog.getByRole('region', { name: 'Components' });
+    const branch = components
+      .locator('.component-branch')
+      .filter({ has: page.getByRole('button', { name: /^(Collapse|Expand) 木 component$/ }) })
+      .first();
+    const branchToggle = branch.locator(':scope > .component-toggle');
+    const nestedToggle = components.getByRole('button', {
+      name: /^(Collapse|Expand) 十 component$/,
+    });
+    const nextToggle = components.getByRole('button', { name: /^(Collapse|Expand) 八 component$/ });
+    for (const toggle of [branchToggle, nestedToggle, nextToggle]) {
+      const box = (await toggle.boundingBox())!;
+      expect(box.width).toBeGreaterThanOrEqual(44);
+      expect(box.height).toBeGreaterThanOrEqual(44);
+    }
+    await expect(components.getByText('Open details', { exact: true })).toHaveCount(0);
+    await expect(components.getByText('nested definition', { exact: true })).toBeVisible();
+    const expandedHeight = (await branch.boundingBox())!.height;
+    await page.screenshot({ path: info.outputPath('components-expanded.png') });
+    await nestedToggle.click();
+    await branchToggle.click();
+    await expect(branchToggle).toHaveAttribute('aria-expanded', 'false');
+    await expect(components.getByText('branch definition', { exact: true })).not.toBeVisible();
+    await expect(components.getByText('next component definition', { exact: true })).toBeVisible();
+    expect((await branch.boundingBox())!.height).toBeLessThan(expandedHeight);
+    await expect(page).toHaveURL(/word=collapse-root/);
+    await branchToggle.focus();
+    await page.keyboard.press('Enter');
+    await expect(branchToggle).toHaveAttribute('aria-expanded', 'true');
+    await expect(components.getByText('nested definition', { exact: true })).not.toBeVisible();
+    await page.keyboard.press('Space');
+    await nextToggle.click();
+    await dialog.locator('.word-tree-title').focus();
+    await page.keyboard.press('Shift+Tab');
+    await expect(components.getByRole('link').filter({ hasText: '八' })).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(dialog.getByRole('button', { name: 'Close', exact: true })).toBeFocused();
+    await page.screenshot({ path: info.outputPath('components-collapsed.png') });
+    await components
+      .getByRole('link')
+      .filter({ hasText: '木' })
+      .locator('.word-entry-spellings')
+      .click();
+    await expect(page).toHaveURL(/word=branch/);
+    await page.goBack();
+    await expect(page).toHaveURL(/word=collapse-root/);
+    await expect(branchToggle).toHaveAttribute('aria-expanded', 'true');
+    await expect(components.getByText('nested definition', { exact: true })).toBeVisible();
+    expect(await dialog.evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true);
+  });
+}
+
+for (const [wordId, nested] of [
+  ['4', false],
+  ['2', true],
+] as const) {
+  test(`derivation-only references navigate independently from ${nested ? 'component' : 'main'} details`, async ({
+    page,
+  }) => {
+    await page.goto(`?word=${wordId}`);
+    const dialog = page.getByRole('dialog');
+    const derivation = nested
+      ? dialog
+          .getByRole('button', { name: 'Collapse 长 / 長 component', exact: true })
+          .locator('..')
+          .locator('.component-body > .word-entry > .word-entry-derivation')
+      : dialog.locator('.word-tree-body > .word-entry > .word-entry-derivation');
+    for (const [character, id] of [
+      ['丌', '4029f903-19f7-4578-bd7e-102e57162863'],
+      ['匕', 'd14ef064-3b70-419d-b0bb-6451c13c5c2a'],
+      ['亡', '873d8d64-a057-4d4d-bf46-0333a9db8e9c'],
+    ]) {
+      const link = derivation.getByRole('link', { name: character, exact: true });
+      await expect(link).toHaveAttribute('href', new RegExp(`word=${id}`));
+      await link.click();
+      await expect(page).toHaveURL(new RegExp(`word=${id}`));
+      await page.goBack();
+      await expect(page).toHaveURL(new RegExp(`word=${wordId}$`));
+    }
+    expect(await dialog.locator('a a').count()).toBe(0);
+  });
+}
+
+test('related-word derivations expose their own links without wrapping them in a parent link', async ({
+  page,
+}) => {
+  const tableId = '4029f903-19f7-4578-bd7e-102e57162863';
+  const personId = 'd14ef064-3b70-419d-b0bb-6451c13c5c2a';
+  const deathId = '873d8d64-a057-4d4d-bf46-0333a9db8e9c';
+  await page.route('**/data/dictionary.*.json', (route) =>
+    route.fulfill({
+      json: [
+        {
+          id: 'related-root',
+          spelling: [{ language: 'zh-Hant', text: '木' }],
+          pronunciation: 'mù',
+          definition: ['fixture root'],
+          siblingIds: ['4'],
+        },
+        ...['4', tableId, personId, deathId].map((id) => ({ ...raw[id], id })),
+      ],
+    })
+  );
+  await page.goto('?word=related-root');
+  const dialog = page.getByRole('dialog');
+  const related = dialog.getByRole('region', { name: 'Related words' });
+  await expect(dialog.getByRole('region', { name: 'Components' })).toHaveCount(0);
+  for (const [character, id] of [
+    ['丌', tableId],
+    ['匕', personId],
+    ['亡', deathId],
+  ]) {
+    const link = related
+      .locator('.word-entry-derivation')
+      .getByRole('link', { name: character, exact: true });
+    await expect(link).toHaveAttribute('href', new RegExp(`word=${id}`));
+    await expect(link).toHaveCSS('display', 'inline');
+  }
+  expect(await dialog.locator('a a').count()).toBe(0);
+  await related.getByRole('link', { name: '匕', exact: true }).click();
+  await expect(page).toHaveURL(new RegExp(`word=${personId}`));
+  await page.goBack();
+  await expect(page).toHaveURL(/word=related-root/);
+  await expect(related.getByRole('link', { name: '匕', exact: true })).toBeVisible();
+});

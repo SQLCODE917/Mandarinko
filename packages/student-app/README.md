@@ -4,6 +4,15 @@ Read-only Chinese and Japanese dictionary, built for GitHub Pages. Browse a cont
 links, shared character components and siblings. It uses system fonts: no automatic
 furigana, stroke animation, grammar or authoring tools are loaded.
 
+In word details, the arrow beside each component expands or collapses its
+meaning, derivation and descendants. Arrow buttons have a 44×44 pixel touch target
+and support Enter/Space. Tapping the component entry still opens that word's details,
+including when collapsed. Components start expanded; each branch retains its nested
+collapse choices until navigating to another word or closing details. Derivation
+references link to matching dictionary entries in main, component and related-word
+views, independently of whether those entries appear in Components. Headings and
+derivation links are separate anchors; ambiguous or unknown references remain text.
+
 ## Development and publishing
 
 From the repository root, use the pinned Node/pnpm versions:

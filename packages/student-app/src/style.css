@@ -144,21 +144,51 @@ main > p button {
 }
 .relation-list {
   list-style: none;
-  padding-left: 1rem;
+  padding-left: 0;
   border-left: 1px solid #d8cfc2;
 }
 .relation-list li {
   margin: 0.7rem 0;
 }
-.relation-list a {
+.relation-list > li > a,
+.component-content > a {
   display: block;
   text-decoration: none;
 }
 .relation-list a:hover {
   background: #f8edf2;
 }
+.component-branch {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 0.125rem;
+  align-items: start;
+}
+.component-toggle {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: #92205a;
+  font-size: 1.4rem;
+}
+.component-toggle:hover {
+  background: #f8edf2;
+}
+.component-content > a {
+  padding-top: 0.25rem;
+}
 .student-page header::after {
   animation: none;
+}
+@media (max-width: 640px) {
+  .student-details .word-tree-content {
+    width: calc(100% - 2rem);
+    min-width: 0;
+    max-width: calc(100% - 2rem);
+  }
 }
 @media (max-width: 480px) {
   .student-page main {
